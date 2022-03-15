@@ -1,0 +1,46 @@
+name: Test
+on: [push]
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          POSTGRES_HOST_AUTH_METHOD: 'trust'
+      redis:
+        image: redis:alpine
+        options: --health-cmd "redis-cli -h localhost ping" --health-interval 10s --health-timeout 5s --health-retries 15
+    container:
+      image: ruby:3.1.0
+      env:
+        RAILS_ENV: test
+        DATABASE_HOST: postgres
+        REDIS_URL: redis://redis:6379/1
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup docker
+        shell: bash
+        run: |
+          docker-compose run web yarn install --check-files
+          docker-compose run web yarn upgrade
+          docker-compose build
+          docker-compose run web rails db:create
+        env:
+          RAILS_ENV: test
+      - name: webpacker
+        run: |
+          docker-compose run web bundle exec rails webpacker:compile
+      - name: Rspec
+        run: |
+          docker-compose run web bundle exec rspec
+        env:
+          RAILS_ENV: test
