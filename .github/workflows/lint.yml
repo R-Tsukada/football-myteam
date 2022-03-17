@@ -31,3 +31,6 @@ jobs:
 
       - name: JS Lint
         run: bin/yarn lint
+
+      - name: Slim Lint
+        run: bundle exec slim-lint app/views -c config/slim_lint.yml
