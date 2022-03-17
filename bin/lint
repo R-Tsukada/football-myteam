@@ -1,4 +1,4 @@
 #!/bin/bash
 
-bundle exec rubocop -a
+bundle exec rubocop -A
 bin/yarn lint
