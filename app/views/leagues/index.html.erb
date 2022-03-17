@@ -1,0 +1,7 @@
+<h1>Leagues#index</h1>
+<% @leagues.each do |league| %>
+  <tr>
+    <td><%= league.name %></td>
+    <td><img src=<%= league.logo %> /></td>
+  </tr>
+<% end %>
