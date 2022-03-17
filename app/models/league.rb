@@ -16,14 +16,13 @@ class League < ApplicationRecord
 
   def league_data
     api_request_url.each do |n|
-
       http = Net::HTTP.new(n.host, n.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = Net::HTTP::Get.new(n)
-      request["x-rapidapi-host"] = ENV['HOST']
-      request["x-rapidapi-key"] = ENV['KEY']
+      request['x-rapidapi-host'] = ENV['HOST']
+      request['x-rapidapi-key'] = ENV['KEY']
 
       response = http.request(request)
       results = JSON.parse(response.body)
@@ -39,7 +38,7 @@ class League < ApplicationRecord
 
   def api_request_url
     league_numbers = [39, 135, 140, 78]
-    league_numbers.map {|number| URI("https://v3.football.api-sports.io/leagues?id=#{number}&season=#{season_year}")}
+    league_numbers.map { |number| URI("https://v3.football.api-sports.io/leagues?id=#{number}&season=#{season_year}") }
   end
 
   def season_year
