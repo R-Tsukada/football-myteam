@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'leagues/index'
+  devise_for :users
+  root to: 'leagues#index'
+  resources :leagues
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
