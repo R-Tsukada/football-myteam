@@ -8,6 +8,8 @@ import Turbolinks from 'turbolinks'
 import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 
+require('../components/page/league_list.js')
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
