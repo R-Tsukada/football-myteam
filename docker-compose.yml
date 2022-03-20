@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   db:
     image: postgres
@@ -12,6 +12,6 @@ services:
     volumes:
       - .:/football
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
