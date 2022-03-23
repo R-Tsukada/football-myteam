@@ -1,20 +1,26 @@
 <template>
-  <div class="container">
+    <div class="container">
     <ul v-for="league in leagues" :key="league.id">
       <li>
         <img :src="league.logo" class="logo_image" />
       </li>
     </ul>
   </div>
+  <TeamList :teams='teams'/>
 </template>
 
 <script>
 import axios from 'axios'
+import TeamList from '../TeamList.vue'
 
 export default {
+   components: {
+    TeamList
+  },
   data() {
     return {
-      leagues: 'leagues'
+      leagues: 'leagues',
+      teams: 'teams'
     }
   },
   methods: {
@@ -22,10 +28,16 @@ export default {
       axios.get('/api/leagues').then((response) => {
         this.leagues = response.data
       })
+    },
+    setTeam: function () {
+      axios.get('/api/teams').then((response) => {
+        this.teams = response.data
+      })
     }
   },
   mounted() {
     this.setLeague()
+    this.setTeam()
   }
 }
 </script>
