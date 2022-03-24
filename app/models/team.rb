@@ -42,16 +42,6 @@ class Team < ApplicationRecord
       team.logo = results['response'][result]['team']['logo']
       team.home_city = results['response'][result]['venue']['city']
       league = results['parameters']['league']
-      # team.league_id = case league
-      #                  when '39'
-      #                    37
-      #                  when '78'
-      #                    38
-      #                  when '135'
-      #                    39
-      #                  when '140'
-      #                    40
-      #                  end
       id = {
         '39' => 37,
         '78' => 38,
