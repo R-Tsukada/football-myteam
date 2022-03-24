@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'API::Teams', type: :request do
-  describe "GET /api/teams/index" do
+  describe 'GET /api/teams/index' do
     it 'returns http success' do
       user = FactoryBot.build(:user)
       sign_in user

@@ -10,9 +10,8 @@
 </template>
 
 <script>
-
 export default {
-  props: ["teams"]
+  props: ['teams']
 }
 </script>
 
@@ -26,7 +25,7 @@ export default {
 
 ul {
   list-style: none;
-  }
+}
 
 li {
   border: solid 1px;

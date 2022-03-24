@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::TeamsController < ApplicationController
   before_action :set_team
 
@@ -5,8 +7,7 @@ class Api::TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def show
-  end
+  def show; end
 
   private
 
