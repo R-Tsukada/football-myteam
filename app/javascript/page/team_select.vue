@@ -7,8 +7,8 @@
 
 <script>
 import axios from 'axios'
-import TeamList from '../TeamList.vue'
-import LeagueList from '../LeagueList.vue'
+import TeamList from '../components/TeamList.vue'
+import LeagueList from '../components/LeagueList.vue'
 
 export default {
   components: {
