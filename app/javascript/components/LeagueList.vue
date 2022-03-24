@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <ul v-for="league in leagues" :key="league.id">
