@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_17_071114) do
+ActiveRecord::Schema.define(version: 2022_03_21_005531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 2022_03_17_071114) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["logo"], name: "index_leagues_on_logo", unique: true
     t.index ["name"], name: "index_leagues_on_name", unique: true
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer "api_id", null: false
+    t.string "name", null: false
+    t.string "logo", null: false
+    t.string "home_city", null: false
+    t.bigint "league_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["api_id"], name: "index_teams_on_api_id", unique: true
+    t.index ["league_id"], name: "index_teams_on_league_id"
+    t.index ["logo"], name: "index_teams_on_logo", unique: true
+    t.index ["name"], name: "index_teams_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +50,5 @@ ActiveRecord::Schema.define(version: 2022_03_17_071114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "teams", "leagues"
 end

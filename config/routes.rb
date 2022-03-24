@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root to: 'leagues#index'
   namespace :api, format: 'json' do
     resources :leagues, only: [:index]
+    resources :teams, only: [:index]
   end
 end
