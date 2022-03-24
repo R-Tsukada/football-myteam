@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div class="container">
-      <ul v-for="league in leagues" :key="league.id">
-        <li>
-          <img :src="league.logo" class="logo_image" />
-        </li>
-      </ul>
-    </div>
+    <LeagueList :leagues="leagues" />
     <TeamList :teams="teams" />
   </div>
 </template>
@@ -14,9 +8,11 @@
 <script>
 import axios from 'axios'
 import TeamList from '../TeamList.vue'
+import LeagueList from '../LeagueList.vue'
 
 export default {
   components: {
+    LeagueList,
     TeamList
   },
   data() {
@@ -45,14 +41,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-}
-
-ul {
-  list-style: none;
-}
 </style>
