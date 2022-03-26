@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <ul v-for="league in leagues" :key="league.id">
-      <li>
+      <li @click="selectLeague(league)">
         <img :src="league.logo" class="logo_image" />
         <p>{{ league.name }}</p>
       </li>
@@ -10,8 +10,30 @@
 </template>
 
 <script>
+import { createStore } from 'vuex'
+
+const store = createStore({
+  state() {
+    return {
+      leagueId: ''
+    }
+  },
+
+  mutations: {
+    increment (state, value) {
+      state.leagueId = value
+    }
+  }
+})
+
 export default {
-  props: ['leagues']
+  props: ['leagues'],
+  methods: {
+    selectLeague: function (value) {
+      alert(value.id)
+      store.commit('increment', value.id)
+    }
+  }
 }
 </script>
 

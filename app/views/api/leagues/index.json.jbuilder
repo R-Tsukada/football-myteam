@@ -1,1 +1,1 @@
-json.array! @leagues, :name, :logo
+json.array! @leagues, :id, :name, :logo
