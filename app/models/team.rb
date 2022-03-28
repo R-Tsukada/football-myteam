@@ -44,9 +44,9 @@ class Team < ApplicationRecord
       league = results['parameters']['league']
       id = {
         '39' => 37,
-        '78' => 38,
-        '135' => 39,
-        '140' => 40
+        '78' => 40,
+        '135' => 38,
+        '140' => 39
       }
       team.league_id = id[league]
       team.save
