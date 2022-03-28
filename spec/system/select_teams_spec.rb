@@ -13,7 +13,7 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
 
     expect(page).to have_content 'Signed in successfully.'
 
-    sleep 15.0
+    sleep 5.0
 
     expect(page).to have_content 'Premier League'
     expect(page).to have_content 'Serie A'

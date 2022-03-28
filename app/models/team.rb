@@ -43,10 +43,10 @@ class Team < ApplicationRecord
       team.home_city = results['response'][result]['venue']['city']
       league = results['parameters']['league']
       id = {
-        '39' => 37,
-        '78' => 40,
-        '135' => 38,
-        '140' => 39
+        '39' => 41,
+        '78' => 44,
+        '135' => 42,
+        '140' => 43
       }
       team.league_id = id[league]
       team.save
