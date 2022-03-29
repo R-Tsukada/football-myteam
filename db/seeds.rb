@@ -1,8 +1,26 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+League.create(
+  [
+    {
+      "id": 1,
+      "name": 'Premier League',
+      "logo": 'https://media.api-sports.io/football/leagues/39.png'
+    },
+    {
+      "id": 2,
+      "name": 'Serie A',
+      "logo": 'https://media.api-sports.io/football/leagues/135.png'
+    },
+    {
+      "id": 3,
+      "name": 'La Liga',
+      "logo": 'https://media.api-sports.io/football/leagues/140.png'
+    },
+    {
+      "id": 4,
+      "name": 'Bundesliga 1',
+      "logo": 'https://media.api-sports.io/football/leagues/78.png'
+    }
+  ]
+)

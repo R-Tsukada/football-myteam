@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'SelectTeams', type: :system, js: true do
   it 'showing league list', js: true do
     user = FactoryBot.create(:user)
+    league = FactoryBot.create(:league)
 
     visit root_path
     fill_in 'Email', with: user.email
@@ -15,10 +16,6 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
 
     sleep 5.0
 
-    expect(page).to have_content 'Premier League'
-    expect(page).to have_content 'Serie A'
-    expect(page).to have_content 'La Liga'
-    expect(page).to have_content 'Bundesliga 1'
-    expect(page).to_not have_content 'Manchester United'
+    expect(page).to have_content league.name
   end
 end
