@@ -3,7 +3,9 @@ import App from './team_select.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '#js-league-list'
-  if (document.querySelector(selector)) {
-    createApp(App).mount(selector)
+  const app = document.querySelector(selector)
+  if (app) {
+    const app = createApp(App)
+    app.mount(selector)
   }
 })
