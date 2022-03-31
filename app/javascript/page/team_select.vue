@@ -11,16 +11,32 @@
     <div class="container">
       <ul v-for="team in teamFilter" :key="team.id">
         <li @click="selectTeam(team)">
-          <img :src="team.logo" class="logo_image" />
+          <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
         </li>
       </ul>
     </div>
+    <butto class="add_favorite_team" @click="addFavoriteTeam">応援しているチームを決定する</butto>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { createStore } from 'vuex'
+
+const store = createStore({
+  state() {
+    return {
+      teamId: '',
+    }
+  },
+
+  mutations: {
+    increment (state, value) {
+      state.teamId = value
+    }
+  }
+})
 
 export default {
   data() {
@@ -43,6 +59,17 @@ export default {
     },
     selectLeague: function (league) {
       this.leagueId = league.id
+    },
+    selectTeam: function (team) {
+      console.log(team.id)
+      store.commit('increment', team.id)
+      console.log(store.state.teamId)
+    },
+    addFavoriteTeam: function () {
+      alert('応援しているチームを登録できました')
+      axios.post('/api/favorites', {
+        id: store.state.teamId
+      })
     }
   },
   computed: {
@@ -80,6 +107,14 @@ li {
 }
 
 p {
+  font-weight: bold;
+}
+
+.add_favorite_team {
+  border: solid 1px;
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
   font-weight: bold;
 }
 </style>
