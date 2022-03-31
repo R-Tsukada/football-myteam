@@ -7,6 +7,7 @@ class Team < ApplicationRecord
   validates :home_city, presence: true
 
   belongs_to :league
+  has_one :favorite, dependent: :destroy
 
   require 'uri'
   require 'net/http'
