@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='main'>
     <div class="container">
       <ul v-for="league in leagues" :key="league.id">
         <li @click="selectLeague(league)">
@@ -88,6 +88,9 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  text-align: center;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
