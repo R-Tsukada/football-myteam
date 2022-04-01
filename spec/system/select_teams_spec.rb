@@ -36,6 +36,5 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
 
     first('.team_logo_image').click
     find('.add_favorite_team').click
-    expect(page).to have_content '応援しているチームを登録できました'
   end
 end

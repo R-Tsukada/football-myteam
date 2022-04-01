@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-    <butto class="add_favorite_team" @click="addFavoriteTeam">応援しているチームを決定する</butto>
+    <butto class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam">応援しているチームを決定する</butto>
   </div>
 </template>
 
@@ -43,7 +43,8 @@ export default {
     return {
       leagues: 'leagues',
       teams: [],
-      leagueId: ''
+      leagueId: '',
+      isShowing: false
     }
   },
   methods: {
@@ -61,12 +62,10 @@ export default {
       this.leagueId = league.id
     },
     selectTeam: function (team) {
-      console.log(team.id)
       store.commit('increment', team.id)
-      console.log(store.state.teamId)
+      this.isShowing =  true
     },
     addFavoriteTeam: function () {
-      alert('応援しているチームを登録できました')
       axios.post('/api/favorites', {
         id: store.state.teamId
       })
@@ -91,6 +90,7 @@ export default {
 .main {
   text-align: center;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
