@@ -9,6 +9,8 @@ class Team < ApplicationRecord
   belongs_to :league
   has_one :favorite, dependent: :destroy
 
+  has_many :competitor, dependent: :destroy
+
   require 'uri'
   require 'net/http'
   require 'openssl'

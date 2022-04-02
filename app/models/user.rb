@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_one :favorite, dependent: :destroy
   has_many :following, through: :favorite, source: :team
 
+  has_many :competitor, dependent: :destroy
+
   def favorite_team_follow(team)
     following << team
   end
