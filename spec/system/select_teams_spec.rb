@@ -32,8 +32,9 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
   #   sleep 5.0
 
   #   find('.logo_image').click
-
-  #   sleep 15.0
   #   expect(page).to have_content team.name
+
+  #   first('.team_logo_image').click
+  #   find('.add_favorite_team').click
   # end
 end

@@ -3,8 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) { FactoryBot.create(:user) }
+  let(:league) { FactoryBot.create(:league) }
+  let(:team) { FactoryBot.create(:team, league: league) }
+
   it 'is valid with a email, password' do
-    user = FactoryBot.create(:user)
+    # user = FactoryBot.create(:user)
     expect(user).to be_valid
   end
 
@@ -37,5 +41,15 @@ RSpec.describe User, type: :model do
     )
     user.valid?
     expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+  end
+
+  it 'is should favorite team follow a user' do
+    expect(user.favorite_team_following?(team)).to_not be_truthy
+
+    user.favorite_team_follow(team)
+    expect(user.favorite_team_following?(team)).to be_truthy
+
+    user.favorite_team_unfollow(team)
+    expect(user.favorite_team_following?(team)).to_not be_truthy
   end
 end

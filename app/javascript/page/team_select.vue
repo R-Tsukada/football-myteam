@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div class="container">
       <ul v-for="league in leagues" :key="league.id">
         <li @click="selectLeague(league)">
@@ -11,23 +11,42 @@
     <div class="container">
       <ul v-for="team in teamFilter" :key="team.id">
         <li @click="selectTeam(team)">
-          <img :src="team.logo" class="logo_image" />
+          <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
         </li>
       </ul>
     </div>
+    <butto class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam"
+      >応援しているチームを決定する</butto
+    >
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { createStore } from 'vuex'
+
+const store = createStore({
+  state() {
+    return {
+      teamId: ''
+    }
+  },
+
+  mutations: {
+    increment(state, value) {
+      state.teamId = value
+    }
+  }
+})
 
 export default {
   data() {
     return {
       leagues: 'leagues',
       teams: [],
-      leagueId: ''
+      leagueId: '',
+      isShowing: false
     }
   },
   methods: {
@@ -43,6 +62,15 @@ export default {
     },
     selectLeague: function (league) {
       this.leagueId = league.id
+    },
+    selectTeam: function (team) {
+      store.commit('increment', team.id)
+      this.isShowing = true
+    },
+    addFavoriteTeam: function () {
+      axios.post('/api/favorites', {
+        id: store.state.teamId
+      })
     }
   },
   computed: {
@@ -61,6 +89,10 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -80,6 +112,14 @@ li {
 }
 
 p {
+  font-weight: bold;
+}
+
+.add_favorite_team {
+  border: solid 1px;
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
   font-weight: bold;
 }
 </style>
