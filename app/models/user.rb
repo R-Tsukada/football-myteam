@@ -25,4 +25,17 @@ class User < ApplicationRecord
   def favorite_team_following?(team)
     following.include?(team)
   end
+
+  def competitor_team_follow(team)
+    following << team
+  end
+
+  def competitor_team_unfollow(team)
+    Favorite.find_by(team: team.id).destroy
+  end
+
+  def competitor_team_following?(team)
+    following.include?(team)
+  end
+
 end
