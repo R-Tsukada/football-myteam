@@ -1,5 +1,5 @@
 <template>
-  <div class='main'>
+  <div class="main">
     <div class="container">
       <ul v-for="league in leagues" :key="league.id">
         <li @click="selectLeague(league)">
@@ -16,7 +16,9 @@
         </li>
       </ul>
     </div>
-    <butto class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam">応援しているチームを決定する</butto>
+    <butto class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam"
+      >応援しているチームを決定する</butto
+    >
   </div>
 </template>
 
@@ -27,12 +29,12 @@ import { createStore } from 'vuex'
 const store = createStore({
   state() {
     return {
-      teamId: '',
+      teamId: ''
     }
   },
 
   mutations: {
-    increment (state, value) {
+    increment(state, value) {
       state.teamId = value
     }
   }
@@ -63,7 +65,7 @@ export default {
     },
     selectTeam: function (team) {
       store.commit('increment', team.id)
-      this.isShowing =  true
+      this.isShowing = true
     },
     addFavoriteTeam: function () {
       axios.post('/api/favorites', {

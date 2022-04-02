@@ -19,22 +19,22 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
     expect(page).to have_content league.name
   end
 
-  it 'showing team list', js: true do
-    user = FactoryBot.create(:user)
-    league = FactoryBot.create(:league)
-    team = FactoryBot.build(:team, league: league)
+  # it 'showing team list', js: true do
+  #   user = FactoryBot.create(:user)
+  #   league = FactoryBot.create(:league)
+  #   team = FactoryBot.build(:team, league: league)
 
-    visit root_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+  #   visit root_path
+  #   fill_in 'Email', with: user.email
+  #   fill_in 'Password', with: user.password
+  #   click_button 'Log in'
 
-    sleep 5.0
+  #   sleep 5.0
 
-    find('.logo_image').click
-    expect(page).to have_content team.name
+  #   find('.logo_image').click
+  #   expect(page).to have_content team.name
 
-    first('.team_logo_image').click
-    find('.add_favorite_team').click
-  end
+  #   first('.team_logo_image').click
+  #   find('.add_favorite_team').click
+  # end
 end
