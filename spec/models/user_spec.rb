@@ -52,4 +52,14 @@ RSpec.describe User, type: :model do
     user.favorite_team_unfollow(team)
     expect(user.favorite_team_following?(team)).to_not be_truthy
   end
+
+  it 'is should competitor team follow a user' do
+    expect(user.competitor_team_following?(team)).to_not be_truthy
+
+    user.competitor_team_follow(team)
+    expect(user.competitor_team_following?(team)).to be_truthy
+
+    user.competitor_team_unfollow(team)
+    expect(user.competitor_team_following?(team)).to_not be_truthy
+  end
 end
