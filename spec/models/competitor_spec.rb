@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Competitor, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
-  let(:team) { FactoryBot.build(:team, league: league)}
+  let(:team) { FactoryBot.build(:team, league: league) }
 
   it 'is valid with a user_id and team_id' do
     competitor = FactoryBot.build(:competitor, user: user, team: team)

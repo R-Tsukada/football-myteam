@@ -16,9 +16,9 @@
         </li>
       </ul>
     </div>
-    <butto class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam"
-      >応援しているチームを決定する</butto
-    >
+    <button class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam">
+      応援しているチームを決定する
+    </button>
   </div>
 </template>
 
