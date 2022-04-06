@@ -21,7 +21,7 @@ class Api::FavoritesController < ApplicationController
   private
 
   def set_follow
-    id = params.permit(:id)
+    id = params.require(:favorite).permit(:id)
     @team = Team.find_by(id)
   end
 end
