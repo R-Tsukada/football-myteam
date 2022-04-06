@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :following, through: :favorite, source: :team
 
   has_many :competitor, dependent: :destroy
+  has_many :competitor_following, through: :competitor, source: :team
 
   def favorite_team_follow(team)
     following << team
@@ -27,15 +28,14 @@ class User < ApplicationRecord
   end
 
   def competitor_team_follow(team)
-    following << team
+    competitor_following << team
   end
 
   def competitor_team_unfollow(team)
-    Favorite.find_by(team: team.id).destroy
+    Competitor.find_by(team: team.id).destroy
   end
 
   def competitor_team_following?(team)
-    following.include?(team)
+    competitor_following.include?(team)
   end
-
 end

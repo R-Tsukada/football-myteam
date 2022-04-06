@@ -2,23 +2,44 @@
   <div class="main">
     <div class="container">
       <ul v-for="team in teamFilter" :key="team.id">
-        <li>
-          <img :src="team.logo" />
+        <li @click="selectTeam(team)">
           <p>{{ team.name }}</p>
+          <img :src="team.logo" />
         </li>
       </ul>
     </div>
+    <button
+      class="add_favorite_team"
+      v-if="isAdding"
+      @click="addCompetitorTeams">
+      ライバルチームとして登録する
+    </button>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { createStore } from 'vuex'
+
+const store = createStore({
+  state() {
+    return {
+      teamId: []
+    }
+  },
+  mutations: {
+    increment(state, value) {
+      state.teamId = value
+    }
+  }
+})
 
 export default {
   data() {
     return {
       teams: [],
-      favorite: ''
+      favorite: '',
+      isAdding: true
     }
   },
   methods: {
@@ -31,6 +52,21 @@ export default {
       axios.get('/api/favorites').then((response) => {
         this.favorite = response.data
       })
+    },
+    addCompetitorTeams: function () {
+      axios
+        .post('/api/competitors', {
+          id: store.state.teamId
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    selectTeam: function (team) {
+      store.commit('increment', team.id)
     }
   },
   computed: {
