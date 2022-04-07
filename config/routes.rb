@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'leagues#index'
   resources :competitors, only: [:index, :create]
+  resources :schedules, only: [:index, :create]
   namespace :api, format: 'json' do
     resources :leagues, only: [:index]
     resources :teams, only: [:index]
