@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::StandingsController < ApplicationController
   before_action :set_standing
   before_action :authenticate_user!
