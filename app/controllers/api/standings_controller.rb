@@ -74,7 +74,6 @@ class Api::StandingsController < ApplicationController
   def favorite_team
     user = current_user
     team_id = user.favorite.team_id
-    binding.pry
     Team.find(team_id)
   end
 
