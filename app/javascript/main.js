@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './team_select.vue'
+import App from './App.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '#js-league-list'
