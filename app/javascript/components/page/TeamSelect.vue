@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <div class="container">
+      <p>{{ $store.state.favoriteTeamId }}</p>
       <ul v-for="league in data.leagues" :key="league.id">
         <li @click="selectLeague(league)">
           <img :src="league.logo" class="logo_image" />
@@ -28,22 +29,8 @@
 
 <script>
 import axios from 'axios'
-import { createStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
-
-const store = createStore({
-  state() {
-    return {
-      teamId: ''
-    }
-  },
-
-  mutations: {
-    increment(state, value) {
-      state.teamId = value
-    }
-  }
-})
+import { useStore } from 'vuex'
 
 export default {
   setup() {
@@ -53,6 +40,8 @@ export default {
       leagueId: '',
       isShowing: false
     })
+
+    const store = useStore()
 
     const setLeague = async () => {
       axios.get('/api/leagues').then((response) => {
@@ -68,7 +57,7 @@ export default {
 
     const addFavoriteTeam = async () => {
       axios.post('api/favorites', {
-        id: store.state.teamId
+        id: store.state.favoriteTeamId
       })
     }
 
@@ -84,21 +73,21 @@ export default {
     })
 
     const selectTeam = (team) => {
-      store.state.teamId = team.id
+      store.commit('increment', team.id)
       data.isShowing = true
     }
 
     onMounted(setLeague(), setTeam())
 
     return {
-      store,
       data,
       setLeague,
       setTeam,
       selectLeague,
       teamFilter,
       selectTeam,
-      addFavoriteTeam
+      addFavoriteTeam,
+      increment: () => store.commit('increment')
     }
   }
 }

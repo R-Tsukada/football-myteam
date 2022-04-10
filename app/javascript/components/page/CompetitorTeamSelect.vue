@@ -24,21 +24,8 @@
 
 <script>
 import axios from 'axios'
-import { createStore } from 'vuex'
+import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
-
-const store = createStore({
-  state() {
-    return {
-      teamId: []
-    }
-  },
-  mutations: {
-    increment(state, value) {
-      state.teamId = value
-    }
-  }
-})
 
 export default {
   setup() {
@@ -47,6 +34,8 @@ export default {
       favorite: '',
       isAdding: true
     })
+
+    const store = useStore()
 
     const setTeam = async () => {
       axios.get('/api/competitors').then((response) => {
@@ -63,7 +52,7 @@ export default {
     const addCompetitorTeams = async () => {
       axios
         .post('/api/competitors', {
-          id: store.state.teamId
+          id: store.state.competitorTeamId
         })
         .then(function (response) {
           console.log(response)
@@ -74,7 +63,7 @@ export default {
     }
 
     const selectTeam = async (team) => {
-      store.commit('increment', team.id)
+      store.commit('addCompetitor', team.id)
     }
 
     const teamFilter = computed(() => {
@@ -95,7 +84,7 @@ export default {
       addCompetitorTeams,
       selectTeam,
       teamFilter,
-      store
+      addCompetitor: () => store.commit('addCompetitor')
     }
   }
 }
