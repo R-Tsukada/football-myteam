@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="container">
-      <ul v-for="league in leagues" :key="league.id">
+      <ul v-for="league in data.leagues" :key="league.id">
         <li @click="selectLeague(league)">
           <img :src="league.logo" class="logo_image" />
           <p>{{ league.name }}</p>
@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-    <button class="add_favorite_team" v-if="isShowing" @click="addFavoriteTeam">
+    <button class="add_favorite_team" v-if="data.isShowing" @click="addFavoriteTeam">
       応援しているチームを決定する
     </button>
   </div>
@@ -25,6 +25,7 @@
 <script>
 import axios from 'axios'
 import { createStore } from 'vuex'
+import { reactive, onMounted, computed } from 'vue'
 
 const store = createStore({
   state() {
@@ -41,50 +42,65 @@ const store = createStore({
 })
 
 export default {
-  data() {
-    return {
-      leagues: 'leagues',
+  setup() {
+    const data = reactive({
+      leagues: [],
       teams: [],
       leagueId: '',
       isShowing: false
-    }
-  },
-  methods: {
-    setLeague: function () {
+    })
+
+    const setLeague = async () => {
       axios.get('/api/leagues').then((response) => {
-        this.leagues = response.data
+        data.leagues = response.data
       })
-    },
-    setTeam: function () {
+    }
+
+    const setTeam = async () => {
       axios.get('/api/teams').then((response) => {
-        this.teams = response.data
+        data.teams = response.data
       })
-    },
-    selectLeague: function (league) {
-      this.leagueId = league.id
-    },
-    selectTeam: function (team) {
-      store.commit('increment', team.id)
-      this.isShowing = true
-    },
-    addFavoriteTeam: function () {
-      axios.post('/api/favorites', {
+    }
+
+    const addFavoriteTeam = async () => {
+      axios.post('api/favorites', {
         id: store.state.teamId
       })
     }
-  },
-  computed: {
-    teamFilter() {
-      const number = this.leagueId
-      return this.teams.filter(function (value) {
+
+    const selectLeague = (league) => {
+      data.leagueId = league.id
+    }
+
+    const teamFilter = computed(() => {
+      const number = data.leagueId
+      return data.teams.filter(function (value) {
         return value.league_id === number
       })
+    })
+
+    const selectTeam = (team) => {
+      store.state.teamId = team.id
+      console.log(store.state.teamId)
+      data.isShowing =  true
+    }
+
+    onMounted(
+      setLeague(),
+      setTeam(),
+    )
+
+    return {
+      store,
+      data,
+      setLeague,
+      setTeam,
+      selectLeague,
+      teamFilter,
+      selectTeam,
+      addFavoriteTeam
     }
   },
-  mounted() {
-    this.setLeague()
-    this.setTeam()
-  }
 }
 </script>
 

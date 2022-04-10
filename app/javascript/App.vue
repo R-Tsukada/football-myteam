@@ -1,16 +1,3 @@
 <template>
-  <TeamList />
+  <router-view />
 </template>
-
-<script>
-import TeamList from './components/page/TeamSelect.vue'
-
-export default {
-  components: {
-    TeamList
-  }
-}
-</script>
-
-<style scoped>
-</style>
