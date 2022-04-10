@@ -16,9 +16,15 @@
         </li>
       </ul>
     </div>
-    <button class="add_favorite_team" v-if="data.isShowing" @click="addFavoriteTeam">
+    <button
+      class="button"
+      v-if="data.isShowing"
+      @click="addFavoriteTeam"
+    >
       応援しているチームを決定する
     </button>
+    <br>
+    <button class="button"><router-link to="/competitors">ライバルチームを決める</router-link></button>
   </div>
 </template>
 
@@ -81,7 +87,6 @@ export default {
 
     const selectTeam = (team) => {
       store.state.teamId = team.id
-      console.log(store.state.teamId)
       data.isShowing =  true
     }
 
@@ -128,14 +133,6 @@ li {
 }
 
 p {
-  font-weight: bold;
-}
-
-.add_favorite_team {
-  border: solid 1px;
-  border-radius: 8px;
-  padding: 5px;
-  text-align: center;
   font-weight: bold;
 }
 </style>

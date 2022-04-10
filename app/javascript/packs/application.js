@@ -9,8 +9,6 @@ import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 
 require('../main.js')
-require('../page/competitor_team_select.js')
-require('../page/team_schedule.js')
 
 Rails.start()
 Turbolinks.start()
