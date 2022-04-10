@@ -16,15 +16,13 @@
         </li>
       </ul>
     </div>
-    <button
-      class="button"
-      v-if="data.isShowing"
-      @click="addFavoriteTeam"
-    >
+    <button class="button" v-if="data.isShowing" @click="addFavoriteTeam">
       応援しているチームを決定する
     </button>
-    <br>
-    <button class="button"><router-link to="/competitors">ライバルチームを決める</router-link></button>
+    <br />
+    <button class="button">
+      <router-link to="/competitors">ライバルチームを決める</router-link>
+    </button>
   </div>
 </template>
 
@@ -87,13 +85,10 @@ export default {
 
     const selectTeam = (team) => {
       store.state.teamId = team.id
-      data.isShowing =  true
+      data.isShowing = true
     }
 
-    onMounted(
-      setLeague(),
-      setTeam(),
-    )
+    onMounted(setLeague(), setTeam())
 
     return {
       store,
@@ -105,7 +100,7 @@ export default {
       selectTeam,
       addFavoriteTeam
     }
-  },
+  }
 }
 </script>
 

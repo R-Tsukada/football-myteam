@@ -22,10 +22,14 @@
         </tr>
       </tbody>
     </table>
-    <br>
-    <button class="button"><router-link to="/">応援しているチームを選び直す</router-link></button>
-    <br>
-    <button class="button"><router-link to="/competitors">ライバルチームを選び直す</router-link></button>
+    <br />
+    <button class="button">
+      <router-link to="/">応援しているチームを選び直す</router-link>
+    </button>
+    <br />
+    <button class="button">
+      <router-link to="/competitors">ライバルチームを選び直す</router-link>
+    </button>
   </div>
 </template>
 <script>

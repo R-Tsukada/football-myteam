@@ -8,16 +8,17 @@
         </li>
       </ul>
     </div>
-    <button
-      class="button"
-      v-if="data.isAdding"
-      @click="addCompetitorTeams">
+    <button class="button" v-if="data.isAdding" @click="addCompetitorTeams">
       ライバルチームとして登録する
     </button>
-    <br>
-    <button class="button"><router-link to="/">応援しているチームを選び直す</router-link></button>
-    <br>
-    <button class="button"><router-link to="/schedules">ライバルチームの選択を終了する</router-link></button>
+    <br />
+    <button class="button">
+      <router-link to="/">応援しているチームを選び直す</router-link>
+    </button>
+    <br />
+    <button class="button">
+      <router-link to="/schedules">ライバルチームの選択を終了する</router-link>
+    </button>
   </div>
 </template>
 
@@ -72,7 +73,7 @@ export default {
         })
     }
 
-    const selectTeam =  async (team) => {
+    const selectTeam = async (team) => {
       store.commit('increment', team.id)
     }
 
@@ -84,8 +85,7 @@ export default {
     })
 
     onMounted(() => {
-      setTeam(),
-      setFavoriteTeam()
+      setTeam(), setFavoriteTeam()
     })
 
     return {
