@@ -18,6 +18,8 @@ services:
     depends_on:
       - db
       - chrome
+    tty: true
+    stdin_open: true
   chrome:
     image: selenium/standalone-chrome-debug:latest
     ports:
