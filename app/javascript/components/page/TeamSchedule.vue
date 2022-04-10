@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="schedule in schedules" :key="schedule.id">
+        <tr v-for="schedule in data.schedules" :key="schedule.id">
           <th>{{ schedule.rank }}</th>
           <th><img :src="schedule.team_logo" class="image is-48x48" /></th>
           <th>{{ schedule.points }}</th>
@@ -22,26 +22,40 @@
         </tr>
       </tbody>
     </table>
+    <br />
+    <button class="button">
+      <router-link to="/">応援しているチームを選び直す</router-link>
+    </button>
+    <br />
+    <button class="button">
+      <router-link to="/competitors">ライバルチームを選び直す</router-link>
+    </button>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import { reactive, onMounted } from 'vue'
 
 export default {
-  data() {
-    return {
+  setup() {
+    const data = reactive({
       schedules: []
-    }
-  },
-  methods: {
-    setSchedules: function () {
+    })
+
+    const setSchedules = async () => {
       axios.get('/api/standings').then((response) => {
-        this.schedules = response.data
+        data.schedules = response.data
       })
     }
-  },
-  mounted() {
-    this.setSchedules()
+
+    onMounted(() => {
+      setSchedules()
+    })
+
+    return {
+      data,
+      setSchedules
+    }
   }
 }
 </script>

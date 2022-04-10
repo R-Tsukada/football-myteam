@@ -1,5 +1,16 @@
 version: "3.9"
 services:
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/webpacker-example-app
+    ports:
+      - '3035:3035'
   db:
     image: postgres
     volumes:
@@ -13,11 +24,15 @@ services:
       SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
     volumes:
       - .:/football
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
     ports:
       - "3000:3000"
     depends_on:
       - db
       - chrome
+    tty: true
+    stdin_open: true
   chrome:
     image: selenium/standalone-chrome-debug:latest
     ports:

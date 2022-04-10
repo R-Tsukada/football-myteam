@@ -8,11 +8,16 @@
         </li>
       </ul>
     </div>
-    <button
-      class="add_favorite_team"
-      v-if="isAdding"
-      @click="addCompetitorTeams">
+    <button class="button" v-if="data.isAdding" @click="addCompetitorTeams">
       ライバルチームとして登録する
+    </button>
+    <br />
+    <button class="button">
+      <router-link to="/">応援しているチームを選び直す</router-link>
+    </button>
+    <br />
+    <button class="button">
+      <router-link to="/schedules">ライバルチームの選択を終了する</router-link>
     </button>
   </div>
 </template>
@@ -20,6 +25,7 @@
 <script>
 import axios from 'axios'
 import { createStore } from 'vuex'
+import { reactive, onMounted, computed } from 'vue'
 
 const store = createStore({
   state() {
@@ -35,25 +41,26 @@ const store = createStore({
 })
 
 export default {
-  data() {
-    return {
+  setup() {
+    const data = reactive({
       teams: [],
       favorite: '',
       isAdding: true
-    }
-  },
-  methods: {
-    setTeam: function () {
+    })
+
+    const setTeam = async () => {
       axios.get('/api/competitors').then((response) => {
-        this.teams = response.data
+        data.teams = response.data
       })
-    },
-    setFavoriteTeam: function () {
+    }
+
+    const setFavoriteTeam = async () => {
       axios.get('/api/favorites').then((response) => {
-        this.favorite = response.data
+        data.favorite = response.data
       })
-    },
-    addCompetitorTeams: function () {
+    }
+
+    const addCompetitorTeams = async () => {
       axios
         .post('/api/competitors', {
           id: store.state.teamId
@@ -64,22 +71,32 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
-    },
-    selectTeam: function (team) {
+    }
+
+    const selectTeam = async (team) => {
       store.commit('increment', team.id)
     }
-  },
-  computed: {
-    teamFilter() {
-      const number = this.favorite.id
-      return this.teams.filter(function (value) {
+
+    const teamFilter = computed(() => {
+      const number = data.favorite.id
+      return data.teams.filter(function (value) {
         return value.id != number
       })
+    })
+
+    onMounted(() => {
+      setTeam(), setFavoriteTeam()
+    })
+
+    return {
+      data,
+      setTeam,
+      setFavoriteTeam,
+      addCompetitorTeams,
+      selectTeam,
+      teamFilter,
+      store
     }
-  },
-  mounted() {
-    this.setTeam()
-    this.setFavoriteTeam()
   }
 }
 </script>
