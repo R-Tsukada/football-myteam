@@ -1,10 +1,9 @@
 <template>
   <div class="main">
     <div class="container">
-      <p>{{ $store.state.favoriteTeamId }}</p>
       <ul v-for="league in data.leagues" :key="league.id">
         <li @click="selectLeague(league)">
-          <img :src="league.logo" class="logo_image" />
+          <img :src="league.logo" class="image is-96x96" />
           <p>{{ league.name }}</p>
         </li>
       </ul>
@@ -35,7 +34,6 @@ import { useStore } from 'vuex'
 export default {
   setup() {
     const data = reactive({
-      leagues: [],
       teams: [],
       leagueId: '',
       isShowing: false
@@ -53,6 +51,12 @@ export default {
       axios.get('/api/teams').then((response) => {
         data.teams = response.data
       })
+            .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
     }
 
     const addFavoriteTeam = async () => {
@@ -62,11 +66,12 @@ export default {
     }
 
     const selectLeague = (league) => {
-      data.leagueId = league.id
+      store.commit('addLeague', league.id)
+      console.log(store.state.favoriteLeagueId)
     }
 
     const teamFilter = computed(() => {
-      const number = data.leagueId
+      const number = store.state.favoriteLeagueId
       return data.teams.filter(function (value) {
         return value.league_id === number
       })
@@ -74,6 +79,7 @@ export default {
 
     const selectTeam = (team) => {
       store.commit('increment', team.id)
+      console.log(store.state.favoriteTeamId)
       data.isShowing = true
     }
 
@@ -81,8 +87,6 @@ export default {
 
     return {
       data,
-      setLeague,
-      setTeam,
       selectLeague,
       teamFilter,
       selectTeam,

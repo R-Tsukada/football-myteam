@@ -1,10 +1,10 @@
 <template>
   <div class="main">
     <div class="container">
-      <ul v-for="team in teamFilter" :key="team.id">
+      <ul v-for="team in data.teams" :key="team.id">
         <li @click="selectTeam(team)">
+          <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
-          <img :src="team.logo" />
         </li>
       </ul>
     </div>
@@ -24,67 +24,36 @@
 
 <script>
 import axios from 'axios'
-import { useStore } from 'vuex'
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, onMounted } from 'vue'
+/* import { useStore } from 'vuex' */
+
 
 export default {
   setup() {
     const data = reactive({
       teams: [],
-      favorite: '',
-      isAdding: true
+      isAdding: true,
+      isShowing: true
     })
-
-    const store = useStore()
 
     const setTeam = async () => {
-      axios.get('/api/competitors').then((response) => {
+      axios.get('/api/teams').then((response) => {
         data.teams = response.data
       })
-    }
-
-    const setFavoriteTeam = async () => {
-      axios.get('/api/favorites').then((response) => {
-        data.favorite = response.data
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
       })
     }
-
-    const addCompetitorTeams = async () => {
-      axios
-        .post('/api/competitors', {
-          id: store.state.competitorTeamId
-        })
-        .then(function (response) {
-          console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    }
-
-    const selectTeam = async (team) => {
-      store.commit('addCompetitor', team.id)
-    }
-
-    const teamFilter = computed(() => {
-      const number = data.favorite.id
-      return data.teams.filter(function (value) {
-        return value.id != number
-      })
-    })
 
     onMounted(() => {
-      setTeam(), setFavoriteTeam()
+      setTeam()
     })
 
     return {
-      data,
-      setTeam,
-      setFavoriteTeam,
-      addCompetitorTeams,
-      selectTeam,
-      teamFilter,
-      addCompetitor: () => store.commit('addCompetitor')
+      data
     }
   }
 }
@@ -115,5 +84,9 @@ li {
 
 p {
   font-weight: bold;
+}
+
+.borderColor {
+  border: solid 2px red;
 }
 </style>

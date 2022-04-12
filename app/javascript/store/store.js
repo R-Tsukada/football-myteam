@@ -1,18 +1,25 @@
 import { createStore } from 'vuex'
 
 export const store = createStore({
-  state() {
+  state () {
     return {
+      favoriteLeagueId: '',
       favoriteTeamId: '',
-      competitorTeamId: ''
+      competitorTeamId: []
     }
   },
   mutations: {
-    increment(state, value) {
+    increment (state, value) {
       state.favoriteTeamId = value
     },
-    addCompetitor(state, value) {
-      state.competitorTeamId = value
+    addLeague (state, value) {
+      state.favoriteLeagueId = value
+    },
+    addCompetitor (state, value) {
+      state.competitorTeamId.push(value)
+    },
+    deleteCompetitor (state, value) {
+      return state.competitorTeamId.filter(c => c !== value)
     }
   }
 })
