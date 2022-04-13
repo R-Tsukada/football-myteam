@@ -1,5 +1,10 @@
 <template>
   <div class="main">
+    <article class="message is-info">
+      <div class="message-body">
+          <p>{{ teamCountMessage() }}</p>
+      </div>
+    </article>
     <div class="container">
       <ul v-for="team in data.teams" :key="team.id">
         <li>
@@ -49,6 +54,15 @@ export default {
       })
     }
 
+    const teamCountMessage = () => {
+      if (store.state.competitorTeamId.length === 0) {
+        return "登録したいチームを選んでください（最大3チーム）"
+      } else {
+        const count = 3 - store.state.competitorTeamId.length
+        return `残り${count}チーム登録できます`
+      }
+    }
+
     const toggleFollowAndUnfollowDisplay = (team) => {
       if (store.state.competitorTeamId.includes(team.id)) {
         return "解除する"
@@ -81,6 +95,7 @@ export default {
 
     return {
       data,
+      teamCountMessage,
       toggleFollowAndUnfollow,
       toggleFollowAndUnfollowDisplay,
       addCompetitor: () => store.commit('addCompetitor'),
