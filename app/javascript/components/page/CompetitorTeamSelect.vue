@@ -2,9 +2,10 @@
   <div class="main">
     <div class="container">
       <ul v-for="team in data.teams" :key="team.id">
-        <li @click="selectTeam(team)">
+        <li>
           <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
+          <button class="button" @click="toggleFollowAndUnfollow(team)">{{ toggleFollowAndUnfollowDisplay(team) }}</button>
         </li>
       </ul>
     </div>
@@ -25,35 +26,65 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-/* import { useStore } from 'vuex' */
+import { useStore } from 'vuex'
 
 
 export default {
   setup() {
     const data = reactive({
       teams: [],
+      competitors: [],
       isAdding: true,
       isShowing: true
     })
 
+    const store = useStore()
+
     const setTeam = async () => {
-      axios.get('/api/teams').then((response) => {
+      axios.get('/api/team_filter').then((response) => {
         data.teams = response.data
-      })
-      .then(function (response) {
-        console.log(response)
       })
       .catch(function (error) {
         console.log(error)
       })
     }
 
-    onMounted(() => {
-      setTeam()
-    })
+    const toggleFollowAndUnfollowDisplay = (team) => {
+      if (store.state.competitorTeamId.includes(team.id)) {
+        return "解除する"
+      } else {
+        return "フォローする"
+      }
+    }
+
+    const toggleFollowAndUnfollow = (team) => {
+      if (store.state.competitorTeamId.includes(team.id)) {
+        axios.post('/api/competitors', {
+          id: team.id
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        store.commit('deleteCompetitor', team.id)
+      } else {
+        store.commit('addCompetitor', team.id)
+        axios.post('/api/competitors', {
+          id: team.id
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      }
+    }
+
+    onMounted(setTeam())
 
     return {
-      data
+      data,
+      toggleFollowAndUnfollow,
+      toggleFollowAndUnfollowDisplay,
+      addCompetitor: () => store.commit('addCompetitor'),
+      deleteCompetitor: () => store.commit('deleteCompetitor'),
     }
   }
 }

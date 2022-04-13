@@ -4,7 +4,7 @@ export const store = createStore({
   state () {
     return {
       favoriteLeagueId: '',
-      favoriteTeamId: '',
+      favoriteTeamId: [],
       competitorTeamId: []
     }
   },
@@ -19,7 +19,7 @@ export const store = createStore({
       state.competitorTeamId.push(value)
     },
     deleteCompetitor (state, value) {
-      return state.competitorTeamId.filter(c => c !== value)
+      state.competitorTeamId = state.competitorTeamId.filter(competitor => competitor !== value)
     }
   }
 })
