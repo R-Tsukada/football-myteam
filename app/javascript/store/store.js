@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 export const store = createStore({
   state () {
@@ -21,5 +22,8 @@ export const store = createStore({
     deleteCompetitor (state, value) {
       state.competitorTeamId = state.competitorTeamId.filter(competitor => competitor !== value)
     }
-  }
+  },
+  plugins: [
+    createPersistedState()
+  ]
 })
