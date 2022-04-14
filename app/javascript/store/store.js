@@ -6,7 +6,8 @@ export const store = createStore({
     return {
       favoriteLeagueId: '',
       favoriteTeamId: [],
-      competitorTeamId: []
+      competitorTeamId: [],
+      isShowingMessage: true
     }
   },
   mutations: {
@@ -21,6 +22,12 @@ export const store = createStore({
     },
     deleteCompetitor (state, value) {
       state.competitorTeamId = state.competitorTeamId.filter(competitor => competitor !== value)
+    },
+    closeMessage (state) {
+      state.isShowingMessage = false
+    },
+    openMessage (state) {
+      state.isShowingMessage = true
     }
   },
   plugins: [

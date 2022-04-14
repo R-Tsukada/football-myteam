@@ -1,10 +1,7 @@
 <template>
   <div class="main">
-    <article class="message is-info">
-      <div class="message-body">
-          <p>{{ teamCountMessage() }}</p>
-      </div>
-    </article>
+  <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage"/>
+  <CompetitorValidation v-else/>
     <div class="container">
       <ul v-for="team in data.teams" :key="team.id">
         <li>
@@ -32,9 +29,13 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
-
-
+import CompetitorValidation from '../modal/CompetitorValidation.vue'
+import CompetitorTeamSelect from '../modal/CompetitorTeamCount.vue'
 export default {
+  components: {
+    CompetitorValidation,
+    CompetitorTeamSelect
+  },
   setup() {
     const data = reactive({
       teams: [],
@@ -54,15 +55,6 @@ export default {
       })
     }
 
-    const teamCountMessage = () => {
-      if (store.state.competitorTeamId.length === 0) {
-        return "登録したいチームを選んでください（最大3チーム）"
-      } else {
-        const count = 3 - store.state.competitorTeamId.length
-        return `残り${count}チーム登録できます`
-      }
-    }
-
     const toggleFollowAndUnfollowDisplay = (team) => {
       if (store.state.competitorTeamId.includes(team.id)) {
         return "解除する"
@@ -80,6 +72,8 @@ export default {
           console.log(error)
         })
         store.commit('deleteCompetitor', team.id)
+      } else if (store.state.competitorTeamId.length >= 3) {
+        store.commit('closeMessage')
       } else {
         store.commit('addCompetitor', team.id)
         axios.post('/api/competitors', {
@@ -95,7 +89,6 @@ export default {
 
     return {
       data,
-      teamCountMessage,
       toggleFollowAndUnfollow,
       toggleFollowAndUnfollowDisplay,
       addCompetitor: () => store.commit('addCompetitor'),
@@ -130,9 +123,5 @@ li {
 
 p {
   font-weight: bold;
-}
-
-.borderColor {
-  border: solid 2px red;
 }
 </style>
