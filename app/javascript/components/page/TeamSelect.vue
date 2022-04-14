@@ -1,10 +1,9 @@
 <template>
   <div class="main">
     <div class="container">
-      <p>{{ $store.state.favoriteTeamId }}</p>
       <ul v-for="league in data.leagues" :key="league.id">
         <li @click="selectLeague(league)">
-          <img :src="league.logo" class="logo_image" />
+          <img :src="league.logo" class="image is-96x96" />
           <p>{{ league.name }}</p>
         </li>
       </ul>
@@ -35,7 +34,6 @@ import { useStore } from 'vuex'
 export default {
   setup() {
     const data = reactive({
-      leagues: [],
       teams: [],
       leagueId: '',
       isShowing: false
@@ -62,11 +60,11 @@ export default {
     }
 
     const selectLeague = (league) => {
-      data.leagueId = league.id
+      store.commit('addLeague', league.id)
     }
 
     const teamFilter = computed(() => {
-      const number = data.leagueId
+      const number = store.state.favoriteLeagueId
       return data.teams.filter(function (value) {
         return value.league_id === number
       })
@@ -81,8 +79,6 @@ export default {
 
     return {
       data,
-      setLeague,
-      setTeam,
       selectLeague,
       teamFilter,
       selectTeam,

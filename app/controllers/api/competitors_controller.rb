@@ -8,15 +8,16 @@ class Api::CompetitorsController < ApplicationController
 
   def index
     user = current_user
-    id = user.favorite.team_id
-    team = Team.find(id)
-    league = team.league_id
-    @competitor_teams = Team.where(league_id: league)
+    @competitor = user.competitor
   end
 
   def create
     user = current_user
-    user.competitor_team_follow(@competitor_teams)
+    if user.competitor_team_following?(@competitor_teams)
+      user.competitor_team_unfollow(@competitor_teams)
+    else
+      user.competitor_team_follow(@competitor_teams)
+    end
   end
 
   private

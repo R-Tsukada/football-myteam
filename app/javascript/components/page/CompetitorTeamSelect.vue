@@ -1,10 +1,15 @@
 <template>
   <div class="main">
+    <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
+    <CompetitorValidation v-else />
     <div class="container">
-      <ul v-for="team in teamFilter" :key="team.id">
-        <li @click="selectTeam(team)">
+      <ul v-for="team in data.teams" :key="team.id">
+        <li>
+          <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
-          <img :src="team.logo" />
+          <button class="button" @click="toggleFollowAndUnfollow(team)">
+            {{ toggleFollowAndUnfollowDisplay(team) }}
+          </button>
         </li>
       </ul>
     </div>
@@ -24,67 +29,76 @@
 
 <script>
 import axios from 'axios'
+import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import { reactive, onMounted, computed } from 'vue'
-
+import CompetitorValidation from '../modal/CompetitorValidation.vue'
+import CompetitorTeamSelect from '../modal/CompetitorTeamCount.vue'
 export default {
+  components: {
+    CompetitorValidation,
+    CompetitorTeamSelect
+  },
   setup() {
     const data = reactive({
       teams: [],
-      favorite: '',
-      isAdding: true
+      competitors: [],
+      isAdding: true,
+      isShowing: true
     })
 
     const store = useStore()
 
     const setTeam = async () => {
-      axios.get('/api/competitors').then((response) => {
-        data.teams = response.data
-      })
-    }
-
-    const setFavoriteTeam = async () => {
-      axios.get('/api/favorites').then((response) => {
-        data.favorite = response.data
-      })
-    }
-
-    const addCompetitorTeams = async () => {
       axios
-        .post('/api/competitors', {
-          id: store.state.competitorTeamId
-        })
-        .then(function (response) {
-          console.log(response)
+        .get('/api/team_filter')
+        .then((response) => {
+          data.teams = response.data
         })
         .catch(function (error) {
           console.log(error)
         })
     }
 
-    const selectTeam = async (team) => {
-      store.commit('addCompetitor', team.id)
+    const toggleFollowAndUnfollowDisplay = (team) => {
+      if (store.state.competitorTeamId.includes(team.id)) {
+        return '解除する'
+      } else {
+        return 'フォローする'
+      }
     }
 
-    const teamFilter = computed(() => {
-      const number = data.favorite.id
-      return data.teams.filter(function (value) {
-        return value.id != number
-      })
-    })
+    const toggleFollowAndUnfollow = (team) => {
+      if (store.state.competitorTeamId.includes(team.id)) {
+        axios
+          .post('/api/competitors', {
+            id: team.id
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        store.commit('deleteCompetitor', team.id)
+      } else if (store.state.competitorTeamId.length >= 3) {
+        store.commit('closeMessage')
+      } else {
+        store.commit('addCompetitor', team.id)
+        axios
+          .post('/api/competitors', {
+            id: team.id
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    }
 
-    onMounted(() => {
-      setTeam(), setFavoriteTeam()
-    })
+    onMounted(setTeam())
 
     return {
       data,
-      setTeam,
-      setFavoriteTeam,
-      addCompetitorTeams,
-      selectTeam,
-      teamFilter,
-      addCompetitor: () => store.commit('addCompetitor')
+      toggleFollowAndUnfollow,
+      toggleFollowAndUnfollowDisplay,
+      addCompetitor: () => store.commit('addCompetitor'),
+      deleteCompetitor: () => store.commit('deleteCompetitor')
     }
   }
 }
