@@ -51,12 +51,6 @@ export default {
       axios.get('/api/teams').then((response) => {
         data.teams = response.data
       })
-            .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
     }
 
     const addFavoriteTeam = async () => {
@@ -67,7 +61,6 @@ export default {
 
     const selectLeague = (league) => {
       store.commit('addLeague', league.id)
-      console.log(store.state.favoriteLeagueId)
     }
 
     const teamFilter = computed(() => {
@@ -79,7 +72,6 @@ export default {
 
     const selectTeam = (team) => {
       store.commit('increment', team.id)
-      console.log(store.state.favoriteTeamId)
       data.isShowing = true
     }
 
