@@ -10,7 +10,6 @@
 import { useStore } from 'vuex'
 export default {
   setup() {
-
     const store = useStore()
 
     const teamCountMessage = () => {
@@ -18,7 +17,7 @@ export default {
       if (competitorLength <= 3) {
         return `残り${3 - competitorLength}チーム登録できます`
       } else {
-        return "登録できるのは3チームまでです"
+        return '登録できるのは3チームまでです'
       }
     }
     return {

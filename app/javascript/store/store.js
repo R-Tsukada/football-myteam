@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 
 export const store = createStore({
-  state () {
+  state() {
     return {
       favoriteLeagueId: '',
       favoriteTeamId: [],
@@ -11,26 +11,26 @@ export const store = createStore({
     }
   },
   mutations: {
-    increment (state, value) {
+    increment(state, value) {
       state.favoriteTeamId = value
     },
-    addLeague (state, value) {
+    addLeague(state, value) {
       state.favoriteLeagueId = value
     },
-    addCompetitor (state, value) {
+    addCompetitor(state, value) {
       state.competitorTeamId.push(value)
     },
-    deleteCompetitor (state, value) {
-      state.competitorTeamId = state.competitorTeamId.filter(competitor => competitor !== value)
+    deleteCompetitor(state, value) {
+      state.competitorTeamId = state.competitorTeamId.filter(
+        (competitor) => competitor !== value
+      )
     },
-    closeMessage (state) {
+    closeMessage(state) {
       state.isShowingMessage = false
     },
-    openMessage (state) {
+    openMessage(state) {
       state.isShowingMessage = true
     }
   },
-  plugins: [
-    createPersistedState()
-  ]
+  plugins: [createPersistedState()]
 })

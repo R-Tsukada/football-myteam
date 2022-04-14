@@ -1,13 +1,15 @@
 <template>
   <div class="main">
-  <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage"/>
-  <CompetitorValidation v-else/>
+    <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
+    <CompetitorValidation v-else />
     <div class="container">
       <ul v-for="team in data.teams" :key="team.id">
         <li>
           <img :src="team.logo" class="team_logo_image" />
           <p>{{ team.name }}</p>
-          <button class="button" @click="toggleFollowAndUnfollow(team)">{{ toggleFollowAndUnfollowDisplay(team) }}</button>
+          <button class="button" @click="toggleFollowAndUnfollow(team)">
+            {{ toggleFollowAndUnfollowDisplay(team) }}
+          </button>
         </li>
       </ul>
     </div>
@@ -47,41 +49,45 @@ export default {
     const store = useStore()
 
     const setTeam = async () => {
-      axios.get('/api/team_filter').then((response) => {
-        data.teams = response.data
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+      axios
+        .get('/api/team_filter')
+        .then((response) => {
+          data.teams = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
 
     const toggleFollowAndUnfollowDisplay = (team) => {
       if (store.state.competitorTeamId.includes(team.id)) {
-        return "解除する"
+        return '解除する'
       } else {
-        return "フォローする"
+        return 'フォローする'
       }
     }
 
     const toggleFollowAndUnfollow = (team) => {
       if (store.state.competitorTeamId.includes(team.id)) {
-        axios.post('/api/competitors', {
-          id: team.id
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+        axios
+          .post('/api/competitors', {
+            id: team.id
+          })
+          .catch((error) => {
+            console.log(error)
+          })
         store.commit('deleteCompetitor', team.id)
       } else if (store.state.competitorTeamId.length >= 3) {
         store.commit('closeMessage')
       } else {
         store.commit('addCompetitor', team.id)
-        axios.post('/api/competitors', {
-          id: team.id
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+        axios
+          .post('/api/competitors', {
+            id: team.id
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
 
@@ -92,7 +98,7 @@ export default {
       toggleFollowAndUnfollow,
       toggleFollowAndUnfollowDisplay,
       addCompetitor: () => store.commit('addCompetitor'),
-      deleteCompetitor: () => store.commit('deleteCompetitor'),
+      deleteCompetitor: () => store.commit('deleteCompetitor')
     }
   }
 }

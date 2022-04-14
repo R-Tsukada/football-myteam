@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::TeamFilterController < ApplicationController
   before_action :authenticate_user!
 

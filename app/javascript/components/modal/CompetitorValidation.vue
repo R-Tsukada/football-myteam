@@ -1,13 +1,16 @@
 <template>
   <div>
     <article class="message is-danger">
-        <div class="message-header">
-          <p>登録できるチーム数を超えています</p>
-          <button class="delete" aria-label="delete" @click="closeMessage"></button>
-        </div>
-        <div class="message-body">
-          ライバルチームとして登録できるチーム数は3チームまでです。
-        </div>
+      <div class="message-header">
+        <p>登録できるチーム数を超えています</p>
+        <button
+          class="delete"
+          aria-label="delete"
+          @click="closeMessage"></button>
+      </div>
+      <div class="message-body">
+        ライバルチームとして登録できるチーム数は3チームまでです。
+      </div>
     </article>
   </div>
 </template>
@@ -16,19 +19,17 @@
 import { useStore } from 'vuex'
 
 export default {
-    setup() {
+  setup() {
     const store = useStore()
 
     const closeMessage = () => {
       store.commit('openMessage')
     }
 
-
     return {
-      closeMessage,
+      closeMessage
     }
   }
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>
