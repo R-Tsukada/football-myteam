@@ -1,1 +1,1 @@
-json.array! @competitor, :id
+json.array! @competitor, :team_id
