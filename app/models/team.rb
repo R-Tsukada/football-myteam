@@ -44,6 +44,7 @@ class Team < ApplicationRecord
       team.name = results['response'][result]['team']['name']
       team.logo = results['response'][result]['team']['logo']
       team.home_city = results['response'][result]['venue']['city']
+      team.stadium = results['response'][result]['venue']['name']
       league = results['parameters']['league']
       id = {
         '39' => 1,
