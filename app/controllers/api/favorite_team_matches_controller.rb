@@ -8,6 +8,10 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   require 'json'
 
   def index
+    user = current_user
+    favorite_team = user.favorite.team_id
+    current_team = Team.find(favorite_team).api_id
+    @match = Match.all.order(:date).where(date: Time.zone.today.., team_matches_index: current_team).first(3)
   end
 
   private

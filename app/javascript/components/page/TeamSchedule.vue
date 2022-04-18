@@ -12,15 +12,18 @@
           <th><abbr title="Shedule">次節以降の試合</abbr></th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="schedule in data.schedules" :key="schedule.id">
-          <th>{{ schedule.rank }}</th>
-          <th><img :src="schedule.team_logo" class="image is-48x48" /></th>
-          <th>{{ schedule.points }}</th>
-          <th>{{ schedule.played }}</th>
-          <th></th>
-        </tr>
-      </tbody>
+      <FavoriteTeamTable
+        :standings="data.favoriteTeams"
+        :matchSchedules="data.favoriteMatchSchedules" />
+      <FavoriteTeamTable
+        :standings="data.firstCompetitorTeams"
+        :matchSchedules="data.firstCompetitorMatchSchedules" />
+      <FavoriteTeamTable
+        :standings="data.secoundCompetitorTeams"
+        :matchSchedules="data.secoundCompetitorMatchSchedules" />
+      <FavoriteTeamTable
+        :standings="data.thirdCompetitorTeams"
+        :matchSchedules="data.thirdCompetitorMatchSchedules" />
     </table>
     <br />
     <button class="button">
@@ -35,26 +38,67 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
+import FavoriteTeamTable from '../table/FavoriteTeamTable.vue'
 
 export default {
+  components: {
+    FavoriteTeamTable
+  },
   setup() {
     const data = reactive({
-      schedules: []
+      favoriteTeams: [],
+      firstCompetitorTeams: [],
+      secoundCompetitorTeams: [],
+      thirdCompetitorTeams: [],
+      favoriteMatchSchedules: [],
+      firstCompetitorMatchSchedules: [],
+      secoundCompetitorMatchSchedules: [],
+      thirdCompetitorMatchSchedules: []
     })
 
-    const setSchedules = async () => {
+    const setTeamSchedules = async () => {
       axios.get('/api/standings').then((response) => {
-        data.schedules = response.data
+        data.favoriteTeams = response.data[0]
+        data.firstCompetitorTeams = response.data[1]
+        data.secoundCompetitorTeams = response.data[2]
+        data.thirdCompetitorTeams = response.data[3]
+      })
+    }
+
+    const setMatchSchedules = async () => {
+      axios.get('/api/favorite_team_matches').then((response) => {
+        data.favoriteMatchSchedules = response.data
+      })
+    }
+
+    const setFirstCompetitorMatchSchedules = async () => {
+      axios.get('/api/first_competitor_team_matches').then((response) => {
+        data.firstCompetitorMatchSchedules = response.data
+      })
+    }
+
+    const setSecoundCompetitorMatchSchedules = async () => {
+      axios.get('/api/secound_competitor_team_matches').then((response) => {
+        data.secoundCompetitorMatchSchedules = response.data
+      })
+    }
+
+    const setThirdCompetitorMatchSchedules = async () => {
+      axios.get('/api/third_competitor_team_matches').then((response) => {
+        data.thirdCompetitorMatchSchedules = response.data
       })
     }
 
     onMounted(() => {
-      setSchedules()
+      setTeamSchedules(),
+        setMatchSchedules(),
+        setFirstCompetitorMatchSchedules(),
+        setSecoundCompetitorMatchSchedules(),
+        setThirdCompetitorMatchSchedules()
     })
 
     return {
-      data,
-      setSchedules
+      data
     }
   }
 }
