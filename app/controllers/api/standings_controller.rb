@@ -59,7 +59,7 @@ class Api::StandingsController < ApplicationController
 
   def competitor_team_api_id
     @user = current_user
-    competitor_team_id = @user.competitor.map { |c| c.team_id }
+    competitor_team_id = @user.competitor.map(&:team_id)
     competitor_team_id.map { |c| Team.find(c).api_id }
   end
 
