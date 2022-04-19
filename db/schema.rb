@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_083254) do
+ActiveRecord::Schema.define(version: 2022_04_16_035353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,21 @@ ActiveRecord::Schema.define(version: 2022_04_06_083254) do
     t.index ["name"], name: "index_leagues_on_name", unique: true
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "team_matches_index"
+    t.string "season", null: false
+    t.date "date", null: false
+    t.string "competition_name", null: false
+    t.string "competition_logo", null: false
+    t.string "team_name", null: false
+    t.string "team_logo", null: false
+    t.string "home_score"
+    t.string "away_score"
+    t.string "home_and_away", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "standings", force: :cascade do |t|
     t.bigint "team_id"
     t.string "team_name", null: false
@@ -63,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_083254) do
     t.bigint "league_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stadium"
     t.index ["api_id"], name: "index_teams_on_api_id", unique: true
     t.index ["league_id"], name: "index_teams_on_league_id"
     t.index ["logo"], name: "index_teams_on_logo", unique: true

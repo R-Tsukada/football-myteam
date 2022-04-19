@@ -42,8 +42,7 @@ export default {
     const data = reactive({
       teams: [],
       competitors: [],
-      isAdding: true,
-      isShowing: true
+      isAdding: true
     })
 
     const store = useStore()
