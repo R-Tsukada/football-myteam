@@ -1,5 +1,5 @@
 <template>
-  <tbody>
+  <tbody @click="selectTeam(standings)">
     <tr class="team_standing">
       <th>{{ standings.rank }}</th>
       <th><img :src="standings.team_logo" class="image is-48x48" /></th>
@@ -22,8 +22,22 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+
 export default {
-  props: ['standings', 'matchSchedules']
+  props: ['standings', 'matchSchedules'],
+  setup() {
+    const router = useRouter()
+
+    const selectTeam = (standings) => {
+      alert(standings.team_id)
+      router.push({name: 'show', params:{id: standings.team_id}})
+    }
+
+    return {
+      selectTeam
+    }
+  }
 }
 </script>
 
