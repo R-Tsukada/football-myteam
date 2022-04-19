@@ -8,10 +8,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   require 'json'
 
   def index
-    user = current_user
-    favorite_team = user.favorite.team_id
-    current_team = Team.find(favorite_team).api_id
-    @match = Match.all.order(:date).where(date: Time.zone.today.., team_matches_index: current_team).first(3)
+    @match = Match.all.order(:date).where(date: Time.zone.today.., team_matches_index: favorite_team_api_id).first(3)
   end
 
   private
@@ -43,14 +40,14 @@ class Api::FavoriteTeamMatchesController < ApplicationController
       match = Match.new
       match.season = [api][0]['parameters']['season']
       match.team_matches_index = [api][0]['parameters']['team']
+      current_team = Team.find_by(api_id: match.team_matches_index)
       match.date = [api][0]['response'][a]['fixture']['date'].scan(/\d\d\d\d-\d\d-\d\d/).join('')
       stadium = [api][0]['response'][a]['fixture']['venue']['name']
-      match.home_and_away = stadium == favorite_team_stadium ? 'HOME' : 'AWAY'
+      match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
       match.competition_name = [api][0]['response'][a]['league']['name']
       match.competition_logo = [api][0]['response'][a]['league']['logo']
       home_team_name = [api][0]['response'][a]['teams']['home']['name']
       away_team_name = [api][0]['response'][a]['teams']['away']['name']
-      current_team = Team.find_by(api_id: match.team_matches_index)
       match.team_name = home_team_name == current_team.name ? away_team_name : home_team_name
       home_logo = [api][0]['response'][a]['teams']['home']['logo']
       away_logo = [api][0]['response'][a]['teams']['away']['logo']
@@ -62,31 +59,26 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   end
 
   def api_request_url
-    api_ids = competitor_teams.unshift(favorite_team_api_id)
-    api_ids.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}") }
+    api_id = competitor_teams.unshift(favorite_team_api_id)
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}") }
   end
 
   def competitor_teams
-    @user = current_user
-    competitor_team_id = @user.competitor.map(&:team_id)
+    competitor_team_id = current_user.competitor.map(&:team_id)
     competitor_team_id.map { |c| Team.find(c).api_id }
   end
 
   def favorite_team_api_id
-    favorite_team_id = @user.favorite.team_id
-    Team.find(favorite_team_id).api_id
+    favorite_team.api_id
   end
 
   def favorite_team_name
-    id = @user.favorite.team_id
-    team = Team.find(id)
-    team.name
+    favorite_team.name
   end
 
-  def favorite_team_stadium
-    id = @user.favorite.id
-    team = Team.find(id)
-    team.stadium
+  def favorite_team
+    id = current_user.favorite.team_id
+    Team.find(id)
   end
 
   def season_year
