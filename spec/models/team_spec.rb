@@ -3,9 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
+  before do
+    @team = Team.create(
+      id: 1,
+      name: 'Arsenal',
+      logo: 'https://media.api-sports.io/football/teams/42.png',
+      api_id: '42',
+      home_city: 'London',
+      league_id: 1
+    )
+  end
   it 'is valid with a name, logo, api_id and leaague_id and home_city' do
     league = FactoryBot.build(:league)
-    team = FactoryBot.build(:team, league: league)
+    team = FactoryBot.build(:team, :arsenal, league: league)
     expect(team).to be_valid
   end
 
@@ -18,7 +28,7 @@ RSpec.describe Team, type: :model do
 
   it 'is valid with a duplicate name' do
     league = FactoryBot.build(:league)
-    FactoryBot.create(:team, league: league)
+    FactoryBot.create(:team, :arsenal, league: league)
     team = Team.new(
       name: 'Arsenal',
       logo: 'https://media.api-sports.io/football/venues/494.png'
@@ -36,7 +46,7 @@ RSpec.describe Team, type: :model do
 
   it 'is valid with a duplicate logo' do
     league = FactoryBot.build(:league)
-    FactoryBot.create(:team, league: league)
+    FactoryBot.create(:team, :arsenal, league: league)
     team = Team.new(
       name: 'Manchester United',
       logo: 'https://media.api-sports.io/football/teams/42.png'
@@ -52,9 +62,9 @@ RSpec.describe Team, type: :model do
     expect(team.errors[:api_id]).to include("can't be blank")
   end
 
-  it 'is valid with a duplicate logo' do
+  it 'is valid with a duplicate api_id' do
     league = FactoryBot.build(:league)
-    FactoryBot.create(:team, league: league)
+    FactoryBot.create(:team, :arsenal, league: league)
     team = Team.new(
       name: 'Manchester United',
       logo: 'https://media.api-sports.io/football/teams/33.png',

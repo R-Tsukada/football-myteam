@@ -8,4 +8,5 @@ class Match < ApplicationRecord
   validates :competition_logo, presence: true
   validates :team_name, presence: true
   validates :team_logo, presence: true
+  validates :home_and_away, presence: true
 end
