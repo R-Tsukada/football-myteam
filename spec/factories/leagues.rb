@@ -5,5 +5,6 @@ FactoryBot.define do
     id { 1 }
     name { 'Premier League' }
     logo { 'https://media.api-sports.io/football/leagues/39.png' }
+    api_id { 39 }
   end
 end

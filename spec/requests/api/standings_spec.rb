@@ -6,8 +6,8 @@ RSpec.describe 'API::Standings', type: :request do
   describe 'GET /api/standings/index' do
     it 'returns http success' do
       league = FactoryBot.create(:league)
-      team1 = FactoryBot.create(:team, league: league)
-      team2 = FactoryBot.create(:team, league: league)
+      team1 = FactoryBot.create(:team, :arsenal, league: league)
+      team2 = FactoryBot.create(:team, :Manchester_United, league: league)
       user = FactoryBot.build(:user)
       sign_in user
       user.favorite_team_follow(team1)
