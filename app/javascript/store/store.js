@@ -7,7 +7,8 @@ export const store = createStore({
       favoriteLeagueId: '',
       favoriteTeamId: [],
       competitorTeamId: [],
-      isShowingMessage: true
+      isShowingMessage: true,
+      scheduleParams: ''
     }
   },
   mutations: {
@@ -30,6 +31,9 @@ export const store = createStore({
     },
     openMessage(state) {
       state.isShowingMessage = true
+    },
+    addShedulesParams(state, value) {
+      state.scheduleParams = value
     }
   },
   plugins: [createPersistedState()]

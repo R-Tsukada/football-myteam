@@ -2,7 +2,7 @@
   <tbody @click="selectTeam(standings)">
     <tr class="team_standing">
       <th>{{ standings.rank }}</th>
-      <th><img :src="standings.team_logo" class="image is-48x48" /></th>
+      <th><img :src="standings.team_logo" /></th>
       <th>{{ standings.points }}</th>
       <th>{{ standings.played }}</th>
       <th v-for="match in matchSchedules" :key="match.id">
@@ -23,19 +23,23 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default {
   props: ['standings', 'matchSchedules'],
   setup() {
     const router = useRouter()
 
+    const store = useStore()
+
     const selectTeam = (standings) => {
-      alert(standings.team_id)
-      router.push({name: 'show', params:{id: standings.team_id}})
+      store.commit('addShedulesParams', standings.team_id)
+      router.push({name: 'show', params:{id: store.state.scheduleParams}})
     }
 
     return {
-      selectTeam
+      selectTeam,
+      addShedulesParams: () => store.commit('addShedulesParams')
     }
   }
 }
