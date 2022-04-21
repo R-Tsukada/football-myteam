@@ -9,13 +9,13 @@
         </div>
         <div class="team">
           <p class="home_and_away">{{ result.home_and_away }}</p>
-          <p>{{ result.home_team_name }}</p>
+          <p class="team_name_and_logo">{{ result.home_team_name }}</p>
           <img :src="result.home_logo" class="image is-96x96" />
-          <p>{{ result.home_score }}</p>
-          <p>-</p>
-          <p>{{ result.away_score }}</p>
+          <p class="team_name_and_logo">{{ result.home_score }}</p>
+          <p class="team_name_and_logo">-</p>
+          <p class="team_name_and_logo">{{ result.away_score }}</p>
           <img :src="result.away_logo" class="image is-96x96" />
-          <p>{{ result.away_team_name }}</p>
+          <p class="team_name_and_logo">{{ result.away_team_name }}</p>
         </div>
       </li>
     </ul>

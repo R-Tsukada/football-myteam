@@ -12,17 +12,16 @@
         </div>
         <div class="team">
           <p class="home_and_away">{{ schedule.home_and_away }}</p>
-          <p>{{ schedule.home_team_name }}</p>
+          <p class="team_name_and_logo">{{ schedule.home_team_name }}</p>
           <img :src="schedule.home_logo" class="image is-96x96" />
-          <p>-</p>
+          <p class="team_name_and_logo">-</p>
           <img :src="schedule.away_logo" class="image is-96x96" />
-          <p>{{ schedule.away_team_name }}</p>
+          <p class="team_name_and_logo">{{ schedule.away_team_name }}</p>
         </div>
       </li>
     </ul>
   </div>
 </template>
->
 
 <script>
 export default {
@@ -37,7 +36,7 @@ export default {
 }
 
 .flex-list {
-  width: 60%;
+  width: 80%;
   border: 1px solid;
   border-radius: 8px;
 }
@@ -68,7 +67,7 @@ export default {
   margin: 10px;
 }
 
-.team p {
+.team_name_and_logo {
   padding: 10px;
   vertical-align: center;
   font-size: 32px;
@@ -81,9 +80,12 @@ export default {
 
 .home_and_away {
   border: 1px solid;
-  color: white;
   background-color: red;
+  color: white;
   margin: 10px;
+  padding: 10px;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .team_name_and_logo {
