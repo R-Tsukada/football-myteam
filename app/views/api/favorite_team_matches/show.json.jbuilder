@@ -1,0 +1,1 @@
+json.array! @match_show, :team_matches_index, :season, :date, :competition_name, :competition_logo, :team_name, :team_logo, :home_and_away, :home_score, :away_score, :home_team_name, :away_team_name, :home_logo, :away_logo
