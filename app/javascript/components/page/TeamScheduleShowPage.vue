@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="tabs is-toggle is-centered">
       <ul>
         <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
@@ -22,6 +22,9 @@
         <MatchResultList :matchResultFilter="matchResultsFilter" />
       </div>
     </div>
+    <button class="button">
+      <router-link to="/schedules">戻る</router-link>
+    </button>
   </div>
 </template>
 
@@ -90,11 +93,6 @@ export default {
 }
 </script>
 <style>
-.border_match {
-  border: solid 1px;
-  border-radius: 8px;
-}
-
 .tab-contents .content {
   display: none;
 }
