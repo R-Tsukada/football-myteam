@@ -34,7 +34,7 @@ export default {
 
     const selectTeam = (standings) => {
       store.commit('addShedulesParams', standings.team_id)
-      router.push({name: 'show', params:{id: store.state.scheduleParams}})
+      router.push({ name: 'show', params: { id: store.state.scheduleParams } })
     }
 
     return {

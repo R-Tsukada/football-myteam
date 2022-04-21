@@ -1,24 +1,28 @@
 <template>
   <div class="flex">
-    <ul v-for="schedule in matchScheduleFilter" :key="schedule.id" class="flex-list">
+    <ul
+      v-for="schedule in matchScheduleFilter"
+      :key="schedule.id"
+      class="flex-list">
       <li>
         <div class="competition">
           <p>{{ schedule.date }}</p>
-          <img :src="schedule.competition_logo" class="image is-64x64"/>
+          <img :src="schedule.competition_logo" class="image is-64x64" />
           <p>{{ schedule.competition_name }}</p>
         </div>
         <div class="team">
           <p class="home_and_away">{{ schedule.home_and_away }}</p>
           <p>{{ schedule.home_team_name }}</p>
-          <img :src="schedule.home_logo" class="image is-96x96"/>
-          <p> - </p>
-          <img :src="schedule.away_logo" class="image is-96x96"/>
+          <img :src="schedule.home_logo" class="image is-96x96" />
+          <p>-</p>
+          <img :src="schedule.away_logo" class="image is-96x96" />
           <p>{{ schedule.away_team_name }}</p>
-          </div>
+        </div>
       </li>
     </ul>
   </div>
-</template>>
+</template>
+>
 
 <script>
 export default {
@@ -68,7 +72,7 @@ export default {
   padding: 10px;
   vertical-align: center;
   font-size: 32px;
-  font-weight: bold
+  font-weight: bold;
 }
 
 .team image {

@@ -2,15 +2,23 @@
   <div>
     <div class="tabs is-toggle is-centered">
       <ul>
-        <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }"><a v-on:click="data.isActive = 'match_schedule'">試合予定</a></li>
-        <li v-bind:class="{ 'is-active': data.isActive == 'match_result' }"><a v-on:click="data.isActive = 'match_result'">試合結果</a></li>
+        <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
+          <a v-on:click="data.isActive = 'match_schedule'">試合予定</a>
+        </li>
+        <li v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
+          <a v-on:click="data.isActive = 'match_result'">試合結果</a>
+        </li>
       </ul>
     </div>
     <div class="tab-contents">
-      <div class="content" v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
+      <div
+        class="content"
+        v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
         <MatchScheduleList :matchScheduleFilter="matchScheduleFilter" />
       </div>
-      <div class="content" v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
+      <div
+        class="content"
+        v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
         <MatchResultList :matchResultFilter="matchResultsFilter" />
       </div>
     </div>
@@ -38,10 +46,11 @@ export default {
     const store = useStore()
 
     const setMatchData = async () => {
-      axios.get(`/api/favorite_team_matches/${store.state.scheduleParams}`)
+      axios
+        .get(`/api/favorite_team_matches/${store.state.scheduleParams}`)
         .then((response) => {
           data.schedules = response.data
-      })
+        })
         .catch(function (error) {
           console.log(error)
         })
@@ -59,15 +68,13 @@ export default {
     const matchScheduleFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
         return schedules.date >= formatDate(date)
-      }
-      )
+      })
     })
 
     const matchResultsFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
         return schedules.date <= formatDate(date)
-      }
-      )
+      })
     })
 
     onMounted(setMatchData())
