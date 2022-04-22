@@ -16,13 +16,15 @@
         </li>
       </ul>
     </div>
-    <button class="button" v-if="data.isShowing" @click="addFavoriteTeam">
-      応援しているチームを決定する
-    </button>
-    <br />
-    <button class="button">
-      <router-link to="/competitors">ライバルチームを決める</router-link>
-    </button>
+    <div v-if="data.isShowing">
+      <button class="button" @click="addFavoriteTeam">
+        応援しているチームを決定する
+      </button>
+      <br />
+      <button class="button">
+        <router-link to="/competitors">ライバルチームを決める</router-link>
+      </button>
+    </div>
   </div>
 </template>
 

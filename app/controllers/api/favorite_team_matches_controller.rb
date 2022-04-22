@@ -2,6 +2,7 @@
 
 class Api::FavoriteTeamMatchesController < ApplicationController
   before_action :set_match
+  before_action :set_show_page, only: [:show]
   require 'uri'
   require 'net/http'
   require 'openssl'
@@ -11,7 +12,15 @@ class Api::FavoriteTeamMatchesController < ApplicationController
     @match = Match.all.order(:date).where(date: Time.zone.today.., team_matches_index: favorite_team_api_id).first(3)
   end
 
+  def show
+    @match_show = Match.all.where(team_matches_index: @team_id).order(:date)
+  end
+
   private
+
+  def set_show_page
+    @team_id = Team.find(params[:id]).api_id
+  end
 
   def set_match
     Match.delete_all
@@ -46,12 +55,12 @@ class Api::FavoriteTeamMatchesController < ApplicationController
       match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
       match.competition_name = [api][0]['response'][a]['league']['name']
       match.competition_logo = [api][0]['response'][a]['league']['logo']
-      home_team_name = [api][0]['response'][a]['teams']['home']['name']
-      away_team_name = [api][0]['response'][a]['teams']['away']['name']
-      match.team_name = home_team_name == current_team.name ? away_team_name : home_team_name
-      home_logo = [api][0]['response'][a]['teams']['home']['logo']
-      away_logo = [api][0]['response'][a]['teams']['away']['logo']
-      match.team_logo = home_logo == current_team.logo ? away_logo : home_logo
+      match.home_team_name = [api][0]['response'][a]['teams']['home']['name']
+      match.away_team_name = [api][0]['response'][a]['teams']['away']['name']
+      match.team_name = match.home_team_name == current_team.name ? match.away_team_name : match.home_team_name
+      match.home_logo = [api][0]['response'][a]['teams']['home']['logo']
+      match.away_logo = [api][0]['response'][a]['teams']['away']['logo']
+      match.team_logo = match.home_logo == current_team.logo ? match.away_logo : match.home_logo
       match.home_score = [api][0]['response'][a]['score']['fulltime']['home']
       match.away_score = [api][0]['response'][a]['score']['fulltime']['away']
       match.save
