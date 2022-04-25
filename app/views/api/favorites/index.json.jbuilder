@@ -1,1 +1,1 @@
-json.id @favorite_team.id
+json.team @favorite_team, :id, :home_city

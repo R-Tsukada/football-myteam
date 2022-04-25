@@ -1,1 +1,1 @@
-json.array! @filter, :id, :name, :logo
+json.array! @filter, :id, :name, :logo, :home_city
