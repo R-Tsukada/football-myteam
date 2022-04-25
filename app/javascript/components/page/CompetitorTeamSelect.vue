@@ -116,7 +116,6 @@ export default {
         .get('/api/favorites')
         .then((response) => {
           data.favorite = response.data
-          console.log(data.favorite.team.home_city)
         })
         .catch(function (error) {
           console.log(error)
@@ -128,6 +127,9 @@ export default {
       data.isAdding = true
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(teams => teams.home_city === data.favorite.team.home_city)
+        console.log('home')
+      } else if (data.checkedName === 'rank') {
+        data.selectedTeams = data.teams.filter(teams => teams.last_season_rank === data.favorite.team.last_season_rank - 1 || teams.last_season_rank === data.favorite.team.last_season_rank + 1)
       } else {
         data.selectedTeams = data.teams
       }
