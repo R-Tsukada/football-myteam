@@ -1,45 +1,79 @@
 <template>
   <div class="has-text-centered">
-    <div  v-show="data.isShowing">
+    <div v-show="data.isShowing">
       <div class="container is-widescreen">
         <div class="notification is-light">
-          <p class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold">ライバルチームの選び方を選択してください</p>
+          <p
+            class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold">
+            ライバルチームの選び方を選択してください
+          </p>
           <div class="v-model-radiobutton has-text-left">
-            <input type="radio" class="rank mb-4" value="rank" v-model="data.checkedName" />
-            <label class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3" for="rank">昨シーズンの順位が近いチームを選ぶ</label>
+            <input
+              type="radio"
+              class="rank mb-4"
+              value="rank"
+              v-model="data.checkedName" />
+            <label
+              class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
+              for="rank"
+              >昨シーズンの順位が近いチームを選ぶ</label
+            >
             <br />
-            <input type="radio" class="home mb-4" value="home" v-model="data.checkedName" />
-            <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">本拠地が近いチームを選ぶ</label>
+            <input
+              type="radio"
+              class="home mb-4"
+              value="home"
+              v-model="data.checkedName" />
+            <label class="is-size-4-desktop is-size-6-tablet m-3" for="home"
+              >本拠地が近いチームを選ぶ</label
+            >
             <br />
-            <input type="radio" class="self mb-4" value="self" v-model="data.checkedName" />
-            <label class="is-size-4-desktop is-size-6-tablet  m-3" for="self">自分でライバルチームを選ぶ</label>
+            <input
+              type="radio"
+              class="self mb-4"
+              value="self"
+              v-model="data.checkedName" />
+            <label class="is-size-4-desktop is-size-6-tablet m-3" for="self"
+              >自分でライバルチームを選ぶ</label
+            >
             <br />
           </div>
         </div>
       </div>
-      <button class="button mt-4 ml-3" @click="selectTeam">チームの選択方法を決定する</button>
+      <button class="button mt-4 ml-3" @click="selectTeam">
+        チームの選択方法を決定する
+      </button>
       <button class="button mt-4 ml-3">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isAdding">
-      <p class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-weight-bold">こちらのチームを登録しますか？</p>
+      <p
+        class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-weight-bold">
+        こちらのチームを登録しますか？
+      </p>
       <div class="container">
         <ul v-for="team in data.selectedTeams.slice(0, 3)" :key="team.id">
           <li class="mt-5 mx-6 p-2">
             <img :src="team.logo" class="image is-128x128" />
-              <p class="has-text-weight-semibold">{{ team.name }}</p>
-              <p class="has-text-weight-semibold">2020-2021：{{ team.last_season_rank }}位</p>
-              <p class="has-text-weight-semibold">本拠地：{{ team.home_city }}</p>
-            </li>
-          </ul>
+            <p class="has-text-weight-semibold">{{ team.name }}</p>
+            <p class="has-text-weight-semibold">
+              2020-2021：{{ team.last_season_rank }}位
+            </p>
+            <p class="has-text-weight-semibold">本拠地：{{ team.home_city }}</p>
+          </li>
+        </ul>
       </div>
       <br />
       <button class="button mt-2 ml-3">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
-      <button class="button mt-2 ml-2" @click="addCompetitorFollow">上記のチームを登録する</button>
-      <button class="button mt-2 ml-2" @click="again">チームの選び方を変更する</button>
+      <button class="button mt-2 ml-2" @click="addCompetitorFollow">
+        上記のチームを登録する
+      </button>
+      <button class="button mt-2 ml-2" @click="again">
+        チームの選び方を変更する
+      </button>
     </div>
     <div v-show="data.isFreeSelect">
       <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
@@ -149,10 +183,17 @@ export default {
     const autoSelect = () => {
       data.isShowing = false
       if (data.checkedName === 'home') {
-        data.selectedTeams = data.teams.filter(teams => teams.home_city === data.favorite.team.home_city)
+        data.selectedTeams = data.teams.filter(
+          (teams) => teams.home_city === data.favorite.team.home_city
+        )
         data.isAdding = true
       } else if (data.checkedName === 'rank') {
-        data.selectedTeams = data.teams.filter(teams => teams.last_season_rank === data.favorite.team.last_season_rank - 1 || teams.last_season_rank === data.favorite.team.last_season_rank + 1)
+        data.selectedTeams = data.teams.filter(
+          (teams) =>
+            teams.last_season_rank ===
+              data.favorite.team.last_season_rank - 1 ||
+            teams.last_season_rank === data.favorite.team.last_season_rank + 1
+        )
         data.isAdding = true
       } else {
         data.isFreeSelect = true
@@ -170,8 +211,8 @@ export default {
     }
 
     const addCompetitorFollow = () => {
-      const teamId = data.selectedTeams.slice(0, 3).map(team => team.id)
-      teamId.forEach(id =>
+      const teamId = data.selectedTeams.slice(0, 3).map((team) => team.id)
+      teamId.forEach((id) =>
         axios
           .post('/api/competitors', {
             id: id
@@ -180,7 +221,7 @@ export default {
             console.log(error)
           })
       )
-      teamId.map(id => store.commit('addCompetitor', id))
+      teamId.map((id) => store.commit('addCompetitor', id))
     }
 
     onMounted(setTeam(), setFavorite())

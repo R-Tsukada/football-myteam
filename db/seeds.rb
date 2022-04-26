@@ -38,7 +38,7 @@ Team.create(
       "api_id": 33,
       "league_id": 1,
       "home_city": 'Manchester',
-      "stadium": "Old Trafford",
+      "stadium": 'Old Trafford',
       "last_season_rank": 2
     },
     {
@@ -58,7 +58,7 @@ Team.create(
       "api_id": 38,
       "league_id": 1,
       "home_city": 'Watford',
-      "stadium": "Vicarage Road",
+      "stadium": 'Vicarage Road',
       "last_season_rank": ''
     },
     {
@@ -68,7 +68,7 @@ Team.create(
       "api_id": 39,
       "league_id": 1,
       "home_city": 'Wolverhampton, West Midlands',
-      "stadium": "Molineux Stadium",
+      "stadium": 'Molineux Stadium',
       "last_season_rank": 13
     },
     {
@@ -78,7 +78,7 @@ Team.create(
       "api_id": 40,
       "league_id": 1,
       "home_city": 'Liverpool',
-      "stadium": "Anfield",
+      "stadium": 'Anfield',
       "last_season_rank": 3
     },
     {
@@ -98,7 +98,7 @@ Team.create(
       "api_id": 42,
       "league_id": 1,
       "home_city": 'London',
-      "stadium": "Emirates Stadium",
+      "stadium": 'Emirates Stadium',
       "last_season_rank": 8
     },
     {
@@ -108,7 +108,7 @@ Team.create(
       "api_id": 44,
       "league_id": 1,
       "home_city": 'Burnley',
-      "stadium": "Turf Moor",
+      "stadium": 'Turf Moor',
       "last_season_rank": 17
     },
     {
@@ -118,7 +118,7 @@ Team.create(
       "api_id": 45,
       "league_id": 1,
       "home_city": 'Liverpool',
-      "stadium": "Goodison Park",
+      "stadium": 'Goodison Park',
       "last_season_rank": 10
     },
     {
@@ -128,7 +128,7 @@ Team.create(
       "api_id": 46,
       "league_id": 1,
       "home_city": 'Leicester, Leicestershire',
-      "stadium": "King Power Stadium",
+      "stadium": 'King Power Stadium',
       "last_season_rank": 5
     },
     {
@@ -138,7 +138,7 @@ Team.create(
       "api_id": 47,
       "league_id": 1,
       "home_city": 'London',
-      "stadium": "Tottenham Hotspur Stadium",
+      "stadium": 'Tottenham Hotspur Stadium',
       "last_season_rank": 7
     },
     {
@@ -148,7 +148,7 @@ Team.create(
       "api_id": 48,
       "league_id": 1,
       "home_city": 'London',
-      "stadium": "London Stadium",
+      "stadium": 'London Stadium',
       "last_season_rank": 6
     },
     {
@@ -158,7 +158,7 @@ Team.create(
       "api_id": 49,
       "league_id": 1,
       "home_city": 'London',
-      "stadium": "Stamford Bridge",
+      "stadium": 'Stamford Bridge',
       "last_season_rank": 4
     },
     {
@@ -168,7 +168,7 @@ Team.create(
       "api_id": 50,
       "league_id": 1,
       "home_city": 'Manchester',
-      "stadium": "Etihad Stadium",
+      "stadium": 'Etihad Stadium',
       "last_season_rank": 1
     },
     {
@@ -178,7 +178,7 @@ Team.create(
       "api_id": 51,
       "league_id": 1,
       "home_city": 'Falmer, East Sussex',
-      "stadium": "The American Express Community Stadium",
+      "stadium": 'The American Express Community Stadium',
       "last_season_rank": 16
     },
     {
@@ -188,7 +188,7 @@ Team.create(
       "api_id": 52,
       "league_id": 1,
       "home_city": 'London',
-      "stadium": "Selhurst Park",
+      "stadium": 'Selhurst Park',
       "last_season_rank": 14
     },
     {
@@ -198,7 +198,7 @@ Team.create(
       "api_id": 55,
       "league_id": 1,
       "home_city": 'Brentford, Middlesex',
-      "stadium": "Brentford Community Stadium",
+      "stadium": 'Brentford Community Stadium',
       "last_season_rank": ''
     },
     {
@@ -208,7 +208,7 @@ Team.create(
       "api_id": 63,
       "league_id": 1,
       "home_city": 'Leeds, West Yorkshire',
-      "stadium": "Elland Road",
+      "stadium": 'Elland Road',
       "last_season_rank": 9
     },
     {
@@ -218,7 +218,7 @@ Team.create(
       "api_id": 66,
       "league_id": 1,
       "home_city": 'Birmingham',
-      "stadium": "Villa Park",
+      "stadium": 'Villa Park',
       "last_season_rank": 11
     },
     {
@@ -228,7 +228,7 @@ Team.create(
       "api_id": 71,
       "league_id": 1,
       "home_city": 'Norwich, Norfolk',
-      "stadium": "Carrow Road",
+      "stadium": 'Carrow Road',
       "last_season_rank": ''
     },
     {
@@ -238,7 +238,7 @@ Team.create(
       "api_id": 487,
       "league_id": 2,
       "home_city": 'Roma',
-      "stadium": "Stadio Olimpico",
+      "stadium": 'Stadio Olimpico',
       "last_season_rank": 6
     },
     {
@@ -248,7 +248,7 @@ Team.create(
       "api_id": 488,
       "league_id": 2,
       "home_city": 'Reggio nell&apos;Emilia',
-      "stadium": "MAPEI Stadium - Città del Tricolore",
+      "stadium": 'MAPEI Stadium - Città del Tricolore',
       "last_season_rank": 8
     },
     {
@@ -258,7 +258,7 @@ Team.create(
       "api_id": 489,
       "league_id": 2,
       "home_city": 'Milano',
-      "stadium": "Stadio Giuseppe Meazza",
+      "stadium": 'Stadio Giuseppe Meazza',
       "last_season_rank": 2
     },
     {
@@ -268,7 +268,7 @@ Team.create(
       "api_id": 490,
       "league_id": 2,
       "home_city": 'Cagliari',
-      "stadium": "Unipol Domus",
+      "stadium": 'Unipol Domus',
       "last_season_rank": 16
     },
     {
@@ -278,7 +278,7 @@ Team.create(
       "api_id": 492,
       "league_id": 2,
       "home_city": 'Napoli',
-      "stadium": "Stadio Diego Armando Maradona",
+      "stadium": 'Stadio Diego Armando Maradona',
       "last_season_rank": 5
     },
     {
@@ -288,7 +288,7 @@ Team.create(
       "api_id": 494,
       "league_id": 2,
       "home_city": 'Udine',
-      "stadium": "Dacia Arena",
+      "stadium": 'Dacia Arena',
       "last_season_rank": 14
     },
     {
@@ -298,7 +298,7 @@ Team.create(
       "api_id": 495,
       "league_id": 2,
       "home_city": 'Genova',
-      "stadium": "Stadio Comunale Luigi Ferraris",
+      "stadium": 'Stadio Comunale Luigi Ferraris',
       "last_season_rank": 11
     },
     {
@@ -308,7 +308,7 @@ Team.create(
       "api_id": 496,
       "league_id": 2,
       "home_city": 'Torino',
-      "stadium": "Allianz Stadium",
+      "stadium": 'Allianz Stadium',
       "last_season_rank": 4
     },
     {
@@ -318,7 +318,7 @@ Team.create(
       "api_id": 497,
       "league_id": 2,
       "home_city": 'Roma',
-      "stadium": "Stadio Olimpico",
+      "stadium": 'Stadio Olimpico',
       "last_season_rank": 7
     },
     {
@@ -328,7 +328,7 @@ Team.create(
       "api_id": 498,
       "league_id": 2,
       "home_city": 'Genova',
-      "stadium": "Stadio Comunale Luigi Ferraris",
+      "stadium": 'Stadio Comunale Luigi Ferraris',
       "last_season_rank": 9
     },
     {
@@ -338,7 +338,7 @@ Team.create(
       "api_id": 499,
       "league_id": 2,
       "home_city": 'Bergamo',
-      "stadium": "Gewiss Stadium",
+      "stadium": 'Gewiss Stadium',
       "last_season_rank": 3
     },
     {
@@ -358,7 +358,7 @@ Team.create(
       "api_id": 502,
       "league_id": 2,
       "home_city": 'Firenze',
-      "stadium": "Stadio Artemio Franchi",
+      "stadium": 'Stadio Artemio Franchi',
       "last_season_rank": 13
     },
     {
@@ -368,7 +368,7 @@ Team.create(
       "api_id": 503,
       "league_id": 2,
       "home_city": 'Torino',
-      "stadium": "Stadio Olimpico Grande Torino",
+      "stadium": 'Stadio Olimpico Grande Torino',
       "last_season_rank": 17
     },
     {
@@ -388,7 +388,7 @@ Team.create(
       "api_id": 505,
       "league_id": 2,
       "home_city": 'Milano',
-      "stadium": "Stadio Giuseppe Meazza",
+      "stadium": 'Stadio Giuseppe Meazza',
       "last_season_rank": 1
     },
     {
@@ -398,7 +398,7 @@ Team.create(
       "api_id": 511,
       "league_id": 2,
       "home_city": 'Empoli',
-      "stadium": "Stadio Carlo Castellani",
+      "stadium": 'Stadio Carlo Castellani',
       "last_season_rank": ''
     },
     {
@@ -408,7 +408,7 @@ Team.create(
       "api_id": 514,
       "league_id": 2,
       "home_city": 'Salerno',
-      "stadium": "Stadio Arechi",
+      "stadium": 'Stadio Arechi',
       "last_season_rank": ''
     },
     {
@@ -418,7 +418,7 @@ Team.create(
       "api_id": 515,
       "league_id": 2,
       "home_city": 'La Spezia',
-      "stadium": "Stadio Alberto Picco",
+      "stadium": 'Stadio Alberto Picco',
       "last_season_rank": 15
     },
     {
@@ -428,7 +428,7 @@ Team.create(
       "api_id": 517,
       "league_id": 2,
       "home_city": 'Venezia',
-      "stadium": "Stadio Pierluigi Penzo",
+      "stadium": 'Stadio Pierluigi Penzo',
       "last_season_rank": ''
     },
     {
@@ -438,7 +438,7 @@ Team.create(
       "api_id": 529,
       "league_id": 3,
       "home_city": 'Barcelona',
-      "stadium": "Camp Nou",
+      "stadium": 'Camp Nou',
       "last_season_rank": 3
     },
     {
@@ -448,7 +448,7 @@ Team.create(
       "api_id": 530,
       "league_id": 3,
       "home_city": 'Madrid',
-      "stadium": "Estadio Wanda Metropolitano",
+      "stadium": 'Estadio Wanda Metropolitano',
       "last_season_rank": 1
     },
     {
@@ -458,7 +458,7 @@ Team.create(
       "api_id": 531,
       "league_id": 3,
       "home_city": 'Bilbao',
-      "stadium": "San Mamés Barria",
+      "stadium": 'San Mamés Barria',
       "last_season_rank": 10
     },
     {
@@ -468,7 +468,7 @@ Team.create(
       "api_id": 532,
       "league_id": 3,
       "home_city": 'Valencia',
-      "stadium": "Estadio de Mestalla",
+      "stadium": 'Estadio de Mestalla',
       "last_season_rank": 13
     },
     {
@@ -478,7 +478,7 @@ Team.create(
       "api_id": 533,
       "league_id": 3,
       "home_city": 'Villarreal',
-      "stadium": "Estadio de la Cerámica",
+      "stadium": 'Estadio de la Cerámica',
       "last_season_rank": 7
     },
     {
@@ -488,7 +488,7 @@ Team.create(
       "api_id": 536,
       "league_id": 3,
       "home_city": 'Sevilla',
-      "stadium": "Estadio Ramón Sánchez Pizjuán",
+      "stadium": 'Estadio Ramón Sánchez Pizjuán',
       "last_season_rank": 4
     },
     {
@@ -498,7 +498,7 @@ Team.create(
       "api_id": 538,
       "league_id": 3,
       "home_city": 'Vigo',
-      "stadium": "Abanca-Balaídos",
+      "stadium": 'Abanca-Balaídos',
       "last_season_rank": 8
     },
     {
@@ -508,7 +508,7 @@ Team.create(
       "api_id": 539,
       "league_id": 3,
       "home_city": 'Valencia',
-      "stadium": "Estadio Ciudad de Valencia",
+      "stadium": 'Estadio Ciudad de Valencia',
       "last_season_rank": 14
     },
     {
@@ -518,7 +518,7 @@ Team.create(
       "api_id": 540,
       "league_id": 3,
       "home_city": 'Cornella de Llobregat',
-      "stadium": "RCDE Stadium",
+      "stadium": 'RCDE Stadium',
       "last_season_rank": 1
     },
     {
@@ -528,7 +528,7 @@ Team.create(
       "api_id": 541,
       "league_id": 3,
       "home_city": 'Madrid',
-      "stadium": "Estadio Santiago Bernabéu",
+      "stadium": 'Estadio Santiago Bernabéu',
       "last_season_rank": 2
     },
     {
@@ -538,7 +538,7 @@ Team.create(
       "api_id": 542,
       "league_id": 3,
       "home_city": 'Vitoria-Gasteiz',
-      "stadium": "Estadio de Mendizorroza",
+      "stadium": 'Estadio de Mendizorroza',
       "last_season_rank": 16
     },
     {
@@ -548,7 +548,7 @@ Team.create(
       "api_id": 543,
       "league_id": 3,
       "home_city": 'Sevilla',
-      "stadium": "Estadio Benito Villamarín",
+      "stadium": 'Estadio Benito Villamarín',
       "last_season_rank": 6
     },
     {
@@ -558,7 +558,7 @@ Team.create(
       "api_id": 546,
       "league_id": 3,
       "home_city": 'Getafe',
-      "stadium": "Coliseum Alfonso Pérez",
+      "stadium": 'Coliseum Alfonso Pérez',
       "last_season_rank": 15
     },
     {
@@ -568,7 +568,7 @@ Team.create(
       "api_id": 548,
       "league_id": 3,
       "home_city": 'Donostia-San Sebastián',
-      "stadium": "Reale Arena",
+      "stadium": 'Reale Arena',
       "last_season_rank": 5
     },
     {
@@ -578,7 +578,7 @@ Team.create(
       "api_id": 715,
       "league_id": 3,
       "home_city": 'Granada',
-      "stadium": "Estadio Nuevo Los Cármenes",
+      "stadium": 'Estadio Nuevo Los Cármenes',
       "last_season_rank": 9
     },
     {
@@ -588,7 +588,7 @@ Team.create(
       "api_id": 724,
       "league_id": 3,
       "home_city": 'Cádiz',
-      "stadium": "Estadio Nuevo Mirandilla",
+      "stadium": 'Estadio Nuevo Mirandilla',
       "last_season_rank": 12
     },
     {
@@ -598,7 +598,7 @@ Team.create(
       "api_id": 727,
       "league_id": 3,
       "home_city": 'Iruñea',
-      "stadium": "Estadio El Sadar",
+      "stadium": 'Estadio El Sadar',
       "last_season_rank": 11
     },
     {
@@ -607,7 +607,7 @@ Team.create(
       "logo": 'https://media.api-sports.io/football/teams/728.png',
       "api_id": 728,
       "league_id": 3,
-      "stadium": "Estadio de Vallecas",
+      "stadium": 'Estadio de Vallecas',
       "home_city": 'Madrid'
     },
     {
@@ -617,7 +617,7 @@ Team.create(
       "api_id": 797,
       "league_id": 3,
       "home_city": 'Elche',
-      "stadium": "Estadio Manuel Martínez Valero",
+      "stadium": 'Estadio Manuel Martínez Valero',
       "last_season_rank": 17
     },
     {
@@ -627,7 +627,7 @@ Team.create(
       "api_id": 798,
       "league_id": 3,
       "home_city": 'Palma de Mallorca',
-      "stadium": "Visit Mallorca Estadi",
+      "stadium": 'Visit Mallorca Estadi',
       "last_season_rank": ''
     },
     {
@@ -637,7 +637,7 @@ Team.create(
       "api_id": 157,
       "league_id": 4,
       "home_city": 'München',
-      "stadium": "Allianz Arena",
+      "stadium": 'Allianz Arena',
       "last_season_rank": 1
     },
     {
@@ -647,7 +647,7 @@ Team.create(
       "api_id": 159,
       "league_id": 4,
       "home_city": 'Berlin',
-      "stadium": "Olympiastadion Berlin",
+      "stadium": 'Olympiastadion Berlin',
       "last_season_rank": 14
     },
     {
@@ -657,7 +657,7 @@ Team.create(
       "api_id": 160,
       "league_id": 4,
       "home_city": 'Freiburg im Breisgau',
-      "stadium": "Europa-Park Stadion",
+      "stadium": 'Europa-Park Stadion',
       "last_season_rank": 10
     },
     {
@@ -666,7 +666,7 @@ Team.create(
       "logo": 'https://media.api-sports.io/football/teams/161.png',
       "api_id": 161,
       "league_id": 4,
-      "stadium": "VOLKSWAGEN ARENA",
+      "stadium": 'VOLKSWAGEN ARENA',
       "home_city": 'Wolfsburg',
 
       "last_season_rank": 4
@@ -678,7 +678,7 @@ Team.create(
       "api_id": 163,
       "league_id": 4,
       "home_city": 'Mönchengladbach',
-      "stadium": "Stadion im BORUSSIA-PARK",
+      "stadium": 'Stadion im BORUSSIA-PARK',
       "last_season_rank": 8
     },
     {
@@ -688,7 +688,7 @@ Team.create(
       "api_id": 164,
       "league_id": 4,
       "home_city": 'Mainz',
-      "stadium": "MEWA ARENA",
+      "stadium": 'MEWA ARENA',
       "last_season_rank": 12
     },
     {
@@ -698,7 +698,7 @@ Team.create(
       "api_id": 165,
       "league_id": 4,
       "home_city": 'Dortmund',
-      "stadium": "Signal-Iduna-Park",
+      "stadium": 'Signal-Iduna-Park',
       "last_season_rank": 3
     },
     {
@@ -708,7 +708,7 @@ Team.create(
       "api_id": 167,
       "league_id": 4,
       "home_city": 'Sinsheim',
-      "stadium": "PreZero Arena",
+      "stadium": 'PreZero Arena',
       "last_season_rank": 11
     },
     {
@@ -718,7 +718,7 @@ Team.create(
       "api_id": 168,
       "league_id": 4,
       "home_city": 'Leverkusen',
-      "stadium": "BayArena",
+      "stadium": 'BayArena',
       "last_season_rank": 6
     },
     {
@@ -728,7 +728,7 @@ Team.create(
       "api_id": 169,
       "league_id": 4,
       "home_city": 'Frankfurt am Main',
-      "stadium": "Deutsche Bank Park",
+      "stadium": 'Deutsche Bank Park',
       "last_season_rank": 5
     },
     {
@@ -738,7 +738,7 @@ Team.create(
       "api_id": 170,
       "league_id": 4,
       "home_city": 'Augsburg',
-      "stadium": "WWK Arena",
+      "stadium": 'WWK Arena',
       "last_season_rank": 13
     },
     {
@@ -748,7 +748,7 @@ Team.create(
       "api_id": 172,
       "league_id": 4,
       "home_city": 'Stuttgart',
-      "stadium": "Mercedes-Benz-Arena",
+      "stadium": 'Mercedes-Benz-Arena',
       "last_season_rank": 9
     },
     {
@@ -758,7 +758,7 @@ Team.create(
       "api_id": 173,
       "league_id": 4,
       "home_city": 'Leipzig',
-      "stadium": "Red Bull Arena",
+      "stadium": 'Red Bull Arena',
       "last_season_rank": 2
     },
     {
@@ -768,7 +768,7 @@ Team.create(
       "api_id": 176,
       "league_id": 4,
       "home_city": 'Bochum',
-      "stadium": "Vonovia Ruhrstadion",
+      "stadium": 'Vonovia Ruhrstadion',
       "last_season_rank": ''
     },
     {
@@ -778,7 +778,7 @@ Team.create(
       "api_id": 178,
       "league_id": 4,
       "home_city": 'Fürth',
-      "stadium": "Sportpark Ronhof Thomas Sommer",
+      "stadium": 'Sportpark Ronhof Thomas Sommer',
       "last_season_rank": ''
     },
     {
@@ -788,7 +788,7 @@ Team.create(
       "api_id": 182,
       "league_id": 4,
       "home_city": 'Berlin',
-      "stadium": "Stadion An der Alten Försterei",
+      "stadium": 'Stadion An der Alten Försterei',
       "last_season_rank": 7
     },
     {
@@ -798,7 +798,7 @@ Team.create(
       "api_id": 188,
       "league_id": 4,
       "home_city": 'Bielefeld',
-      "stadium": "SchücoArena",
+      "stadium": 'SchücoArena',
       "last_season_rank": 15
     },
     {
@@ -808,7 +808,7 @@ Team.create(
       "api_id": 192,
       "league_id": 4,
       "home_city": 'Köln',
-      "stadium": "RheinEnergieStadion",
+      "stadium": 'RheinEnergieStadion',
       "last_season_rank": 16
     }
   ]

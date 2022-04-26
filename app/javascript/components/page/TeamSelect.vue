@@ -18,7 +18,9 @@
     </div>
     <div v-if="data.isShowing">
       <button class="button mt-5" @click="addFavoriteTeam">
-        <router-link to="/competitors">応援しているチームを決定する</router-link>
+        <router-link to="/competitors"
+          >応援しているチームを決定する</router-link
+        >
       </button>
     </div>
   </div>
