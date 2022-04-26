@@ -1,5 +1,5 @@
 <template>
-  <article class="message is-info">
+  <article class="message is-info has-text-centered">
     <div class="message-body">
       <p>{{ teamCountMessage() }}</p>
     </div>
