@@ -1,28 +1,24 @@
 <template>
-  <div class="main">
+  <div class="has-text-centered">
     <div class="container">
       <ul v-for="league in data.leagues" :key="league.id">
-        <li @click="selectLeague(league)">
-          <img :src="league.logo" class="image is-96x96" />
-          <p>{{ league.name }}</p>
+        <li class="mt-5 mx-6 p-2" @click="selectLeague(league)">
+          <img :src="league.logo" class="image is-128x128" />
+          <p class="has-text-weight-semibold">{{ league.name }}</p>
         </li>
       </ul>
     </div>
     <div class="container">
       <ul v-for="team in teamFilter" :key="team.id">
-        <li @click="selectTeam(team)">
-          <img :src="team.logo" class="team_logo_image" />
-          <p>{{ team.name }}</p>
+        <li class="mt-5 mx-6 p-2" @click="selectTeam(team)">
+          <img :src="team.logo" class="image is-128x128" />
+          <p class="has-text-weight-semibold">{{ team.name }}</p>
         </li>
       </ul>
     </div>
     <div v-if="data.isShowing">
-      <button class="button" @click="addFavoriteTeam">
-        応援しているチームを決定する
-      </button>
-      <br />
-      <button class="button">
-        <router-link to="/competitors">ライバルチームを決める</router-link>
+      <button class="button mt-5" @click="addFavoriteTeam">
+        <router-link to="/competitors">応援しているチームを決定する</router-link>
       </button>
     </div>
   </div>
@@ -38,7 +34,8 @@ export default {
     const data = reactive({
       teams: [],
       leagueId: '',
-      isShowing: false
+      isShowing: false,
+      isChangeCplor: false
     })
 
     const store = useStore()
@@ -92,10 +89,6 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  text-align: center;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -109,12 +102,5 @@ ul {
 
 li {
   border: solid 1px;
-  border-radius: 8px;
-  padding: 5px;
-  text-align: center;
-}
-
-p {
-  font-weight: bold;
 }
 </style>

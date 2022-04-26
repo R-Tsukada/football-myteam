@@ -1,6 +1,6 @@
 <template>
   <div>
-    <article class="message is-danger">
+    <article class="message is-danger has-text-centered">
       <div class="message-header">
         <p>登録できるチーム数を超えています</p>
         <button

@@ -1,45 +1,68 @@
 <template>
-  <div class="main">
+  <div class="has-text-centered">
     <div  v-show="data.isShowing">
       <div class="container is-widescreen">
         <div class="notification is-light">
-          <div class="v-model-radiobutton">
-            <input type="radio" class="rank" value="rank" v-model="data.checkedName" />
-            <label for="rank">順位が近いチームを選ぶ（自動選択）</label>
+          <p class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold">ライバルチームの選び方を選択してください</p>
+          <div class="v-model-radiobutton has-text-left">
+            <input type="radio" class="rank mb-4" value="rank" v-model="data.checkedName" />
+            <label class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3" for="rank">昨シーズンの順位が近いチームを選ぶ</label>
             <br />
-            <input type="radio" class="home" value="home" v-model="data.checkedName" />
-            <label for="home">本拠地が近いチームを選ぶ（自動選択）</label>
+            <input type="radio" class="home mb-4" value="home" v-model="data.checkedName" />
+            <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">本拠地が近いチームを選ぶ</label>
             <br />
-            <input type="radio" class="self" value="self" v-model="data.checkedName" />
-            <label for="self">自分でライバルチームを選ぶ</label>
+            <input type="radio" class="self mb-4" value="self" v-model="data.checkedName" />
+            <label class="is-size-4-desktop is-size-6-tablet  m-3" for="self">自分でライバルチームを選ぶ</label>
             <br />
           </div>
         </div>
       </div>
-      <button class="button" @click="selectTeam">決定する</button>
+      <button class="button mt-4 ml-3" @click="selectTeam">チームの選択方法を決定する</button>
+      <button class="button mt-4 ml-3">
+        <router-link to="/">応援しているチームを選び直す</router-link>
+      </button>
     </div>
     <div v-show="data.isAdding">
+      <p class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-weight-bold">こちらのチームを登録しますか？</p>
+      <div class="container">
+        <ul v-for="team in data.selectedTeams.slice(0, 3)" :key="team.id">
+          <li class="mt-5 mx-6 p-2">
+            <img :src="team.logo" class="image is-128x128" />
+              <p class="has-text-weight-semibold">{{ team.name }}</p>
+              <p class="has-text-weight-semibold">2020-2021：{{ team.last_season_rank }}位</p>
+              <p class="has-text-weight-semibold">本拠地：{{ team.home_city }}</p>
+            </li>
+          </ul>
+      </div>
+      <br />
+      <button class="button mt-2 ml-3">
+        <router-link to="/">応援しているチームを選び直す</router-link>
+      </button>
+      <button class="button mt-2 ml-2" @click="addCompetitorFollow">上記のチームを登録する</button>
+      <button class="button mt-2 ml-2" @click="again">チームの選び方を変更する</button>
+    </div>
+    <div v-show="data.isFreeSelect">
       <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
       <CompetitorValidation v-else />
       <div class="container">
-        <ul v-for="team in data.selectedTeams" :key="team.id">
-          <li>
-            <img :src="team.logo" class="team_logo_image" />
-            <p>{{ team.name }}</p>
-            <button class="button" @click="toggleFollowAndUnfollow(team)">
+        <ul v-for="team in data.teams" :key="team.id">
+          <li class="mt-5 mx-6 p-2 has-text-centered">
+            <img :src="team.logo" class="image is-128x128" />
+            <p class="has-text-weight-semibold">{{ team.name }}</p>
+            <button class="button mt-2" @click="toggleFollowAndUnfollow(team)">
               {{ toggleFollowAndUnfollowDisplay(team) }}
             </button>
           </li>
         </ul>
       </div>
-      <button class="button" @click="again">もう一度選び直す</button>
-      <button class="button">
+      <br />
+      <button class="button mt-2 ml-2">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
-      <br />
-      <button class="button">
-        <router-link to="/schedules">ライバルチームの選択を終了する</router-link>
+      <button class="button mt-2 ml-2">
+        <router-link to="/schedules">チームの選択を終了する</router-link>
       </button>
+      <button class="button mt-2 ml-2" @click="again">もう一度選び直す</button>
     </div>
   </div>
 </template>
@@ -63,7 +86,8 @@ export default {
       checkedName: '',
       selectedTeams: [],
       isShowing: true,
-      isAdding: false
+      isAdding: false,
+      isFreeSelect: false
     })
 
     const store = useStore()
@@ -124,24 +148,39 @@ export default {
 
     const autoSelect = () => {
       data.isShowing = false
-      data.isAdding = true
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(teams => teams.home_city === data.favorite.team.home_city)
-        console.log('home')
+        data.isAdding = true
       } else if (data.checkedName === 'rank') {
         data.selectedTeams = data.teams.filter(teams => teams.last_season_rank === data.favorite.team.last_season_rank - 1 || teams.last_season_rank === data.favorite.team.last_season_rank + 1)
+        data.isAdding = true
       } else {
-        data.selectedTeams = data.teams
+        data.isFreeSelect = true
       }
     }
 
     const again = () => {
       data.isShowing = true
       data.isAdding = false
+      data.isFreeSelect = false
     }
 
     const selectTeam = () => {
       autoSelect()
+    }
+
+    const addCompetitorFollow = () => {
+      const teamId = data.selectedTeams.slice(0, 3).map(team => team.id)
+      teamId.forEach(id =>
+        axios
+          .post('/api/competitors', {
+            id: id
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      )
+      teamId.map(id => store.commit('addCompetitor', id))
     }
 
     onMounted(setTeam(), setFavorite())
@@ -154,17 +193,14 @@ export default {
       deleteCompetitor: () => store.commit('deleteCompetitor'),
       autoSelect,
       selectTeam,
-      again
+      again,
+      addCompetitorFollow
     }
   }
 }
 </script>
 
 <style scoped>
-.main {
-  text-align: center;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -178,21 +214,5 @@ ul {
 
 li {
   border: solid 1px;
-  border-radius: 8px;
-  padding: 5px;
-  text-align: center;
-}
-
-p {
-  font-weight: bold;
-}
-
-/* .v-model-radiobutton { */
-/*   width: 80%; */
-/*   text-align: center; */
-/* } */
-
-.v-model-radiobutton label {
-  font-size: 24px;
 }
 </style>
