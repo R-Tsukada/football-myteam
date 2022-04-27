@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt-5">
     <div class="tabs is-toggle is-centered">
       <ul>
         <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">

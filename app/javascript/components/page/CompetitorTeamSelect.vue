@@ -1,5 +1,5 @@
 <template>
-  <div class="has-text-centered">
+  <div class="has-text-centered pt-5">
     <div v-show="data.isShowing">
       <div class="container is-widescreen">
         <div class="notification is-light">
@@ -69,7 +69,7 @@
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
       <button class="button mt-2 ml-2" @click="addCompetitorFollow">
-        上記のチームを登録する
+        <router-link to="/schedules">上記のチームを登録する</router-link>
       </button>
       <button class="button mt-2 ml-2" @click="again">
         チームの選び方を変更する
