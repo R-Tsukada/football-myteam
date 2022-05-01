@@ -20,15 +20,13 @@ ja:
         update: '更新する'
         cancel_my_account: 'キャンセルする'
         email: 'メール'
-        blank_message: '* パスワードを変更しない場合は空白にしてください'
+        blank_message: ' (パスワードを変更しない場合は空白にしてください)'
         current: '確認のため現在のパスワードを入力してください'
         validation: '文字以上入力してください'
         delete: '本当にアカウントを削除しますか？'
         new_password: '新しいパスワードを入力してください'
-        of: 'を'
       new:
         validation: '文字以上入力してください'
-        of: 'を'
     sessions:
       new:
         log_in: 'ログイン'
