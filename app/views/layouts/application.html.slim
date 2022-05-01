@@ -25,9 +25,9 @@ html
                   = link_to 'アカウントを作成', new_user_registration_path, class: 'has-text-white mx-2'
                   = link_to 'ログイン', new_user_session_path, class: 'has-text-white mx-2'
     p
-      .notice
+      .notice.is-size-5.p-3.has-text-success
         = notice
     p
-      .alert
+      .alert.is-size-4.p-5.has-text-centered.has-text-danger
         = alert
     = yield
