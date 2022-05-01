@@ -18,7 +18,7 @@ RSpec.describe Favorite, type: :model do
     favorite = FactoryBot.build(:favorite, user: nil, team: team)
 
     favorite.valid?
-    expect(favorite.errors[:user]).to include('must exist')
+    expect(favorite.errors[:user]).to include('を入力してください')
   end
 
   it 'is valid without a team' do
@@ -26,6 +26,6 @@ RSpec.describe Favorite, type: :model do
     favorite = FactoryBot.build(:favorite, user: user, team: nil)
 
     favorite.valid?
-    expect(favorite.errors[:team]).to include('must exist')
+    expect(favorite.errors[:team]).to include('を入力してください')
   end
 end

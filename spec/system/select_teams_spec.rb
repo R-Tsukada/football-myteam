@@ -8,11 +8,11 @@ RSpec.describe 'SelectTeams', type: :system, js: true do
     league = FactoryBot.create(:league)
 
     visit root_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+    fill_in 'Eメール', with: user.email
+    fill_in 'パスワード', with: user.password
+    click_button 'ログイン'
 
-    expect(page).to have_content 'Signed in successfully.'
+    expect(page).to have_content 'ログインしました'
 
     sleep 5.0
 
