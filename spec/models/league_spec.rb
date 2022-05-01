@@ -11,7 +11,7 @@ RSpec.describe League, type: :model do
   it 'is valid without a name' do
     league = FactoryBot.build(:league, name: nil)
     league.valid?
-    expect(league.errors[:name]).to include("can't be blank")
+    expect(league.errors[:name]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate name' do
@@ -21,13 +21,13 @@ RSpec.describe League, type: :model do
       logo: 'https://media.api-sports.io/football/leagues/39.png'
     )
     league.valid?
-    expect(league.errors[:name]).to include('has already been taken')
+    expect(league.errors[:name]).to include('はすでに存在します')
   end
 
   it 'is valid without a logo' do
     league = FactoryBot.build(:league, logo: nil)
     league.valid?
-    expect(league.errors[:logo]).to include("can't be blank")
+    expect(league.errors[:logo]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate logo' do
@@ -37,6 +37,6 @@ RSpec.describe League, type: :model do
       logo: 'https://media.api-sports.io/football/leagues/39.png'
     )
     league.valid?
-    expect(league.errors[:logo]).to include('has already been taken')
+    expect(league.errors[:logo]).to include('はすでに存在します')
   end
 end

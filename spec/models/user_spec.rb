@@ -8,14 +8,14 @@ RSpec.describe User, type: :model do
   let(:team) { FactoryBot.create(:team, league: league) }
 
   it 'is valid with a email, password' do
-    # user = FactoryBot.create(:user)
+    user = FactoryBot.create(:user)
     expect(user).to be_valid
   end
 
   it 'is valid without a email' do
     user = FactoryBot.build(:user, email: nil)
     user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
+    expect(user.errors[:email]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate email' do
@@ -25,22 +25,22 @@ RSpec.describe User, type: :model do
       password: '123456'
     )
     user.valid?
-    expect(user.errors[:email]).to include('has already been taken')
+    expect(user.errors[:email]).to include('はすでに存在します')
   end
 
   it 'is valid with a password' do
     user = FactoryBot.build(:user, password: nil)
     user.valid?
-    expect(user.errors[:password]).to include("can't be blank")
+    expect(user.errors[:password]).to include('を入力してください')
   end
 
-  it 'is' do
+  it 'is validation password' do
     user = User.new(
       email: 'test@example.com',
       password: '1234'
     )
     user.valid?
-    expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+    expect(user.errors[:password]).to include('は6文字以上で入力してください')
   end
 
   it 'is should favorite team follow a user' do

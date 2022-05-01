@@ -17,13 +17,13 @@ RSpec.describe Competitor, type: :model do
     competitor = FactoryBot.build(:competitor, user: nil, team: team)
 
     competitor.valid?
-    expect(competitor.errors[:user]).to include('must exist')
+    expect(competitor.errors[:user]).to include('を入力してください')
   end
 
   it 'is valid without a team' do
     competitor = FactoryBot.build(:competitor, user: user, team: nil)
 
     competitor.valid?
-    expect(competitor.errors[:team]).to include('must exist')
+    expect(competitor.errors[:team]).to include('を入力してください')
   end
 end

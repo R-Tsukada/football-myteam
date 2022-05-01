@@ -23,7 +23,7 @@ RSpec.describe Team, type: :model do
     league = FactoryBot.build(:league)
     team = FactoryBot.build(:team, name: nil, league: league)
     team.valid?
-    expect(team.errors[:name]).to include("can't be blank")
+    expect(team.errors[:name]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate name' do
@@ -34,14 +34,14 @@ RSpec.describe Team, type: :model do
       logo: 'https://media.api-sports.io/football/venues/494.png'
     )
     team.valid?
-    expect(team.errors[:name]).to include('has already been taken')
+    expect(team.errors[:name]).to include('はすでに存在します')
   end
 
   it 'is valid without a logo' do
     league = FactoryBot.build(:league)
     team = FactoryBot.build(:team, logo: nil, league: league)
     team.valid?
-    expect(team.errors[:logo]).to include("can't be blank")
+    expect(team.errors[:logo]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate logo' do
@@ -52,14 +52,14 @@ RSpec.describe Team, type: :model do
       logo: 'https://media.api-sports.io/football/teams/42.png'
     )
     team.valid?
-    expect(team.errors[:logo]).to include('has already been taken')
+    expect(team.errors[:logo]).to include('はすでに存在します')
   end
 
   it 'is valid without a api_id' do
     league = FactoryBot.build(:league)
     team = FactoryBot.build(:team, api_id: nil, league: league)
     team.valid?
-    expect(team.errors[:api_id]).to include("can't be blank")
+    expect(team.errors[:api_id]).to include('を入力してください')
   end
 
   it 'is valid with a duplicate api_id' do
@@ -71,13 +71,13 @@ RSpec.describe Team, type: :model do
       api_id: '42'
     )
     team.valid?
-    expect(team.errors[:api_id]).to include('has already been taken')
+    expect(team.errors[:api_id]).to include('はすでに存在します')
   end
 
   it 'is valid without a home_city' do
     league = FactoryBot.build(:league)
     team = FactoryBot.build(:team, home_city: nil, league: league)
     team.valid?
-    expect(team.errors[:home_city]).to include("can't be blank")
+    expect(team.errors[:home_city]).to include('を入力してください')
   end
 end
