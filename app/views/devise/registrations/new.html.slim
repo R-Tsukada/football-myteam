@@ -9,14 +9,12 @@
     .field.has-text-left.has-text-weight-medium
       = f.label :password
       - if @minimum_password_length
-        em
-          = t('.of')
           = @minimum_password_length
           = t('.validation')
-      = f.password_field :password, autocomplete: "new-password", class: 'input'
+      = f.password_field :password, autocomplete: "new-password", class: 'input', placeholder: "#{@minimum_password_length}文字以上入力してください"
     .field.has-text-left.has-text-weight-medium
       = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input'
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input', placeholder: "#{@minimum_password_length}文字以上入力してください"
     .actions
       = f.submit t('.sign_up'), class: 'button'
   .has-text-right.has-text-weight-medium

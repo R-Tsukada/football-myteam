@@ -20,11 +20,12 @@
           = f.label :password
           = t('.blank_message')
           i
-          = f.password_field :password, autocomplete: "new-password", class: 'input', placeholder: "最低#{@minimum_password_length} 文字以上入力してください"
+          = f.password_field :password, autocomplete: "new-password", class: 'input', placeholder: "#{@minimum_password_length} 文字以上入力してください"
           - if @minimum_password_length
         .container.has-text-left.has-text-weight-semibold.my-4
           = f.label :password_confirmation
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input'
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input', placeholder: "#{@minimum_password_length} 文字以上入力してください"
+
         .actions.has-text-centered
           = f.submit t('.update'), class: 'button'
   br
