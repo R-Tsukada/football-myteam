@@ -1,2 +1,30 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.container.mx-auto.px-5
+  p.is-size-3.is-size-5-mobile
+    | Fottball Calendarはあなたが応援しているチームとライバルチームの試合日程をひと目で確認することができるアプリです
+  .container.mt-5
+    .columns
+      .column
+        .box
+          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3
+            | 登録したチームの試合予定・順位表を一覧表示
+          p.has-text-centered.py-3
+            | あなたが応援しているチーム（1チーム）とライバルチーム（最大3チーム）の試合日程をひと目で確認できます。
+          .columns
+            .column
+              .image
+                = image_tag ('Football_schedule.png')
+            .column
+              .image
+                = image_tag ('Football_match.png')
+      .column
+        .box
+          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3
+            | 順位争いを予想するツールになります
+          p.has-text-centered.py-3
+            ul
+              li
+                | 優勝・残留争い, カップ戦出場権の予想に使えます。
+              li
+                | 日々の順位争い、試合結果の予想にも使えます。
+          .image
+            = image_tag ('Football.png')
