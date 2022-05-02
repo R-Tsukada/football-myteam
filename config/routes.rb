@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   resources :home
   get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
+  get 'terms_of_service', to: 'home#terms_of_service', as: 'terms_of_service'
   devise_for :users
   root to: 'leagues#index'
   namespace :api, format: 'json' do

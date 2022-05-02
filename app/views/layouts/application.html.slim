@@ -36,12 +36,12 @@ html
         nav.level
           .level-item.has-text-centered
             p.has-text-white
-              | 利用規約
+              = link_to '利用規約', terms_of_service_path, class: 'has-text-white'
           .level-item.has-text-centered
             p
               = link_to 'プライバシポリシー', privacy_policy_path, class: 'has-text-white'
           .level-item.has-text-centered
-            p.has-text-white
-              | GitHub Project
-      .has-text-centered.mt-3.has-text-white
-        | @ryo0270590
+            p
+              = link_to 'GitHub Project', 'https://github.com/R-Tsukada/football-calendar', class: 'has-text-white'
+      .has-text-centered.mt-6
+        = link_to '@ryo0270590', 'https://twitter.com/ryo02730590', class: 'has-text-white'
