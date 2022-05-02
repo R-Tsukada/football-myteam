@@ -31,3 +31,17 @@ html
       .alert.is-size-4.p-5.has-text-centered.has-text-danger
         = alert
     = yield
+    .footer.has-background-link.mt-6.has-text-centered
+      .content-has-text-centered
+        nav.level
+          .level-item.has-text-centered
+            p.has-text-white
+              | 利用規約
+          .level-item.has-text-centered
+            p
+              = link_to 'プライバシポリシー', privacy_policy_path, class: 'has-text-white'
+          .level-item.has-text-centered
+            p.has-text-white
+              | GitHub Project
+      .has-text-centered.mt-3.has-text-white
+        | @ryo0270590
