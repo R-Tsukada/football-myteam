@@ -1,5 +1,16 @@
 version: "3.9"
 services:
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST:0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/football
+    ports:
+      - '3035:3035'
   db:
     image: postgres
     volumes:
@@ -14,7 +25,7 @@ services:
     volumes:
       - .:/football
     environment:
-      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+      - WEBPACKER_DEV_SERVER_HOST:webpacker
     ports:
       - "3000:3000"
     depends_on:
@@ -27,4 +38,3 @@ services:
     ports:
       - "4444:4444"
       - "5900:5900"
-
