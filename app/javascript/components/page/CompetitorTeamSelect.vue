@@ -44,7 +44,7 @@
         チームの選択方法を決定する
       </button>
       <button class="button mt-4 ml-3">
-        <router-link to="/">応援しているチームを選び直す</router-link>
+        <router-link to="/leagues">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isAdding">
