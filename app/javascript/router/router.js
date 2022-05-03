@@ -8,7 +8,7 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/leagues',
       component: TeamList
     },
     {
