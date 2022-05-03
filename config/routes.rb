@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'home#index'
-  get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
-  get 'terms_of_service', to: 'home#terms_of_service', as: 'terms_of_service'
   devise_for :users
   get 'leagues', to: 'leagues#index', as: 'leagues'
+  root to: 'home#index'
   namespace :api, format: 'json' do
     resources :leagues, only: [:index]
     resources :teams, only: [:index]
@@ -18,4 +16,8 @@ Rails.application.routes.draw do
     resources :secound_competitor_team_matches, only: [:index]
     resources :third_competitor_team_matches, only: [:index]
   end
+  resources :home, only: %i(index)
+  get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
+  get 'terms_of_service', to: 'home#terms_of_service', as: 'terms_of_service'
+  get '*path', to: 'leagues#index'
 end
