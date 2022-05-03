@@ -12,10 +12,10 @@
           .columns
             .column
               .image
-                = image_tag ('Football_schedule.png')
+                = image_tag 'Football_schedule.png'
             .column
               .image
-                = image_tag ('Football_match.png')
+                = image_tag 'Football_match.png'
       .column
         .box
           h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3
@@ -27,4 +27,8 @@
               li
                 | 日々の順位争い、試合結果の予想にも使えます。
           .image
-            = image_tag ('Football.png')
+            = image_tag 'Football.png'
+    .button.is-link.is-rounded.m-3.is-medium
+      = link_to 'アカウント作成', new_user_registration_path, class: 'has-text-white'
+    .button.m-3.is-rounded.m-3.is-medium
+      = link_to 'ログイン', new_user_session_path
