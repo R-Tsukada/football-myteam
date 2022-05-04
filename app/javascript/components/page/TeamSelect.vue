@@ -2,17 +2,17 @@
   <div class="has-text-centered">
     <div class="container">
       <ul v-for="league in data.leagues" :key="league.id">
-        <li class="mt-5 mx-6 p-2" @click="selectLeague(league)">
+        <li class="mt-5 mx-6 p-2" @click="selectLeague(league)" v-bind:class="{ 'has-background-link-light' : data.isChangeColorLeague === league.id}">
           <img :src="league.logo" class="image is-128x128" />
-          <p class="has-text-weight-semibold">{{ league.name }}</p>
+          <p class="has-text-weight-semibold"  v-bind:class="{ 'has-text-weight-bold has-text-danger' : data.isChangeColorLeague === league.id}">{{ league.name }}</p>
         </li>
       </ul>
     </div>
     <div class="container">
       <ul v-for="team in teamFilter" :key="team.id">
-        <li class="mt-5 mx-6 p-2" @click="selectTeam(team)">
+        <li class="mt-5 mx-6 p-2" @click="selectTeam(team)" v-bind:class="{ 'has-background-link-light' : data.isChangeColorTeam === team.id}">
           <img :src="team.logo" class="image is-128x128" />
-          <p class="has-text-weight-semibold">{{ team.name }}</p>
+          <p class="has-text-weight-semibold" v-bind:class="{ 'has-text-weight-bold has-text-danger' : data.isChangeColorTeam === team.id}">{{ team.name }}</p>
         </li>
       </ul>
     </div>
@@ -37,7 +37,8 @@ export default {
       teams: [],
       leagueId: '',
       isShowing: false,
-      isChangeCplor: false
+      isChangeColorLeague: '',
+      isChangeColorTeam: ''
     })
 
     const store = useStore()
@@ -62,6 +63,7 @@ export default {
 
     const selectLeague = (league) => {
       store.commit('addLeague', league.id)
+      data.isChangeColorLeague === league.id ? data.isChangeColorLeague = '' : data.isChangeColorLeague = league.id
     }
 
     const teamFilter = computed(() => {
@@ -74,6 +76,7 @@ export default {
     const selectTeam = (team) => {
       store.commit('increment', team.id)
       data.isShowing = true
+      data.isChangeColorTeam === team.id ? data.isChangeColorTeam = '' : data.isChangeColorTeam = team.id
     }
 
     onMounted(setLeague(), setTeam())
