@@ -8,7 +8,7 @@
           <p>{{ result.competition_name }}</p>
         </div>
         <div class="team">
-          <p class="home_and_away">{{ result.home_and_away }}</p>
+          <p class="home_and_away" v-bind:class="(data.isHome === result.home_and_away ? 'has-background-success' : 'has-background-danger' )">{{ result.home_and_away }}</p>
           <p class="team_name_and_logo">{{ result.home_team_name }}</p>
           <img :src="result.home_logo" class="image is-96x96" />
           <p class="team_name_and_logo">{{ result.home_score }}</p>
@@ -24,7 +24,18 @@
 >
 
 <script>
+import { reactive } from 'vue'
+
 export default {
-  props: ['matchResultFilter']
+  props: ['matchResultFilter'],
+  setup() {
+    const data = reactive({
+      isHome: 'HOME'
+    })
+
+    return {
+      data
+    }
+  }
 }
 </script>
