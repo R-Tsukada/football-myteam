@@ -59,7 +59,8 @@ export default {
     })
 
     const setTeamSchedules = async () => {
-      axios.get('/api/standings')
+      axios
+        .get('/api/standings')
         .then((response) => {
           data.favoriteTeams = response.data[0]
           data.firstCompetitorTeams = response.data[1]
@@ -72,7 +73,8 @@ export default {
     }
 
     const setMatchSchedules = async () => {
-      axios.get('/api/favorite_team_matches')
+      axios
+        .get('/api/favorite_team_matches')
         .then((response) => {
           data.favoriteMatchSchedules = response.data
         })
@@ -82,7 +84,8 @@ export default {
     }
 
     const setFirstCompetitorMatchSchedules = async () => {
-      axios.get('/api/first_competitor_team_matches')
+      axios
+        .get('/api/first_competitor_team_matches')
         .then((response) => {
           data.firstCompetitorMatchSchedules = response.data
         })
@@ -92,7 +95,8 @@ export default {
     }
 
     const setSecoundCompetitorMatchSchedules = async () => {
-      axios.get('/api/secound_competitor_team_matches')
+      axios
+        .get('/api/secound_competitor_team_matches')
         .then((response) => {
           data.secoundCompetitorMatchSchedules = response.data
         })
@@ -102,7 +106,8 @@ export default {
     }
 
     const setThirdCompetitorMatchSchedules = async () => {
-      axios.get('/api/third_competitor_team_matches')
+      axios
+        .get('/api/third_competitor_team_matches')
         .then((response) => {
           data.thirdCompetitorMatchSchedules = response.data
         })
