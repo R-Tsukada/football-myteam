@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
   get 'leagues', to: 'leagues#index', as: 'leagues'
   root to: 'home#index'
   namespace :api, format: 'json' do
