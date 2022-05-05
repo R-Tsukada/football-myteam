@@ -19,9 +19,11 @@
         :standings="data.firstCompetitorTeams"
         :matchSchedules="data.firstCompetitorMatchSchedules" />
       <FavoriteTeamTable
+        v-if="data.secoundCompetitorTeams"
         :standings="data.secoundCompetitorTeams"
         :matchSchedules="data.secoundCompetitorMatchSchedules" />
       <FavoriteTeamTable
+        v-if="data.thirdCompetitorTeams"
         :standings="data.thirdCompetitorTeams"
         :matchSchedules="data.thirdCompetitorMatchSchedules" />
     </table>
@@ -57,36 +59,56 @@ export default {
     })
 
     const setTeamSchedules = async () => {
-      axios.get('/api/standings').then((response) => {
-        data.favoriteTeams = response.data[0]
-        data.firstCompetitorTeams = response.data[1]
-        data.secoundCompetitorTeams = response.data[2]
-        data.thirdCompetitorTeams = response.data[3]
-      })
+      axios.get('/api/standings')
+        .then((response) => {
+          data.favoriteTeams = response.data[0]
+          data.firstCompetitorTeams = response.data[1]
+          data.secoundCompetitorTeams = response.data[2]
+          data.thirdCompetitorTeams = response.data[3]
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setMatchSchedules = async () => {
-      axios.get('/api/favorite_team_matches').then((response) => {
-        data.favoriteMatchSchedules = response.data
-      })
+      axios.get('/api/favorite_team_matches')
+        .then((response) => {
+          data.favoriteMatchSchedules = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setFirstCompetitorMatchSchedules = async () => {
-      axios.get('/api/first_competitor_team_matches').then((response) => {
-        data.firstCompetitorMatchSchedules = response.data
-      })
+      axios.get('/api/first_competitor_team_matches')
+        .then((response) => {
+          data.firstCompetitorMatchSchedules = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setSecoundCompetitorMatchSchedules = async () => {
-      axios.get('/api/secound_competitor_team_matches').then((response) => {
-        data.secoundCompetitorMatchSchedules = response.data
-      })
+      axios.get('/api/secound_competitor_team_matches')
+        .then((response) => {
+          data.secoundCompetitorMatchSchedules = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setThirdCompetitorMatchSchedules = async () => {
-      axios.get('/api/third_competitor_team_matches').then((response) => {
-        data.thirdCompetitorMatchSchedules = response.data
-      })
+      axios.get('/api/third_competitor_team_matches')
+        .then((response) => {
+          data.thirdCompetitorMatchSchedules = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     onMounted(() => {
