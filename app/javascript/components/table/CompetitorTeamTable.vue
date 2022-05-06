@@ -7,7 +7,7 @@
         {{ standings.points }}
         <br />
         <div class="has-text-grey-light">
-          ({{ favoriteTeamPoints - standings.points}})
+          ({{ standings.points - favoriteTeamPoints  }})
         </div>
       </th>
       <th>
