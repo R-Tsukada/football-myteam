@@ -4,7 +4,13 @@
       <th>{{ standings.rank }}</th>
       <th><img :src="standings.team_logo" /></th>
       <th>{{ standings.points }}</th>
-      <th>{{ standings.played }}</th>
+      <th>
+          {{ standings.played }}
+          <br />
+          <div class="has-text-grey-light">
+            (残り{{ gameCount - standings.played}}試合)
+          </div>
+       </th>
       <th v-for="match in matchSchedules" :key="match.id">
         <div class="match_schedules">
           <div>
@@ -32,7 +38,8 @@
 <script>
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { reactive } from 'vue'
+import { reactive, onMounted, computed } from 'vue'
+import  axios from 'axios'
 
 export default {
   props: ['standings', 'matchSchedules'],
@@ -42,7 +49,8 @@ export default {
     const store = useStore()
 
     const data = reactive({
-      isHome: 'HOME'
+      isHome: 'HOME',
+      teams: []
     })
 
     const selectTeam = (standings) => {
@@ -50,8 +58,25 @@ export default {
       router.push({ name: 'show', params: { id: store.state.scheduleParams } })
     }
 
+    const setTeams = async (props) => {
+      axios.get('/api/team_filter')
+        .then((response) => {
+          data.teams = response.data
+          console.log(props)
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    onMounted(setTeams())
+
+    const gameCount = computed(() => data.teams.length * 2 )
+
     return {
       selectTeam,
+      setTeams,
+      gameCount,
       data,
       addShedulesParams: () => store.commit('addShedulesParams')
     }
