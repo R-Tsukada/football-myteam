@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5">
+  <div class="container">
     <table class="table">
       <thead>
         <tr>
@@ -32,12 +32,11 @@
         :favoriteTeamPoints="data.favoriteTeamPoints" />
     </table>
     <br />
-    <button class="button">
-      <router-link to="/">応援しているチームを選び直す</router-link>
+    <button class="button is-link is-rounded m-3 is-medium">
+      <router-link to="/leagues" class="has-text-white">応援しているチームを選び直す</router-link>
     </button>
-    <br />
-    <button class="button">
-      <router-link to="/competitors">ライバルチームを選び直す</router-link>
+    <button class="button is-rounded m-3 is-medium has-text-black">
+      <router-link to="/competitors" class="has-text-black">ライバルチームを選び直す</router-link>
     </button>
   </div>
 </template>
