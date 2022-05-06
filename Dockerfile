@@ -10,6 +10,8 @@ COPY Gemfile /football/Gemfile
 COPY Gemfile.lock /football/Gemfile.lock
 RUN bundle install
 
+COPY package.json /football/package.json
+COPY yarn.lock  /football/yarn.lock
 RUN yarn install --check-files
 RUN bundle exec rails webpacker:install
 
