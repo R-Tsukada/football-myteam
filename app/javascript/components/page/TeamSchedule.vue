@@ -8,24 +8,28 @@
           <th>
             <abbr title="Points">勝点<br />(勝ち点差)</abbr>
           </th>
-          <th><abbr title="Played">試合数</abbr></th>
+          <th><abbr title="Played">試合数<br />(残り試合数)</abbr></th>
           <th><abbr title="Shedule">次節以降の試合</abbr></th>
         </tr>
       </thead>
       <FavoriteTeamTable
         :standings="data.favoriteTeams"
         :matchSchedules="data.favoriteMatchSchedules" />
-      <FavoriteTeamTable
+      <CompetitorTeamTable
         :standings="data.firstCompetitorTeams"
-        :matchSchedules="data.firstCompetitorMatchSchedules" />
-      <FavoriteTeamTable
+        :matchSchedules="data.firstCompetitorMatchSchedules"
+        :favoriteTeamPoints="data.favoriteTeamPoints"
+      />
+      <CompetitorTeamTable
         v-if="data.secoundCompetitorTeams"
         :standings="data.secoundCompetitorTeams"
-        :matchSchedules="data.secoundCompetitorMatchSchedules" />
-      <FavoriteTeamTable
+        :matchSchedules="data.secoundCompetitorMatchSchedules"
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
+      <CompetitorTeamTable
         v-if="data.thirdCompetitorTeams"
         :standings="data.thirdCompetitorTeams"
-        :matchSchedules="data.thirdCompetitorMatchSchedules" />
+        :matchSchedules="data.thirdCompetitorMatchSchedules"
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
     </table>
     <br />
     <button class="button">
@@ -41,14 +45,17 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import FavoriteTeamTable from '../table/FavoriteTeamTable.vue'
+import CompetitorTeamTable from '../table/CompetitorTeamTable.vue'
 
 export default {
   components: {
-    FavoriteTeamTable
+    FavoriteTeamTable,
+    CompetitorTeamTable
   },
   setup() {
     const data = reactive({
       favoriteTeams: [],
+      favoriteTeamPoints: '',
       firstCompetitorTeams: [],
       secoundCompetitorTeams: [],
       thirdCompetitorTeams: [],
@@ -63,6 +70,7 @@ export default {
         .get('/api/standings')
         .then((response) => {
           data.favoriteTeams = response.data[0]
+          data.favoriteTeamPoints = data.favoriteTeams.points
           data.firstCompetitorTeams = response.data[1]
           data.secoundCompetitorTeams = response.data[2]
           data.thirdCompetitorTeams = response.data[3]
