@@ -69,7 +69,9 @@
         </ul>
       </div>
       <br />
-      <button class="button is-rounded is-medium mt-2 ml-2" @click="addCompetitorFollow">
+      <button
+        class="button is-rounded is-medium mt-2 ml-2"
+        @click="addCompetitorFollow">
         <router-link to="/schedules">上記のチームを登録する</router-link>
       </button>
       <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
@@ -97,10 +99,16 @@
       <button class="button is-rounded is-medium mt-2 ml-2">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
-      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">ライバルチームの選択方法を選び直す</button>
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
+        ライバルチームの選択方法を選び直す
+      </button>
       <br />
-      <button class="button is-rounded is-medium mt-2 ml-2" v-if="this.$store.state.competitorTeamId.length >= 1">
-        <router-link to="/schedules">ライバルチームの選択を終了する</router-link>
+      <button
+        class="button is-rounded is-medium mt-2 ml-2"
+        v-if="this.$store.state.competitorTeamId.length >= 1">
+        <router-link to="/schedules"
+          >ライバルチームの選択を終了する</router-link
+        >
       </button>
     </div>
   </div>
@@ -204,7 +212,7 @@ export default {
         data.isShowing = false
         data.isAdding = true
         data.isSelected = false
-      } else if (data.checkedName === ''){
+      } else if (data.checkedName === '') {
         data.isSelected = true
       } else {
         data.isShowing = false
