@@ -4,19 +4,19 @@
     <td><img :src="standings.team_logo" /></td>
     <td>{{ standings.points }}</td>
     <td>
-        {{ standings.played }}
-        <br />
-        <div class="has-text-grey-light">
-          (残り{{ gameCount - standings.played}}試合)
-        </div>
-     </td>
+      {{ standings.played }}
+      <br />
+      <div class="has-text-grey-light">
+        (残り{{ gameCount - standings.played }}試合)
+      </div>
+    </td>
     <td v-for="match in matchSchedules" :key="match.id">
       <div class="match_schedules has-text-centered">
         <div class="p-1 mb-2 ml-2">
           <img :src="match.competition_logo" class="image is-32x32 mt-1" />
           <p
-              class="has-text-white mt-5 p-1"
-              v-bind:class="
+            class="has-text-white mt-5 p-1"
+            v-bind:class="
               data.isHome === match.home_and_away
                 ? 'has-background-success'
                 : 'has-background-danger'
@@ -37,7 +37,7 @@
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
-import  axios from 'axios'
+import axios from 'axios'
 
 export default {
   props: ['standings', 'matchSchedules'],
@@ -57,7 +57,8 @@ export default {
     }
 
     const setTeams = async () => {
-      axios.get('/api/team_filter')
+      axios
+        .get('/api/team_filter')
         .then((response) => {
           data.teams = response.data
         })
@@ -68,7 +69,7 @@ export default {
 
     onMounted(setTeams())
 
-    const gameCount = computed(() => data.teams.length * 2 )
+    const gameCount = computed(() => data.teams.length * 2)
 
     return {
       selectTeam,

@@ -1,45 +1,47 @@
 <template>
   <div class="container">
     <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
-    <table class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
+    <table
+      class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
       <thead>
         <tr>
           <th>順位</th>
           <th>チーム</th>
-          <th>
-            勝点<br />(勝ち点差)
-          </th>
+          <th>勝点<br />(勝ち点差)</th>
           <th>試合数<br />(残り試合数)</th>
           <th>次節以降の試合</th>
         </tr>
       </thead>
       <tbody>
         <FavoriteTeamTable
-            :standings="data.favoriteTeams"
-            :matchSchedules="data.favoriteMatchSchedules" />
+          :standings="data.favoriteTeams"
+          :matchSchedules="data.favoriteMatchSchedules" />
         <CompetitorTeamTable
           :standings="data.firstCompetitorTeams"
           :matchSchedules="data.firstCompetitorMatchSchedules"
-          :favoriteTeamPoints="data.favoriteTeamPoints"
-        />
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
         <CompetitorTeamTable
-            v-if="data.secoundCompetitorTeams"
-            :standings="data.secoundCompetitorTeams"
-            :matchSchedules="data.secoundCompetitorMatchSchedules"
-            :favoriteTeamPoints="data.favoriteTeamPoints" />
+          v-if="data.secoundCompetitorTeams"
+          :standings="data.secoundCompetitorTeams"
+          :matchSchedules="data.secoundCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
         <CompetitorTeamTable
-            v-if="data.thirdCompetitorTeams"
-            :standings="data.thirdCompetitorTeams"
-            :matchSchedules="data.thirdCompetitorMatchSchedules"
-            :favoriteTeamPoints="data.favoriteTeamPoints" />
+          v-if="data.thirdCompetitorTeams"
+          :standings="data.thirdCompetitorTeams"
+          :matchSchedules="data.thirdCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
       </tbody>
     </table>
     <br />
     <button class="button is-link is-rounded m-3 is-medium">
-      <router-link to="/leagues" class="has-text-white">応援しているチームを選び直す</router-link>
+      <router-link to="/leagues" class="has-text-white"
+        >応援しているチームを選び直す</router-link
+      >
     </button>
     <button class="button is-rounded m-3 is-medium has-text-black">
-      <router-link to="/competitors" class="has-text-black">ライバルチームを選び直す</router-link>
+      <router-link to="/competitors" class="has-text-black"
+        >ライバルチームを選び直す</router-link
+      >
     </button>
   </div>
 </template>
