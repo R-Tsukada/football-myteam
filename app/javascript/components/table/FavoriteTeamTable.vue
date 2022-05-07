@@ -12,12 +12,12 @@
           </div>
        </th>
       <th v-for="match in matchSchedules" :key="match.id">
-        <div class="match_schedules">
-          <div>
-            <img :src="match.competition_logo" class="image is-24x24" />
+        <div class="match_schedules has-text-centered">
+          <div class="p-1 mb-2 ml-2">
+            <img :src="match.competition_logo" class="image is-32x32 mt-1" />
             <p
-              class="has-text-white"
-              v-bind:class="
+                class="has-text-white mt-5"
+                v-bind:class="
                 data.isHome === match.home_and_away
                   ? 'has-background-success'
                   : 'has-background-danger'
@@ -25,9 +25,9 @@
               {{ match.home_and_away }}
             </p>
           </div>
-          <div>
+          <div class="p-2 mb-2">
             <p>{{ match.date }}</p>
-            <img :src="match.team_logo" class="image is-48x48" />
+            <img :src="match.team_logo" class="image is-64x64 mt-2 ml-2 pl-2" />
           </div>
         </div>
       </th>
@@ -58,11 +58,10 @@ export default {
       router.push({ name: 'show', params: { id: store.state.scheduleParams } })
     }
 
-    const setTeams = async (props) => {
+    const setTeams = async () => {
       axios.get('/api/team_filter')
         .then((response) => {
           data.teams = response.data
-          console.log(props)
         })
         .catch((error) => {
           console.log(error.message)
