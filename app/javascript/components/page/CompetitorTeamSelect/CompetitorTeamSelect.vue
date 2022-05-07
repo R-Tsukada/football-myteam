@@ -105,7 +105,7 @@
       <br />
       <button
         class="button is-rounded is-medium mt-2 ml-2"
-        v-if="this.$store.state.competitorTeamId.length >= 1">
+        v-if="data.competitors.length >= 1">
         <router-link to="/schedules"
           >ライバルチームの選択を終了する</router-link
         >
@@ -149,6 +149,17 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    }
+
+    const setCompetitors = async () => {
+      axios
+          .get('/api/competitors')
+          .then((response) => {
+            data.competitors = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
     }
 
     const toggleFollowAndUnfollowDisplay = (team) => {
@@ -249,7 +260,7 @@ export default {
       teamId.map((id) => store.commit('addCompetitor', id))
     }
 
-    onMounted(setTeam(), setFavorite())
+    onMounted(setTeam(), setFavorite(), setCompetitors())
 
     return {
       data,
