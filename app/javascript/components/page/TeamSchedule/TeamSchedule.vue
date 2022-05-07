@@ -48,8 +48,8 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import FavoriteTeamTable from '../table/FavoriteTeamTable.vue'
-import CompetitorTeamTable from '../table/CompetitorTeamTable.vue'
+import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
+import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
 
 export default {
   components: {
