@@ -15,7 +15,7 @@
         <div class="p-1 mb-2 ml-2">
           <img :src="match.competition_logo" class="image is-32x32 mt-1" />
           <p
-              class="has-text-white mt-5"
+              class="has-text-white mt-5 p-1"
               v-bind:class="
               data.isHome === match.home_and_away
                 ? 'has-background-success'
