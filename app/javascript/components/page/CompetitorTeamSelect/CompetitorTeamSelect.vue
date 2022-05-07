@@ -90,13 +90,14 @@
         </ul>
       </div>
       <br />
-      <button class="button mt-2 ml-2">
+      <button class="button is-rounded is-medium mt-2 ml-2">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
-      <button class="button mt-2 ml-2" v-if="this.$store.state.competitorTeamId.length >= 1">
-        <router-link to="/schedules">チームの選択を終了する</router-link>
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">ライバルチームの選択方法を選び直す</button>
+      <br />
+      <button class="button is-rounded is-medium mt-2 ml-2" v-if="this.$store.state.competitorTeamId.length >= 1">
+        <router-link to="/schedules">ライバルチームの選択を終了する</router-link>
       </button>
-      <button class="button mt-2 ml-2" @click="again">もう一度選び直す</button>
     </div>
   </div>
 </template>
