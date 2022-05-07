@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <table class="table is-stripe  is-hoverable is-clickable">
+    <table class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
       <thead>
         <tr>
-          <th><abbr title="Position">順位</abbr></th>
-          <th><abbr title="Team">チーム</abbr></th>
+          <th>順位</th>
+          <th>チーム</th>
           <th>
-            <abbr title="Points">勝点<br />(勝ち点差)</abbr>
+            勝点<br />(勝ち点差)
           </th>
-          <th><abbr title="Played">試合数<br />(残り試合数)</abbr></th>
+          <th>試合数<br />(残り試合数)</th>
           <th>次節以降の試合</th>
         </tr>
       </thead>
