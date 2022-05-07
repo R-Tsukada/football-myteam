@@ -40,7 +40,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="data.isShowing">
+    <div v-if="data.isChangeColorTeam">
       <button class="button mt-5" @click="addFavoriteTeam">
         <router-link to="/competitors"
           >応援しているチームを決定する</router-link
@@ -53,7 +53,6 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import { useStore } from 'vuex'
 
 export default {
   setup() {
@@ -64,8 +63,6 @@ export default {
       isChangeColorLeague: '',
       isChangeColorTeam: ''
     })
-
-    const store = useStore()
 
     const setLeague = async () => {
       axios.get('/api/leagues').then((response) => {
@@ -92,27 +89,24 @@ export default {
 
     const addFavoriteTeam = async () => {
       axios.post('api/favorites', {
-        id: store.state.favoriteTeamId
+        id: data.isChangeColorTeam
       })
     }
 
     const selectLeague = (league) => {
-      store.commit('addLeague', league.id)
       data.isChangeColorLeague === league.id
         ? (data.isChangeColorLeague = '')
         : (data.isChangeColorLeague = league.id)
     }
 
     const teamFilter = computed(() => {
-      const number = store.state.favoriteLeagueId
+      const number = data.isChangeColorLeague
       return data.teams.filter(function (value) {
         return value.league_id === number
       })
     })
 
     const selectTeam = (team) => {
-      store.commit('increment', team.id)
-      data.isShowing = true
       data.isChangeColorTeam === team.id
         ? (data.isChangeColorTeam = '')
         : (data.isChangeColorTeam = team.id)
@@ -126,7 +120,6 @@ export default {
       teamFilter,
       selectTeam,
       addFavoriteTeam,
-      increment: () => store.commit('increment')
     }
   }
 }
