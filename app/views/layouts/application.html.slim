@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
+    header.mb-6
       .navbar.is-link.is-transparent.is-fixed-top.p-2
         .navbar-brand
           .navbar-item
@@ -31,7 +31,7 @@ html
       .alert.is-size-4.p-5.has-text-centered.has-text-danger
         = alert
     = yield
-    .footer.navbar.has-background-link.has-text-centered.p-3.mt-6
+    .footer.navbar.has-background-link.has-text-centered.p-4.mt-6
       .hero-body
         .container.has-text-centered
           .columns
