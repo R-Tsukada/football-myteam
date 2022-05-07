@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <table class="table is-striped">
+    <table class="table is-stripe  is-hoverable is-clickable">
       <thead>
         <tr>
           <th><abbr title="Position">順位</abbr></th>
@@ -140,8 +140,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'bulma/bulma.sass';
-
 .container {
   text-align: center;
 }
