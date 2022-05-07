@@ -1,5 +1,9 @@
 <template>
   <div class="has-text-centered pt-5">
+    <div class="notification is-danger is-size-4" v-show="data.isSelected">
+      <button class="delete" @click="deleteMessage"></button>
+      ライバルチームの選択方法を最低でも一つ選んでください
+    </div>
     <div v-show="data.isShowing">
       <div class="container is-widescreen">
         <div class="notification is-light">
@@ -122,7 +126,8 @@ export default {
       selectedTeams: [],
       isShowing: true,
       isAdding: false,
-      isFreeSelect: false
+      isFreeSelect: false,
+      isSelected: false
     })
 
     const store = useStore()
@@ -182,12 +187,13 @@ export default {
     }
 
     const autoSelect = () => {
-      data.isShowing = false
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
           (teams) => teams.home_city === data.favorite.team.home_city
         )
+        data.isShowing = false
         data.isAdding = true
+        data.isSelected = false
       } else if (data.checkedName === 'rank') {
         data.selectedTeams = data.teams.filter(
           (teams) =>
@@ -195,10 +201,20 @@ export default {
               data.favorite.team.last_season_rank - 1 ||
             teams.last_season_rank === data.favorite.team.last_season_rank + 1
         )
+        data.isShowing = false
         data.isAdding = true
+        data.isSelected = false
+      } else if (data.checkedName === ''){
+        data.isSelected = true
       } else {
+        data.isShowing = false
         data.isFreeSelect = true
+        data.isSelected = false
       }
+    }
+
+    const deleteMessage = () => {
+      data.isSelected = false
     }
 
     const again = () => {
@@ -236,7 +252,8 @@ export default {
       autoSelect,
       selectTeam,
       again,
-      addCompetitorFollow
+      addCompetitorFollow,
+      deleteMessage
     }
   }
 }
