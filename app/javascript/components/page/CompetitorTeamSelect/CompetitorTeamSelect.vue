@@ -40,10 +40,10 @@
           </div>
         </div>
       </div>
-      <button class="button mt-4 ml-3" @click="selectTeam">
+      <button class="button is-rounded is-medium mt-4 ml-3" @click="selectTeam">
         チームの選択方法を決定する
       </button>
-      <button class="button mt-4 ml-3">
+      <button class="button is-rounded is-medium mt-4 ml-3">
         <router-link to="/leagues">応援しているチームを選び直す</router-link>
       </button>
     </div>
@@ -65,14 +65,14 @@
         </ul>
       </div>
       <br />
-      <button class="button mt-2 ml-3">
-        <router-link to="/">応援しているチームを選び直す</router-link>
-      </button>
-      <button class="button mt-2 ml-2" @click="addCompetitorFollow">
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="addCompetitorFollow">
         <router-link to="/schedules">上記のチームを登録する</router-link>
       </button>
-      <button class="button mt-2 ml-2" @click="again">
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
         チームの選び方を変更する
+      </button>
+      <button class="button is-rounded is-medium mt-2 ml-3">
+        <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isFreeSelect">
