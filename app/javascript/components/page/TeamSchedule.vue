@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <table class="table">
+    <table class="table is-striped">
       <thead>
         <tr>
           <th><abbr title="Position">順位</abbr></th>
@@ -9,27 +9,29 @@
             <abbr title="Points">勝点<br />(勝ち点差)</abbr>
           </th>
           <th><abbr title="Played">試合数<br />(残り試合数)</abbr></th>
-          <th><abbr title="Shedule">次節以降の試合</abbr></th>
+          <th>次節以降の試合</th>
         </tr>
       </thead>
-      <FavoriteTeamTable
-        :standings="data.favoriteTeams"
-        :matchSchedules="data.favoriteMatchSchedules" />
-      <CompetitorTeamTable
-        :standings="data.firstCompetitorTeams"
-        :matchSchedules="data.firstCompetitorMatchSchedules"
-        :favoriteTeamPoints="data.favoriteTeamPoints"
-      />
-      <CompetitorTeamTable
-        v-if="data.secoundCompetitorTeams"
-        :standings="data.secoundCompetitorTeams"
-        :matchSchedules="data.secoundCompetitorMatchSchedules"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <CompetitorTeamTable
-        v-if="data.thirdCompetitorTeams"
-        :standings="data.thirdCompetitorTeams"
-        :matchSchedules="data.thirdCompetitorMatchSchedules"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
+      <tbody>
+        <FavoriteTeamTable
+            :standings="data.favoriteTeams"
+            :matchSchedules="data.favoriteMatchSchedules" />
+        <CompetitorTeamTable
+          :standings="data.firstCompetitorTeams"
+          :matchSchedules="data.firstCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints"
+        />
+        <CompetitorTeamTable
+            v-if="data.secoundCompetitorTeams"
+            :standings="data.secoundCompetitorTeams"
+            :matchSchedules="data.secoundCompetitorMatchSchedules"
+            :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <CompetitorTeamTable
+            v-if="data.thirdCompetitorTeams"
+            :standings="data.thirdCompetitorTeams"
+            :matchSchedules="data.thirdCompetitorMatchSchedules"
+            :favoriteTeamPoints="data.favoriteTeamPoints" />
+      </tbody>
     </table>
     <br />
     <button class="button is-link is-rounded m-3 is-medium">
