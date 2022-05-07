@@ -2,7 +2,13 @@
   <tr class="team_standing" @click="selectTeam(standings)">
     <td>{{ standings.rank }}</td>
     <td><img :src="standings.team_logo" /></td>
-    <td>{{ standings.points }}</td>
+    <td>
+      {{ standings.points }}
+      <br />
+      <div class="has-text-grey-light">
+        ({{ standings.points - favoriteTeamPoints }})
+      </div>
+    </td>
     <td>
       {{ standings.played }}
       <br />
@@ -40,7 +46,7 @@ import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
 
 export default {
-  props: ['standings', 'matchSchedules'],
+  props: ['standings', 'matchSchedules', 'favoriteTeamPoints'],
   setup() {
     const router = useRouter()
 

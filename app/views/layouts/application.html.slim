@@ -9,8 +9,8 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header.p-6
-      .navbar.is-link.is-transparent.is-fixed-top.p-5
+    header.mb-6
+      .navbar.is-link.is-transparent.is-fixed-top.p-2
         .navbar-brand
           .navbar-item
             .title
@@ -19,11 +19,11 @@ html
           .navbar-end
             .navbar-item
               - if user_signed_in?
-                  = link_to 'プロフィール変更', edit_user_registration_path, class: 'has-text-white mx-2'
-                  = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'has-text-white mx-2'
+                = link_to 'プロフィール変更', edit_user_registration_path, class: 'has-text-white mx-2'
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'has-text-white mx-2'
               - else
-                  = link_to 'アカウントを作成', new_user_registration_path, class: 'has-text-white mx-2'
-                  = link_to 'ログイン', new_user_session_path, class: 'has-text-white mx-2'
+                = link_to 'アカウントを作成', new_user_registration_path, class: 'has-text-white mx-2'
+                = link_to 'ログイン', new_user_session_path, class: 'has-text-white mx-2'
     p
       .notice.is-size-5.p-3.has-text-success
         = notice
@@ -31,17 +31,15 @@ html
       .alert.is-size-4.p-5.has-text-centered.has-text-danger
         = alert
     = yield
-    .footer.has-background-link.mt-6.has-text-centered
-      .content-has-text-centered
-        nav.level
-          .level-item.has-text-centered
-            p.has-text-white
+    .footer.navbar.has-background-link.has-text-centered.p-4.mt-6
+      .hero-body
+        .container.has-text-centered
+          .columns
+            .column.p.is-one-third
               = link_to '利用規約', terms_of_service_path, class: 'has-text-white'
-          .level-item.has-text-centered
-            p
+            .column.p.is-one-third
               = link_to 'プライバシポリシー', privacy_policy_path, class: 'has-text-white'
-          .level-item.has-text-centered
-            p
+            .column.p.is-one-third
               = link_to 'GitHub Project', 'https://github.com/R-Tsukada/football-calendar', class: 'has-text-white'
-      .has-text-centered.mt-6
-        = link_to '@ryo0270590', 'https://twitter.com/ryo02730590', class: 'has-text-white'
+        .content.has-text-centered.mt-5
+          = link_to '@ryo0270590', 'https://twitter.com/ryo02730590', class: 'has-text-white'

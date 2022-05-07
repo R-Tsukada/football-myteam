@@ -1,39 +1,47 @@
 <template>
-  <div class="container pt-5">
-    <table class="table">
+  <div class="container">
+    <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
+    <table
+      class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
       <thead>
         <tr>
-          <th><abbr title="Position">順位</abbr></th>
-          <th><abbr title="Team">チーム</abbr></th>
-          <th>
-            <abbr title="Points">勝点<br />(勝ち点差)</abbr>
-          </th>
-          <th><abbr title="Played">試合数</abbr></th>
-          <th><abbr title="Shedule">次節以降の試合</abbr></th>
+          <th>順位</th>
+          <th>チーム</th>
+          <th>勝点<br />(勝ち点差)</th>
+          <th>試合数<br />(残り試合数)</th>
+          <th>次節以降の試合</th>
         </tr>
       </thead>
-      <FavoriteTeamTable
-        :standings="data.favoriteTeams"
-        :matchSchedules="data.favoriteMatchSchedules" />
-      <FavoriteTeamTable
-        :standings="data.firstCompetitorTeams"
-        :matchSchedules="data.firstCompetitorMatchSchedules" />
-      <FavoriteTeamTable
-        v-if="data.secoundCompetitorTeams"
-        :standings="data.secoundCompetitorTeams"
-        :matchSchedules="data.secoundCompetitorMatchSchedules" />
-      <FavoriteTeamTable
-        v-if="data.thirdCompetitorTeams"
-        :standings="data.thirdCompetitorTeams"
-        :matchSchedules="data.thirdCompetitorMatchSchedules" />
+      <tbody>
+        <FavoriteTeamTable
+          :standings="data.favoriteTeams"
+          :matchSchedules="data.favoriteMatchSchedules" />
+        <CompetitorTeamTable
+          :standings="data.firstCompetitorTeams"
+          :matchSchedules="data.firstCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <CompetitorTeamTable
+          v-if="data.secoundCompetitorTeams"
+          :standings="data.secoundCompetitorTeams"
+          :matchSchedules="data.secoundCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <CompetitorTeamTable
+          v-if="data.thirdCompetitorTeams"
+          :standings="data.thirdCompetitorTeams"
+          :matchSchedules="data.thirdCompetitorMatchSchedules"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+      </tbody>
     </table>
     <br />
-    <button class="button">
-      <router-link to="/">応援しているチームを選び直す</router-link>
+    <button class="button is-link is-rounded m-3 is-medium">
+      <router-link to="/leagues" class="has-text-white"
+        >応援しているチームを選び直す</router-link
+      >
     </button>
-    <br />
-    <button class="button">
-      <router-link to="/competitors">ライバルチームを選び直す</router-link>
+    <button class="button is-rounded m-3 is-medium has-text-black">
+      <router-link to="/competitors" class="has-text-black"
+        >ライバルチームを選び直す</router-link
+      >
     </button>
   </div>
 </template>
@@ -41,14 +49,17 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import FavoriteTeamTable from '../table/FavoriteTeamTable.vue'
+import CompetitorTeamTable from '../table/CompetitorTeamTable.vue'
 
 export default {
   components: {
-    FavoriteTeamTable
+    FavoriteTeamTable,
+    CompetitorTeamTable
   },
   setup() {
     const data = reactive({
       favoriteTeams: [],
+      favoriteTeamPoints: '',
       firstCompetitorTeams: [],
       secoundCompetitorTeams: [],
       thirdCompetitorTeams: [],
@@ -63,6 +74,7 @@ export default {
         .get('/api/standings')
         .then((response) => {
           data.favoriteTeams = response.data[0]
+          data.favoriteTeamPoints = data.favoriteTeams.points
           data.firstCompetitorTeams = response.data[1]
           data.secoundCompetitorTeams = response.data[2]
           data.thirdCompetitorTeams = response.data[3]
@@ -131,8 +143,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'bulma/bulma.sass';
-
 .container {
   text-align: center;
 }
