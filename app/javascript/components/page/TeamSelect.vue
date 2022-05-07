@@ -79,6 +79,17 @@ export default {
       })
     }
 
+    const setFavorite = async () => {
+      axios.get('/api/favorites')
+          .then((response) => {
+            data.isChangeColorTeam = response.data.team['id']
+            data.isChangeColorLeague = response.data.team['league_id']
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
+    }
+
     const addFavoriteTeam = async () => {
       axios.post('api/favorites', {
         id: store.state.favoriteTeamId
@@ -107,7 +118,7 @@ export default {
         : (data.isChangeColorTeam = team.id)
     }
 
-    onMounted(setLeague(), setTeam())
+    onMounted(setLeague(), setTeam(), setFavorite())
 
     return {
       data,
