@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
     <table class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
       <thead>
         <tr>
