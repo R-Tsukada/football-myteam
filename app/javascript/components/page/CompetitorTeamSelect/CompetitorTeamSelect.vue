@@ -1,5 +1,9 @@
 <template>
   <div class="has-text-centered pt-5">
+    <div class="notification is-danger is-size-4" v-show="data.isSelected">
+      <button class="delete" @click="deleteMessage"></button>
+      ライバルチームの選択方法を最低でも一つ選んでください
+    </div>
     <div v-show="data.isShowing">
       <div class="container is-widescreen">
         <div class="notification is-light">
@@ -40,10 +44,10 @@
           </div>
         </div>
       </div>
-      <button class="button mt-4 ml-3" @click="selectTeam">
+      <button class="button is-rounded is-medium mt-4 ml-3" @click="selectTeam">
         チームの選択方法を決定する
       </button>
-      <button class="button mt-4 ml-3">
+      <button class="button is-rounded is-medium mt-4 ml-3">
         <router-link to="/leagues">応援しているチームを選び直す</router-link>
       </button>
     </div>
@@ -65,14 +69,16 @@
         </ul>
       </div>
       <br />
-      <button class="button mt-2 ml-3">
-        <router-link to="/">応援しているチームを選び直す</router-link>
-      </button>
-      <button class="button mt-2 ml-2" @click="addCompetitorFollow">
+      <button
+        class="button is-rounded is-medium mt-2 ml-2"
+        @click="addCompetitorFollow">
         <router-link to="/schedules">上記のチームを登録する</router-link>
       </button>
-      <button class="button mt-2 ml-2" @click="again">
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
         チームの選び方を変更する
+      </button>
+      <button class="button is-rounded is-medium mt-2 ml-3">
+        <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isFreeSelect">
@@ -90,13 +96,20 @@
         </ul>
       </div>
       <br />
-      <button class="button mt-2 ml-2">
+      <button class="button is-rounded is-medium mt-2 ml-2">
         <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
-      <button class="button mt-2 ml-2">
-        <router-link to="/schedules">チームの選択を終了する</router-link>
+      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
+        ライバルチームの選択方法を選び直す
       </button>
-      <button class="button mt-2 ml-2" @click="again">もう一度選び直す</button>
+      <br />
+      <button
+        class="button is-rounded is-medium mt-2 ml-2"
+        v-if="this.$store.state.competitorTeamId.length >= 1">
+        <router-link to="/schedules"
+          >ライバルチームの選択を終了する</router-link
+        >
+      </button>
     </div>
   </div>
 </template>
@@ -105,8 +118,8 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import CompetitorValidation from '../modal/CompetitorValidation.vue'
-import CompetitorTeamSelect from '../modal/CompetitorTeamCount.vue'
+import CompetitorValidation from '../../modal/CompetitorValidation.vue'
+import CompetitorTeamSelect from '../../modal/CompetitorTeamCount.vue'
 export default {
   components: {
     CompetitorValidation,
@@ -121,7 +134,8 @@ export default {
       selectedTeams: [],
       isShowing: true,
       isAdding: false,
-      isFreeSelect: false
+      isFreeSelect: false,
+      isSelected: false
     })
 
     const store = useStore()
@@ -181,12 +195,13 @@ export default {
     }
 
     const autoSelect = () => {
-      data.isShowing = false
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
           (teams) => teams.home_city === data.favorite.team.home_city
         )
+        data.isShowing = false
         data.isAdding = true
+        data.isSelected = false
       } else if (data.checkedName === 'rank') {
         data.selectedTeams = data.teams.filter(
           (teams) =>
@@ -194,10 +209,20 @@ export default {
               data.favorite.team.last_season_rank - 1 ||
             teams.last_season_rank === data.favorite.team.last_season_rank + 1
         )
+        data.isShowing = false
         data.isAdding = true
+        data.isSelected = false
+      } else if (data.checkedName === '') {
+        data.isSelected = true
       } else {
+        data.isShowing = false
         data.isFreeSelect = true
+        data.isSelected = false
       }
+    }
+
+    const deleteMessage = () => {
+      data.isSelected = false
     }
 
     const again = () => {
@@ -235,7 +260,8 @@ export default {
       autoSelect,
       selectTeam,
       again,
-      addCompetitorFollow
+      addCompetitorFollow,
+      deleteMessage
     }
   }
 }

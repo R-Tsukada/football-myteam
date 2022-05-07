@@ -32,8 +32,8 @@
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
-import MatchScheduleList from '../list/MatchScheduleList.vue'
-import MatchResultList from '../list/MatchResultList.vue'
+import MatchScheduleList from '../../list/MatchScheduleList.vue'
+import MatchResultList from '../../list/MatchResultList.vue'
 
 export default {
   components: {
