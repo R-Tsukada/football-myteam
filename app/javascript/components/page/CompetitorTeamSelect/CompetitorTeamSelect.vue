@@ -113,7 +113,8 @@
       <br />
       <button
         class="button is-rounded is-medium mt-2 ml-2"
-        v-if="data.competitors.length >= 1">
+        v-if="data.competitors.length >= 1"
+      >
         <router-link to="/schedules"
           >ライバルチームの選択を終了する</router-link
         >
@@ -171,60 +172,32 @@ export default {
           })
     }
 
-    const followTeam = (team) => {
-      data.competitors.some(competitor => competitor.team_id === team.id)
-          ? data.competitors = data.competitors.filter(competitor => competitor.team_id !== team.id)
-          : data.competitors.push({team_id: team.id})
-    }
-
-    const toggleFollowAndUnfollow = (team) => {
-      if (data.competitors.some(competitor => competitor.team_id === team.id)) {
-        axios
-          .post('/api/competitors', {
-            id: team.id
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      } else if (data.competitors.length >= 3) {
-        data.isShowingMessage = false
-      } else {
-        store.commit('addCompetitor', team.id)
-        axios
-          .post('/api/competitors', {
-            id: team.id
+    const setFavorite = async () => {
+      axios
+          .get('/api/favorites')
+          .then((response) => {
+            data.favorite = response.data
           })
           .catch(function (error) {
             console.log(error)
           })
-      }
     }
 
-    const setFavorite = async () => {
-      axios
-        .get('/api/favorites')
-        .then((response) => {
-          data.favorite = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    }
-
+    // 自動登録の処理
     const autoSelect = () => {
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
-          (teams) => teams.home_city === data.favorite.team.home_city
+            (teams) => teams.home_city === data.favorite.team.home_city
         )
         data.isShowing = false
         data.isAdding = true
         data.isSelected = false
       } else if (data.checkedName === 'rank') {
         data.selectedTeams = data.teams.filter(
-          (teams) =>
-            teams.last_season_rank ===
-              data.favorite.team.last_season_rank - 1 ||
-            teams.last_season_rank === data.favorite.team.last_season_rank + 1
+            (teams) =>
+                teams.last_season_rank ===
+                data.favorite.team.last_season_rank - 1 ||
+                teams.last_season_rank === data.favorite.team.last_season_rank + 1
         )
         data.isShowing = false
         data.isAdding = true
@@ -255,22 +228,40 @@ export default {
     const addCompetitorFollow = () => {
       const teamId = data.selectedTeams.slice(0, 3).map((team) => team.id)
       teamId.forEach((id) =>
-        axios
-          .post('/api/competitors', {
-            id: id
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
+          axios
+              .post('/api/competitors', {
+                id: id
+              })
+              .catch(function (error) {
+                console.log(error)
+              })
       )
       teamId.map((id) => store.commit('addCompetitor', id))
+    }
+
+    // 自分でチームを選択する
+    const followTeam = (team) => {
+      selectCompetitorTeams(team.id)
+      data.competitors.some(competitor => competitor.team_id === team.id)
+          ? data.competitors = data.competitors.filter(competitor => competitor.team_id !== team.id)
+          : data.competitors.push({team_id: team.id})
+    }
+
+    const selectCompetitorTeams = (team_id) => {
+      axios
+          .post('/api/competitors', {
+            id: team_id
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     onMounted(setTeam(), setFavorite(), setCompetitors())
 
     return {
       data,
-      toggleFollowAndUnfollow,
+      selectCompetitorTeams,
       addCompetitor: () => store.commit('addCompetitor'),
       deleteCompetitor: () => store.commit('deleteCompetitor'),
       autoSelect,
