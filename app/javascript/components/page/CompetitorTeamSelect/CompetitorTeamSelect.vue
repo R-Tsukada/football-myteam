@@ -86,12 +86,18 @@
       <CompetitorValidation v-else />
       <div class="container">
         <ul v-for="team in data.teams" :key="team.id">
-          <li class="mt-5 mx-6 p-2 has-text-centered">
+          <li
+              class="mt-5 mx-6 p-2 has-text-centered"
+              v-bind:class="{'has-background-link-light' : data.competitors.some(competitor => competitor.team_id === team.id ) }"
+              @click="followTeam(team)"
+          >
             <img :src="team.logo" class="image is-128x128" />
-            <p class="has-text-weight-semibold">{{ team.name }}</p>
-            <button class="button mt-2" @click="toggleFollowAndUnfollow(team)">
-              {{ toggleFollowAndUnfollowDisplay(team) }}
-            </button>
+            <p class="has-text-weight-semibold"
+               v-bind:class="{
+              'has-text-weight-bold has-text-danger':
+                data.competitors.some(competitor => competitor.team_id === team.id )
+            }">
+              {{ team.name }}</p>
           </li>
         </ul>
       </div>
@@ -162,12 +168,10 @@ export default {
           })
     }
 
-    const toggleFollowAndUnfollowDisplay = (team) => {
-      if (store.state.competitorTeamId.includes(team.id)) {
-        return '解除する'
-      } else {
-        return 'フォローする'
-      }
+    const followTeam = (team) => {
+      data.competitors.some(competitor => competitor.team_id === team.id)
+          ? data.competitors = data.competitors.filter(competitor => competitor.team_id !== team.id)
+          : data.competitors.push({team_id: team.id})
     }
 
     const toggleFollowAndUnfollow = (team) => {
@@ -265,14 +269,14 @@ export default {
     return {
       data,
       toggleFollowAndUnfollow,
-      toggleFollowAndUnfollowDisplay,
       addCompetitor: () => store.commit('addCompetitor'),
       deleteCompetitor: () => store.commit('deleteCompetitor'),
       autoSelect,
       selectTeam,
       again,
       addCompetitorFollow,
-      deleteMessage
+      deleteMessage,
+      followTeam
     }
   }
 }
