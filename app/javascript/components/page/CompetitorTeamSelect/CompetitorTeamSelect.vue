@@ -82,7 +82,9 @@
       </button>
     </div>
     <div v-show="data.isFreeSelect">
-      <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
+      <CompetitorTeamCount
+          :competitors="data.competitors"
+          v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
       <div class="container">
         <ul v-for="team in data.teams" :key="team.id">
@@ -125,11 +127,11 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
-import CompetitorTeamSelect from '../../modal/CompetitorTeamCount.vue'
+import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 export default {
   components: {
     CompetitorValidation,
-    CompetitorTeamSelect
+    CompetitorTeamCount
   },
   setup() {
     const data = reactive({
@@ -141,7 +143,8 @@ export default {
       isShowing: true,
       isAdding: false,
       isFreeSelect: false,
-      isSelected: false
+      isSelected: false,
+      isShowingMessage: true
     })
 
     const store = useStore()
@@ -175,7 +178,7 @@ export default {
     }
 
     const toggleFollowAndUnfollow = (team) => {
-      if (store.state.competitorTeamId.includes(team.id)) {
+      if (data.competitors.some(competitor => competitor.team_id === team.id)) {
         axios
           .post('/api/competitors', {
             id: team.id
@@ -183,9 +186,8 @@ export default {
           .catch((error) => {
             console.log(error)
           })
-        store.commit('deleteCompetitor', team.id)
-      } else if (store.state.competitorTeamId.length >= 3) {
-        store.commit('closeMessage')
+      } else if (data.competitors.length >= 3) {
+        data.isShowingMessage = false
       } else {
         store.commit('addCompetitor', team.id)
         axios
