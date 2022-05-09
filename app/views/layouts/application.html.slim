@@ -10,7 +10,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header.mb-6
-      .navbar.is-link.is-transparent.is-fixed-top.p-2
+      .navbar.is-transparent.is-fixed-top.p-2(style='background-color: #6246ea')
         .navbar-brand
           .navbar-item
             .title
@@ -32,7 +32,7 @@ html
       .alert.is-size-4.p-5.has-text-centered.has-text-danger
         = alert
     = yield
-    .footer.navbar.has-background-link.has-text-centered.p-4.mt-6
+    .footer.navbar.has-text-centered.p-4.mt-6(style='background-color: #6246ea')
       .hero-body
         .container.has-text-centered
           .columns
