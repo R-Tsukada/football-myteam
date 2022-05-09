@@ -1,13 +1,15 @@
 <template>
   <div class="has-text-centered">
     <div v-if="data.isChangeColorTeam.length === 0">
-      <p class="is-size-4 has-text-weight-bold mt-5">あなたが応援しているチームを選びます。そのあとに同じリーグの中からライバルチームを選びます。</p>
-      <p class="is-size-4 has-text-weight-bold my-5">まずは応援しているチームが所属しているチームを選んでください</p>
+      <p class="is-size-4 has-text-weight-bold mt-5">
+        あなたが応援しているチームを選びます。そのあとに同じリーグの中からライバルチームを選びます。
+      </p>
+      <p class="is-size-4 has-text-weight-bold my-5">
+        まずは応援しているチームが所属しているチームを選んでください
+      </p>
     </div>
     <div v-else class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
-        <router-link to="/competitors">
-          ライバルチームのみ変更する
-        </router-link>
+      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
     <div class="container">
       <ul v-for="league in data.leagues" :key="league.id">
@@ -50,7 +52,9 @@
       </ul>
     </div>
     <div v-if="data.isChangeColorTeam">
-      <button class="button is-link is-rounded m-3 is-medium mt-5" @click="addFavoriteTeam">
+      <button
+        class="button is-link is-rounded m-3 is-medium mt-5"
+        @click="addFavoriteTeam">
         <router-link to="/competitors" class="has-text-white"
           >応援しているチームを決定する</router-link
         >
