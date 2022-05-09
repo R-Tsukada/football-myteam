@@ -82,16 +82,30 @@
       </button>
     </div>
     <div v-show="data.isFreeSelect">
-      <CompetitorTeamSelect v-if="this.$store.state.isShowingMessage" />
+      <CompetitorTeamCount
+        :competitors="data.competitors"
+        v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
       <div class="container">
         <ul v-for="team in data.teams" :key="team.id">
-          <li class="mt-5 mx-6 p-2 has-text-centered">
+          <li
+            class="mt-5 mx-6 p-2 has-text-centered"
+            v-bind:class="{
+              'has-background-link-light': data.competitors.some(
+                (competitor) => competitor.team_id === team.id
+              )
+            }"
+            @click="followTeam(team)">
             <img :src="team.logo" class="image is-128x128" />
-            <p class="has-text-weight-semibold">{{ team.name }}</p>
-            <button class="button mt-2" @click="toggleFollowAndUnfollow(team)">
-              {{ toggleFollowAndUnfollowDisplay(team) }}
-            </button>
+            <p
+              class="has-text-weight-semibold"
+              v-bind:class="{
+                'has-text-weight-bold has-text-danger': data.competitors.some(
+                  (competitor) => competitor.team_id === team.id
+                )
+              }">
+              {{ team.name }}
+            </p>
           </li>
         </ul>
       </div>
@@ -105,7 +119,7 @@
       <br />
       <button
         class="button is-rounded is-medium mt-2 ml-2"
-        v-if="this.$store.state.competitorTeamId.length >= 1">
+        v-if="data.competitors.length >= 1">
         <router-link to="/schedules"
           >ライバルチームの選択を終了する</router-link
         >
@@ -119,11 +133,11 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
-import CompetitorTeamSelect from '../../modal/CompetitorTeamCount.vue'
+import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 export default {
   components: {
     CompetitorValidation,
-    CompetitorTeamSelect
+    CompetitorTeamCount
   },
   setup() {
     const data = reactive({
@@ -135,7 +149,8 @@ export default {
       isShowing: true,
       isAdding: false,
       isFreeSelect: false,
-      isSelected: false
+      isSelected: false,
+      isShowingMessage: true
     })
 
     const store = useStore()
@@ -151,36 +166,15 @@ export default {
         })
     }
 
-    const toggleFollowAndUnfollowDisplay = (team) => {
-      if (store.state.competitorTeamId.includes(team.id)) {
-        return '解除する'
-      } else {
-        return 'フォローする'
-      }
-    }
-
-    const toggleFollowAndUnfollow = (team) => {
-      if (store.state.competitorTeamId.includes(team.id)) {
-        axios
-          .post('/api/competitors', {
-            id: team.id
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-        store.commit('deleteCompetitor', team.id)
-      } else if (store.state.competitorTeamId.length >= 3) {
-        store.commit('closeMessage')
-      } else {
-        store.commit('addCompetitor', team.id)
-        axios
-          .post('/api/competitors', {
-            id: team.id
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
+    const setCompetitors = async () => {
+      axios
+        .get('/api/competitors')
+        .then((response) => {
+          data.competitors = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
 
     const setFavorite = async () => {
@@ -194,6 +188,7 @@ export default {
         })
     }
 
+    // 自動登録の処理
     const autoSelect = () => {
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
@@ -249,19 +244,39 @@ export default {
       teamId.map((id) => store.commit('addCompetitor', id))
     }
 
-    onMounted(setTeam(), setFavorite())
+    // 自分でチームを選択する
+    const followTeam = (team) => {
+      selectCompetitorTeams(team.id)
+      data.competitors.some((competitor) => competitor.team_id === team.id)
+        ? (data.competitors = data.competitors.filter(
+            (competitor) => competitor.team_id !== team.id
+          ))
+        : data.competitors.push({ team_id: team.id })
+    }
+
+    const selectCompetitorTeams = (team_id) => {
+      axios
+        .post('/api/competitors', {
+          id: team_id
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    onMounted(setTeam(), setFavorite(), setCompetitors())
 
     return {
       data,
-      toggleFollowAndUnfollow,
-      toggleFollowAndUnfollowDisplay,
+      selectCompetitorTeams,
       addCompetitor: () => store.commit('addCompetitor'),
       deleteCompetitor: () => store.commit('deleteCompetitor'),
       autoSelect,
       selectTeam,
       again,
       addCompetitorFollow,
-      deleteMessage
+      deleteMessage,
+      followTeam
     }
   }
 }
