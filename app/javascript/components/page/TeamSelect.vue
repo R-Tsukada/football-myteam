@@ -77,14 +77,15 @@ export default {
     }
 
     const setFavorite = async () => {
-      axios.get('/api/favorites')
-          .then((response) => {
-            data.isChangeColorTeam = response.data.team['id']
-            data.isChangeColorLeague = response.data.team['league_id']
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      axios
+        .get('/api/favorites')
+        .then((response) => {
+          data.isChangeColorTeam = response.data.team['id']
+          data.isChangeColorLeague = response.data.team['league_id']
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const addFavoriteTeam = async () => {
@@ -112,7 +113,7 @@ export default {
         : (data.isChangeColorTeam = team.id)
     }
 
-    onMounted(setLeague(), setTeam(), setFavorite())
+    onMounted(setLeague(), setTeam())
 
     return {
       data,
@@ -120,6 +121,7 @@ export default {
       teamFilter,
       selectTeam,
       addFavoriteTeam,
+      setFavorite
     }
   }
 }

@@ -8,7 +8,7 @@ export const store = createStore({
   },
   mutations: {
     teamId(state, value) {
-     state.teamId = value
+      state.teamId = value
     }
   }
 })

@@ -83,23 +83,29 @@
     </div>
     <div v-show="data.isFreeSelect">
       <CompetitorTeamCount
-          :competitors="data.competitors"
-          v-if="data.isShowingMessage" />
+        :competitors="data.competitors"
+        v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
       <div class="container">
         <ul v-for="team in data.teams" :key="team.id">
           <li
-              class="mt-5 mx-6 p-2 has-text-centered"
-              v-bind:class="{'has-background-link-light' : data.competitors.some(competitor => competitor.team_id === team.id ) }"
-              @click="followTeam(team)"
-          >
+            class="mt-5 mx-6 p-2 has-text-centered"
+            v-bind:class="{
+              'has-background-link-light': data.competitors.some(
+                (competitor) => competitor.team_id === team.id
+              )
+            }"
+            @click="followTeam(team)">
             <img :src="team.logo" class="image is-128x128" />
-            <p class="has-text-weight-semibold"
-               v-bind:class="{
-              'has-text-weight-bold has-text-danger':
-                data.competitors.some(competitor => competitor.team_id === team.id )
-            }">
-              {{ team.name }}</p>
+            <p
+              class="has-text-weight-semibold"
+              v-bind:class="{
+                'has-text-weight-bold has-text-danger': data.competitors.some(
+                  (competitor) => competitor.team_id === team.id
+                )
+              }">
+              {{ team.name }}
+            </p>
           </li>
         </ul>
       </div>
@@ -113,8 +119,7 @@
       <br />
       <button
         class="button is-rounded is-medium mt-2 ml-2"
-        v-if="data.competitors.length >= 1"
-      >
+        v-if="data.competitors.length >= 1">
         <router-link to="/schedules"
           >ライバルチームの選択を終了する</router-link
         >
@@ -163,41 +168,41 @@ export default {
 
     const setCompetitors = async () => {
       axios
-          .get('/api/competitors')
-          .then((response) => {
-            data.competitors = response.data
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
+        .get('/api/competitors')
+        .then((response) => {
+          data.competitors = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
 
     const setFavorite = async () => {
       axios
-          .get('/api/favorites')
-          .then((response) => {
-            data.favorite = response.data
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
+        .get('/api/favorites')
+        .then((response) => {
+          data.favorite = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
 
     // 自動登録の処理
     const autoSelect = () => {
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
-            (teams) => teams.home_city === data.favorite.team.home_city
+          (teams) => teams.home_city === data.favorite.team.home_city
         )
         data.isShowing = false
         data.isAdding = true
         data.isSelected = false
       } else if (data.checkedName === 'rank') {
         data.selectedTeams = data.teams.filter(
-            (teams) =>
-                teams.last_season_rank ===
-                data.favorite.team.last_season_rank - 1 ||
-                teams.last_season_rank === data.favorite.team.last_season_rank + 1
+          (teams) =>
+            teams.last_season_rank ===
+              data.favorite.team.last_season_rank - 1 ||
+            teams.last_season_rank === data.favorite.team.last_season_rank + 1
         )
         data.isShowing = false
         data.isAdding = true
@@ -228,13 +233,13 @@ export default {
     const addCompetitorFollow = () => {
       const teamId = data.selectedTeams.slice(0, 3).map((team) => team.id)
       teamId.forEach((id) =>
-          axios
-              .post('/api/competitors', {
-                id: id
-              })
-              .catch(function (error) {
-                console.log(error)
-              })
+        axios
+          .post('/api/competitors', {
+            id: id
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       )
       teamId.map((id) => store.commit('addCompetitor', id))
     }
@@ -242,19 +247,21 @@ export default {
     // 自分でチームを選択する
     const followTeam = (team) => {
       selectCompetitorTeams(team.id)
-      data.competitors.some(competitor => competitor.team_id === team.id)
-          ? data.competitors = data.competitors.filter(competitor => competitor.team_id !== team.id)
-          : data.competitors.push({team_id: team.id})
+      data.competitors.some((competitor) => competitor.team_id === team.id)
+        ? (data.competitors = data.competitors.filter(
+            (competitor) => competitor.team_id !== team.id
+          ))
+        : data.competitors.push({ team_id: team.id })
     }
 
     const selectCompetitorTeams = (team_id) => {
       axios
-          .post('/api/competitors', {
-            id: team_id
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+        .post('/api/competitors', {
+          id: team_id
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     onMounted(setTeam(), setFavorite(), setCompetitors())

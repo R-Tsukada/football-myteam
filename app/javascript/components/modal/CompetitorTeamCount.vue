@@ -1,8 +1,9 @@
 <template>
   <article
-      class="message is-info has-text-centered"
-      v-bind:class="{'message is-danger message is-danger' : competitors.length >= 4}"
-  >
+    class="message is-info has-text-centered"
+    v-bind:class="{
+      'message is-danger message is-danger': competitors.length >= 4
+    }">
     <div class="message-body">
       <p>{{ teamCountMessage() }}</p>
     </div>
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-  props:['competitors'],
+  props: ['competitors'],
   setup(props) {
     const teamCountMessage = () => {
       const competitorLength = props.competitors.length
