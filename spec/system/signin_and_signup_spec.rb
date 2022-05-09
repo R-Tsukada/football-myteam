@@ -50,6 +50,7 @@ RSpec.describe 'devise', type: :system, js: true do
     click_button 'アカウント登録'
 
     expect(page).to have_content 'アカウント登録が完了しました'
+    expect(page).not_to have_content 'ライバルチームのみを変更する'
   end
 
   it 'password validation enabled during account creation', js: true do

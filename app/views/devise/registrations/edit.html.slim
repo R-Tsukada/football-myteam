@@ -3,14 +3,14 @@
     = t('.edit')
   = form_with model: @user, url: user_registration_path, html: { method: :put } do |f|
     = render 'devise/shared/error_messages', resource: resource
-    .field.has-text-left.has-text-weight-semibold.my-4
-      = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        div
-          | Currently waiting confirmation for:
-          = resource.unconfirmed_email
     .container
+      .field.has-text-left.has-text-weight-semibold.my-4
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for:
+            = resource.unconfirmed_email
       .field
         .container.has-text-left.has-text-weight-semibold.my-4
           = f.label :current_password

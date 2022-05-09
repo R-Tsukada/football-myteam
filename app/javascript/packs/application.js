@@ -11,5 +11,5 @@ import 'channels'
 require('../main.js')
 
 Rails.start()
-Turbolinks.start()
+Turbolinks.load()
 ActiveStorage.start()
