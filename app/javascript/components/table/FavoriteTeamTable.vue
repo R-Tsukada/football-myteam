@@ -52,8 +52,8 @@ export default {
     })
 
     const selectTeam = (standings) => {
-      store.commit('addShedulesParams', standings.team_id)
-      router.push({ name: 'show', params: { id: store.state.scheduleParams } })
+      store.commit('teamId', standings.team_id)
+      router.push({ name: 'show', params: { id: store.state.teamId } })
     }
 
     const setTeams = async () => {
@@ -76,7 +76,7 @@ export default {
       setTeams,
       gameCount,
       data,
-      addShedulesParams: () => store.commit('addShedulesParams')
+      teamId: () => store.commit('teamId')
     }
   }
 }
