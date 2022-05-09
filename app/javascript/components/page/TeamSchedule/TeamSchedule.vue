@@ -33,16 +33,6 @@
       </tbody>
     </table>
     <br />
-    <button class="button is-link is-rounded m-3 is-medium">
-      <router-link to="/leagues" class="has-text-white"
-        >応援しているチームを選び直す</router-link
-      >
-    </button>
-    <button class="button is-rounded m-3 is-medium has-text-black">
-      <router-link to="/competitors" class="has-text-black"
-        >ライバルチームを選び直す</router-link
-      >
-    </button>
   </div>
 </template>
 <script>
