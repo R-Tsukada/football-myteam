@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
+    <content-loader v-if="!data.favoriteMatchSchedules.length"></content-loader>
     <table
+        v-else
       class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
       <thead>
         <tr>
@@ -40,11 +42,13 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
 import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
+import { ContentLoader } from 'vue-content-loader'
 
 export default {
   components: {
     FavoriteTeamTable,
-    CompetitorTeamTable
+    CompetitorTeamTable,
+    ContentLoader
   },
   setup() {
     const data = reactive({

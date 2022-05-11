@@ -10,7 +10,8 @@
         </li>
       </ul>
     </div>
-    <div class="tab-contents">
+    <content-loader v-if="!data.schedules.length"></content-loader>
+    <div class="tab-contents" v-else>
       <div
         class="content"
         v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
@@ -36,11 +37,13 @@ import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import MatchScheduleList from '../../list/MatchScheduleList.vue'
 import MatchResultList from '../../list/MatchResultList.vue'
+import { ContentLoader } from 'vue-content-loader'
 
 export default {
   components: {
     MatchScheduleList,
-    MatchResultList
+    MatchResultList,
+    ContentLoader
   },
   setup() {
     const data = reactive({
@@ -72,13 +75,13 @@ export default {
 
     const matchScheduleFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        return schedules.date >= formatDate(date)
+        return schedules.date > formatDate(date)
       })
     })
 
     const matchResultsFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        return schedules.date <= formatDate(date)
+        return schedules.date < formatDate(date)
       })
     })
 
