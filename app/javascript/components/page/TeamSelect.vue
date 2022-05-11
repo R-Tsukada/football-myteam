@@ -23,7 +23,7 @@
           <p
             class="has-text-weight-semibold"
             v-bind:class="{
-              'has-text-weight-bold has-text-danger':
+              'has-text-weight-bold':
                 data.isChangeColorLeague === league.id
             }">
             {{ league.name }}
@@ -43,7 +43,7 @@
           <p
             class="has-text-weight-semibold"
             v-bind:class="{
-              'has-text-weight-bold has-text-danger':
+              'has-text-weight-bold':
                 data.isChangeColorTeam === team.id
             }">
             {{ team.name }}
@@ -53,7 +53,8 @@
     </div>
     <div v-if="data.isChangeColorTeam">
       <button
-        class="button is-link is-rounded m-3 is-medium mt-5"
+        class="button is-rounded is-medium mt-6"
+        style="background-color: #6246ea"
         @click="addFavoriteTeam">
         <router-link to="/competitors" class="has-text-white"
           >応援しているチームを決定する</router-link
@@ -74,7 +75,7 @@ export default {
       leagueId: '',
       isShowing: false,
       isChangeColorLeague: '',
-      isChangeColorTeam: ''
+      isChangeColorTeam: '',
     })
 
     const setLeague = async () => {
@@ -154,5 +155,9 @@ export default {
 
 .container li {
   border: solid 1px;
+}
+
+p {
+  color: #2b2c34;
 }
 </style>

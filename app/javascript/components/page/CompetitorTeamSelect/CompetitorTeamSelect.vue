@@ -5,10 +5,10 @@
       ライバルチームの選択方法を最低でも一つ選んでください
     </div>
     <div v-show="data.isShowing">
-      <div class="container is-widescreen">
-        <div class="notification is-light">
+      <div class="container is-widescreen mb-5">
+        <div class="notification">
           <p
-            class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold">
+            class="is-size-3-desktop is-size-4-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold p-3">
             ライバルチームの選び方を選択してください
           </p>
           <div class="v-model-radiobutton has-text-left">
@@ -44,11 +44,11 @@
           </div>
         </div>
       </div>
-      <button class="button is-rounded is-medium mt-4 ml-3" @click="selectTeam">
+      <button class="button is-rounded is-medium mt-5 ml-3 has-text-white" style="background-color: #6246ea" @click="selectTeam">
         チームの選択方法を決定する
       </button>
-      <button class="button is-rounded is-medium mt-4 ml-3">
-        <router-link to="/leagues">応援しているチームを選び直す</router-link>
+      <button class="button is-rounded is-medium mt-5 ml-3">
+        <router-link to="/leagues" class="has-text-black">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isAdding">
@@ -71,14 +71,12 @@
       <br />
       <button
         class="button is-rounded is-medium mt-2 ml-2"
+        style="background-color: #6246ea"
         @click="addCompetitorFollow">
-        <router-link to="/schedules">上記のチームを登録する</router-link>
+        <router-link to="/schedules" class="has-text-white">上記のチームを登録する</router-link>
       </button>
       <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
         チームの選び方を変更する
-      </button>
-      <button class="button is-rounded is-medium mt-2 ml-3">
-        <router-link to="/">応援しているチームを選び直す</router-link>
       </button>
     </div>
     <div v-show="data.isFreeSelect">
@@ -296,5 +294,9 @@ ul {
 
 li {
   border: solid 1px;
+}
+
+.notification {
+  background-color: #d1d1e9;
 }
 </style>
