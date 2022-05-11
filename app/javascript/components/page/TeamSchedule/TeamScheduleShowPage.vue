@@ -22,7 +22,7 @@
         <MatchResultList :matchResultFilter="matchResultsFilter" />
       </div>
     </div>
-    <button class="button">
+    <button class="button mt-5">
       <router-link to="/schedules">戻る</router-link>
     </button>
   </div>
