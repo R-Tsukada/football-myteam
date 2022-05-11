@@ -11,22 +11,30 @@
       </div>
     </td>
     <td v-for="match in matchSchedules" :key="match.id">
-      <div class="match_schedules has-text-centered">
-        <div class="p-1 mb-2 ml-2">
-          <img :src="match.competition_logo" class="image is-32x32 mt-1" />
-          <p
-            class="has-text-white mt-5 p-1"
-            v-bind:class="
-              data.isHome === match.home_and_away
-                ? 'has-background-success'
-                : 'has-background-danger'
-            ">
-            {{ match.home_and_away }}
-          </p>
+      <div class="box" style="background-color: #d1d1e9">
+        <div class="columns is-vcentered">
+          <div class="column is-one-thirds">
+            <img :src="match.competition_logo" class="image is-48x48 mx-auto" />
+          </div>
+          <div class="column is-two-thirds">
+            <p>{{ match.date }}</p>
+          </div>
         </div>
-        <div class="p-2 mb-2">
-          <p>{{ match.date }}</p>
-          <img :src="match.team_logo" class="image is-64x64 mt-2 ml-2 pl-2" />
+        <div class="columns is-vcentered">
+          <div class="column is-half">
+            <p
+              class="has-text-white"
+              v-bind:class="
+                data.isHome === match.home_and_away
+                  ? 'has-background-success'
+                  : 'has-background-danger'
+              ">
+              {{ match.home_and_away }}
+            </p>
+          </div>
+          <div class="column is-half has-text-centered">
+            <img :src="match.team_logo" class="image is-64x64" />
+          </div>
         </div>
       </div>
     </td>
@@ -81,11 +89,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.match_schedules {
-  display: flex;
-  border: solid 1px;
-  border-radius: 8px;
-}
-</style>

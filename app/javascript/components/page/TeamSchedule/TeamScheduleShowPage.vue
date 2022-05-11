@@ -22,8 +22,10 @@
         <MatchResultList :matchResultFilter="matchResultsFilter" />
       </div>
     </div>
-    <button class="button">
-      <router-link to="/schedules">戻る</router-link>
+    <button
+      class="button is-rounded is-medium mt-5"
+      style="background-color: #6246ea">
+      <router-link to="/schedules" class="has-text-white">戻る</router-link>
     </button>
   </div>
 </template>

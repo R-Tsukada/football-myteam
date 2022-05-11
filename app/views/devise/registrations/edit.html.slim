@@ -27,7 +27,7 @@
           = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length} 文字以上入力してください"
 
         .actions.has-text-centered
-          = f.submit t('.update'), class: 'button'
+          = f.submit t('.update'), class: 'button is-rounded is-medium has-text-white', style: 'background-color: #6246ea'
   br
   .has-text-right
     = link_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: t('.delete') }, method: :delete

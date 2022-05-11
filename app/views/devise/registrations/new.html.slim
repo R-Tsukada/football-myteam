@@ -14,6 +14,6 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length}文字以上入力してください"
     .actions
-      = f.submit t('.sign_up'), class: 'button'
+      = f.submit t('.sign_up'), class: 'button is-rounded is-medium has-text-white', style: 'background-color: #6246ea'
   .has-text-right.has-text-weight-medium
     = render 'devise/shared/links'

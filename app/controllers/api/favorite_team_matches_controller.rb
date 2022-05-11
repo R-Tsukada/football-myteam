@@ -9,7 +9,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   require 'json'
 
   def index
-    @match = Match.all.order(:date).where(date: Time.zone.today.., team_matches_index: favorite_team_api_id).first(3)
+    @match = Match.all.order(:date).where(team_matches_index: favorite_team_api_id, date: Time.zone.today..).first(3)
   end
 
   def show
@@ -50,7 +50,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
       match.season = [api][0]['parameters']['season']
       match.team_matches_index = [api][0]['parameters']['team']
       current_team = Team.find_by(api_id: match.team_matches_index)
-      match.date = [api][0]['response'][a]['fixture']['date'].scan(/\d\d\d\d-\d\d-\d\d/).join('')
+      match.date = [api][0]['response'][a]['fixture']['date'].scan(/\d{4}-\d{2}-\d{2}/).join('')
       stadium = [api][0]['response'][a]['fixture']['venue']['name']
       match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
       match.competition_name = [api][0]['response'][a]['league']['name']
@@ -91,8 +91,22 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   end
 
   def season_year
-    current_year = Time.zone.now.year
-    current_month = Time.zone.now.month
     current_month <= 7 ? current_year - 1 : current_year
+  end
+
+  def current_year
+    Time.zone.now.year
+  end
+
+  def current_month
+    Time.zone.now.month
+  end
+
+  def current_day
+    Time.zone.now.strftime('%Y-%m-%d')
+  end
+
+  def next_month
+    Time.zone.now.next_month.strftime('%Y-%m-%d')
   end
 end
