@@ -87,12 +87,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.match_schedules {
-  display: flex;
-  border: none;
-  /*border-radius: 8px;*/
-  background-color: #d1d1e9;
-}
-</style>

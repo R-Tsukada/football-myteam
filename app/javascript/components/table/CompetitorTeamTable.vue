@@ -93,11 +93,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.match_schedules {
-  /*display: flex;*/
-  /*border: solid 1px;*/
-  /*border-radius: 8px;*/
-}
-</style>
