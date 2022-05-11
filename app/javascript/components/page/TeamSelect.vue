@@ -1,6 +1,8 @@
 <template>
   <div class="has-text-centered">
-    <div v-if="data.competitors" class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
+    <div
+      v-if="data.competitors"
+      class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
       <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
     <div v-else>
@@ -23,8 +25,7 @@
           <p
             class="has-text-weight-semibold"
             v-bind:class="{
-              'has-text-weight-bold':
-                data.isChangeColorLeague === league.id
+              'has-text-weight-bold': data.isChangeColorLeague === league.id
             }">
             {{ league.name }}
           </p>
@@ -43,8 +44,7 @@
           <p
             class="has-text-weight-semibold"
             v-bind:class="{
-              'has-text-weight-bold':
-                data.isChangeColorTeam === team.id
+              'has-text-weight-bold': data.isChangeColorTeam === team.id
             }">
             {{ team.name }}
           </p>
@@ -105,13 +105,13 @@ export default {
 
     const setCompetitors = async () => {
       axios
-          .get('/api/competitors')
-          .then((response) => {
-            data.isChangeColorTeam = response.data
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+        .get('/api/competitors')
+        .then((response) => {
+          data.isChangeColorTeam = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const addFavoriteTeam = async () => {

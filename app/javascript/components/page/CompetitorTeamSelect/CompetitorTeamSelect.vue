@@ -44,11 +44,16 @@
           </div>
         </div>
       </div>
-      <button class="button is-rounded is-medium mt-5 ml-3 has-text-white" style="background-color: #6246ea" @click="selectTeam">
+      <button
+        class="button is-rounded is-medium mt-5 ml-3 has-text-white"
+        style="background-color: #6246ea"
+        @click="selectTeam">
         チームの選択方法を決定する
       </button>
       <button class="button is-rounded is-medium mt-5 ml-3">
-        <router-link to="/leagues" class="has-text-black">応援しているチームを選び直す</router-link>
+        <router-link to="/leagues" class="has-text-black"
+          >応援しているチームを選び直す</router-link
+        >
       </button>
     </div>
     <div v-show="data.isAdding">
@@ -73,7 +78,9 @@
         class="button is-rounded is-medium mt-2 ml-2"
         style="background-color: #6246ea"
         @click="addCompetitorFollow">
-        <router-link to="/schedules" class="has-text-white">上記のチームを登録する</router-link>
+        <router-link to="/schedules" class="has-text-white"
+          >上記のチームを登録する</router-link
+        >
       </button>
       <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
         チームの選び方を変更する

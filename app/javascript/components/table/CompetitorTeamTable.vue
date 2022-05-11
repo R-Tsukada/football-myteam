@@ -23,16 +23,18 @@
             <img :src="match.competition_logo" class="image is-48x48 mx-auto" />
           </div>
           <div class="column is-two-thirds">
-            <p>{{ match.date}}</p>
+            <p>{{ match.date }}</p>
           </div>
         </div>
         <div class="columns is-vcentered">
           <div class="column is-half">
             <p
-                class="has-text-white"
-                v-bind:class="data.isHome === match.home_and_away
-                ? 'has-background-success'
-                : 'has-background-danger'">
+              class="has-text-white"
+              v-bind:class="
+                data.isHome === match.home_and_away
+                  ? 'has-background-success'
+                  : 'has-background-danger'
+              ">
               {{ match.home_and_away }}
             </p>
           </div>
