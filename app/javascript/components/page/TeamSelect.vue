@@ -1,15 +1,15 @@
 <template>
   <div class="has-text-centered">
-    <div v-if="data.isChangeColorTeam.length === 0">
+    <div v-if="data.competitors" class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
+      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
+    </div>
+    <div v-else>
       <p class="is-size-4 has-text-weight-bold mt-5">
         あなたが応援しているチームを選びます。そのあとに同じリーグの中からライバルチームを選びます。
       </p>
       <p class="is-size-4 has-text-weight-bold my-5">
         まずは応援しているチームが所属しているチームを選んでください
       </p>
-    </div>
-    <div v-else class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
-      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
     <div class="container">
       <ul v-for="league in data.leagues" :key="league.id">
@@ -76,6 +76,7 @@ export default {
       isShowing: false,
       isChangeColorLeague: '',
       isChangeColorTeam: '',
+      competitors: ''
     })
 
     const setLeague = async () => {
@@ -102,6 +103,17 @@ export default {
         })
     }
 
+    const setCompetitors = async () => {
+      axios
+          .get('/api/competitors')
+          .then((response) => {
+            data.isChangeColorTeam = response.data
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
+    }
+
     const addFavoriteTeam = async () => {
       axios.post('api/favorites', {
         id: data.isChangeColorTeam
@@ -109,6 +121,7 @@ export default {
     }
 
     const selectLeague = (league) => {
+      console.log(data.isChangeColorLeague)
       data.isChangeColorLeague === league.id
         ? (data.isChangeColorLeague = '')
         : (data.isChangeColorLeague = league.id)
@@ -127,7 +140,7 @@ export default {
         : (data.isChangeColorTeam = team.id)
     }
 
-    onMounted(setLeague(), setTeam(), setFavorite())
+    onMounted(setLeague(), setTeam(), setFavorite(), setCompetitors())
 
     return {
       data,
