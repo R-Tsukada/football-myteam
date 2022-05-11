@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <ul class="flex-list" v-for="result in matchResultFilter" :key="result.id">
+    <ul class="flex-list" v-for="result in reverseMatch" :key="result.id">
       <li>
         <div class="competition">
           <p>{{ result.date }}</p>
@@ -24,6 +24,7 @@
           <p class="team_name_and_logo">{{ result.away_score }}</p>
           <img :src="result.away_logo" class="image is-96x96" />
           <p class="team_name_and_logo">{{ result.away_team_name }}</p>
+          <p>{{ result.home_score - result.away_score }}</p>
         </div>
       </li>
     </ul>
@@ -32,17 +33,22 @@
 >
 
 <script>
-import { reactive } from 'vue'
+import {computed, reactive} from 'vue'
 
 export default {
   props: ['matchResultFilter'],
-  setup() {
+  setup(props) {
     const data = reactive({
       isHome: 'HOME'
     })
 
+    const reverseMatch = computed(() => {
+      return props.matchResultFilter.reverse()
+    })
+
     return {
-      data
+      data,
+      reverseMatch
     }
   }
 }
