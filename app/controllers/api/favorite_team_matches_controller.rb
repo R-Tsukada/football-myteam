@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::FavoriteTeamMatchesController < ApplicationController
-  # before_action :set_match
+  before_action :set_match
   before_action :set_show_page, only: [:show]
   require 'uri'
   require 'net/http'
@@ -9,7 +9,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   require 'json'
 
   def index
-    @match = Match.all.order(:date).where(team_matches_index: favorite_team_api_id).first(3)
+    @match = Match.all.order(:date).where(team_matches_index: favorite_team_api_id, date: Time.zone.today..).first(3)
   end
 
   def show
@@ -69,7 +69,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
 
   def api_request_url
     api_id = competitor_teams.unshift(favorite_team_api_id)
-    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}&from=#{current_day}&to=#{next_month}")}
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}") }
   end
 
   def competitor_teams
