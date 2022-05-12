@@ -121,7 +121,6 @@ export default {
     }
 
     const selectLeague = (league) => {
-      console.log(data.isChangeColorLeague)
       data.isChangeColorLeague === league.id
         ? (data.isChangeColorLeague = '')
         : (data.isChangeColorLeague = league.id)

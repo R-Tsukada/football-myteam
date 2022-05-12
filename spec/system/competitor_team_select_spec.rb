@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'ライバルチームを登録する', type: :system, js: true do
-
   before do
     @user = FactoryBot.create(:user)
     premier_league = FactoryBot.create(:league, :premier_league)

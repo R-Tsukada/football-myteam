@@ -14,14 +14,13 @@
           <div class="v-model-radiobutton has-text-left">
             <label
               class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
-              for="rank"
-              >
+              for="rank">
               <input
                 type="radio"
                 class="rank mb-4"
                 value="rank"
                 v-model="data.checkedName" />
-                昨シーズンの順位が近いチームを選ぶ
+              昨シーズンの順位が近いチームを選ぶ
             </label>
             <br />
             <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">

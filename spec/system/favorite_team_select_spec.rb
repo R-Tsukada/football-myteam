@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe '応援しているチームを登録する', type: :system, js: true do
-
   let(:user) { FactoryBot.create(:user) }
 
   before do
