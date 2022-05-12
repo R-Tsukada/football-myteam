@@ -14,6 +14,7 @@ FactoryBot.define do
       logo { 'https://media.api-sports.io/football/teams/42.png' }
       api_id { 42 }
       home_city { 'London' }
+      last_season_rank { 4 }
     end
 
     trait :manchester_united do
@@ -22,6 +23,7 @@ FactoryBot.define do
       logo { 'https://media.api-sports.io/football/teams/33.png' }
       api_id { 33 }
       home_city { 'Manchester' }
+      last_season_rank { 5 }
     end
 
     trait :lazio do
@@ -38,6 +40,15 @@ FactoryBot.define do
       logo { 'https://media.api-sports.io/football/teams/488.png' }
       api_id { 488 }
       home_city { 'Reggio' }
+    end
+
+    trait :tottenham do
+      id { 5 }
+      name { 'Tottenham' }
+      logo { 'https://media.api-sports.io/football/teams/47.png' }
+      api_id { 47 }
+      home_city { 'London' }
+      last_season_rank { 10 }
     end
   end
 end
