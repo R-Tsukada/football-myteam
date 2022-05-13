@@ -12,6 +12,7 @@ RSpec.describe '登録したチームのスケジュールを表示する', type
     FactoryBot.create(:favorite, user: @user, team: arsenal)
     FactoryBot.create(:competitor, user: @user, team: manchester_united)
     FactoryBot.create(:competitor, user: @user, team: tottenham)
+    FactoryBot.create(:standing, team: arsenal)
     sign_in(@user)
     visit root_path
   end

@@ -7,4 +7,6 @@ class Standing < ApplicationRecord
   validates :rank, presence: true
   validates :points, presence: true
   validates :played, presence: true
+
+  belongs_to :team
 end

@@ -6,13 +6,17 @@ RSpec.describe 'devise', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
 
+  before do
+    visit root_path
+  end
+
   it 'user can login', js: true do
     team1 = FactoryBot.create(:team, :arsenal, league: league)
     team2 = FactoryBot.create(:team, :manchester_united, league: league)
     FactoryBot.create(:favorite, user: user, team: team1)
     FactoryBot.create(:competitor, user: user, team: team2)
+    FactoryBot.create(:standing, team: team1)
 
-    visit root_path
     all('.button')[1].click_link 'ログイン'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: user.password
@@ -22,7 +26,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'email error when login.', js: true do
-    visit root_path
     all('.button')[1].click_link 'ログイン'
     fill_in 'Eメール', with: 'error@example.com'
     fill_in 'パスワード', with: user.password
@@ -32,7 +35,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'password error when login.', js: true do
-    visit root_path
     all('.button')[1].click_link 'ログイン'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: 'xxxxxx'
@@ -42,7 +44,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'user create new account', js: true do
-    visit root_path
     first('.button').click_link 'アカウント作成'
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '123456'
@@ -53,7 +54,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'password validation enabled during account creation', js: true do
-    visit root_path
     first('.button').click_link 'アカウント作成'
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '1234'
