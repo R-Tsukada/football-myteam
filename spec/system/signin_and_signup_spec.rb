@@ -6,20 +6,20 @@ RSpec.describe 'devise', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
 
-  # it 'user can login', js: true do
-  #   team1 = FactoryBot.create(:team, :arsenal, league: league)
-  #   team2 = FactoryBot.create(:team, :Manchester_United, league: league)
-  #   FactoryBot.create(:favorite, user: user, team: team1)
-  #   FactoryBot.create(:competitor, user: user, team: team2)
-  #
-  #   visit root_path
-  #   all('.button')[1].click_link 'ログイン'
-  #   fill_in 'Eメール', with: user.email
-  #   fill_in 'パスワード', with: user.password
-  #   click_button 'ログイン'
-  #
-  #   expect(page).to have_content 'ログインしました'
-  # end
+   it 'user can login', js: true do
+     team1 = FactoryBot.create(:team, :arsenal, league: league)
+     team2 = FactoryBot.create(:team, :manchester_united, league: league)
+     FactoryBot.create(:favorite, user: user, team: team1)
+     FactoryBot.create(:competitor, user: user, team: team2)
+
+     visit root_path
+     all('.button')[1].click_link 'ログイン'
+     fill_in 'Eメール', with: user.email
+     fill_in 'パスワード', with: user.password
+     click_button 'ログイン'
+
+     expect(page).to have_content 'ログインしました'
+   end
 
   it 'email error when login.', js: true do
     visit root_path
@@ -50,7 +50,6 @@ RSpec.describe 'devise', type: :system, js: true do
     click_button 'アカウント登録'
 
     expect(page).to have_content 'アカウント登録が完了しました'
-    expect(page).not_to have_content 'ライバルチームのみを変更する'
   end
 
   it 'password validation enabled during account creation', js: true do
