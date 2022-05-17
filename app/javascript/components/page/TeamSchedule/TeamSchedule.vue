@@ -55,11 +55,12 @@ export default {
       thirdCompetitorTeams: [],
       matches: [],
       favorite: [],
-      competitors: [],
+      competitors: []
     })
 
     const setFavorite = async () => {
-      axios.get('/api/favorites')
+      axios
+        .get('/api/favorites')
         .then((response) => {
           data.favorite = response.data
         })
@@ -69,7 +70,8 @@ export default {
     }
 
     const setCompetitor = async () => {
-      axios.get('/api/competitors')
+      axios
+        .get('/api/competitors')
         .then((response) => {
           data.competitors = response.data
         })
@@ -104,16 +106,27 @@ export default {
         })
     }
 
-    const favoriteMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.favorite.team.id))
-    const firstCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[0].team_id))
-    const secondCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[1].team_id))
-    const thirdCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[2].team_id))
+    const favoriteMatches = computed(() =>
+      data.matches.filter((f) => f.team_matches_index === data.favorite.team.id)
+    )
+    const firstCompetitorTeamsMatches = computed(() =>
+      data.matches.filter(
+        (f) => f.team_matches_index === data.competitors[0].team_id
+      )
+    )
+    const secondCompetitorTeamsMatches = computed(() =>
+      data.matches.filter(
+        (f) => f.team_matches_index === data.competitors[1].team_id
+      )
+    )
+    const thirdCompetitorTeamsMatches = computed(() =>
+      data.matches.filter(
+        (f) => f.team_matches_index === data.competitors[2].team_id
+      )
+    )
 
     onMounted(() => {
-      setTeamSchedules(),
-        setMatchSchedules(),
-        setFavorite(),
-        setCompetitor()
+      setTeamSchedules(), setMatchSchedules(), setFavorite(), setCompetitor()
     })
 
     return {
