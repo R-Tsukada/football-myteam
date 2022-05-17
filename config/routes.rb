@@ -14,10 +14,7 @@ Rails.application.routes.draw do
     resources :competitors, only: [:index, :create]
     resources :standings, only: [:index, :show]
     resources :team_filter, only: [:index]
-    resources :favorite_team_matches, only: [:index, :show]
-    resources :first_competitor_team_matches, only: [:index]
-    resources :secound_competitor_team_matches, only: [:index]
-    resources :third_competitor_team_matches, only: [:index]
+    resources :matches, only: [:index, :show]
   end
   resources :home, only: %i(index)
   get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'

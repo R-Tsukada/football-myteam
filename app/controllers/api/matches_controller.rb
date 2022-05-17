@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::FavoriteTeamMatchesController < ApplicationController
+class Api::MatchesController < ApplicationController
   before_action :set_match
   before_action :set_show_page, only: [:show]
   require 'uri'
@@ -9,7 +9,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   require 'json'
 
   def index
-    @match = Match.all.order(:date).where(team_matches_index: favorite_team_api_id, date: Time.zone.today..).first(3)
+    @match = Match.all.order(:date).where(date: Time.zone.today..)
   end
 
   def show
@@ -19,7 +19,7 @@ class Api::FavoriteTeamMatchesController < ApplicationController
   private
 
   def set_show_page
-    @team_id = Team.find(params[:id]).api_id
+    @team_id = Team.find(params[:id])
   end
 
   def set_match
@@ -48,8 +48,8 @@ class Api::FavoriteTeamMatchesController < ApplicationController
     api['response'].each_index do |a|
       match = Match.new
       match.season = [api][0]['parameters']['season']
-      match.team_matches_index = [api][0]['parameters']['team']
-      current_team = Team.find_by(api_id: match.team_matches_index)
+      current_team = Team.find_by(api_id: [api][0]['parameters']['team'])
+      match.team_matches_index = current_team.id
       match.date = [api][0]['response'][a]['fixture']['date'].scan(/\d{4}-\d{2}-\d{2}/).join('')
       stadium = [api][0]['response'][a]['fixture']['venue']['name']
       match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
