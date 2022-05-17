@@ -52,7 +52,7 @@ export default {
 
     const setMatchData = async () => {
       axios
-        .get(`/api/favorite_team_matches/${store.state.teamId}`)
+        .get(`/api/matches/${store.state.teamId}`)
         .then((response) => {
           data.schedules = response.data
         })
