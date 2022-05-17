@@ -21,8 +21,8 @@
           :matchSchedules="firstCompetitorTeamsMatches"
           :favoriteTeamPoints="data.favoriteTeamPoints" />
         <CompetitorTeamTable
-          v-if="data.secoundCompetitorTeams"
-          :standings="data.secoundCompetitorTeams"
+          v-if="data.secondCompetitorTeams"
+          :standings="data.secondCompetitorTeams"
           :matchSchedules="secondCompetitorTeamsMatches"
           :favoriteTeamPoints="data.favoriteTeamPoints" />
         <CompetitorTeamTable
@@ -51,9 +51,9 @@ export default {
       favoriteTeams: [],
       favoriteTeamPoints: '',
       firstCompetitorTeams: [],
-      secoundCompetitorTeams: [],
+      secondCompetitorTeams: [],
       thirdCompetitorTeams: [],
-      favoriteMatchSchedules: [],
+      matches: [],
       favorite: [],
       competitors: [],
     })
@@ -85,7 +85,7 @@ export default {
           data.favoriteTeams = response.data[0]
           data.favoriteTeamPoints = data.favoriteTeams.points
           data.firstCompetitorTeams = response.data[1]
-          data.secoundCompetitorTeams = response.data[2]
+          data.secondCompetitorTeams = response.data[2]
           data.thirdCompetitorTeams = response.data[3]
         })
         .catch((error) => {
@@ -97,17 +97,17 @@ export default {
       axios
         .get('/api/matches')
         .then((response) => {
-          data.favoriteMatchSchedules = response.data
+          data.matches = response.data
         })
         .catch((error) => {
           console.log(error.message)
         })
     }
 
-    const favoriteMatches = computed(() => data.favoriteMatchSchedules.filter(f => f.team_matches_index === data.favorite.team.id))
-    const firstCompetitorTeamsMatches = computed(() => data.favoriteMatchSchedules.filter(f => f.team_matches_index === data.competitors[0].team_id))
-    const secondCompetitorTeamsMatches = computed(() => data.favoriteMatchSchedules.filter(f => f.team_matches_index === data.competitors[1].team_id))
-    const thirdCompetitorTeamsMatches = computed(() => data.favoriteMatchSchedules.filter(f => f.team_matches_index === data.competitors[2].team_id))
+    const favoriteMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.favorite.team.id))
+    const firstCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[0].team_id))
+    const secondCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[1].team_id))
+    const thirdCompetitorTeamsMatches = computed(() => data.matches.filter(f => f.team_matches_index === data.competitors[2].team_id))
 
     onMounted(() => {
       setTeamSchedules(),
