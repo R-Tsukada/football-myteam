@@ -10,7 +10,11 @@
         </li>
       </ul>
     </div>
-    <content-loader v-if="!data.schedules.length"></content-loader>
+    <content-loader v-if="!data.schedules.length">
+      <rect x="3" y="0" rx="0" ry="0" width="410" height="45" />
+      <rect x="3" y="60" rx="0" ry="0" width="410" height="45" />
+      <rect x="3" y="120" rx="0" ry="0" width="410" height="45" />
+    </content-loader>
     <div class="tab-contents" v-else>
       <div
         class="content"
