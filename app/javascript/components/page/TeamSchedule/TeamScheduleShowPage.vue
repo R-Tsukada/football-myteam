@@ -20,7 +20,7 @@
       <div
         class="content"
         v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-        <MatchResultList :matchResultFilter="matchResultsFilter" />
+        <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
       </div>
     </div>
     <button
