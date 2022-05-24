@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
+    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">リーグ戦情報</h2>
     <ContentLoader v-if="!data.matches.length">
       <rect x="3" y="20" rx="3" ry="3" width="10" height="10" />
       <rect x="23" y="20" rx="3" ry="3" width="50" height="50" />
@@ -21,8 +21,8 @@
       <rect x="323" y="85" rx="3" ry="3" width="70" height="60" />
     </ContentLoader>
     <table
-      v-else
-      class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
+        v-else
+        class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
       <thead>
         <tr>
           <th>順位</th>
@@ -161,8 +161,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.container {
-  text-align: center;
-}
-</style>
