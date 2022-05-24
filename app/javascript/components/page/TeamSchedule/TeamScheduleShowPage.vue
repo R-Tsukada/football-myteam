@@ -27,11 +27,13 @@
         <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
       </div>
     </div>
-    <button
-      class="button is-rounded is-medium mt-5"
-      style="background-color: #6246ea">
-      <router-link to="/schedules" class="has-text-white">戻る</router-link>
-    </button>
+    <div class="has-text-centered">
+      <button
+          class="button is-rounded is-medium mt-5 has-text-centered"
+          style="background-color: #6246ea">
+        <router-link to="/schedules" class="has-text-white">戻る</router-link>
+      </button>
+    </div>
   </div>
 </template>
 

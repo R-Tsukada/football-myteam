@@ -1,11 +1,11 @@
-.container.mx-auto.px-5
-  p.is-size-3.is-size-5-mobile
-    | Fottball Calendarはあなたが応援しているチームとライバルチームの試合日程をひと目で確認することができるアプリです
+.container.px-5
+  p.is-size-3.is-size-5-mobile.has-text-centered.has-text-weight-bold
+    | Fottball Calendarはあなたが応援しているチームとライバルチームの試合日程を<br>ひと目で確認することができるアプリです
   .container.mt-5
     .columns
       .column
         .box
-          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3
+          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3.has-text-centered
             | 登録したチームの試合予定・順位表を一覧表示
           p.has-text-centered.py-3
             | あなたが応援しているチーム（1チーム）とライバルチーム（最大3チーム）の試合日程をひと目で確認できます。
@@ -18,16 +18,16 @@
                 = image_tag 'Football_match.png'
       .column
         .box
-          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3
+          h2.is-size-4.is-size-6-mobile.has-text-weight-semibold.py-3.has-text-centered
             | 順位争いを予想するツールになります
-          p.has-text-centered.py-3
-            ul
-              li
-                | 優勝・残留争い, カップ戦出場権の予想に使えます。
-              li
-                | 日々の順位争い、試合結果の予想にも使えます。
+          ul.has-text-centered
+            li
+              | 優勝・残留争い, カップ戦出場権の予想に使えます。
+            li
+              | 日々の順位争い、試合結果の予想にも使えます。
           .image
             = image_tag 'Football.png'
+  .has-text-centered.mt-6
     .button.is-link.is-rounded.m-3.is-medium
       = link_to 'アカウント作成', new_user_registration_path, class: 'has-text-white'
     .button.m-3.is-rounded.m-3.is-medium
