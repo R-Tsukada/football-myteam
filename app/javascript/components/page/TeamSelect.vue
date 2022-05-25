@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div
-      v-if="data.competitors"
+      v-if="data.isChangeColorLeague"
       class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
       <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
@@ -13,46 +13,70 @@
         まずは応援しているチームが所属しているチームを選んでください
       </p>
     </div>
-    <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">リーグ一覧</p>
-    <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-      <div class="column is-one-quarter has-text-centered" v-for="league in data.leagues" :key="league.id">
-        <div class="card m-1">
-          <div class="card-content"
-               @click="selectLeague(league)"
-               v-bind:class="{
-            'has-background-link-light': data.isChangeColorLeague === league.id
-          }">
-            <div class="content">
-              <img :src="league.logo" class="image is-128x128 mx-auto" />
-              <p
-                  class="has-text-weight-semibold mt-2"
-                  v-bind:class="{
-                'has-text-weight-bold': data.isChangeColorLeague === league.id
-              }">
-                {{ league.name }}
-              </p>
+    <content-loader v-if="!data.leagues">
+      <rect x="3" y="20" width="90" height="60" />
+      <rect x="103" y="20" width="90" height="60" />
+      <rect x="203" y="20" width="90" height="60" />
+      <rect x="303" y="20" width="90" height="60" />
+    </content-loader>
+    <div v-else>
+      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">リーグ一覧</p>
+      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
+        <div class="column is-one-quarter has-text-centered" v-for="league in data.leagues" :key="league.id">
+          <div class="card m-1">
+            <div class="card-content"
+                 @click="selectLeague(league)"
+                 v-bind:class="{
+              'has-background-link-light': data.isChangeColorLeague === league.id
+            }">
+              <div class="content">
+                <img :src="league.logo" class="image is-128x128 mx-auto" />
+                <p
+                    class="has-text-weight-semibold mt-2"
+                    v-bind:class="{
+                  'has-text-weight-bold': data.isChangeColorLeague === league.id
+                }">
+                  {{ league.name }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-      <div class="column is-one-fifth has-text-centered" v-for="team in teamFilter" :key="team.id">
-        <div class="card m-1">
-          <div class="card-content"
-               @click="selectTeam(team)"
-               v-bind:class="{
+    <content-loader v-if="!teamFilter">
+      <rect x="3" y="20" width="70" height="65" />
+      <rect x="83" y="20" width="70" height="65" />
+      <rect x="168" y="20" width="70" height="65" />
+      <rect x="248" y="20" width="70" height="65" />
+      <rect x="328" y="20" width="70" height="65" />
+
+      <rect x="3" y="95" width="70" height="65" />
+      <rect x="83" y="95" width="70" height="65" />
+      <rect x="168" y="95" width="70" height="65" />
+      <rect x="248" y="95" width="70" height="65" />
+      <rect x="328" y="95" width="70" height="65" />
+    </content-loader>
+    <div v-else>
+      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">チーム一覧</p>
+      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
+        <div class="column is-one-fifth has-text-centered" v-for="team in teamFilter" :key="team.id">
+          <div class="card m-1">
+            <div class="card-content"
+                 @click="selectTeam(team)"
+                 v-bind:class="{
             'has-background-link-light': data.isChangeColorTeam === team.id
           }">
-            <div class="content">
-              <img :src="team.logo" class="image is-128x128 mx-auto" />
-              <p
-                  class="has-text-weight-semibold mt-2"
-                  v-bind:class="{
+              <div class="content">
+                <img :src="team.logo" class="image is-128x128 mx-auto" />
+                <p
+                    class="has-text-weight-semibold mt-2"
+                    v-bind:class="{
                 'has-text-weight-bold': data.isChangeColorTeam === team.id
               }">
-                {{ team.name }}
-              </p>
+                  {{ team.name }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -73,8 +97,12 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
+import { ContentLoader } from "vue-content-loader";
 
 export default {
+  components: {
+    ContentLoader
+  },
   setup() {
     const data = reactive({
       teams: [],
@@ -114,7 +142,7 @@ export default {
       axios
         .get('/api/competitors')
         .then((response) => {
-          data.isChangeColorTeam = response.data
+          data.competitors = response.data
         })
         .catch((error) => {
           console.log(error.message)
@@ -160,7 +188,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .card:hover {
   cursor: pointer;
   opacity: 0.6;

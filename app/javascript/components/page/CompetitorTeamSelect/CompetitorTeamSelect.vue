@@ -93,39 +93,54 @@
         :competitors="data.competitors"
         v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
-      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-        <div class="column is-one-fifth has-text-centered" v-for="team in data.teams" :key="team.id">
-          <div class="card m-1">
-            <div class="card-content"
-                 v-bind:class="{
+      <content-loader v-if="!data.teams">
+        <rect x="3" y="20" width="70" height="65" />
+        <rect x="83" y="20" width="70" height="65" />
+        <rect x="168" y="20" width="70" height="65" />
+        <rect x="248" y="20" width="70" height="65" />
+        <rect x="328" y="20" width="70" height="65" />
+
+        <rect x="3" y="95" width="70" height="65" />
+        <rect x="83" y="95" width="70" height="65" />
+        <rect x="168" y="95" width="70" height="65" />
+        <rect x="248" y="95" width="70" height="65" />
+        <rect x="328" y="95" width="70" height="65" />
+      </content-loader>
+      <div v-else>
+        <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
+          <div class="column is-one-fifth has-text-centered" v-for="team in data.teams" :key="team.id">
+            <div class="card m-1">
+              <div class="card-content"
+                   v-bind:class="{
                   'has-background-link-light': data.competitors.some((competitor) => competitor.team_id === team.id)
                 }"
-                 @click="followTeam(team)">
-              <div class="content">
-                <img :src="team.logo" class="image is-128x128 mx-auto" />
-                <p
-                    class="has-text-weight-semibold mt-2"
-                    v-bind:class="{
+                   @click="followTeam(team)">
+                <div class="content">
+                  <img :src="team.logo" class="image is-128x128 mx-auto" />
+                  <p
+                      class="has-text-weight-semibold mt-2"
+                      v-bind:class="{
                 'has-text-weight-bold has-text-danger': data.competitors.some(
                   (competitor) => competitor.team_id === team.id
                 )
               }">
-                  {{ team.name }}
-                </p>
+                    {{ team.name }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <button
-          class="button is-rounded is-medium mt-2 ml-2"
+          class="button is-rounded is-medium mt-6 ml-2"
           style="background-color: #6246ea"
           v-if="data.competitors.length >= 1">
         <router-link to="/schedules" class="has-text-white"
         >ライバルチームを決定する</router-link
         >
       </button>
-      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
+      <button class="button is-rounded is-medium mt-6 ml-2" @click="again">
         ライバルチームの選択方法を選び直す
       </button>
     </div>
@@ -138,10 +153,13 @@ import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
+import {ContentLoader} from "vue-content-loader";
+
 export default {
   components: {
     CompetitorValidation,
-    CompetitorTeamCount
+    CompetitorTeamCount,
+    ContentLoader
   },
   setup() {
     const data = reactive({
