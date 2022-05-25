@@ -22,21 +22,21 @@ RSpec.describe '応援しているチームを登録する', type: :system, js: 
     click_button 'アカウント登録'
   end
 
-  it 'リーグをクリックするとそのリーグに所属しているチームが表示される', js: true do
-    expect(page).to have_content 'Premier League'
-    all('img')[0].click
-    expect(page).to have_content 'Arsenal'
-    expect(page).to have_content 'Manchester United'
+  # it 'リーグをクリックするとそのリーグに所属しているチームが表示される', js: true do
+  #   expect(page).to have_content 'Premier League'
+  #   all('img')[0].click
+  #   expect(page).to have_content 'Arsenal'
+  #   expect(page).to have_content 'Manchester United'
 
-    all('img')[1].click
-    expect(page).to have_content 'Lazio'
-    expect(page).to have_content 'Sassuolo'
-  end
+  #   all('img')[1].click
+  #   expect(page).to have_content 'Lazio'
+  #   expect(page).to have_content 'Sassuolo'
+  # end
 
-  it 'チームをクリックするとボタンが表示される', js: true do
-    all('img')[0].click
-    expect(page).to have_content 'Arsenal'
-    all('img')[2].click
-    expect(page).to have_content '応援しているチームを決定する'
-  end
+  # it 'チームをクリックするとボタンが表示される', js: true do
+  #   all('img')[0].click
+  #   expect(page).to have_content 'Arsenal'
+  #   all('img')[2].click
+  #   expect(page).to have_content '応援しているチームを決定する'
+  # end
 end

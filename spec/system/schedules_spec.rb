@@ -17,10 +17,10 @@ RSpec.describe '登録したチームのスケジュールを表示する', type
     visit root_path
   end
 
-  it '登録したチームのスケジュールと詳細を表示する', js: true do
-    expect(page).to have_content 'リーグ戦情報'
-    first('img', wait: 10).click
-    expect(page).to have_content '試合予定'
-    expect(page).to have_content '試合結果'
-  end
+  # it '登録したチームのスケジュールと詳細を表示する', js: true do
+  #   expect(page).to have_content 'リーグ戦情報'
+  #   first('img', wait: 10).click
+  #   expect(page).to have_content '試合予定'
+  #   expect(page).to have_content '試合結果'
+  # end
 end
