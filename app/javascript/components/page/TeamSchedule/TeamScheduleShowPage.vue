@@ -10,7 +10,8 @@
         </li>
       </ul>
     </div>
-    <div class="tab-contents">
+    <MatchScheduleShowLoader v-if="!data.schedules.length" />
+    <div class="tab-contents" v-else>
       <div
         class="content"
         v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
@@ -19,14 +20,16 @@
       <div
         class="content"
         v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-        <MatchResultList :matchResultFilter="matchResultsFilter" />
+        <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
       </div>
     </div>
-    <button
-      class="button is-rounded is-medium mt-5"
-      style="background-color: #6246ea">
-      <router-link to="/schedules" class="has-text-white">戻る</router-link>
-    </button>
+    <div class="has-text-centered">
+      <button
+        class="button is-rounded is-medium mt-5 has-text-centered"
+        style="background-color: #6246ea">
+        <router-link to="/schedules" class="has-text-white">戻る</router-link>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -36,9 +39,11 @@ import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import MatchScheduleList from '../../list/MatchScheduleList.vue'
 import MatchResultList from '../../list/MatchResultList.vue'
+import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
 
 export default {
   components: {
+    MatchScheduleShowLoader,
     MatchScheduleList,
     MatchResultList
   },
@@ -72,13 +77,13 @@ export default {
 
     const matchScheduleFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        return schedules.date >= formatDate(date)
+        return schedules.date > formatDate(date)
       })
     })
 
     const matchResultsFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        return schedules.date <= formatDate(date)
+        return schedules.date < formatDate(date)
       })
     })
 

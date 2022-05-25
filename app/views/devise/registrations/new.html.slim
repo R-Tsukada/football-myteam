@@ -1,5 +1,5 @@
-.container.mx-auto.pt-5
-  h2.is-size-2.is-size-4-mobile.has-text-weight-semibold
+.container.pt-5
+  h2.is-size-2.is-size-4-mobile.has-text-weight-semibold.has-text-centered
     | アカウントを作成
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render 'devise/shared/error_messages', resource: resource
@@ -13,7 +13,7 @@
     .field.has-text-left.has-text-weight-medium
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length}文字以上入力してください"
-    .actions
+    .actions.has-text-centered
       = f.submit t('.sign_up'), class: 'button is-rounded is-medium has-text-white', style: 'background-color: #6246ea'
-  .has-text-right.has-text-weight-medium
-    = render 'devise/shared/links'
+  / .has-text-right.has-text-weight-medium
+  /   = render 'devise/shared/links'

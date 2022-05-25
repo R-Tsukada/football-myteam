@@ -1,57 +1,85 @@
 <template>
-  <div class="has-text-centered">
+  <div class="container">
     <div
-      v-if="data.competitors"
+      v-if="data.isChangeColorLeague"
       class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
       <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
     <div v-else>
-      <p class="is-size-4 has-text-weight-bold mt-5">
+      <p class="is-size-4 has-text-centered has-text-weight-bold mt-5">
         あなたが応援しているチームを選びます。そのあとに同じリーグの中からライバルチームを選びます。
       </p>
-      <p class="is-size-4 has-text-weight-bold my-5">
+      <p class="is-size-4 has-text-centered has-text-weight-bold my-5">
         まずは応援しているチームが所属しているチームを選んでください
       </p>
     </div>
-    <div class="container">
-      <ul v-for="league in data.leagues" :key="league.id">
-        <li
-          class="mt-5 mx-6 p-2"
-          @click="selectLeague(league)"
-          v-bind:class="{
-            'has-background-link-light': data.isChangeColorLeague === league.id
-          }">
-          <img :src="league.logo" class="image is-128x128" />
-          <p
-            class="has-text-weight-semibold"
-            v-bind:class="{
-              'has-text-weight-bold': data.isChangeColorLeague === league.id
-            }">
-            {{ league.name }}
-          </p>
-        </li>
-      </ul>
+    <LeagueListLoader v-if="!data.leagues.length" />
+    <div v-else>
+      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">
+        リーグ一覧
+      </p>
+      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
+        <div
+          class="column is-one-quarter has-text-centered"
+          v-for="league in data.leagues"
+          :key="league.id">
+          <div class="card m-1">
+            <div
+              class="card-content"
+              @click="selectLeague(league)"
+              v-bind:class="{
+                'has-background-link-light':
+                  data.isChangeColorLeague === league.id
+              }">
+              <div class="content">
+                <img :src="league.logo" class="image is-128x128 mx-auto" />
+                <p
+                  class="has-text-weight-semibold mt-2"
+                  v-bind:class="{
+                    'has-text-weight-bold':
+                      data.isChangeColorLeague === league.id
+                  }">
+                  {{ league.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <ul v-for="team in teamFilter" :key="team.id">
-        <li
-          class="mt-5 mx-6 p-2"
-          @click="selectTeam(team)"
-          v-bind:class="{
-            'has-background-link-light': data.isChangeColorTeam === team.id
-          }">
-          <img :src="team.logo" class="image is-128x128" />
-          <p
-            class="has-text-weight-semibold"
-            v-bind:class="{
-              'has-text-weight-bold': data.isChangeColorTeam === team.id
-            }">
-            {{ team.name }}
-          </p>
-        </li>
-      </ul>
+    <TeamListLoader v-if="!teamFilter.length" />
+    <div v-else>
+      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">
+        チーム一覧
+      </p>
+      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
+        <div
+          class="column is-one-fifth has-text-centered"
+          v-for="team in teamFilter"
+          :key="team.id">
+          <div class="card m-1">
+            <div
+              class="card-content"
+              @click="selectTeam(team)"
+              v-bind:class="{
+                'has-background-link-light': data.isChangeColorTeam === team.id
+              }">
+              <div class="content">
+                <img :src="team.logo" class="image is-128x128 mx-auto" />
+                <p
+                  class="has-text-weight-semibold mt-2"
+                  v-bind:class="{
+                    'has-text-weight-bold': data.isChangeColorTeam === team.id
+                  }">
+                  {{ team.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-if="data.isChangeColorTeam">
+    <div v-if="data.isChangeColorTeam" class="has-text-centered">
       <button
         class="button is-rounded is-medium mt-6"
         style="background-color: #6246ea">
@@ -66,11 +94,18 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
+import LeagueListLoader from '../loader/LeagueListLoader'
+import TeamListLoader from '../loader/TeamListLoader'
 
 export default {
+  components: {
+    TeamListLoader,
+    LeagueListLoader
+  },
   setup() {
     const data = reactive({
       teams: [],
+      leagues: [],
       leagueId: '',
       isShowing: false,
       isChangeColorLeague: '',
@@ -106,7 +141,7 @@ export default {
       axios
         .get('/api/competitors')
         .then((response) => {
-          data.isChangeColorTeam = response.data
+          data.competitors = response.data
         })
         .catch((error) => {
           console.log(error.message)
@@ -152,24 +187,9 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-}
-
-.container ul {
-  list-style: none;
-}
-
-.container li {
-  border: solid 1px;
-}
-
-p {
-  color: #2b2c34;
+.card:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 </style>

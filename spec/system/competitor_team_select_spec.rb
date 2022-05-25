@@ -42,7 +42,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content '残り3チーム登録できます'
     all('img')[0].click
     expect(page).to have_content '残り2チーム登録できます'
-    expect(page).to have_content 'ライバルチームの選択を終了する'
+    expect(page).to have_content 'ライバルチームを決定する'
   end
 
   it 'チームの選択方法を選ばなかった時のメッセージを表示', js: true do

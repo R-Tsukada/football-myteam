@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2 has-text-weight-bold pb-6">リーグ戦情報</h2>
+    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">
+      リーグ戦情報
+    </h2>
+    <MatchListLoader v-if="!data.matches.length" />
     <table
-      class="table is-stripe is-hoverable is-clickable has-text-weight-bold is-size-5">
+      v-else
+      class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
       <thead>
         <tr>
           <th>順位</th>
@@ -40,9 +44,11 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
 import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
+import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {
   components: {
+    MatchListLoader,
     FavoriteTeamTable,
     CompetitorTeamTable
   },
@@ -139,8 +145,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.container {
-  text-align: center;
-}
-</style>

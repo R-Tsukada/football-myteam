@@ -1,33 +1,36 @@
 <template>
-  <div class="flex">
-    <ul
-      v-for="schedule in matchScheduleFilter"
-      :key="schedule.id"
-      class="flex-list">
-      <li>
-        <div class="competition">
-          <p>{{ schedule.date }}</p>
-          <img :src="schedule.competition_logo" class="image is-64x64" />
-          <p>{{ schedule.competition_name }}</p>
-        </div>
-        <div class="team">
-          <p
-            class="home_and_away"
-            v-bind:class="
-              data.isHome === schedule.home_and_away
-                ? 'has-background-success'
-                : 'has-background-danger'
-            ">
-            {{ schedule.home_and_away }}
-          </p>
-          <p class="team_name_and_logo">{{ schedule.home_team_name }}</p>
-          <img :src="schedule.home_logo" class="image is-96x96" />
-          <p class="team_name_and_logo">-</p>
-          <img :src="schedule.away_logo" class="image is-96x96" />
-          <p class="team_name_and_logo">{{ schedule.away_team_name }}</p>
-        </div>
-      </li>
-    </ul>
+  <div>
+    <div class="box" v-for="schedule in matchScheduleFilter" :key="schedule.id">
+      <div class="columns is-vcentered">
+        <img :src="schedule.competition_logo" class="image is-48x48 mx-3" />
+        <p class="m-0 has-text-weight-bold is-size-4">
+          {{ schedule.competition_name }}
+        </p>
+        <p class="pl-4 pr-2 has-text-weight-bold is-size-4 has-text-right">
+          {{ schedule.date }}
+        </p>
+      </div>
+      <div class="columns is-vcentered mt-2">
+        <p
+          class="home_and_away ml-5 has-text-white has-text-weight-bold p-2 is-size-3"
+          v-bind:class="
+            data.isHome === schedule.home_and_away
+              ? 'has-background-success'
+              : 'has-background-danger'
+          ">
+          {{ schedule.home_and_away }}
+        </p>
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ schedule.home_team_name }}
+        </p>
+        <img :src="schedule.home_logo" class="image is-96x96" />
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">-</p>
+        <img :src="schedule.away_logo" class="image is-96x96" />
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ schedule.away_team_name }}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -47,67 +50,3 @@ export default {
   }
 }
 </script>
-<style>
-.flex {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.flex-list {
-  width: 80%;
-  border: 1px solid;
-  border-radius: 8px;
-}
-
-.flex-list li {
-  padding: 10px;
-  text-align: center;
-  list-style: none;
-}
-
-.competition {
-  display: flex;
-  flex: auto;
-  width: 100%;
-}
-
-.competition p {
-  padding: 10px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.team {
-  display: flex;
-  justify-content: space-between;
-  flex: auto;
-  width: 100%;
-  margin: 10px;
-}
-
-.team_name_and_logo {
-  padding: 10px;
-  vertical-align: center;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.team image {
-  margin-top: 20px;
-}
-
-.home_and_away {
-  border: 1px solid;
-  background-color: red;
-  color: white;
-  margin: 10px;
-  padding: 10px;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.team_name_and_logo {
-  margin: 0 auto;
-}
-</style>
