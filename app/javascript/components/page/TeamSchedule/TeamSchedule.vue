@@ -1,28 +1,12 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">リーグ戦情報</h2>
-    <ContentLoader v-if="!data.matches.length">
-      <rect x="3" y="20" rx="3" ry="3" width="10" height="10" />
-      <rect x="23" y="20" rx="3" ry="3" width="50" height="50" />
-      <rect x="88" y="20" rx="3" ry="3" width="10" height="10" />
-      <rect x="128" y="20" rx="3" ry="3" width="10" height="10" />
-      <rect x="118" y="35" rx="3" ry="3" width="30" height="10" />
-      <rect x="163" y="20" rx="3" ry="3" width="70" height="60" />
-      <rect x="243" y="20" rx="3" ry="3" width="70" height="60" />
-      <rect x="323" y="20" rx="3" ry="3" width="70" height="60" />
-
-      <rect x="3" y="85" rx="3" ry="3" width="10" height="10" />
-      <rect x="23" y="85" rx="3" ry="3" width="50" height="50" />
-      <rect x="88" y="85" rx="3" ry="3" width="10" height="10" />
-      <rect x="128" y="85" rx="3" ry="3" width="10" height="10" />
-      <rect x="118" y="100" rx="3" ry="3" width="30" height="10" />
-      <rect x="163" y="85" rx="3" ry="3" width="70" height="60" />
-      <rect x="243" y="85" rx="3" ry="3" width="70" height="60" />
-      <rect x="323" y="85" rx="3" ry="3" width="70" height="60" />
-    </ContentLoader>
+    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">
+      リーグ戦情報
+    </h2>
+    <MatchListLoader v-if="!data.matches.length" />
     <table
-        v-else
-        class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
+      v-else
+      class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
       <thead>
         <tr>
           <th>順位</th>
@@ -60,13 +44,13 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
 import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
-import { ContentLoader } from 'vue-content-loader'
+import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {
   components: {
+    MatchListLoader,
     FavoriteTeamTable,
-    CompetitorTeamTable,
-    ContentLoader
+    CompetitorTeamTable
   },
   setup() {
     const data = reactive({

@@ -5,41 +5,43 @@
       ライバルチームの選択方法を一つ選んでください
     </div>
     <div v-show="data.isShowing">
-      <div class="box mb-5 mx-auto" style="background-color: #d1d1e9; width: 800px;">
-          <p
-            class="is-size-3-desktop is-size-4-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold p-3">
-            ライバルチームの選び方を選択してください
-          </p>
-          <div class="v-model-radiobutton has-text-left">
-            <label
-              class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
-              for="rank">
-              <input
-                type="radio"
-                class="rank mb-4"
-                value="rank"
-                v-model="data.checkedName" />
-              昨シーズンの順位が近いチームを選ぶ
-            </label>
-            <br />
-            <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">
-              <input
-                type="radio"
-                class="home mb-4"
-                value="home"
-                v-model="data.checkedName" />
-              本拠地が近いチームを選ぶ
-            </label>
-            <br />
-            <label class="is-size-4-desktop is-size-6-tablet m-3" for="self">
-              <input
-                type="radio"
-                class="self mb-4"
-                value="self"
-                v-model="data.checkedName" />
-              自分でライバルチームを選ぶ
-            </label>
-            <br />
+      <div
+        class="box mb-5 mx-auto"
+        style="background-color: #d1d1e9; width: 800px">
+        <p
+          class="is-size-3-desktop is-size-4-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold p-3">
+          ライバルチームの選び方を選択してください
+        </p>
+        <div class="v-model-radiobutton has-text-left">
+          <input
+            type="radio"
+            class="rank mb-4"
+            value="rank"
+            v-model="data.checkedName" />
+          <label
+            class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
+            for="rank"
+            >昨シーズンの順位が近いチームを選ぶ</label
+          >
+          <br />
+          <input
+            type="radio"
+            class="home mb-4"
+            value="home"
+            v-model="data.checkedName" />
+          <label class="is-size-4-desktop is-size-6-tablet m-3" for="home"
+            >本拠地が近いチームを選ぶ</label
+          >
+          <br />
+          <input
+            type="radio"
+            class="self mb-4"
+            value="self"
+            v-model="data.checkedName" />
+          <label class="is-size-4-desktop is-size-6-tablet m-3" for="self"
+            >自分でライバルチームを選ぶ</label
+          >
+          <br />
         </div>
       </div>
       <button
@@ -60,16 +62,23 @@
         こちらのチームを登録しますか？
       </p>
       <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-        <div class="column is-one-fifth mx-auto" v-for="team in data.selectedTeams.slice(0, 3)" :key="team.id">
+        <div
+          class="column is-one-fifth mx-auto"
+          v-for="team in data.selectedTeams.slice(0, 3)"
+          :key="team.id">
           <div class="card m-1">
             <div class="card-content">
               <div class="content">
                 <img :src="team.logo" class="image is-128x128 mx-auto" />
-                <p class="has-text-weight-semibold mt-2 is-size-4">{{ team.name }}</p>
+                <p class="has-text-weight-semibold mt-2 is-size-4">
+                  {{ team.name }}
+                </p>
                 <p class="has-text-weight-semibold">
                   2020-2021：{{ team.last_season_rank }}位
                 </p>
-                <p class="has-text-weight-semibold">本拠地：{{ team.home_city }}</p>
+                <p class="has-text-weight-semibold">
+                  本拠地：{{ team.home_city }}
+                </p>
               </div>
             </div>
           </div>
@@ -93,37 +102,32 @@
         :competitors="data.competitors"
         v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
-      <content-loader v-if="!data.teams">
-        <rect x="3" y="20" width="70" height="65" />
-        <rect x="83" y="20" width="70" height="65" />
-        <rect x="168" y="20" width="70" height="65" />
-        <rect x="248" y="20" width="70" height="65" />
-        <rect x="328" y="20" width="70" height="65" />
-
-        <rect x="3" y="95" width="70" height="65" />
-        <rect x="83" y="95" width="70" height="65" />
-        <rect x="168" y="95" width="70" height="65" />
-        <rect x="248" y="95" width="70" height="65" />
-        <rect x="328" y="95" width="70" height="65" />
-      </content-loader>
+      <TeamListLoader v-if="!data.teams.length" />
       <div v-else>
         <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-          <div class="column is-one-fifth has-text-centered" v-for="team in data.teams" :key="team.id">
+          <div
+            class="column is-one-fifth has-text-centered"
+            v-for="team in data.teams"
+            :key="team.id">
             <div class="card m-1">
-              <div class="card-content"
-                   v-bind:class="{
-                  'has-background-link-light': data.competitors.some((competitor) => competitor.team_id === team.id)
+              <div
+                class="card-content"
+                v-bind:class="{
+                  'has-background-link-light': data.competitors.some(
+                    (competitor) => competitor.team_id === team.id
+                  )
                 }"
-                   @click="followTeam(team)">
+                @click="followTeam(team)">
                 <div class="content">
                   <img :src="team.logo" class="image is-128x128 mx-auto" />
                   <p
-                      class="has-text-weight-semibold mt-2"
-                      v-bind:class="{
-                'has-text-weight-bold has-text-danger': data.competitors.some(
-                  (competitor) => competitor.team_id === team.id
-                )
-              }">
+                    class="has-text-weight-semibold mt-2"
+                    v-bind:class="{
+                      'has-text-weight-bold has-text-danger':
+                        data.competitors.some(
+                          (competitor) => competitor.team_id === team.id
+                        )
+                    }">
                     {{ team.name }}
                   </p>
                 </div>
@@ -133,11 +137,11 @@
         </div>
       </div>
       <button
-          class="button is-rounded is-medium mt-6 ml-2"
-          style="background-color: #6246ea"
-          v-if="data.competitors.length >= 1">
+        class="button is-rounded is-medium mt-6 ml-2"
+        style="background-color: #6246ea"
+        v-if="data.competitors.length >= 1">
         <router-link to="/schedules" class="has-text-white"
-        >ライバルチームを決定する</router-link
+          >ライバルチームを決定する</router-link
         >
       </button>
       <button class="button is-rounded is-medium mt-6 ml-2" @click="again">
@@ -153,13 +157,13 @@ import { reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
-import {ContentLoader} from "vue-content-loader";
+import TeamListLoader from '../../loader/TeamListLoader'
 
 export default {
   components: {
+    TeamListLoader,
     CompetitorValidation,
-    CompetitorTeamCount,
-    ContentLoader
+    CompetitorTeamCount
   },
   setup() {
     const data = reactive({

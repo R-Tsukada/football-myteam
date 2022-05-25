@@ -20,11 +20,15 @@
           ">
           {{ schedule.home_and_away }}
         </p>
-        <p class="mx-auto p-1 has-text-weight-bold is-size-3">{{ schedule.home_team_name }}</p>
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ schedule.home_team_name }}
+        </p>
         <img :src="schedule.home_logo" class="image is-96x96" />
         <p class="mx-auto p-1 has-text-weight-bold is-size-3">-</p>
         <img :src="schedule.away_logo" class="image is-96x96" />
-        <p class="mx-auto p-1 has-text-weight-bold is-size-3">{{ schedule.away_team_name }}</p>
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ schedule.away_team_name }}
+        </p>
       </div>
     </div>
   </div>

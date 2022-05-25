@@ -10,11 +10,7 @@
         </li>
       </ul>
     </div>
-    <content-loader v-if="!data.schedules.length">
-      <rect x="3" y="0" rx="0" ry="0" width="410" height="45" />
-      <rect x="3" y="60" rx="0" ry="0" width="410" height="45" />
-      <rect x="3" y="120" rx="0" ry="0" width="410" height="45" />
-    </content-loader>
+    <MatchScheduleShowLoader v-if="!data.schedules.length" />
     <div class="tab-contents" v-else>
       <div
         class="content"
@@ -29,8 +25,8 @@
     </div>
     <div class="has-text-centered">
       <button
-          class="button is-rounded is-medium mt-5 has-text-centered"
-          style="background-color: #6246ea">
+        class="button is-rounded is-medium mt-5 has-text-centered"
+        style="background-color: #6246ea">
         <router-link to="/schedules" class="has-text-white">戻る</router-link>
       </button>
     </div>
@@ -43,13 +39,13 @@ import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 import MatchScheduleList from '../../list/MatchScheduleList.vue'
 import MatchResultList from '../../list/MatchResultList.vue'
-import { ContentLoader } from 'vue-content-loader'
+import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
 
 export default {
   components: {
+    MatchScheduleShowLoader,
     MatchScheduleList,
-    MatchResultList,
-    ContentLoader
+    MatchResultList
   },
   setup() {
     const data = reactive({

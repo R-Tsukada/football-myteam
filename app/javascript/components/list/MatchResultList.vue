@@ -20,13 +20,21 @@
           ">
           {{ result.home_and_away }}
         </p>
-        <p class="mx-auto p-1 has-text-weight-bold is-size-3">{{ result.home_team_name }}</p>
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ result.home_team_name }}
+        </p>
         <img :src="result.home_logo" class="image is-96x96" />
-        <p class="mx-auto p-1 has-text-weight-bold is-size-3">{{ result.home_score }}</p>
+        <p class="mx-auto p-1 has-text-weight-bold is-size-3">
+          {{ result.home_score }}
+        </p>
         <p class="mx-auto has-text-weight-bold is-size-3">-</p>
-        <p class="mx-auto has-text-weight-bold is-size-3">{{ result.away_score }}</p>
+        <p class="mx-auto has-text-weight-bold is-size-3">
+          {{ result.away_score }}
+        </p>
         <img :src="result.away_logo" class="image is-96x96" />
-        <p class="mx-auto has-text-weight-bold is-size-3">{{ result.away_team_name }}</p>
+        <p class="mx-auto has-text-weight-bold is-size-3">
+          {{ result.away_team_name }}
+        </p>
       </div>
     </div>
   </div>
@@ -44,7 +52,7 @@ export default {
     })
 
     return {
-      data,
+      data
     }
   }
 }
