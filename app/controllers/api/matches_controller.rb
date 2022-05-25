@@ -69,7 +69,7 @@ class Api::MatchesController < ApplicationController
 
   def api_request_url
     api_id = competitor_teams.unshift(favorite_team_api_id)
-    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}&from=#{prev_month}&to=#{next_month}")}
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}&from=#{prev_month}&to=#{next_month}") }
   end
 
   def competitor_teams
