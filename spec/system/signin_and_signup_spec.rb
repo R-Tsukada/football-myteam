@@ -5,24 +5,26 @@ require 'rails_helper'
 RSpec.describe 'devise', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
+  let(:team1) { FactoryBot.create(:team, :arsenal, league: league) }
+  let(:team2) { FactoryBot.create(:team, :manchester_united, league: league) }
+
+  before do
+    visit root_path
+  end
 
   # it 'user can login', js: true do
-  #   team1 = FactoryBot.create(:team, :arsenal, league: league)
-  #   team2 = FactoryBot.create(:team, :Manchester_United, league: league)
   #   FactoryBot.create(:favorite, user: user, team: team1)
   #   FactoryBot.create(:competitor, user: user, team: team2)
-  #
-  #   visit root_path
+
   #   all('.button')[1].click_link 'ログイン'
   #   fill_in 'Eメール', with: user.email
   #   fill_in 'パスワード', with: user.password
   #   click_button 'ログイン'
-  #
+
   #   expect(page).to have_content 'ログインしました'
   # end
 
   it 'email error when login.', js: true do
-    visit root_path
     all('.button')[1].click_link 'ログイン'
     fill_in 'Eメール', with: 'error@example.com'
     fill_in 'パスワード', with: user.password
@@ -32,7 +34,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'password error when login.', js: true do
-    visit root_path
     all('.button')[1].click_link 'ログイン'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: 'xxxxxx'
@@ -42,7 +43,6 @@ RSpec.describe 'devise', type: :system, js: true do
   end
 
   it 'user create new account', js: true do
-    visit root_path
     first('.button').click_link 'アカウント作成'
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '123456'
@@ -50,11 +50,9 @@ RSpec.describe 'devise', type: :system, js: true do
     click_button 'アカウント登録'
 
     expect(page).to have_content 'アカウント登録が完了しました'
-    expect(page).not_to have_content 'ライバルチームのみを変更する'
   end
 
   it 'password validation enabled during account creation', js: true do
-    visit root_path
     first('.button').click_link 'アカウント作成'
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '1234'

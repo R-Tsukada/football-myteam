@@ -4,30 +4,23 @@ class Api::FavoritesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   before_action :authenticate_user!
-  before_action :set_favorite_team, only: %i[index]
   before_action :set_follow, only: %i[create]
 
   def index
     user = current_user
-    @favorite_team = user.favorite.present? ? @team : @not_team
+    @favorite_team = user.favorite.present? ? user.favorite.team : []
   end
 
   def create
     user = current_user
-    user.favorite_team_follow(@team)
+    if user.favorite_team_following?(@team)
+      user.favorite_team_unfollow(@team)
+    else
+      user.favorite_team_follow(@team)
+    end
   end
 
   private
-
-  def set_favorite_team
-    user = current_user
-    if user.favorite.present?
-      id = user.favorite.team_id
-      @team = Team.find(id)
-    else
-      @not_team = []
-    end
-  end
 
   def set_follow
     id = params.require(:favorite).permit(:id)

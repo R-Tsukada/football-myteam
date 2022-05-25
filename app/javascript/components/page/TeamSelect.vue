@@ -54,8 +54,7 @@
     <div v-if="data.isChangeColorTeam">
       <button
         class="button is-rounded is-medium mt-6"
-        style="background-color: #6246ea"
-        @click="addFavoriteTeam">
+        style="background-color: #6246ea">
         <router-link to="/competitors" class="has-text-white"
           >応援しているチームを決定する</router-link
         >
@@ -114,14 +113,7 @@ export default {
         })
     }
 
-    const addFavoriteTeam = async () => {
-      axios.post('api/favorites', {
-        id: data.isChangeColorTeam
-      })
-    }
-
     const selectLeague = (league) => {
-      console.log(data.isChangeColorLeague)
       data.isChangeColorLeague === league.id
         ? (data.isChangeColorLeague = '')
         : (data.isChangeColorLeague = league.id)
@@ -138,6 +130,13 @@ export default {
       data.isChangeColorTeam === team.id
         ? (data.isChangeColorTeam = '')
         : (data.isChangeColorTeam = team.id)
+      addFavoriteTeam(team)
+    }
+
+    const addFavoriteTeam = async (team) => {
+      axios.post('api/favorites', {
+        id: team.id
+      })
     }
 
     onMounted(setLeague(), setTeam(), setFavorite(), setCompetitors())

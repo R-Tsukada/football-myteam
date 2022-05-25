@@ -8,6 +8,6 @@ class Team < ApplicationRecord
 
   belongs_to :league
   has_one :favorite, dependent: :destroy
-
   has_many :competitor, dependent: :destroy
+  has_one :standing, dependent: :destroy
 end
