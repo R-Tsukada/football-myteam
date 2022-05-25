@@ -13,33 +13,33 @@
           ライバルチームの選び方を選択してください
         </p>
         <div class="v-model-radiobutton has-text-left">
-          <input
-            type="radio"
-            class="rank mb-4"
-            value="rank"
-            v-model="data.checkedName" />
           <label
             class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
-            for="rank"
-            >昨シーズンの順位が近いチームを選ぶ</label
+            for="rank">
+            <input
+              type="radio"
+              class="rank mb-4"
+              value="rank"
+              v-model="data.checkedName" />
+            昨シーズンの順位が近いチームを選ぶ</label
           >
           <br />
-          <input
-            type="radio"
-            class="home mb-4"
-            value="home"
-            v-model="data.checkedName" />
-          <label class="is-size-4-desktop is-size-6-tablet m-3" for="home"
-            >本拠地が近いチームを選ぶ</label
+          <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">
+            <input
+              type="radio"
+              class="home mb-4"
+              value="home"
+              v-model="data.checkedName" />
+            本拠地が近いチームを選ぶ</label
           >
           <br />
-          <input
-            type="radio"
-            class="self mb-4"
-            value="self"
-            v-model="data.checkedName" />
-          <label class="is-size-4-desktop is-size-6-tablet m-3" for="self"
-            >自分でライバルチームを選ぶ</label
+          <label class="is-size-4-desktop is-size-6-tablet m-3" for="self">
+            <input
+              type="radio"
+              class="self mb-4"
+              value="self"
+              v-model="data.checkedName" />
+            自分でライバルチームを選ぶ</label
           >
           <br />
         </div>
