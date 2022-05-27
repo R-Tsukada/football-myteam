@@ -5,10 +5,12 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs postgresql-client yarn
 
+RUN mkdir /football
 WORKDIR /football
 COPY Gemfile /football/Gemfile
 COPY Gemfile.lock /football/Gemfile.lock
 RUN bundle install
+COPY . /football
 
 COPY package.json /football/package.json
 COPY yarn.lock  /football/yarn.lock
