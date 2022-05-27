@@ -29,6 +29,9 @@ gem 'net-smtp', require: false
 gem 'bulma-rails', '~> 0.9.3'
 gem 'devise'
 gem 'devise-i18n'
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
