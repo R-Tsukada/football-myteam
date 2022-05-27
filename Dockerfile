@@ -7,6 +7,8 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs po
 
 RUN mkdir /football
 WORKDIR /football
+ENV RAILS_ENV="production"
+ENV NODE_ENV="production"
 COPY Gemfile /football/Gemfile
 COPY Gemfile.lock /football/Gemfile.lock
 RUN bundle install
