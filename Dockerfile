@@ -1,5 +1,10 @@
 FROM ruby:3.1.0
 
+ARG RAILS_ENV
+ARG RAILS_SERVE_STATIC_FILES
+ENV RAILS_ENV=$RAILS_ENV
+ENV RAILS_SERVE_STATIC_FILES=$RAILS_SERVE_STATIC_FILES
+
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
@@ -7,8 +12,6 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs po
 
 RUN mkdir /football
 WORKDIR /football
-ENV RAILS_ENV="production"
-ENV NODE_ENV="production"
 COPY Gemfile /football/Gemfile
 COPY Gemfile.lock /football/Gemfile.lock
 RUN bundle install
@@ -16,12 +19,8 @@ COPY . /football
 
 COPY package.json /football/package.json
 COPY yarn.lock  /football/yarn.lock
-RUN yarn install --check-files
+RUN yarn install
 RUN bundle exec rails webpacker:install
-
-RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile \
- && yarn cache clean \
- && rm -rf node_modules tmp/cache
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
