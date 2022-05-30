@@ -117,11 +117,18 @@ export default {
       axios.get('/api/leagues').then((response) => {
         data.leagues = response.data
       })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setTeam = async () => {
       axios.get('/api/teams').then((response) => {
         data.teams = response.data
+        console.log(data.teams)
+      })
+      .catch((error) => {
+        console.log(error.message)
       })
     }
 
