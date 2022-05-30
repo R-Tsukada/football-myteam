@@ -26,7 +26,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content '上記のチームを登録する'
   end
 
-  it '昨シーズンの順位が近いチームを選ぶ', js: true do
+  it '本拠地が近いチームを選ぶ', js: true do
     choose '本拠地が近いチームを選ぶ'
     click_button 'チームの選択方法を決定する'
     expect(page).to have_content 'Tottenham'
