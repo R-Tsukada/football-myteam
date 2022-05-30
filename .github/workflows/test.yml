@@ -5,6 +5,9 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
     services:
       postgres:
         image: postgres
@@ -29,8 +32,6 @@ jobs:
           yarn upgrade
           bundle exec rails webpacker:compile
       - name: Rspec
-        env:
-          RAILS_ENV: test
         run: |
           bundle exec rails db:create
           bundle exec rails db:seed
