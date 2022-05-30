@@ -8,7 +8,7 @@
     <h2
       v-else
       class="is-size-2 has-text-centered has-text-weight-bold pb-6 has-text-danger">
-      20-21シーズンは終了しました
+      21-22シーズンは終了しました
     </h2>
     <div v-if="'2022-05-28' < formatDate(date)">
       <SeasonMessage />

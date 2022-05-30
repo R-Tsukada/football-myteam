@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <p class="has-text-centered is-size-3 has-text-weight-bold">
-      ⚽️ 21-22シーズンの開幕予定 🥅
+      ⚽️ 22-23シーズンの開幕予定 🥅
     </p>
     <div class="mx-auto has-text-centered mt-3">
       <ul class="is-size-5 has-text-weight-bold p-2">
