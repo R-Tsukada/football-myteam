@@ -33,9 +33,8 @@ jobs:
           bundle exec rails webpacker:compile
       - name: Rspec
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:seed
-          bundle exec rails db:migrate
+          bundle exec rails db:setup
+          bin/rails db:migrate
           bundle exec rspec
       - name: Archive screenshot
         if: failure()
