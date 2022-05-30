@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'API::Teams', type: :request do
+RSpec.describe 'API::teams', type: :request do
   describe 'GET /api/teams/index' do
     it 'returns http success' do
       user = FactoryBot.build(:user)

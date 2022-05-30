@@ -2,31 +2,43 @@ name: Test
 
 on: [push]
 
-env:
-  DOCKER_BUILDKIT: 1
-  COMPOSE_DOCKER_CLI_BUILD: 1
-
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - name: Setup docker
-        shell: bash
-        run: |
-          docker-compose build
-          docker-compose run web rails db:create
-          docker-compose run web rails db:migrate
-          docker-compose run web rails db:seed
-        env:
-          RAILS_ENV: test
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - name: webpacker
         run: |
-          docker-compose run web yarn install --check-files
-          docker-compose run web yarn upgrade
-          docker-compose run web bundle exec rails webpacker:compile
+          yarn install --check-files
+          yarn upgrade
+          bundle exec rails webpacker:compile
       - name: Rspec
         run: |
-          docker-compose run web bundle exec rspec
-        env:
-          RAILS_ENV: test
+          bundle exec rails db:create
+          bin/rails db:migrate
+          bundle exec rspec
+      - name: Archive screenshot
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: Screenshot of the test
+          path: tmp/screenshots
