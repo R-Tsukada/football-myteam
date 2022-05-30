@@ -10,18 +10,8 @@
       class="is-size-2 has-text-centered has-text-weight-bold pb-6 has-text-danger">
       20-21シーズンは終了しました
     </h2>
-    <div class="box" v-if="'2022-05-28' < formatDate(date)">
-      <p class="has-text-centered is-size-3 has-text-weight-bold">
-        ⚽️21-22シーズンの開幕予定🥅
-      </p>
-      <div class="mx-auto has-text-centered mt-3">
-        <ul class="is-size-5 has-text-weight-bold p-2">
-          <li>プレミア：8月 6日(土)</li>
-          <li>ラリーガ：8月12日(金)</li>
-          <li>ブンデス：8月 5日(金)</li>
-          <li>セリエA：未定</li>
-        </ul>
-      </div>
+    <div v-if="'2022-05-28' < formatDate(date)">
+      <SeasonMessage />
     </div>
     <MatchListLoader
       v-else-if="'2022-05-28' > formatDate(date) && !data.matches.length" />
@@ -66,12 +56,14 @@ import { reactive, onMounted, computed } from 'vue'
 import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
 import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
+import SeasonMessage from '../TeamSchedule/message/SeasonCloseMessage.vue'
 
 export default {
   components: {
     MatchListLoader,
     FavoriteTeamTable,
-    CompetitorTeamTable
+    CompetitorTeamTable,
+    SeasonMessage
   },
   setup() {
     const data = reactive({
