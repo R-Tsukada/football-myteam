@@ -33,7 +33,7 @@ jobs:
           bundle exec rails webpacker:compile
       - name: Rspec
         run: |
-          bundle exec rails db:setup
+          bundle exec rails db:create
           bin/rails db:migrate
           bundle exec rspec
       - name: Archive screenshot
