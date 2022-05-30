@@ -1,9 +1,20 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">
+    <h2
+      v-if="'2022-05-28' > formatDate(date) || '2022-07-05' < formatDate(date)"
+      class="is-size-2 has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
-    <MatchListLoader v-if="!data.matches.length" />
+    <h2
+      v-else
+      class="is-size-2 has-text-centered has-text-weight-bold pb-6 has-text-danger">
+      21-22シーズンは終了しました
+    </h2>
+    <div v-if="'2022-05-28' < formatDate(date)">
+      <SeasonMessage />
+    </div>
+    <MatchListLoader
+      v-else-if="'2022-05-28' > formatDate(date) && !data.matches.length" />
     <table
       v-else
       class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
@@ -45,12 +56,14 @@ import { reactive, onMounted, computed } from 'vue'
 import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
 import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
+import SeasonMessage from '../TeamSchedule/message/SeasonCloseMessage.vue'
 
 export default {
   components: {
     MatchListLoader,
     FavoriteTeamTable,
-    CompetitorTeamTable
+    CompetitorTeamTable,
+    SeasonMessage
   },
   setup() {
     const data = reactive({
@@ -131,6 +144,15 @@ export default {
       )
     )
 
+    const date = new Date()
+
+    const formatDate = (date) => {
+      const yyyy = String(date.getFullYear())
+      const mm = String(date.getMonth() + 1).padStart(2, '0')
+      const dd = String(date.getDate()).padStart(2, '0')
+      return `${yyyy}-${mm}-${dd}`
+    }
+
     onMounted(() => {
       setTeamSchedules(), setMatchSchedules(), setFavorite(), setCompetitor()
     })
@@ -140,7 +162,9 @@ export default {
       favoriteMatches,
       firstCompetitorTeamsMatches,
       secondCompetitorTeamsMatches,
-      thirdCompetitorTeamsMatches
+      thirdCompetitorTeamsMatches,
+      date,
+      formatDate
     }
   }
 }
