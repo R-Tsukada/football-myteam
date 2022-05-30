@@ -1,5 +1,5 @@
 <template>
-  <tr class="team_standing" @click="selectTeam(standings)">
+  <tr class="has-text-weight-bold" @click="selectTeam(standings)">
     <td>{{ standings.rank }}</td>
     <td><img :src="standings.team_logo" /></td>
     <td>{{ standings.points }}</td>
