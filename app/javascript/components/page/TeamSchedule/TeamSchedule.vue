@@ -29,6 +29,7 @@
       </thead>
       <tbody>
         <FavoriteTeamTable
+          class="has-background-link-light"
           :standings="data.favoriteTeams"
           :matchSchedules="favoriteMatches" />
         <CompetitorTeamTable
