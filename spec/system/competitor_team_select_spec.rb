@@ -40,7 +40,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content 'Tottenham'
     expect(page).to have_content 'Manchester United'
     expect(page).to have_content '残り3チーム登録できます'
-    all('img')[0].click
+    all('img')[1].click
     expect(page).to have_content '残り2チーム登録できます'
     expect(page).to have_content 'ライバルチームを決定する'
   end
