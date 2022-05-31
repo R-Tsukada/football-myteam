@@ -12,17 +12,17 @@ RSpec.describe 'devise', type: :system, js: true do
     visit root_path
   end
 
-  # it 'user can login', js: true do
-  #   FactoryBot.create(:favorite, user: user, team: team1)
-  #   FactoryBot.create(:competitor, user: user, team: team2)
+  it 'user can login', js: true do
+    FactoryBot.create(:favorite, user: user, team: team1)
+    FactoryBot.create(:competitor, user: user, team: team2)
 
-  #   all('.button')[1].click_link 'ログイン'
-  #   fill_in 'Eメール', with: user.email
-  #   fill_in 'パスワード', with: user.password
-  #   click_button 'ログイン'
+    all('.button')[1].click_link 'ログイン'
+    fill_in 'Eメール', with: user.email
+    fill_in 'パスワード', with: user.password
+    click_button 'ログイン'
 
-  #   expect(page).to have_content 'ログインしました'
-  # end
+    expect(page).to have_content 'ログインしました'
+  end
 
   it 'email error when login.', js: true do
     all('.button')[1].click_link 'ログイン'
