@@ -17,10 +17,12 @@ RSpec.describe '登録したチームのスケジュールを表示する', type
     visit root_path
   end
 
-  # it '登録したチームのスケジュールと詳細を表示する', js: true do
-  #   expect(page).to have_content 'リーグ戦情報'
-  #   first('img', wait: 10).click
-  #   expect(page).to have_content '試合予定'
-  #   expect(page).to have_content '試合結果'
-  # end
+  it 'オフシーズン期間にschedulesへアクセスしたときはシーズン終了したことが表示される', js: true do
+    expect(page).to have_content 'シーズンは終了しました'
+    expect(page).to have_content 'シーズンの開幕予定'
+    expect(page).to have_content 'プレミア'
+    expect(page).to have_content 'ラリーガ'
+    expect(page).to have_content 'ブンデス'
+    expect(page).to have_content 'セリエA'
+  end
 end
