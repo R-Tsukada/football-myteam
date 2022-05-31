@@ -22,20 +22,23 @@ class Api::StandingsController < ApplicationController
 
   def standing_data(url)
     Standing.delete_all
+    begin
+      url.each do |n|
+        http = Net::HTTP.new(n.host, n.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    url.each do |n|
-      http = Net::HTTP.new(n.host, n.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        request = Net::HTTP::Get.new(n)
+        request['x-rapidapi-host'] = ENV['HOST']
+        request['x-rapidapi-key'] = ENV['KEY']
 
-      request = Net::HTTP::Get.new(n)
-      request['x-rapidapi-host'] = ENV['HOST']
-      request['x-rapidapi-key'] = ENV['KEY']
-
-      response = http.request(request)
-      results = JSON.parse(response.body)
-      api = results['response'][0]['league']['standings'][0][0]
-      save_standing(api)
+        response = http.request(request)
+        results = JSON.parse(response.body)
+        api = results['response'][0]['league']['standings'][0][0]
+        save_standing(api)
+      end
+    rescue StandardError => e
+      Rails.logger.debug e.full_message
     end
   end
 
@@ -54,7 +57,7 @@ class Api::StandingsController < ApplicationController
 
   def api_request_url
     team_numbers = competitor_team_api_id.unshift(favorite_team_api_id)
-    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id}&season=#{season_year}&team=#{number}") }
+    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=0&season=#{season_year}&team=#{number}") }
   end
 
   def competitor_team_api_id
