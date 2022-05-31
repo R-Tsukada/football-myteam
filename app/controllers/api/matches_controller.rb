@@ -42,6 +42,8 @@ class Api::MatchesController < ApplicationController
       api = results
       save_match(api)
     end
+  rescue StandardError => e
+    Rails.logger.debug e.full_messag
   end
 
   def save_match(api)
