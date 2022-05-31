@@ -34,6 +34,7 @@ RSpec.describe '応援しているチームを登録する', type: :system, js: 
   end
 
   it 'チームをクリックするとボタンが表示される', js: true do
+    expect(page).to have_content 'Premier League'
     all('img')[1].click
     expect(page).to have_content 'Arsenal'
     all('img')[3].click
