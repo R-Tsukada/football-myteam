@@ -7,8 +7,9 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
-  body
+  body(style='display: flex; flex-flow: column; min-height: 100vh;')
     header.mb-6
       .navbar.is-transparent.is-fixed-top.p-2(style='background-color: #6246ea')
         .navbar-brand
@@ -25,22 +26,12 @@ html
               - else
                 = link_to 'アカウントを作成', new_user_registration_path, class: 'has-text-white mx-2'
                 = link_to 'ログイン', new_user_session_path, class: 'has-text-white mx-2'
-    p
-      .notice.is-size-4.p-5.has-text-centered.has-text-info
-        = notice
-    p
-      .alert.is-size-4.p-5.has-text-centered.has-text-danger
-        = alert
-    = yield
-    .footer.navbar.has-text-centered.p-4.mt-6(style='background-color: #6246ea')
-      .hero-body
-        .container.has-text-centered
-          .columns
-            .column.p.is-one-third
-              = link_to '利用規約', terms_of_service_path, class: 'has-text-white'
-            .column.p.is-one-third
-              = link_to 'プライバシポリシー', privacy_policy_path, class: 'has-text-white'
-            .column.p.is-one-third
-              = link_to 'GitHub Project', 'https://github.com/R-Tsukada/football-calendar', class: 'has-text-white'
-        .content.has-text-centered.mt-5
-          = link_to '@ryo0270590', 'https://twitter.com/ryo02730590', class: 'has-text-white'
+      p
+        .notice.is-size-4.p-5.has-text-centered.has-text-info
+          = notice
+      p
+        .alert.is-size-4.p-5.has-text-centered.has-text-danger
+          = alert
+    main(style='flex: 1;')
+      = yield
+    = render 'footer'
