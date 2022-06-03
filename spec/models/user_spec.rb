@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
   it 'is valid with a duplicate email' do
     FactoryBot.create(:user)
     user = User.new(
-      email: 'admin@example.com',
+      email: 'fjord2022@example.com',
       password: '123456'
     )
     user.valid?

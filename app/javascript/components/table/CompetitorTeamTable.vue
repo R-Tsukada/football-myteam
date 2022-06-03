@@ -22,7 +22,7 @@
           <div class="column is-one-thirds">
             <img :src="match.competition_logo" class="image is-48x48 mx-auto" />
           </div>
-          <div class="column is-two-thirds">
+          <div class="column is-two-thirds is-size-6">
             <p>{{ match.date }}</p>
           </div>
         </div>

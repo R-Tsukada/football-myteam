@@ -9,7 +9,7 @@ class Api::MatchesController < ApplicationController
   require 'json'
 
   def index
-    @match = Match.all.order(:date).where(date: Time.zone.today..)
+    @match = Match.all.order(:date).first(9)
   end
 
   def show
@@ -71,7 +71,7 @@ class Api::MatchesController < ApplicationController
 
   def api_request_url
     api_id = competitor_teams.unshift(favorite_team_api_id)
-    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{season_year}&team=#{i}&from=#{prev_month}&to=#{next_month}") }
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=2021&team=#{i}&from=2022-03-30&to=2022-05-30") }
   end
 
   def competitor_teams
