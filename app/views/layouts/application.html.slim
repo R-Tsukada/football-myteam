@@ -12,12 +12,11 @@ html
     = favicon_link_tag 'favicon.png'
   body(style='display: flex; flex-flow: column; min-height: 100vh;')
     header.mb-6
-      .navbar.is-transparent.is-fixed-top.p-2(style='background-color: #6246ea')
+      .navbar.is-transparent.is-fixed-top.p-2.has-background-main
         .navbar-brand
-          .navbar-item
-            .title
-              = link_to root_path do
-                = image_tag 'logo_black_white.png'
+          .title
+            = link_to root_path do
+              = image_tag('football_logo.svg', alt: 'football_myteam_logo', class:'image title-logo')
         .navbar-menu
           .navbar-end
             .navbar-item
