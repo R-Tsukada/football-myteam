@@ -5,16 +5,14 @@
       ライバルチームの選択方法を一つ選んでください
     </div>
     <div v-show="data.isShowing">
-      <div
-        class="box mb-5 mx-auto"
-        style="background-color: #d1d1e9; width: 800px">
+      <div class="box how-to-competitor-team-select mb-5 mx-auto">
         <p
-          class="is-size-3-desktop is-size-4-tablet is-size-6-mobile has-text-left-mobile has-text-weight-bold p-3">
+          class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
           ライバルチームの選び方を選択してください
         </p>
         <div class="v-model-radiobutton has-text-left">
           <label
-            class="is-size-4-desktop is-size-6-tablet is-size-8-mobile m-3"
+            class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
             for="rank">
             <input
               type="radio"
@@ -24,7 +22,9 @@
             昨シーズンの順位が近いチームを選ぶ</label
           >
           <br />
-          <label class="is-size-4-desktop is-size-6-tablet m-3" for="home">
+          <label class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
+            for="home"
+          >
             <input
               type="radio"
               class="home mb-4"
@@ -33,7 +33,9 @@
             本拠地が近いチームを選ぶ</label
           >
           <br />
-          <label class="is-size-4-desktop is-size-6-tablet m-3" for="self">
+          <label class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
+            for="self"
+          >
             <input
               type="radio"
               class="self mb-4"
@@ -45,12 +47,12 @@
         </div>
       </div>
       <button
-        class="button is-rounded is-medium mt-5 ml-3 has-text-white"
+        class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
         style="background-color: #6246ea"
         @click="selectTeam">
         チームの選択方法を決定する
       </button>
-      <button class="button is-rounded is-medium mt-5 ml-3">
+      <button class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile">
         <router-link to="/leagues" class="has-text-black"
           >応援しているチームを選び直す</router-link
         >
