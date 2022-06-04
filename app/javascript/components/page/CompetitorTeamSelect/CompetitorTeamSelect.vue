@@ -3,7 +3,7 @@
     <div class="notification is-danger is-size-4" v-show="data.isSelected">
       <button class="delete" @click="deleteMessage"></button>
       ライバルチームの選択方法を一つ選んでください
-    </div>
+    </div><!-- notification -->
     <div v-show="data.isShowing">
       <div class="box how-to-competitor-team-select mb-5 mx-auto">
         <p
@@ -44,8 +44,8 @@
             自分でライバルチームを選ぶ</label
           >
           <br />
-        </div>
-      </div>
+        </div><!-- v-model-radiobutton -->
+      </div><!-- v-show -->
       <button
         class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
         style="background-color: #6246ea"
@@ -57,48 +57,47 @@
           >応援しているチームを選び直す</router-link
         >
       </button>
-    </div>
+    </div><!-- has-text-centered -->
     <div v-show="data.isAdding">
-      <p
-        class="is-size-2-desktop is-size-3-tablet is-size-6-mobile has-text-weight-bold">
+      <h3
+        class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
         こちらのチームを登録しますか？
-      </p>
-      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-        <div
-          class="column is-one-fifth mx-auto"
-          v-for="team in data.selectedTeams.slice(0, 3)"
-          :key="team.id">
-          <div class="card m-1">
-            <div class="card-content">
-              <div class="content">
-                <img :src="team.logo" class="image is-128x128 mx-auto" />
-                <p class="has-text-weight-semibold mt-2 is-size-4">
-                  {{ team.name }}
-                </p>
-                <p class="has-text-weight-semibold">
-                  2020-2021：{{ team.last_season_rank }}位
-                </p>
-                <p class="has-text-weight-semibold">
-                  本拠地：{{ team.home_city }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </h3>
+        <div class="columns is-mobile">
+          <div
+            class="column is-one-third"
+            v-for="team in data.selectedTeams.slice(0, 3)"
+            :key="team.id">
+            <div class="card">
+              <img :src="team.logo" class="image competitor-team-logo mx-auto pt-1" />
+              <p class="has-text-weight-medium mt-2 is-size-4-tablet is-size-7-mobile">
+                {{ team.name }}
+              </p>
+              <p class="has-text-weight-medium is-size-4-tablet is-size-7-mobile">
+                {{ team.last_season_rank }}位
+              </p>
+              <p class="has-text-weight-medium is-size-4-tablet is-size-7-mobile">
+                {{ team.home_city }}
+              </p>
+            </div><!-- card -->
+          </div><!-- column -->
+        </div><!-- columns -->
       <br />
       <button
-        class="button is-rounded is-medium mt-2 ml-2"
+        class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
         style="background-color: #6246ea"
         @click="addCompetitorFollow">
         <router-link to="/schedules" class="has-text-white"
           >上記のチームを登録する</router-link
         >
       </button>
-      <button class="button is-rounded is-medium mt-2 ml-2" @click="again">
+      <button
+        class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
+        @click="again"
+      >
         チームの選び方を変更する
       </button>
-    </div>
+    </div><!-- v-show -->
     <div v-show="data.isFreeSelect">
       <CompetitorTeamCount
         :competitors="data.competitors"
@@ -108,49 +107,42 @@
       <div v-else>
         <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
           <div
-            class="column is-one-fifth has-text-centered"
+            class="column is-one-fifth-tablet is-one-third-mobile has-text-centered"
             v-for="team in data.teams"
-            :key="team.id">
-            <div class="card m-1">
-              <div
-                class="card-content"
-                v-bind:class="{
-                  'has-background-link-light': data.competitors.some(
-                    (competitor) => competitor.team_id === team.id
-                  )
-                }"
-                @click="followTeam(team)">
-                <div class="content">
-                  <img :src="team.logo" class="image is-128x128 mx-auto" />
-                  <p
-                    class="has-text-weight-semibold mt-2"
-                    v-bind:class="{
-                      'has-text-weight-bold has-text-danger':
-                        data.competitors.some(
-                          (competitor) => competitor.team_id === team.id
-                        )
-                    }">
-                    {{ team.name }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            :key="team.id"
+          >
+            <div
+              class="card has-hover-action select-button"
+              @click="followTeam(team)"
+              v-bind:class="{
+                'has-background-link-light is-selected': data.competitors.some(
+                  (competitor) => competitor.team_id === team.id
+                )
+              }"
+            >
+              <img :src="team.logo" class="image team-logo mx-auto" />
+              <p
+                class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
+              >
+                {{ team.name }}
+              </p>
+            </div><!-- card -->
+          </div><!-- column -->
+        </div><!-- columns -->
+      </div><!-- v-else -->
       <button
-        class="button is-rounded is-medium mt-6 ml-2"
+        class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
         style="background-color: #6246ea"
         v-if="data.competitors.length >= 1">
         <router-link to="/schedules" class="has-text-white"
           >ライバルチームを決定する</router-link
         >
       </button>
-      <button class="button is-rounded is-medium mt-6 ml-2" @click="again">
-        ライバルチームの選択方法を選び直す
+      <button class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile" @click="again">
+        チームの選択方法を選び直す
       </button>
-    </div>
-  </div>
+    </div><!-- v-show -->
+  </div><!-- container -->
 </template>
 
 <script>

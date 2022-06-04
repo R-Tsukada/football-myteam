@@ -68,3 +68,12 @@ $main: #6246ea;
   width: 80rem;
   max-width: 90%;
 }
+
+.competitor-team-logo {
+    width: 5rem;
+    max-width: 100%;
+  @include mobile {
+    width: 3rem;
+    max-width: 100%;
+  }
+}
