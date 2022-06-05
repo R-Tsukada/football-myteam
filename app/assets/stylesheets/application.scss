@@ -1,5 +1,4 @@
 @import "bulma";
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -47,6 +46,17 @@ $main: #6246ea;
   width: 5rem;
   max-width: 100%;
 }
+
+.standings-team-logo {
+  width: 5rem;
+  max-width: 100%;
+}
+
+.competition-logo {
+    width: 5rem;
+    max-width: 100%;
+}
+
 
 /* リーグまたはチーム選択時 */
 .select-button {

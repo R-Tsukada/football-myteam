@@ -3,48 +3,48 @@
     <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
-    <MatchListLoader v-if="!data.matches.length" />
-    <table
-      v-else
-      class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5">
-      <thead>
-        <tr>
-          <th>順位</th>
-          <th>チーム</th>
-          <th>勝点<br />(勝ち点差)</th>
-          <th>試合数<br />(残り試合数)</th>
-          <th>次節以降の試合</th>
-        </tr>
-      </thead>
-      <tbody>
-        <FavoriteTeamTable
-          class="has-background-link-light"
-          :standings="data.favoriteTeams"
-          :matchSchedules="favoriteMatches" />
-        <CompetitorTeamTable
-          :standings="data.firstCompetitorTeams"
-          :matchSchedules="firstCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-        <CompetitorTeamTable
-          v-if="data.secondCompetitorTeams"
-          :standings="data.secondCompetitorTeams"
-          :matchSchedules="secondCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-        <CompetitorTeamTable
-          v-if="data.thirdCompetitorTeams"
-          :standings="data.thirdCompetitorTeams"
-          :matchSchedules="thirdCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-      </tbody>
-    </table>
-    <br />
-  </div>
+      <MatchListLoader v-if="!data.matches.length" />
+      <table
+        v-else
+        class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5-tablet is-size-7-mobile">
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th>チーム</th>
+            <th>勝点<br />(勝ち点差)</th>
+            <th>試合数<br />(残り試合数)</th>
+            <th>次節以降の試合</th>
+          </tr>
+        </thead>
+        <tbody>
+          <FavoriteTeamTable
+            class="has-background-link-light"
+            :standings="data.favoriteTeams"
+            :matchSchedules="favoriteMatches" />
+          <CompetitorTeamTable
+            :standings="data.firstCompetitorTeams"
+            :matchSchedules="firstCompetitorTeamsMatches"
+            :favoriteTeamPoints="data.favoriteTeamPoints" />
+          <CompetitorTeamTable
+            v-if="data.secondCompetitorTeams"
+            :standings="data.secondCompetitorTeams"
+            :matchSchedules="secondCompetitorTeamsMatches"
+            :favoriteTeamPoints="data.favoriteTeamPoints" />
+          <CompetitorTeamTable
+            v-if="data.thirdCompetitorTeams"
+            :standings="data.thirdCompetitorTeams"
+            :matchSchedules="thirdCompetitorTeamsMatches"
+            :favoriteTeamPoints="data.favoriteTeamPoints" />
+        </tbody>
+      </table>
+  </div><!-- container -->
 </template>
+
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import FavoriteTeamTable from '../../table/FavoriteTeamTable.vue'
-import CompetitorTeamTable from '../../table/CompetitorTeamTable.vue'
+import FavoriteTeamTable from './table/FavoriteTeamTable.vue'
+import CompetitorTeamTable from './table/CompetitorTeamTable.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {

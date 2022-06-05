@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::MatchesController < ApplicationController
-  before_action :set_match
+  # before_action :set_match
   before_action :set_show_page, only: [:show]
   require 'uri'
   require 'net/http'
@@ -43,7 +43,7 @@ class Api::MatchesController < ApplicationController
       save_match(api)
     end
   rescue StandardError => e
-    Rails.logger.debug e.full_messag
+    Rails.logger.debug e.full_message
   end
 
   def save_match(api)
@@ -52,7 +52,8 @@ class Api::MatchesController < ApplicationController
       match.season = [api][0]['parameters']['season']
       current_team = Team.find_by(api_id: [api][0]['parameters']['team'])
       match.team_matches_index = current_team.id
-      match.date = [api][0]['response'][a]['fixture']['date'].scan(/\d{4}-\d{2}-\d{2}/).join('')
+      match.date = [api][0]['response'][a]['fixture']['date']
+      # match.date = Time.parse([api][0]['response'][a]['fixture']['date'])
       stadium = [api][0]['response'][a]['fixture']['venue']['name']
       match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
       match.competition_name = [api][0]['response'][a]['league']['name']
