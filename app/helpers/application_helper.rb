@@ -7,7 +7,7 @@ module ApplicationHelper
       title: 'Football MyTeam',
       reverse: true,
       charset: 'utf-8',
-      description: 'あなたの好きなクラブを応援することをサポートします！あなたの応援しているクラブの順位表や試合日程を一目で確認できるサービスです',
+      description: 'あなたの好きなクラブを応援することをサポートします！登録したクラブの順位表や試合日程を一目で確認できるサービスです',
       keywords: 'サッカー, プレミアリーグ, セリエA, ラリーガ, ブンデス',
       viewport: 'width=device-width, initial-scale=1.0',
       og: {
