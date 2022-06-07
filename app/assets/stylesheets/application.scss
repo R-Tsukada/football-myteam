@@ -48,13 +48,25 @@ $main: #6246ea;
 }
 
 .standings-team-logo {
-  width: 5rem;
-  max-width: 100%;
+  @include tablet {
+    width: 5rem;
+    max-width: 100%;
+  }
+  @include mobile {
+    width: 3rem;
+    max-width: 50%;
+  }
 }
 
 .competition-logo {
-    width: 5rem;
+  @include tablet {
+    width: 3rem;
     max-width: 100%;
+  }
+  @include mobile {
+    width: 3rem;
+    max-width: 70%;
+  }
 }
 
 
@@ -86,4 +98,9 @@ $main: #6246ea;
     width: 3rem;
     max-width: 100%;
   }
+}
+
+.home-and-away-size {
+  width: 3rem;
+  max-width: 100%;
 }
