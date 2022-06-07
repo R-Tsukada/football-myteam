@@ -15,25 +15,25 @@
         (残り{{ gameCount - standings.played }}試合)
     </td>
     <td v-for="match in matchSchedules" :key="match.id">
-      <div class="box" style="background-color: #d1d1e9">
+      <div class="match-schedule-box box" style="background-color: #d1d1e9">
         <div class="columns is-mobile">
-          <div class="column is-one-quater">
+          <div class="my-auto">
             <img
               :src="match.competition_logo"
               alt="competition_logo"
               class="image competition-logo"
             />
           </div>
-          <div class="column is-two-thirds">
-            <p class="is-size-6-tablet is-size-7-mobile">
+          <div class="my-auto ml-2">
+            <p class="size">
               {{ String(match.date.match(/\d{1,2}-\d{1,2}$/)) }}
             </p>
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-two-thirds">
+          <div class="my-auto">
             <p
-              class="has-text-white is-size-6-tablet is-size-7-mobile"
+              class="has-text-white"
               v-bind:class="
                 data.isHome === match.home_and_away
                   ? 'has-background-success'
@@ -42,9 +42,10 @@
               {{ match.home_and_away }}
             </p>
           </div>
-          <div class="column is-one-thirds">
+          <div class="my-auto ml-2">
             <img
               :src="match.team_logo"
+              alt="match-team-logo"
               class="image standings-team-logo"
             />
           </div>

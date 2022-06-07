@@ -1,11 +1,11 @@
 <template>
-  <tr class="team_standing" @click="selectTeam(standings)">
+  <tr @click="selectTeam(standings)">
     <td>{{ standings.rank }}</td>
     <td>
       <img
         :src="standings.team_logo"
         alt="standings-competitor-team-logo"
-        class="standings-team-logo mx-auto"
+        class="image standings-team-logo mx-auto"
       />
     </td>
     <td>
@@ -25,21 +25,21 @@
     <td v-for="match in matchSchedules" :key="match.id">
       <div class="box" style="background-color: #d1d1e9">
         <div class="columns is-mobile">
-          <div class="column is-one-thirds">
+          <div class="my-auto">
             <img
               :src="match.competition_logo"
               alt="competition_logo"
               class="image competition-logo"
             />
           </div>
-          <div class="column is-two-thirds">
+          <div class="my-auto ml-2">
             <p class="is-size-5-tablet is-size-7-mobile">
               {{ String(match.date.match(/\d{1,2}-\d{1,2}$/)) }}
             </p>
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-two-thirds">
+          <div class="my-auto">
             <p
               class="has-text-white is-size-5-tablet is-size-7-mobile"
               v-bind:class="
@@ -50,7 +50,7 @@
               {{ match.home_and_away }}
             </p>
           </div>
-          <div class="column is-one-thirds">
+          <div class="my-auto ml-2">
             <img
               :src="match.team_logo"
               alt="match-team-logo"
