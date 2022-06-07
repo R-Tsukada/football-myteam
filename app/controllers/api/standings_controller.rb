@@ -57,7 +57,7 @@ class Api::StandingsController < ApplicationController
 
   def api_request_url
     team_numbers = competitor_team_api_id.unshift(favorite_team_api_id)
-    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=39&season=#{season_year}&team=#{number}") }
+    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id}&season=#{season_year}&team=#{number}") }
   end
 
   def competitor_team_api_id
