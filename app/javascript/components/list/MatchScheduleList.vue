@@ -2,13 +2,13 @@
   <div>
     <div class="box" v-for="schedule in matchScheduleFilter" :key="schedule.id">
       <div class="columns is-mobile">
-        <div class="is-flex-direction-row ml-2">
+        <div class="ml-2">
           <img
             :src="schedule.competition_logo"
             alt="competition_logo"
             class="competition-logo" />
         </div>
-        <div class="is-flex-direction-row my-auto mx-2">
+        <div class="my-auto mx-2">
           <p
             class="home-and-away-size has-text-white has-text-weight-bold has-text-centered"
             v-bind:class="
@@ -19,7 +19,7 @@
             {{ schedule.home_and_away }}
           </p>
         </div>
-        <div class="is-flex-direction-row my-auto mx-2">
+        <div class="my-auto mx-2">
           <p
             class="has-text-weight-bold is-size-4-tablet is-size-6-mobile has-text-left">
             {{ String(schedule.date.match(/\d{1,2}-\d{1,2}$/)) }}

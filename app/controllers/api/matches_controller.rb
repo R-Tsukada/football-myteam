@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::MatchesController < ApplicationController
-  # before_action :set_match
+  before_action :set_match
   before_action :set_show_page, only: [:show]
   require 'uri'
   require 'net/http'

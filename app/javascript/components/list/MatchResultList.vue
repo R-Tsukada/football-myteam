@@ -5,13 +5,13 @@
       v-for="result in matchResultFilter"
       :key="result.id">
       <div class="columns is-mobile">
-        <div class="is-flex-direction-row ml-2">
+        <div class="ml-2">
           <img
             :src="result.competition_logo"
             alt="competition_logo"
             class="image competition-logo" />
         </div>
-        <div class="is-flex-direction-row my-auto mx-2">
+        <div class="my-auto mx-2">
           <p
             class="has-text-white has-text-weight-bold is-size-4-tablet is-size-6-mobile"
             v-bind:class="
@@ -22,7 +22,7 @@
             {{ result.home_and_away }}
           </p>
         </div>
-        <div class="is-flex-direction-row my-auto mx-2">
+        <div class="my-auto mx-2">
           <p class="has-text-weight-bold is-size-4-tablet is-size-6-mobile">
             {{ String(result.date.match(/\d{1,2}-\d{1,2}$/)) }}
           </p>
