@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2 has-text-centered has-text-weight-bold pb-6">
+    <h2 class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
       <MatchListLoader v-if="!data.matches.length" />
@@ -9,10 +9,10 @@
         class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5-tablet is-size-7-mobile">
         <thead>
           <tr>
-            <th>順位</th>
-            <th>チーム</th>
-            <th>勝点<br />(勝ち点差)</th>
-            <th>試合数<br />(残り試合数)</th>
+            <th>順<span class="mobile-display">位</span></th>
+            <th>チ<span class="mobile-display">ーム</span></th>
+            <th>勝<span class="mobile-display">点<br />(勝ち点差)</span></th>
+            <th>試<span class="mobile-display">合数<br />(残り試合数)</span></th>
             <th>次節以降の試合</th>
           </tr>
         </thead>

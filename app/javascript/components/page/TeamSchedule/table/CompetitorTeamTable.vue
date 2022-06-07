@@ -19,7 +19,9 @@
       {{ standings.played }}
       <br />
       <div class="has-text-grey-light">
-        (残り{{ gameCount - standings.played }}試合)
+        <span class="mobile-display">(残り</span>
+          {{ gameCount - standings.played }}
+        <span class="mobile-display">試合)</span>
       </div>
     </td>
     <td v-for="match in matchSchedules" :key="match.id">
