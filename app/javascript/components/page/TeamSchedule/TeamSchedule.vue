@@ -1,43 +1,49 @@
 <template>
   <div class="container">
-    <h2 class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
+    <h2
+      class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
-      <MatchListLoader v-if="!data.matches.length" />
-      <table
-        v-else
-        class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5-tablet is-size-7-mobile">
-        <thead>
-          <tr>
-            <th>順<span class="mobile-display">位</span></th>
-            <th>チ<span class="mobile-display">ーム</span></th>
-            <th>勝<span class="mobile-display">点<br />(勝ち点差)</span></th>
-            <th>試<span class="mobile-display">合数<br />(残り試合数)</span></th>
-            <th>次節以降の試合</th>
-          </tr>
-        </thead>
-        <tbody>
-          <FavoriteTeamTable
-            class="has-background-link-light"
-            :standings="data.favoriteTeams"
-            :matchSchedules="favoriteMatches" />
-          <CompetitorTeamTable
-            :standings="data.firstCompetitorTeams"
-            :matchSchedules="firstCompetitorTeamsMatches"
-            :favoriteTeamPoints="data.favoriteTeamPoints" />
-          <CompetitorTeamTable
-            v-if="data.secondCompetitorTeams"
-            :standings="data.secondCompetitorTeams"
-            :matchSchedules="secondCompetitorTeamsMatches"
-            :favoriteTeamPoints="data.favoriteTeamPoints" />
-          <CompetitorTeamTable
-            v-if="data.thirdCompetitorTeams"
-            :standings="data.thirdCompetitorTeams"
-            :matchSchedules="thirdCompetitorTeamsMatches"
-            :favoriteTeamPoints="data.favoriteTeamPoints" />
-        </tbody>
-      </table>
-  </div><!-- container -->
+    <MatchListLoader v-if="!data.matches.length" />
+    <table
+      v-else
+      class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5-tablet is-size-7-mobile">
+      <thead>
+        <tr>
+          <th>順<span class="mobile-display">位</span></th>
+          <th>チ<span class="mobile-display">ーム</span></th>
+          <th>
+            勝<span class="mobile-display">点<br />(勝ち点差)</span>
+          </th>
+          <th>
+            試<span class="mobile-display">合数<br />(残り試合数)</span>
+          </th>
+          <th>次節以降の試合</th>
+        </tr>
+      </thead>
+      <tbody>
+        <FavoriteTeamTable
+          class="has-background-link-light"
+          :standings="data.favoriteTeams"
+          :matchSchedules="favoriteMatches" />
+        <CompetitorTeamTable
+          :standings="data.firstCompetitorTeams"
+          :matchSchedules="firstCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <CompetitorTeamTable
+          v-if="data.secondCompetitorTeams"
+          :standings="data.secondCompetitorTeams"
+          :matchSchedules="secondCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <CompetitorTeamTable
+          v-if="data.thirdCompetitorTeams"
+          :standings="data.thirdCompetitorTeams"
+          :matchSchedules="thirdCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+      </tbody>
+    </table>
+  </div>
+  <!-- container -->
 </template>
 
 <script>

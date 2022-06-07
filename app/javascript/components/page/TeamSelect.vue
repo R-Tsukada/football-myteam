@@ -87,9 +87,7 @@
     </div>
     <!-- v-else -->
     <div v-if="data.isChangeColorTeam" class="has-text-centered">
-      <button
-        class="color-button button is-rounded is-medium mt-6"
-      >
+      <button class="color-button button is-rounded is-medium mt-6">
         <router-link
           to="/competitors"
           class="has-text-white is-size-4-tablet is-size-7-mobile"

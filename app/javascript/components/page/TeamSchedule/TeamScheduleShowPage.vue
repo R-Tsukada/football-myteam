@@ -25,8 +25,7 @@
     </div>
     <div class="has-text-centered">
       <button
-        class="color-button button is-rounded is-medium mt-5 has-text-centered"
-      >
+        class="color-button button is-rounded is-medium mt-5 has-text-centered">
         <router-link to="/schedules" class="has-text-white">戻る</router-link>
       </button>
     </div>

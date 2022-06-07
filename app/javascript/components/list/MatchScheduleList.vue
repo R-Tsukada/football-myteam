@@ -6,8 +6,7 @@
           <img
             :src="schedule.competition_logo"
             alt="competition_logo"
-            class="competition-logo"
-          />
+            class="competition-logo" />
         </div>
         <div class="is-flex-direction-row my-auto mx-2">
           <p
@@ -21,7 +20,8 @@
           </p>
         </div>
         <div class="is-flex-direction-row my-auto mx-2">
-          <p class="has-text-weight-bold is-size-4-tablet is-size-6-mobile has-text-left">
+          <p
+            class="has-text-weight-bold is-size-4-tablet is-size-6-mobile has-text-left">
             {{ String(schedule.date.match(/\d{1,2}-\d{1,2}$/)) }}
           </p>
         </div>
@@ -31,8 +31,7 @@
           <img
             :src="schedule.home_logo"
             alt="home_team_logo"
-            class="image team-logo mx-auto"
-          />
+            class="image team-logo mx-auto" />
           <p class="has-text-weight-bold is-size-3-tablet is-size-6-mobile">
             {{ schedule.home_team_name }}
           </p>
@@ -44,8 +43,7 @@
           <img
             :src="schedule.away_logo"
             alt="away_team_logo"
-            class="image team-logo mx-auto"
-          />
+            class="image team-logo mx-auto" />
           <p class="has-text-weight-bold is-size-3-tablet is-size-6-mobile">
             {{ schedule.away_team_name }}
           </p>

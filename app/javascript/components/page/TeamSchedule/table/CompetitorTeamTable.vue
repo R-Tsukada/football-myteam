@@ -5,8 +5,7 @@
       <img
         :src="standings.team_logo"
         alt="standings-competitor-team-logo"
-        class="image standings-team-logo mx-auto"
-      />
+        class="image standings-team-logo mx-auto" />
     </td>
     <td>
       {{ standings.points }}
@@ -20,7 +19,7 @@
       <br />
       <div class="has-text-grey-light">
         <span class="mobile-display">(残り</span>
-          {{ gameCount - standings.played }}
+        {{ gameCount - standings.played }}
         <span class="mobile-display">試合)</span>
       </div>
     </td>
@@ -31,8 +30,7 @@
             <img
               :src="match.competition_logo"
               alt="competition_logo"
-              class="image competition-logo"
-            />
+              class="image competition-logo" />
           </div>
           <div class="my-auto ml-2">
             <p class="is-size-5-tablet is-size-7-mobile">
@@ -56,11 +54,13 @@
             <img
               :src="match.team_logo"
               alt="match-team-logo"
-              class="image standings-team-logo"
-            />
-          </div><!--column-->
-        </div><!--columns-->
-      </div><!--box-->
+              class="image standings-team-logo" />
+          </div>
+          <!--column-->
+        </div>
+        <!--columns-->
+      </div>
+      <!--box-->
     </td>
   </tr>
 </template>
