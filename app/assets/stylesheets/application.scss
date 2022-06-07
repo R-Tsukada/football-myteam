@@ -18,8 +18,22 @@
 /* layout */
 $main: #6246ea;
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 .has-background-main {
   background-color: $main;
+}
+
+footer {
+  background-color: #6246ea;
 }
 
 .title-logo {
@@ -106,6 +120,7 @@ $main: #6246ea;
 }
 
 .match-schedule-box {
+  background-color: #d1d1e9;
   @include tablet {
     width: 9rem;
     max-width: 100%;
@@ -120,4 +135,11 @@ $main: #6246ea;
   @include mobile {
     display: none;
   }
+}
+
+/* ボタン */
+$button-color: #6246ea;
+
+.color-button {
+  background-color: $button-color;
 }

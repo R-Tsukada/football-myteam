@@ -25,7 +25,7 @@
       </div>
     </td>
     <td v-for="match in matchSchedules" :key="match.id">
-      <div class="box" style="background-color: #d1d1e9">
+      <div class="match-schedule-box box">
         <div class="columns is-mobile">
           <div class="my-auto">
             <img

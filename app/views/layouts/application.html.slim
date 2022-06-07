@@ -7,10 +7,9 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
-    = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application'
     = favicon_link_tag 'favicon.png'
-  body(style='display: flex; flex-flow: column; min-height: 100vh;')
+  body
     header.mb-6
       .navbar.is-transparent.is-fixed-top.p-2.has-background-main
         .navbar-brand
@@ -19,7 +18,7 @@ html
               = image_tag('football_logo.svg', alt: 'football_myteam_logo', class:'image title-logo')
         .navbar-menu
           .navbar-end
-            .navbar-item
+            .navbar-item.has-text-white.mx-2
               - if user_signed_in?
                 = link_to '登録しているチームを変更する', '/leagues', class: 'has-text-white mx-2'
                 = link_to 'プロフィール変更', edit_user_registration_path, class: 'has-text-white mx-2'
@@ -33,6 +32,6 @@ html
       p
         .alert.is-size-4.p-5.has-text-centered.has-text-danger
           = alert
-    main(style='flex: 1;')
+    main
       = yield
     = render 'footer'

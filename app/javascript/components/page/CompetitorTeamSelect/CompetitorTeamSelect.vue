@@ -47,8 +47,7 @@
         </div><!-- v-model-radiobutton -->
       </div><!-- v-show -->
       <button
-        class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
-        style="background-color: #6246ea"
+        class="color-button button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
         @click="selectTeam">
         チームの選択方法を決定する
       </button>
@@ -84,8 +83,7 @@
         </div><!-- columns -->
       <br />
       <button
-        class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        style="background-color: #6246ea"
+        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
         @click="addCompetitorFollow">
         <router-link to="/schedules" class="has-text-white"
           >上記のチームを登録する</router-link
@@ -131,8 +129,7 @@
         </div><!-- columns -->
       </div><!-- v-else -->
       <button
-        class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        style="background-color: #6246ea"
+        class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
         v-if="data.competitors.length >= 1">
         <router-link to="/schedules" class="has-text-white"
           >ライバルチームを決定する</router-link
