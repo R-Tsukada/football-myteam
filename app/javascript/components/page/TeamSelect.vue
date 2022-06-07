@@ -1,8 +1,12 @@
 <template>
   <div class="container">
+    <h2
+      class="has-text-centered is-size-2-tablet is-size-4-mobile has-text-weight-bold">
+      登録したい応援しているチームを選んでください
+    </h2>
     <div
-      v-if="data.isChangeColorLeague"
-      class="has-text-right mr-5 mb-5 is-size-5 has-text-weight-bold">
+      class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
+      v-if="data.isChangeColorLeague">
       <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
     </div>
     <div v-else>
@@ -15,80 +19,85 @@
     </div>
     <LeagueListLoader v-if="!data.leagues.length" />
     <div v-else>
-      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">
+      <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグ一覧
-      </p>
+      </h3>
       <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
         <div
-          class="column is-one-quarter has-text-centered"
+          class="column is-one-quarter-tablet is-two-mobile has-text-centered"
           v-for="league in data.leagues"
           :key="league.id">
-          <div class="card m-1">
-            <div
-              class="card-content"
-              @click="selectLeague(league)"
+          <div
+            class="card has-hover-action select-button"
+            @click="selectLeague(league)"
+            v-bind:class="{
+              'has-background-link-light is-selected':
+                data.isChangeColorLeague === league.id
+            }">
+            <img
+              :src="league.logo"
+              alt="league_name"
+              class="image mx-auto league-logo" />
+            <p
+              class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
               v-bind:class="{
-                'has-background-link-light':
-                  data.isChangeColorLeague === league.id
+                'has-text-weight-bold': data.isChangeColorLeague === league.id
               }">
-              <div class="content">
-                <img :src="league.logo" class="image is-128x128 mx-auto" />
-                <p
-                  class="has-text-weight-semibold mt-2"
-                  v-bind:class="{
-                    'has-text-weight-bold':
-                      data.isChangeColorLeague === league.id
-                  }">
-                  {{ league.name }}
-                </p>
-              </div>
-            </div>
+              {{ league.name }}
+            </p>
           </div>
+          <!-- card -->
         </div>
+        <!-- .column -->
       </div>
+      <!-- .columns -->
     </div>
+    <!-- else -->
     <TeamListLoader v-if="!teamFilter.length" />
     <div v-else>
-      <p class="has-text-centered is-size-3 my-6 has-text-weight-bold">
+      <h3 class="has-text-centered is-size-3 my-6 has-text-weight-bold">
         チーム一覧
-      </p>
+      </h3>
       <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
         <div
-          class="column is-one-fifth has-text-centered"
+          class="column is-one-fifth-tablet is-one-third-mobile has-text-centered"
           v-for="team in teamFilter"
           :key="team.id">
-          <div class="card m-1">
-            <div
-              class="card-content"
-              @click="selectTeam(team)"
+          <div
+            class="card has-hover-action select-button"
+            @click="selectTeam(team)"
+            v-bind:class="{
+              'has-background-link-light is-selected':
+                data.isChangeColorTeam === team.id
+            }">
+            <img :src="team.logo" class="image mx-auto team-logo" />
+            <p
+              class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
               v-bind:class="{
-                'has-background-link-light': data.isChangeColorTeam === team.id
+                'has-text-weight-bold': data.isChangeColorTeam === team.id
               }">
-              <div class="content">
-                <img :src="team.logo" class="image is-128x128 mx-auto" />
-                <p
-                  class="has-text-weight-semibold mt-2"
-                  v-bind:class="{
-                    'has-text-weight-bold': data.isChangeColorTeam === team.id
-                  }">
-                  {{ team.name }}
-                </p>
-              </div>
-            </div>
+              {{ team.name }}
+            </p>
           </div>
+          <!-- card -->
         </div>
+        <!-- column -->
       </div>
+      <!-- columns -->
     </div>
+    <!-- v-else -->
     <div v-if="data.isChangeColorTeam" class="has-text-centered">
-      <button
-        class="button is-rounded is-medium mt-6"
-        style="background-color: #6246ea">
-        <router-link to="/competitors" class="has-text-white"
+      <button class="color-button button is-rounded is-medium mt-6">
+        <router-link
+          to="/competitors"
+          class="has-text-white is-size-4-tablet is-size-7-mobile"
           >応援しているチームを決定する</router-link
         >
       </button>
     </div>
+    <!--has-text-centered -->
   </div>
+  <!-- .container -->
 </template>
 
 <script>
@@ -198,9 +207,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.card:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-</style>

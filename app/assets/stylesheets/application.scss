@@ -1,4 +1,4 @@
-@import "bulma"
+@import "bulma";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,3 +14,132 @@
  *= require_tree .
  *= require_self
  */
+
+/* layout */
+$main: #6246ea;
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.has-background-main {
+  background-color: $main;
+}
+
+footer {
+  background-color: #6246ea;
+}
+
+.title-logo {
+  width: 250px;
+}
+
+/* card */
+.card.has-hover-action:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.card.is-selected {
+  box-shadow: $main 0 0 0 1px inset;
+}
+
+/* logoのサイズ */
+.league-logo {
+  width: 4rem;
+  max-width: 100%;
+}
+
+.team-logo {
+  width: 5rem;
+  max-width: 100%;
+}
+
+.standings-team-logo {
+  @include tablet {
+    width: 3rem;
+    max-width: 100%;
+  }
+  @include mobile {
+    width: 2.5rem;
+    max-width: 100%;
+  }
+}
+
+.competition-logo {
+  @include tablet {
+    width: 2.5rem;
+    max-width: 100%;
+  }
+  @include mobile {
+    width: 2rem;
+    max-width: 100%;
+  }
+}
+
+
+/* リーグまたはチーム選択時 */
+.select-button {
+  @include tablet {
+    padding: 1.5rem;
+  }
+  @include mobile {
+    padding: 0.75rem;
+  }
+}
+
+/* 文字列の折り返し */
+.is-break-all {
+  word-break: break-all;
+}
+
+.box.how-to-competitor-team-select {
+  background-color: #d1d1e9;
+  width: 80rem;
+  max-width: 90%;
+}
+
+.competitor-team-logo {
+    width: 5rem;
+    max-width: 100%;
+  @include mobile {
+    width: 3rem;
+    max-width: 100%;
+  }
+}
+
+.home-and-away-size {
+  width: 3rem;
+  max-width: 100%;
+}
+
+.match-schedule-box {
+  background-color: #d1d1e9;
+  @include tablet {
+    width: 9rem;
+    max-width: 100%;
+  }
+  @include mobile {
+    width: 7rem;
+    max-width: 100%;
+  }
+}
+
+.mobile-display {
+  @include mobile {
+    display: none;
+  }
+}
+
+/* ボタン */
+$button-color: #6246ea;
+
+.color-button {
+  background-color: $button-color;
+}
