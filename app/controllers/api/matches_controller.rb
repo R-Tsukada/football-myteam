@@ -53,7 +53,6 @@ class Api::MatchesController < ApplicationController
       current_team = Team.find_by(api_id: [api][0]['parameters']['team'])
       match.team_matches_index = current_team.id
       match.date = [api][0]['response'][a]['fixture']['date']
-      # match.date = Time.parse([api][0]['response'][a]['fixture']['date'])
       stadium = [api][0]['response'][a]['fixture']['venue']['name']
       match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
       match.competition_name = [api][0]['response'][a]['league']['name']
