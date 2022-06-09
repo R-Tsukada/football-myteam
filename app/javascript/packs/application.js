@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 import Rails from '@rails/ujs'
-import '../../assets/stylesheets/application.scss'
 import 'main.js'
 import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
