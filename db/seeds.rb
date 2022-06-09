@@ -5,7 +5,7 @@ League.create(
     {
       "id": 1,
       "api_id": 39,
-      "name": 'Premier League',
+      "name": 'Premier',
       "logo": 'https://media.api-sports.io/football/leagues/39.png'
     },
     {
@@ -23,7 +23,7 @@ League.create(
     {
       "id": 4,
       "api_id": 78,
-      "name": 'Bundesliga 1',
+      "name": 'Bundes',
       "logo": 'https://media.api-sports.io/football/leagues/78.png'
     }
   ]
