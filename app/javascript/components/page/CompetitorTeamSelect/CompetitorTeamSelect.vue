@@ -68,7 +68,7 @@
       </h3>
       <div class="columns is-mobile">
         <div
-          class="column is-one-third"
+          class="column is-one-third mx-auto"
           v-for="team in data.selectedTeams.slice(0, 3)"
           :key="team.id">
           <div class="card">
@@ -160,7 +160,6 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import { useStore } from 'vuex'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 import TeamListLoader from '../../loader/TeamListLoader'
@@ -184,8 +183,6 @@ export default {
       isSelected: false,
       isShowingMessage: true
     })
-
-    const store = useStore()
 
     const setTeam = async () => {
       axios
@@ -273,7 +270,6 @@ export default {
             console.log(error)
           })
       )
-      teamId.map((id) => store.commit('addCompetitor', id))
     }
 
     // 自分でチームを選択する
@@ -301,8 +297,6 @@ export default {
     return {
       data,
       selectCompetitorTeams,
-      addCompetitor: () => store.commit('addCompetitor'),
-      deleteCompetitor: () => store.commit('deleteCompetitor'),
       autoSelect,
       selectTeam,
       again,
