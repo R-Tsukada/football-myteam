@@ -146,7 +146,6 @@ export default {
         .get('/api/teams')
         .then((response) => {
           data.teams = response.data
-          console.log(data.teams)
         })
         .catch((error) => {
           console.log(error.message)

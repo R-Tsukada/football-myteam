@@ -36,8 +36,8 @@
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
-import MatchScheduleList from '../../list/MatchScheduleList.vue'
-import MatchResultList from '../../list/MatchResultList.vue'
+import MatchScheduleList from './list/MatchScheduleList.vue'
+import MatchResultList from './list/MatchResultList.vue'
 import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
 
 export default {
@@ -77,14 +77,14 @@ export default {
     const matchScheduleFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
         /* return schedules.date > formatDate(date) */
-        return schedules.date > '2022-04-25'
+        return schedules.date > '2022-03-15'
       })
     })
 
     const matchResultsFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
         /* return schedules.date < formatDate(date) */
-        return schedules.date < '2022-04-25'
+        return schedules.date < '2022-03-15'
       })
     })
 
