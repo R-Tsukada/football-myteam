@@ -4,22 +4,29 @@
       class="has-text-centered is-size-2-tablet is-size-4-mobile has-text-weight-bold">
       応援しているチームを選んでください
     </h2>
-      <div class="box team-select-description mt-3 mx-auto" v-if="!data.competitors.length">
-        <p class="is-size-4-tablet has-text-centered has-text-weight-semibold">チーム選びの手順</p>
-        <ol class="p-2 is-size-6-mobile">
-          <li class="p-1">あなたが応援しているチームを選びます。</li>
-          <li class="p-1">1で選んだのと同じリーグの中からライバルチームを選びます。</li>
-          <li class="p-1">まずは応援しているチームが所属しているリーグを選んでください。</li>
-        </ol>
-      </div>
-      <div
-        class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
-        v-else
-      >
-        <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
-      </div>
-      <LeagueListLoader v-if="!data.leagues.length" />
-      <div v-else>
+    <div
+      class="box team-select-description mt-3 mx-auto"
+      v-if="!data.competitors.length">
+      <p class="is-size-4-tablet has-text-centered has-text-weight-semibold">
+        チーム選びの手順
+      </p>
+      <ol class="p-2 is-size-6-mobile">
+        <li class="p-1">あなたが応援しているチームを選びます。</li>
+        <li class="p-1">
+          1で選んだのと同じリーグの中からライバルチームを選びます。
+        </li>
+        <li class="p-1">
+          まずは応援しているチームが所属しているリーグを選んでください。
+        </li>
+      </ol>
+    </div>
+    <div
+      class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
+      v-else>
+      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
+    </div>
+    <LeagueListLoader v-if="!data.leagues.length" />
+    <div v-else>
       <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグ一覧
       </h3>
