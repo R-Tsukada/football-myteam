@@ -68,7 +68,7 @@
       </h3>
       <div class="columns is-mobile">
         <div
-          class="column is-one-third"
+          class="column is-one-third mx-auto"
           v-for="team in data.selectedTeams.slice(0, 3)"
           :key="team.id">
           <div class="card">
