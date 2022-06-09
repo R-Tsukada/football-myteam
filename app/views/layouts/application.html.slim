@@ -9,6 +9,8 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
     = favicon_link_tag 'favicon.png'
+     - if Rails.env.production?
+      = render 'google_analytics'
   body
     header
       .navbar.is-transparent.is-fixed-top.p-2.has-background-main
