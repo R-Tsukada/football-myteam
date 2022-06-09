@@ -96,7 +96,8 @@ footer {
   }
 }
 
-.team-select-description {
+.box.team-select-description {
+  background-color: #d1d1e9;
   @include tablet {
     width: 40rem;
   }
