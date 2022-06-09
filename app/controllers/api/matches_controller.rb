@@ -71,16 +71,20 @@ class Api::MatchesController < ApplicationController
 
   def api_request_url
     api_id = competitor_teams.unshift(favorite_team_api_id)
-    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=2021&team=#{i}&from=2022-#{prev_date}&to=2022-#{next_date}") }
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{current_season}&team=#{i}&from=#{prev_date}&to=#{next_date}") }
   end
 
   # レビュー用に日付を調節
   def prev_date
-    '03-30'
+    '2022-02-30'
   end
 
   def next_date
-    '04-30'
+    '2022-03-30'
+  end
+
+  def current_season
+    '2021'
   end
   # ここまで
 
