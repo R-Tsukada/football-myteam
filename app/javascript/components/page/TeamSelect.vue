@@ -2,23 +2,23 @@
   <div class="container">
     <h2
       class="has-text-centered is-size-2-tablet is-size-4-mobile has-text-weight-bold">
-      登録したい応援しているチームを選んでください
+      応援しているチームを選んでください
     </h2>
-    <div
-      class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
-      v-if="data.isChangeColorLeague">
-      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
-    </div>
-    <div v-else>
-      <p class="is-size-4 has-text-centered has-text-weight-bold mt-5">
-        あなたが応援しているチームを選びます。そのあとに同じリーグの中からライバルチームを選びます。
-      </p>
-      <p class="is-size-4 has-text-centered has-text-weight-bold my-5">
-        まずは応援しているチームが所属しているチームを選んでください
-      </p>
-    </div>
-    <LeagueListLoader v-if="!data.leagues.length" />
-    <div v-else>
+      <div
+        class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
+        v-if="data.isChangeColorLeague">
+        <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
+      </div>
+      <div class="team-select-description box mt-3 mx-auto" v-else>
+        <p class="is-size-4-tablet has-text-centered has-text-weight-semibold">チーム選びの手順</p>
+        <ol class="p-2 is-size-6-mobile">
+          <li class="p-1">あなたが応援しているチームを選びます。</li>
+          <li class="p-1">1で選んだのと同じリーグの中からライバルチームを選びます。</li>
+          <li class="p-1">まずは応援しているチームが所属しているリーグを選んでください。</li>
+        </ol>
+      </div>
+      <LeagueListLoader v-if="!data.leagues.length" />
+      <div v-else>
       <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグ一覧
       </h3>
@@ -39,7 +39,7 @@
               alt="league_name"
               class="image mx-auto league-logo" />
             <p
-              class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
+              class="has-text-weight-semibold mt-2 is-size-5-tablet is-size-7-mobile is-break-all"
               v-bind:class="{
                 'has-text-weight-bold': data.isChangeColorLeague === league.id
               }">

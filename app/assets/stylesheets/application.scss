@@ -96,6 +96,15 @@ footer {
   }
 }
 
+.team-select-description {
+  @include tablet {
+    width: 40rem;
+  }
+  @include mobile {
+    width: 18rem;
+  }
+}
+
 /* 文字列の折り返し */
 .is-break-all {
   word-break: break-all;
