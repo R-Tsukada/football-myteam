@@ -18,7 +18,7 @@
             for="rank">
             <input
               type="radio"
-              class="rank mb-4"
+              class="how-to-team-select rank mb-4"
               value="rank"
               v-model="data.checkedName" />
             昨シーズンの順位が近いチームを選ぶ</label
@@ -29,7 +29,7 @@
             for="home">
             <input
               type="radio"
-              class="home mb-4"
+              class="how-to-team-select home mb-4"
               value="home"
               v-model="data.checkedName" />
             本拠地が近いチームを選ぶ</label
@@ -40,7 +40,7 @@
             for="self">
             <input
               type="radio"
-              class="self mb-4"
+              class="how-to-team-select self mb-4"
               value="self"
               v-model="data.checkedName" />
             自分でライバルチームを選ぶ</label
@@ -307,10 +307,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-input:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-</style>
