@@ -64,14 +64,21 @@
     <!-- has-text-centered -->
     <div v-show="data.isAdding">
       <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
-        こちらのチームを登録しますか？
+        登録したいチームを選んでください
       </h3>
       <div class="columns is-mobile">
         <div
           class="column is-one-third mx-auto"
           v-for="team in data.selectedTeams.slice(0, 3)"
           :key="team.id">
-          <div class="card">
+          <div
+            class="card has-hover-action select-button"
+            @click="followTeam(team)"
+            v-bind:class="{
+              'has-background-link-light is-selected': data.competitors.some(
+                (competitor) => competitor.team_id === team.id
+              )
+            }">
             <img
               :src="team.logo"
               class="image competitor-team-logo mx-auto pt-1" />
@@ -94,7 +101,7 @@
       <br />
       <button
         class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="addCompetitorFollow">
+      >
         <router-link to="/schedules" class="has-text-white"
           >上記のチームを登録する</router-link
         >
