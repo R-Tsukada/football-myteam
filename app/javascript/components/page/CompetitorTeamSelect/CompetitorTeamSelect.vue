@@ -114,7 +114,7 @@
       </button>
       <button
         class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="again">
+        @click="selectAgain">
         チームの選び方を変更する
       </button>
     </div>
@@ -162,7 +162,7 @@
       </button>
       <button
         class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="again">
+        @click="selectAgain">
         チームの選択方法を選び直す
       </button>
     </div>
@@ -267,7 +267,7 @@ export default {
       data.isSelected = false
     }
 
-    const again = () => {
+    const selectAgain = () => {
       data.isShowing = true
       data.isAdding = false
       data.isFreeSelect = false
@@ -300,7 +300,7 @@ export default {
       selectCompetitorTeams,
       autoSelect,
       selectTeam,
-      again,
+      selectAgain,
       deleteMessage,
       followTeam
     }
