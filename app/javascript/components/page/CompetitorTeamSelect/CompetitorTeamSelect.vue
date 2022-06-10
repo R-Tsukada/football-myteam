@@ -1,5 +1,6 @@
 <template>
   <div class="container has-text-centered">
+    <!-- ライバルチーム選択方法を選んでもらう -->
     <div class="notification is-danger is-size-4" v-show="data.isSelected">
       <button class="delete" @click="deleteMessage"></button>
       ライバルチームの選択方法を一つ選んでください
@@ -62,6 +63,7 @@
       </button>
     </div>
     <!-- has-text-centered -->
+    <!--ライバルチームの選択方法を選んでもらったあと-->
     <div v-show="data.isAdding">
       <CompetitorTeamCount
         :competitors="data.competitors"
@@ -72,8 +74,8 @@
       </h3>
       <div class="columns is-mobile">
         <div
-          class="column is-one-third mx-auto"
-          v-for="team in data.selectedTeams.slice(0, 3)"
+          class="column mx-auto"
+          v-for="team in data.selectedTeams"
           :key="team.id">
           <div
             class="card has-hover-action select-button"
@@ -107,7 +109,7 @@
         class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
       >
         <router-link to="/schedules" class="has-text-white"
-          >上記のチームを登録する</router-link
+          >選んだチームを登録する</router-link
         >
       </button>
       <button
@@ -116,6 +118,7 @@
         チームの選び方を変更する
       </button>
     </div>
+    <!--自分でチーム選んでもらう -->
     <!-- v-show -->
     <div v-show="data.isFreeSelect">
       <CompetitorTeamCount
@@ -229,6 +232,10 @@ export default {
     }
 
     // 自動登録の処理
+    const selectTeam = () => {
+      autoSelect()
+    }
+
     const autoSelect = () => {
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
@@ -266,23 +273,6 @@ export default {
       data.isFreeSelect = false
     }
 
-    const selectTeam = () => {
-      autoSelect()
-    }
-
-    const addCompetitorFollow = () => {
-      const teamId = data.selectedTeams.slice(0, 3).map((team) => team.id)
-      teamId.forEach((id) =>
-        axios
-          .post('/api/competitors', {
-            id: id
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      )
-    }
-
     // 自分でチームを選択する
     const followTeam = (team) => {
       selectCompetitorTeams(team.id)
@@ -311,7 +301,6 @@ export default {
       autoSelect,
       selectTeam,
       again,
-      addCompetitorFollow,
       deleteMessage,
       followTeam
     }
