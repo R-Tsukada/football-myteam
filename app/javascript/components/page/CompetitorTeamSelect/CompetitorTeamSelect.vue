@@ -106,11 +106,19 @@
       <!-- columns -->
       <br />
       <button
+        v-if="data.competitors.length <= 3"
         class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
       >
         <router-link to="/schedules" class="has-text-white"
           >選んだチームを登録する</router-link
         >
+      </button>
+      <button
+        v-else
+        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
+        title="Disabled button" disabled
+      >
+        選んだチームを登録する
       </button>
       <button
         class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
@@ -155,10 +163,17 @@
       <!-- v-else -->
       <button
         class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        v-if="data.competitors.length >= 1">
+        v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
         <router-link to="/schedules" class="has-text-white"
-          >ライバルチームを決定する</router-link
+          >選んだチームを登録する</router-link
         >
+      </button>
+      <button
+        v-else
+        class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
+        title="Disabled button" disabled
+      >
+        選んだチームを登録する
       </button>
       <button
         class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
