@@ -63,6 +63,10 @@
     </div>
     <!-- has-text-centered -->
     <div v-show="data.isAdding">
+      <CompetitorTeamCount
+        :competitors="data.competitors"
+        v-if="data.isShowingMessage" />
+      <CompetitorValidation v-else />
       <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
         登録したいチームを選んでください
       </h3>
