@@ -23,7 +23,9 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     click_button 'チームの選択方法を決定する'
     expect(page).to have_content 'Manchester United'
     expect(page).to_not have_content 'Tottenham'
-    expect(page).to have_content '上記のチームを登録する'
+    all('img')[1].click
+    expect(page).to have_content '残り2チーム登録できます'
+    expect(page).to have_content '選んだチームを登録する'
   end
 
   it '本拠地が近いチームを選ぶ', js: true do
@@ -31,7 +33,9 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     click_button 'チームの選択方法を決定する'
     expect(page).to have_content 'Tottenham'
     expect(page).to_not have_content 'Manchester United'
-    expect(page).to have_content '上記のチームを登録する'
+    all('img')[1].click
+    expect(page).to have_content '残り2チーム登録できます'
+    expect(page).to have_content '選んだチームを登録する'
   end
 
   it '自分でライバルチームを選ぶ', js: true do
@@ -43,7 +47,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     sleep 2.0
     all('img')[1].click
     expect(page).to have_content '残り2チーム登録できます'
-    expect(page).to have_content 'ライバルチームを決定する'
+    expect(page).to have_content '選んだチームを登録する'
   end
 
   it 'チームの選択方法を選ばなかった時のメッセージを表示', js: true do
