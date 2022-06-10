@@ -1,5 +1,6 @@
 <template>
   <div class="container has-text-centered">
+    <!-- ライバルチーム選択方法を選んでもらう -->
     <div class="notification is-danger is-size-4" v-show="data.isSelected">
       <button class="delete" @click="deleteMessage"></button>
       ライバルチームの選択方法を一つ選んでください
@@ -17,7 +18,7 @@
             for="rank">
             <input
               type="radio"
-              class="rank mb-4"
+              class="how-to-team-select rank mb-4"
               value="rank"
               v-model="data.checkedName" />
             昨シーズンの順位が近いチームを選ぶ</label
@@ -28,7 +29,7 @@
             for="home">
             <input
               type="radio"
-              class="home mb-4"
+              class="how-to-team-select home mb-4"
               value="home"
               v-model="data.checkedName" />
             本拠地が近いチームを選ぶ</label
@@ -39,7 +40,7 @@
             for="self">
             <input
               type="radio"
-              class="self mb-4"
+              class="how-to-team-select self mb-4"
               value="self"
               v-model="data.checkedName" />
             自分でライバルチームを選ぶ</label
@@ -62,16 +63,28 @@
       </button>
     </div>
     <!-- has-text-centered -->
+    <!--ライバルチームの選択方法を選んでもらったあと-->
     <div v-show="data.isAdding">
+      <CompetitorTeamCount
+        :competitors="data.competitors"
+        v-if="data.isShowingMessage" />
+      <CompetitorValidation v-else />
       <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
-        こちらのチームを登録しますか？
+        登録したいチームを選んでください
       </h3>
       <div class="columns is-mobile">
         <div
-          class="column is-one-third mx-auto"
-          v-for="team in data.selectedTeams.slice(0, 3)"
+          class="column mx-auto"
+          v-for="team in data.selectedTeams"
           :key="team.id">
-          <div class="card">
+          <div
+            class="card has-hover-action select-button"
+            @click="followTeam(team)"
+            v-bind:class="{
+              'has-background-link-light is-selected': data.competitors.some(
+                (competitor) => competitor.team_id === team.id
+              )
+            }">
             <img
               :src="team.logo"
               class="image competitor-team-logo mx-auto pt-1" />
@@ -93,18 +106,26 @@
       <!-- columns -->
       <br />
       <button
-        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="addCompetitorFollow">
+        v-if="data.competitors.length <= 3"
+        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile">
         <router-link to="/schedules" class="has-text-white"
-          >上記のチームを登録する</router-link
+          >選んだチームを登録する</router-link
         >
       </button>
       <button
+        v-else
+        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
+        title="Disabled button"
+        disabled>
+        選んだチームを登録する
+      </button>
+      <button
         class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="again">
+        @click="selectAgain">
         チームの選び方を変更する
       </button>
     </div>
+    <!--自分でチーム選んでもらう -->
     <!-- v-show -->
     <div v-show="data.isFreeSelect">
       <CompetitorTeamCount
@@ -141,14 +162,21 @@
       <!-- v-else -->
       <button
         class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        v-if="data.competitors.length >= 1">
+        v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
         <router-link to="/schedules" class="has-text-white"
-          >ライバルチームを決定する</router-link
+          >選んだチームを登録する</router-link
         >
       </button>
       <button
+        v-else
+        class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
+        title="Disabled button"
+        disabled>
+        選んだチームを登録する
+      </button>
+      <button
         class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="again">
+        @click="selectAgain">
         チームの選択方法を選び直す
       </button>
     </div>
@@ -218,6 +246,10 @@ export default {
     }
 
     // 自動登録の処理
+    const selectTeam = () => {
+      autoSelect()
+    }
+
     const autoSelect = () => {
       if (data.checkedName === 'home') {
         data.selectedTeams = data.teams.filter(
@@ -249,27 +281,10 @@ export default {
       data.isSelected = false
     }
 
-    const again = () => {
+    const selectAgain = () => {
       data.isShowing = true
       data.isAdding = false
       data.isFreeSelect = false
-    }
-
-    const selectTeam = () => {
-      autoSelect()
-    }
-
-    const addCompetitorFollow = () => {
-      const teamId = data.selectedTeams.slice(0, 3).map((team) => team.id)
-      teamId.forEach((id) =>
-        axios
-          .post('/api/competitors', {
-            id: id
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      )
     }
 
     // 自分でチームを選択する
@@ -299,18 +314,10 @@ export default {
       selectCompetitorTeams,
       autoSelect,
       selectTeam,
-      again,
-      addCompetitorFollow,
+      selectAgain,
       deleteMessage,
       followTeam
     }
   }
 }
 </script>
-
-<style scoped>
-input:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-</style>

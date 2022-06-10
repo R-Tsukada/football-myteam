@@ -96,6 +96,11 @@ footer {
   word-break: break-all;
 }
 
+input.how-to-team-select:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 .box.how-to-competitor-team-select {
   background-color: #d1d1e9;
   width: 80rem;
