@@ -11,63 +11,65 @@
 欧州カップ戦出場権争いや残留争いをしているチームを登録すれば、日々の順位争いと今後の順位変動を予測することに役立ちます！
 
 ## Setup
-- initialization
+### initialization
 
 ```
-https://github.com/R-Tsukada/football-myteam.git
-```
-
-```
-cd football-myteam
+$ https://github.com/R-Tsukada/football-myteam.git
 ```
 
 ```
-bin/setup
+$ cd football-myteam
 ```
 
-- environment variable
+```
+$ bin/setup
+```
 
-1. 以下のサイトでアカウント登録をし、APIキーを取得する
+### environment variable
 
-  https://www.api-football.com/
+以下のサイトでアカウント登録をし、APIキーを取得する
+
+```
+https://www.api-football.com/
+```
   
-2. APIキーを登録するために `.env` を作成する
+APIキーを登録するために `.env` を作成する
 ```
-  touch .env
+$ touch .env
 ```
 
 ```
-example
+# Example of '.env'
 
 HOST = 'v3.football.api-sports.io'
-KEY = '********************************' 1で取得したAPIキーを入力
+KEY = '********************************' APIキーを入力
 
 ```
 
 ### seed
 ```
-bin/rails db:seed
+$ bin/rails db:seed
 ```
 
 ### Lint & Prettier & rubocop
 
 ```
-bundle exec bin/lint
+$ bundle exec bin/lint
 ```
 
 ### RSpec
 
 ```
-bundle exec rspec
+$ bundle exec rspec
 ```
 
 ### Run
 
 ```
-bin/rails s
+$ bin/rails s
 ```
 
-## Demo
+## 使い方
 
 1. [Football MyTeam](https://football-myteam.herokuapp.com/)にアクセスし、アカウントを作成してください
 
