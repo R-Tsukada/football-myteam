@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::TeamFilterController < ApplicationController
+class API::TeamFilterController < ApplicationController
   before_action :authenticate_user!
 
   def index

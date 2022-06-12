@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::LeaguesController < ApplicationController
+class API::LeaguesController < ApplicationController
   def index
     @leagues = League.all
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::StandingsController < ApplicationController
+class API::StandingsController < ApplicationController
   before_action :api_request
   before_action :authenticate_user!
   require 'uri'
