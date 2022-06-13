@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  get 'leagues', to: 'leagues#index', as: 'leagues'
+  resources :leagues, only: %i(index)
+  resources :home
   root to: 'home#index'
   namespace :api, format: 'json' do
     resources :leagues, only: [:index]
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
     resources :team_filter, only: [:index]
     resources :matches, only: [:index, :show]
   end
-  resources :home, only: %i(index)
   get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
   get 'terms_of_service', to: 'home#terms_of_service', as: 'terms_of_service'
   get '*path', to: 'leagues#index'
