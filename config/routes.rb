@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :leagues, only: %i(index)
-  resources :home
+  resources :home, only: %i(index)
   root to: 'home#index'
   namespace :api, format: 'json' do
     resources :leagues, only: [:index]
