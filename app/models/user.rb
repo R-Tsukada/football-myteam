@@ -38,12 +38,4 @@ class User < ApplicationRecord
   def competitor_team_following?(team)
     competitor_following.include?(team)
   end
-
-  def self.current
-    Thread.current[:user]
-  end
-
-  def self.current=(user)
-    Thread.current[:user] = user
-  end
 end
