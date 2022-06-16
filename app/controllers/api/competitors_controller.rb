@@ -23,7 +23,6 @@ class API::CompetitorsController < ApplicationController
   private
 
   def set_competitor_team
-    id = params.require(:competitor).permit(:id)
-    @competitor_teams = Team.find_by(id)
+    @competitor_teams = Team.find(params.require(:id))
   end
 end
