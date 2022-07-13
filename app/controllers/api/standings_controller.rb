@@ -5,8 +5,6 @@ class API::StandingsController < ApplicationController
   before_action :authenticate_user!
   require 'uri'
   require 'net/http'
-  require 'openssl'
-  require 'json'
 
   def index
     @standing = Standing.all

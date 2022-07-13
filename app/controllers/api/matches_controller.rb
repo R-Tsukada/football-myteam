@@ -5,8 +5,6 @@ class API::MatchesController < ApplicationController
   before_action :set_show_page, only: [:show]
   require 'uri'
   require 'net/http'
-  require 'openssl'
-  require 'json'
 
   def index
     @match = Match.all.order(:date).first(9)
