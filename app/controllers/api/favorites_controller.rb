@@ -7,8 +7,7 @@ class API::FavoritesController < ApplicationController
   before_action :set_follow, only: %i[create]
 
   def index
-    user = current_user
-    @favorite_team = user.favorite.present? ? user.favorite.team : []
+    @favorite_team = current_user.favorite&.team || []
   end
 
   def create
