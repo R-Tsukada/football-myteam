@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class API::FavoritesController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_follow, only: %i[create]
 

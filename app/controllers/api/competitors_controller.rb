@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class API::CompetitorsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_competitor_team, only: %i[create]
 
