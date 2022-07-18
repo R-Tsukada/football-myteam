@@ -43,10 +43,6 @@ class API::MatchesController < ApplicationController
   end
 
   def favorite_team
-    SelectTeam.favorite(current_user)
-  end
-
-  def season_year
-    Year.season
+    current_user.favorite.team
   end
 end

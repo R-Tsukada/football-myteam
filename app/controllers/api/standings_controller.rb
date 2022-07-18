@@ -18,24 +18,21 @@ class API::StandingsController < ApplicationController
 
   def api_request_url
     team_numbers = competitor_team_api_id.unshift(favorite_team_api_id)
-    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id}&season=#{season_year}&team=#{number}") }
+    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id(favorite_team)}&season=#{Year.season}&team=#{number}") }
   end
 
   def competitor_team_api_id
     SelectTeam.competitor(current_user)
   end
 
-  def league_api_id
-    SelectTeam.league(favorite_team)
+  def league_api_id(favorite_team)
+    league = League.find(favorite_team.league_id)
+    league.api_id
   end
 
   delegate :api_id, to: :favorite_team, prefix: true
 
   def favorite_team
-    SelectTeam.favorite(current_user)
-  end
-
-  def season_year
-    Year.season
+    current_user.favorite.team
   end
 end
