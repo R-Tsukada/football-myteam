@@ -129,6 +129,11 @@
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
     <div v-show="data.isFreeSelect">
+      <h2
+        class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3"
+      >
+        ライバルチームを最大3チームまで選んでください
+      </h2>
       <CompetitorTeamCount
         :competitors="data.competitors"
         v-if="data.isShowingMessage" />
@@ -161,25 +166,27 @@
         <!-- columns -->
       </div>
       <!-- v-else -->
-      <button
-        class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
-        <router-link to="/schedules" class="has-text-white"
-          >選んだチームを登録する</router-link
-        >
-      </button>
-      <button
-        v-else
-        class="color-button button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        title="Disabled button"
-        disabled>
-        選んだチームを登録する
-      </button>
-      <button
-        class="button is-rounded is-medium mt-4 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="selectAgain">
-        チームの選択方法を選び直す
-      </button>
+        <div class="buttons is-centered mt-6">
+          <button
+            class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+            @click="selectAgain">
+            チームの選択方法を選び直す
+          </button>
+          <button
+            class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+            v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
+            <router-link to="/schedules" class="has-text-white"
+              >選んだチームを登録する</router-link
+            >
+          </button>
+          <button
+            v-else
+            class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+            title="Disabled button"
+            disabled>
+            選んだチームを登録する
+          </button>
+        </div><!-- buttons -->
     </div>
     <!-- v-show -->
   </div>
