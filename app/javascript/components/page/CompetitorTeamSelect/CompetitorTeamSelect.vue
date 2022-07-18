@@ -66,13 +66,13 @@
     <!-- has-text-centered -->
     <!--ライバルチームの選択方法を選んでもらったあと-->
     <div v-show="data.isAdding">
+      <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
+        登録したいチームを選んでください
+      </h3>
       <CompetitorTeamCount
         :competitors="data.competitors"
         v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
-      <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
-        登録したいチームを選んでください
-      </h3>
       <div class="columns is-mobile">
         <div
           class="column mx-auto"
@@ -106,25 +106,27 @@
       </div>
       <!-- columns -->
       <br />
-      <button
-        v-if="data.competitors.length <= 3"
-        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile">
-        <router-link to="/schedules" class="has-text-white"
-          >選んだチームを登録する</router-link
-        >
-      </button>
-      <button
-        v-else
-        class="color-button button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        title="Disabled button"
-        disabled>
-        選んだチームを登録する
-      </button>
-      <button
-        class="button is-rounded is-medium mt-2 ml-2 is-size-4-tablet is-size-7-mobile"
-        @click="selectAgain">
-        チームの選び方を変更する
-      </button>
+      <div class="buttons is-centered">
+        <button
+          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          @click="selectAgain">
+          チームの選び方を変更する
+        </button>
+        <button
+          v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
+          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile">
+          <router-link to="/schedules" class="has-text-white"
+            >選んだチームを登録する</router-link
+          >
+        </button>
+        <button
+          v-else
+          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          title="Disabled button"
+          disabled>
+          選んだチームを登録する
+        </button>
+      </div><!-- buttons -->
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
