@@ -19,7 +19,7 @@
           まずは応援しているチームが所属しているリーグを選んでください。
         </li>
       </ol>
-    </div>
+    </div> <!-- box -->
     <div
       class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
       v-else>
@@ -30,35 +30,33 @@
       <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグ一覧
       </h3>
-      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
         <div
-          class="column is-one-quarter-tablet is-two-mobile has-text-centered"
+          class="tabs is-boxed is-fullwidth is-large"
+        >
+        <ul
           v-for="league in data.leagues"
           :key="league.id">
-          <div
-            class="card has-hover-action select-button"
+          <li
             @click="selectLeague(league)"
             v-bind:class="{
-              'has-background-link-light is-selected':
+              'is-active':
                 data.isChangeColorLeague === league.id
-            }">
-            <img
-              :src="league.logo"
-              alt="league_name"
-              class="image mx-auto league-logo" />
-            <p
-              class="has-text-weight-semibold mt-2 is-size-5-tablet is-size-7-mobile is-break-all"
-              v-bind:class="{
-                'has-text-weight-bold': data.isChangeColorLeague === league.id
-              }">
-              {{ league.name }}
-            </p>
-          </div>
-          <!-- card -->
-        </div>
-        <!-- .column -->
-      </div>
-      <!-- .columns -->
+              }"
+          >
+            <a>
+              <img
+                :src="league.logo"
+                alt="league_name"
+                class="image team-select-league-logo mr-2" />
+              <p
+                class="is-size-6"
+              >
+                {{ league.name }}
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div> <!-- tabs -->
     </div>
     <!-- else -->
     <TeamListLoader v-if="!teamFilter.length" />

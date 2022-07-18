@@ -25,6 +25,14 @@ main {
   width: 250px;
 }
 
+/* favorite team select*/
+.team-select-league-logo {
+  width: 2rem;
+  max-width: 100%;
+  height: 2rem;
+  max-height: 100%;
+}
+
 /* card */
 .card.has-hover-action:hover {
   cursor: pointer;
