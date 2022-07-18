@@ -7,47 +7,48 @@
     </div>
     <!-- notification -->
     <div v-show="data.isShowing">
-      <div class="box how-to-competitor-team-select mb-5 mx-auto">
-        <p
+      <div class="mx-auto">
+        <h2
           class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
           ライバルチームの選び方を選択してください
-        </p>
-        <div class="v-model-radiobutton has-text-left">
-          <label
-            class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
-            for="rank">
-            <input
-              type="radio"
-              class="how-to-team-select rank mb-4"
-              value="rank"
-              v-model="data.checkedName" />
-            昨シーズンの順位が近いチームを選ぶ</label
-          >
-          <br />
-          <label
-            class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
-            for="home">
-            <input
-              type="radio"
-              class="how-to-team-select home mb-4"
-              value="home"
-              v-model="data.checkedName" />
-            本拠地が近いチームを選ぶ</label
-          >
-          <br />
-          <label
-            class="is-size-3-tablet is-size-7-mobile has-text-weight-medium"
-            for="self">
-            <input
-              type="radio"
-              class="how-to-team-select self mb-4"
-              value="self"
-              v-model="data.checkedName" />
-            自分でライバルチームを選ぶ</label
-          >
-          <br />
-        </div>
-        <!-- v-model-radiobutton -->
+        </h2>
+          <div class="columns is-multiline is-centered mt-4 mx-auto">
+            <div class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
+              <label
+                class="has-text-weight-medium"
+                for="rank">
+                <input
+                  type="radio"
+                  class="how-to-team-select rank mb-4"
+                  value="rank"
+                  v-model="data.checkedName" />
+                昨シーズンの順位が近いチームを選ぶ</label
+              >
+              <br />
+              <label
+                class="has-text-weight-medium"
+                for="home">
+                <input
+                  type="radio"
+                  class="how-to-team-select home mb-4"
+                  value="home"
+                  v-model="data.checkedName" />
+                本拠地が近いチームを選ぶ</label
+              >
+              <br />
+              <label
+                class="has-text-weight-medium"
+                for="self">
+                <input
+                  type="radio"
+                  class="how-to-team-select self mb-4"
+                  value="self"
+                  v-model="data.checkedName" />
+                自分でライバルチームを選ぶ</label
+              >
+          </div>
+          <!-- v-model-radiobutton -->
+        </div> <!-- columns -->
       </div>
       <!-- v-show -->
       <button
