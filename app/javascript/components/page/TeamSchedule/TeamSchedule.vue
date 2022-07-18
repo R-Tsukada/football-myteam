@@ -4,6 +4,7 @@
       class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
+    <p class="has-text-centered">優勝・欧州カップ戦出場権・残留争いを楽しもう</p>
     <MatchListLoader v-if="!data.matches.length" />
     <table
       v-else
