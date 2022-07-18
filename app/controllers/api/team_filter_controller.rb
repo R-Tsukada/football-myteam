@@ -5,6 +5,6 @@ class API::TeamFilterController < ApplicationController
 
   def index
     team = current_user.favorite.team
-    @filter = Team.where(league: team.league_id).where.not(id: team)
+    @filter = Team.where(league: team.league_id).where.not(id: team.id)
   end
 end
