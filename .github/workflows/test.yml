@@ -30,6 +30,7 @@ jobs:
         run: |
           yarn install --check-files
           yarn upgrade
+          bin/webpack
           bundle exec rails webpacker:compile
       - name: Rspec
         run: |
