@@ -15,7 +15,7 @@ class API::MatchesController < ApplicationController
   private
 
   def set_show_page
-    @team_id = Team.find(params.require(:id))
+    @team_id = Team.find(params[:id])
   end
 
   def set_match
