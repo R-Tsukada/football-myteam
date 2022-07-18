@@ -52,15 +52,15 @@
       </div>
       <!-- v-show -->
       <button
-        class="color-button button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
-        @click="selectTeam">
-        チームの選択方法を決定する
-      </button>
-      <button
         class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile">
         <router-link to="/leagues" class="has-text-black"
           >応援しているチームを選び直す</router-link
         >
+      </button>
+      <button
+        class="color-button button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
+        @click="selectTeam">
+        チームの選択方法を決定する
       </button>
     </div>
     <!-- has-text-centered -->
