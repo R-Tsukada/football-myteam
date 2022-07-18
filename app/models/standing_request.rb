@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class StandingRequest < ApplicationRecord
-  require 'uri'
-  require 'net/http'
+require 'uri'
+require 'net/http'
 
+class StandingRequest < ApplicationRecord
   def self.league(url)
     Standing.delete_all
     begin
