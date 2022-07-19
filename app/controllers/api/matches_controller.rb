@@ -25,7 +25,7 @@ class API::MatchesController < ApplicationController
 
   # レビュー用に日付を調節
   def api_request_url
-    api_id = competitor_teams.unshift(favorite_team.api_id)
+    api_id = competitor_teams.unshift(current_user.favorite.team.api_id)
     api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{current_season}&team=#{i}&from=#{match_date}") }
   end
 
@@ -40,9 +40,5 @@ class API::MatchesController < ApplicationController
 
   def competitor_teams
     SelectTeam.competitor(current_user)
-  end
-
-  def favorite_team
-    current_user.favorite.team
   end
 end
