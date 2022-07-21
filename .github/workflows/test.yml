@@ -29,8 +29,6 @@ jobs:
       - name: webpacker
         run: |
           yarn install --check-files
-          yarn upgrade
-          bundle exec rails webpacker:compile
       - name: Rspec
         run: |
           bundle exec rails db:create

@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-class Api::FavoritesController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class API::FavoritesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_follow, only: %i[create]
 
   def index
-    user = current_user
-    @favorite_team = user.favorite.present? ? user.favorite.team : []
+    @favorite_team = current_user.favorite&.team || []
   end
 
   def create
@@ -23,7 +20,6 @@ class Api::FavoritesController < ApplicationController
   private
 
   def set_follow
-    id = params.require(:favorite).permit(:id)
-    @team = Team.find_by(id)
+    @team = Team.find(params[:id])
   end
 end

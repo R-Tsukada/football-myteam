@@ -6,7 +6,6 @@
 import Rails from '@rails/ujs'
 import 'main.js'
 import * as ActiveStorage from '@rails/activestorage'
-import 'channels'
 
 Rails.start()
 ActiveStorage.start()

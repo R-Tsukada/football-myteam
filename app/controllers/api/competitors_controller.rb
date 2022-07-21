@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class Api::CompetitorsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class API::CompetitorsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_competitor_team, only: %i[create]
 
@@ -23,7 +21,6 @@ class Api::CompetitorsController < ApplicationController
   private
 
   def set_competitor_team
-    id = params.require(:competitor).permit(:id)
-    @competitor_teams = Team.find_by(id)
+    @competitor_teams = Team.find(params[:id])
   end
 end

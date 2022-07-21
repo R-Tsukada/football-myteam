@@ -8,5 +8,15 @@ FactoryBot.define do
     sequence(:rank) { |n| n }
     sequence(:points) { |n| n }
     sequence(:played) { |n| n }
+
+    trait :manchester_united do
+      id { 1 }
+      team_id { 2 }
+      team_name { 'Manchester United' }
+      team_logo { 'https://media.api-sports.io/football/teams/33.png' }
+      rank { 5 }
+      points { 68 }
+      played { 30 }
+    end
   end
 end
