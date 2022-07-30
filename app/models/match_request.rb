@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'uri'
-require 'net/http'
-
 class MatchRequest < ApplicationRecord
   def self.league(api_request_url)
     api_request_url.each do |url|

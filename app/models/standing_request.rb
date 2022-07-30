@@ -1,29 +1,23 @@
 # frozen_string_literal: true
 
-require 'uri'
-require 'net/http'
-
 class StandingRequest < ApplicationRecord
   def self.league(url)
-    Standing.delete_all
-    begin
-      url.each do |n|
-        http = Net::HTTP.new(n.host, n.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    url.each do |n|
+      http = Net::HTTP.new(n.host, n.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-        request = Net::HTTP::Get.new(n)
-        request['x-rapidapi-host'] = ENV['HOST']
-        request['x-rapidapi-key'] = ENV['KEY']
+      request = Net::HTTP::Get.new(n)
+      request['x-rapidapi-host'] = ENV['HOST']
+      request['x-rapidapi-key'] = ENV['KEY']
 
-        response = http.request(request)
-        results = JSON.parse(response.body)
-        api = results['response'][0]['league']['standings'][0][0]
-        save_standing(api)
-      end
-    rescue StandardError => e
-      Rails.logger.debug e.full_message
+      response = http.request(request)
+      results = JSON.parse(response.body)
+      api = results['response'][0]['league']['standings'][0][0]
+      save_standing(api)
     end
+  rescue StandardError => e
+    Rails.logger.debug e.full_message
   end
 
   def self.save_standing(api)

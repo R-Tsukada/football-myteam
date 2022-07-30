@@ -5,18 +5,32 @@ require 'rails_helper'
 RSpec.describe MatchRequest, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.build(:league, :premier_league) }
-  let(:arsenal) { FactoryBot.create(:team, :arsenal, league: league) }
-  let(:manchester_united) { FactoryBot.create(:team, :manchester_united, league: league) }
+  let(:arsenal) { FactoryBot.build(:team, :arsenal, league: league) }
+  let(:manchester_united) { FactoryBot.build(:team, :manchester_united, league: league) }
+  let(:favorite_url) { URI('https://v3.football.api-sports.io/fixtures?&season=2021&team=42&from=2022-02-30&to=2022-03-30') }
+  let(:competitor_url) do
+    URI('https://v3.football.api-sports.io/fixtures?&season=2021&team=33&from=2022-02-30&to=2022-03-30')
+  end
+  let(:array) { [favorite_url, competitor_url] }
+
+  before do
+    arsenal
+    manchester_united
+  end
 
   it 'is ensure that the MatchRequest.league method is executed' do
-    FactoryBot.create(:favorite, user: user, team: arsenal)
-    FactoryBot.create(:competitor, user: user, team: manchester_united)
-    competitor_team = user.competitor.map(&:team_id)[0]
-    competitor_team_api_id = Team.find(competitor_team).api_id
-    array = []
-    favorite_url = URI("https://v3.football.api-sports.io/fixtures?&season=#&season=#{Year.season}&team=#{user.favorite.team.api_id}")
-    competitor_url = URI("https://v3.football.api-sports.io/fixtures?&season=#{Year.season}&team=#{competitor_team_api_id}")
-    array.push(favorite_url, competitor_url)
-    expect(MatchRequest.league(array)).to be_truthy
+    matches = FactoryBot.build(:match)
+    api_matche_mock = double(matches)
+    match = MatchRequest
+    allow(match).to receive(:league).and_return(api_matche_mock)
+    expect { match.league(array) }.not_to raise_error
+  end
+
+  it 'is ensure that the MatchRequest.save_match method is executed' do
+    matches = FactoryBot.build(:match)
+    api_match_mock = double(matches)
+    match = MatchRequest
+    allow(match).to receive(:save_match).and_return(api_match_mock)
+    expect { match.save_match(array) }.not_to raise_error
   end
 end
