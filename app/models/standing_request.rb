@@ -20,7 +20,7 @@ class StandingRequest < ApplicationRecord
     Rails.logger.debug e.full_message
   end
 
-  def self.save_standing(api)
+  def self.create(api)
     standing = Standing.new
     team_id = api['team']['id']
     team = Team.find_by(api_id: team_id)

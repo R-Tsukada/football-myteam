@@ -28,7 +28,7 @@ RSpec.describe StandingRequest, type: :model do
     standings = FactoryBot.build(:standing)
     standings_mock = double(standings)
     standing = StandingRequest
-    allow(standing).to receive(:save_standing).and_return(standings_mock)
-    expect { standing.save_standing(array) }.not_to raise_error
+    allow(standing).to receive(:create).and_return(standings_mock)
+    expect { standing.create(array) }.not_to raise_error
   end
 end

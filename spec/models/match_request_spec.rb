@@ -30,7 +30,7 @@ RSpec.describe MatchRequest, type: :model do
     matches = FactoryBot.build(:match)
     api_match_mock = double(matches)
     match = MatchRequest
-    allow(match).to receive(:save_match).and_return(api_match_mock)
-    expect { match.save_match(array) }.not_to raise_error
+    allow(match).to receive(:create).and_return(api_match_mock)
+    expect { match.create(array) }.not_to raise_error
   end
 end

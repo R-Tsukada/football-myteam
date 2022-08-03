@@ -20,7 +20,7 @@ class MatchRequest < ApplicationRecord
     Rails.logger.debug e.full_message
   end
 
-  def self.save_match(api)
+  def self.create(api)
     api['response'].each_index do |a|
       match = Match.new
       match.season = [api][0]['parameters']['season']
