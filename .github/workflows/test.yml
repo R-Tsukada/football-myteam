@@ -8,8 +8,6 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:postgres@localhost/ci_test"
-      HOST: ${{ secrets.HOST }}
-      KEY: ${{ secrets.KEY }}
     services:
       postgres:
         image: postgres
