@@ -147,6 +147,20 @@ input.how-to-team-select:hover {
   }
 }
 
+/* /schedulesページ */
+$app-color: #6246ea;
+
+/* myteamのカラー */
+.favorite-team-color {
+  background-color: $app-color;
+}
+
+.favorite-team-box {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 10px;
+}
+
 /* ボタン */
 $button-color: #6246ea;
 
