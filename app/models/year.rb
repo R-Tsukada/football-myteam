@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Year < ApplicationRecord
+class Year
   def self.season
     current_year = Time.zone.now.year
     current_month = Time.zone.now.month
