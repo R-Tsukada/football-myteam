@@ -3,12 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Year, type: :model do
-  it 'this years western calendar if this month is August or later' do
-    current_year = Time.zone.now.year
-    if Time.zone.now.month <= 7
-      expect(Year.season).to eq current_year - 1
-    else
-      expect(Year.season).to eq current_year
-    end
+  it 'is displays last year if this month is before July' do
+    travel_to Time.zone.local(2022, 7, 30)
+    expect(Year.season).to eq 2021
+  end
+
+  it 'displays this years western calendar if this month is July or later' do
+    travel_to Time.zone.local(2022, 8, 1)
+    expect(Year.season).to eq 2022
   end
 end
