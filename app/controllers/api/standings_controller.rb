@@ -13,7 +13,7 @@ class API::StandingsController < ApplicationController
   private
 
   def api_request
-    Standing.all.delete_all
+    Standing.delete_all
     StandingRequest.league(api_request_url)
   end
 
