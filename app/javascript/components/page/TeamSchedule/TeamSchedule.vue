@@ -4,15 +4,17 @@
       class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
-    <p class="has-text-centered">優勝・欧州カップ戦出場権・残留争いを楽しもう</p>
+    <p class="has-text-centered mb-4">優勝・欧州カップ戦出場権・残留争いを楽しもう</p>
     <div class="favorite-team-standing box columns">
-      <div class="favorite-team-name-and-rank column">
+      <div class="favorite-team-name-and-rank favorte-team-border-right column is-one-third">
         <div class="columns">
           <div class="favorite-team column">
-            <div class="favorite-team-box">
-              <p class="favorite-team-color has-text-white has-text-centered">MyTeam</p>
+            <div class="favorite-team-box has-text-centered">
+              <p class="favorite-team-color has-text-white">MyTeam</p>
             </div><!-- favorite-team-box -->
-            <p><span class="is-size-1 has-text-weight-bold">{{ data.favoriteTeams.rank }}</span>位</p>
+            <div class="favorite-team-rank has-text-centered">
+              <p><span class="is-size-1 has-text-weight-bold">{{ data.favoriteTeams.rank }}</span>位</p>
+            </div><!-- favorite-team-rank -->
           </div><!-- favorite-team column-->
           <div class="favorite-team-logo column">
             <img
@@ -20,44 +22,43 @@
               alt="standings-favorite-team-logo"
               class="image" />
           </div><!-- favorite-team-logo column-->
-          <div class="favorite-team-name column">
+          <div class="favorite-team-name my-auto column">
             <p class="has-text-weight-bold is-size-3">{{ data.favoriteTeams.team_name }}</p>
           </div><!-- favorite-team-name column-->
         </div><!-- columns -->
       </div><!-- favorite-team-name-and-rank -->
-      <div class="favorite-team-points column">
+      <div class="favorite-team-points favorte-team-border-right column is-2 has-text-centered">
         <p>勝点</p>
         <p><span class="is-size-1 has-text-weight-bold">{{ data.favoriteTeams.points }}</span>点</p>
       </div><!-- points -->
-      <div class="favorite-team-played column">
+      <div class="favorite-team-played favorte-team-border-right column is-2 has-text-centered">
         <p>試合数</p>
         <p><span class="is-size-1 has-text-weight-bold">{{ data.favoriteTeams.played }}</span>試合</p>
-        <p>残り{{ gameCount - data.favoriteTeams.played }}試合</p>
+        <p class="has-text-grey-light has-text-weight-bold">残り{{ gameCount - data.favoriteTeams.played }}試合</p>
       </div><!-- favorite-team-played -->
-      <div class="favorite-team-schedules column">
-        <div class="columns" v-for="match in favoriteMatches" :key="match.id">
+      <div class="favorite-team-schedules column ml-3">
+        <div class="next-match columns is-gapless has-text-centered" v-for="match in favoriteMatches" :key="match.id">
           <img
             :src="match.competition_logo"
             alt="favorite-team-next-match"
-            class="image competitor-team-logo column" />
-          <p
-            class="has-text-white column"
-            v-bind:class="
-            data.isHome === match.home_and_away
-              ? 'has-background-success'
-              : 'has-background-danger'
+            class="image next-match-competition-logo column is-3" />
+            <p class="next-match-venu column is-2 has-text-white"
+              v-bind:class="
+              data.isHome === match.home_and_away
+                ? 'has-background-success'
+                : 'has-background-danger'
             ">
               {{ match.home_and_away }}
-          </p>
-          <p>{{ String(match.date.match(/\d{1,2}-\d{1,2}$/)) }}</p>
-          <img
-            :src="match.team_logo"
-            alt="match-team-logo"
-            class="image standings-team-logo column" />
-          <div class="match-name column">
-            <p>vs</p>
-            <p>{{ match.team_name }}</p>
-          </div>
+            </p>
+            <p class="column is-3 next-match-date">
+              {{ match.date }}
+            </p>
+            <img
+              :src="match.team_logo"
+              alt="match-team-logo"
+              class="image next-match-competition-logo column" />
+            <p class="column is-1 has-text-weight-bold is-size-4">vs</p>
+            <p class="match-name column is-2 has-text-weight-bold" >{{ match.team_name }}</p>
         </div><!-- v-for -->
       </div><!-- favorite-team-schedules -->
     </div><!-- favorite-team-standing box columns-->

@@ -157,9 +157,37 @@ $app-color: #6246ea;
 
 .favorite-team-box {
   width: 5rem;
-  height: 3rem;
+  height: auto;
   border-radius: 10px;
 }
+
+.favorte-team-border-right {
+  border-right: solid 1px;
+}
+
+.next-match {
+  border-bottom: solid 1px;
+}
+
+/* 対戦予定コンペティションのロゴ */
+.next-match-competition-logo {
+    width: 1rem;
+    height: auto;
+    max-width: 7%;
+  @include mobile {
+    width: 3rem;
+    max-width: 100%;
+  }
+}
+
+.next-match-venu {
+  width: 2rem;
+  height: 1.5rem;
+  max-width: 100%;
+  border: node;
+  border-radius: 10px;
+}
+
 
 /* ボタン */
 $button-color: #6246ea;
