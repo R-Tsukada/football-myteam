@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MatchRequest < ApplicationRecord
+class MatchRequest
   def self.league(api_request_url)
     api_request_url.each do |url|
       http = Net::HTTP.new(url.host, url.port)

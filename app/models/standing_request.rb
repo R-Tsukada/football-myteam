@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StandingRequest < ApplicationRecord
+class StandingRequest
   def self.league(url)
     url.each do |n|
       http = Net::HTTP.new(n.host, n.port)
