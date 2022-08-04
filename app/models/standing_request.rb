@@ -14,7 +14,7 @@ class StandingRequest < ApplicationRecord
       response = http.request(request)
       results = JSON.parse(response.body)
       api = results['response'][0]['league']['standings'][0][0]
-      save_standing(api)
+      create(api)
     end
   rescue StandardError => e
     Rails.logger.debug e.full_message

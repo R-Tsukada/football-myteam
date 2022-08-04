@@ -14,7 +14,7 @@ class MatchRequest < ApplicationRecord
       response = http.request(request)
       results = JSON.parse(response.body)
       api = results
-      save_match(api)
+      create(api)
     end
   rescue StandardError => e
     Rails.logger.debug e.full_message
