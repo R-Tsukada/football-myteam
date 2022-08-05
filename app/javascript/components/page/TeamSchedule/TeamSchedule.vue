@@ -12,12 +12,12 @@
       <div class="favorite-team-standing box columns">
         <div
           class="favorite-team-name-and-rank favorte-team-border-right column is-one-third">
+          <div class="favorite-team-box has-text-centered">
+            <p class="favorite-team-color has-text-white">MyTeam</p>
+          </div>
+          <!-- favorite-team-box -->
           <div class="columns">
             <div class="favorite-team column">
-              <div class="favorite-team-box has-text-centered">
-                <p class="favorite-team-color has-text-white">MyTeam</p>
-              </div>
-              <!-- favorite-team-box -->
               <div class="favorite-team-rank has-text-centered">
                 <p>
                   <span class="is-size-1 has-text-weight-bold">{{
