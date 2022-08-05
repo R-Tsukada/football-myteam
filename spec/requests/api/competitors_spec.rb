@@ -9,7 +9,7 @@ RSpec.describe 'Api::Competitors', type: :request do
       team = FactoryBot.create(:team, league: league)
       user = FactoryBot.create(:user)
       sign_in user
-      post api_competitors_path, params: { competitor: { id: team.id } }
+      post api_competitors_path, params: { id: team.id }.to_json, headers: { 'Content-Type' => 'application/json' }
       expect(response).to have_http_status(:success)
     end
   end

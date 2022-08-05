@@ -19,8 +19,6 @@ gem 'webpacker', '~> 5.0'
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'net-smtp', require: false
@@ -52,13 +50,13 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop', require: false
   gem 'rubocop-fjord', '~> 0.2.0', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint', require: false
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
@@ -70,7 +68,7 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'html2slim'
 gem 'slim-rails'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
