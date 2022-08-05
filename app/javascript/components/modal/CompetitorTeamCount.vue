@@ -6,7 +6,9 @@
     }">
     <div class="message-body">
       <div v-if="competitors.length <= 3">
-        <p>残り<strong>{{ teamCountMessage() }}</strong> チーム登録できます</p>
+        <p>
+          残り<strong>{{ teamCountMessage() }}</strong> チーム登録できます
+        </p>
       </div>
       <div v-else>
         <p>登録できるのは3チームまでです</p>

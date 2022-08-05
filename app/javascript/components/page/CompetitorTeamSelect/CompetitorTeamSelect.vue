@@ -12,43 +12,39 @@
           class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
           ライバルチームの選び方を選択してください
         </h2>
-          <div class="columns is-multiline is-centered mt-4 mx-auto">
-            <div class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
-              <label
-                class="has-text-weight-medium"
-                for="rank">
-                <input
-                  type="radio"
-                  class="how-to-team-select rank mb-4"
-                  value="rank"
-                  v-model="data.checkedName" />
-                昨シーズンの順位が近いチームを選ぶ</label
-              >
-              <br />
-              <label
-                class="has-text-weight-medium"
-                for="home">
-                <input
-                  type="radio"
-                  class="how-to-team-select home mb-4"
-                  value="home"
-                  v-model="data.checkedName" />
-                本拠地が近いチームを選ぶ</label
-              >
-              <br />
-              <label
-                class="has-text-weight-medium"
-                for="self">
-                <input
-                  type="radio"
-                  class="how-to-team-select self mb-4"
-                  value="self"
-                  v-model="data.checkedName" />
-                自分でライバルチームを選ぶ</label
-              >
+        <div class="columns is-multiline is-centered mt-4 mx-auto">
+          <div
+            class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
+            <label class="has-text-weight-medium" for="rank">
+              <input
+                type="radio"
+                class="how-to-team-select rank mb-4"
+                value="rank"
+                v-model="data.checkedName" />
+              昨シーズンの順位が近いチームを選ぶ</label
+            >
+            <br />
+            <label class="has-text-weight-medium" for="home">
+              <input
+                type="radio"
+                class="how-to-team-select home mb-4"
+                value="home"
+                v-model="data.checkedName" />
+              本拠地が近いチームを選ぶ</label
+            >
+            <br />
+            <label class="has-text-weight-medium" for="self">
+              <input
+                type="radio"
+                class="how-to-team-select self mb-4"
+                value="self"
+                v-model="data.checkedName" />
+              自分でライバルチームを選ぶ</label
+            >
           </div>
           <!-- v-model-radiobutton -->
-        </div> <!-- columns -->
+        </div>
+        <!-- columns -->
       </div>
       <!-- v-show -->
       <button
@@ -126,14 +122,14 @@
           disabled>
           選んだチームを登録する
         </button>
-      </div><!-- buttons -->
+      </div>
+      <!-- buttons -->
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
     <div v-show="data.isFreeSelect">
       <h2
-        class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3"
-      >
+        class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
         ライバルチームを最大3チームまで選んでください
       </h2>
       <CompetitorTeamCount
@@ -168,27 +164,28 @@
         <!-- columns -->
       </div>
       <!-- v-else -->
-        <div class="buttons is-centered mt-6">
-          <button
-            class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-            @click="selectAgain">
-            チームの選択方法を選び直す
-          </button>
-          <button
-            class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-            v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
-            <router-link to="/schedules" class="has-text-white"
-              >選んだチームを登録する</router-link
-            >
-          </button>
-          <button
-            v-else
-            class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-            title="Disabled button"
-            disabled>
-            選んだチームを登録する
-          </button>
-        </div><!-- buttons -->
+      <div class="buttons is-centered mt-6">
+        <button
+          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          @click="selectAgain">
+          チームの選択方法を選び直す
+        </button>
+        <button
+          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
+          <router-link to="/schedules" class="has-text-white"
+            >選んだチームを登録する</router-link
+          >
+        </button>
+        <button
+          v-else
+          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          title="Disabled button"
+          disabled>
+          選んだチームを登録する
+        </button>
+      </div>
+      <!-- buttons -->
     </div>
     <!-- v-show -->
   </div>

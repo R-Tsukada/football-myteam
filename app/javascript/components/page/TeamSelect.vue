@@ -19,7 +19,8 @@
           まずは応援しているチームが所属しているリーグを選んでください。
         </li>
       </ol>
-    </div> <!-- box -->
+    </div>
+    <!-- box -->
     <div
       class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
       v-else>
@@ -30,33 +31,26 @@
       <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグを選択
       </h3>
-        <div
-          class="tabs is-boxed is-fullwidth is-large"
-        >
-        <ul
-          v-for="league in data.leagues"
-          :key="league.id">
+      <div class="tabs is-boxed is-fullwidth is-large">
+        <ul v-for="league in data.leagues" :key="league.id">
           <li
             @click="selectLeague(league)"
             v-bind:class="{
-              'is-active':
-                data.isChangeColorLeague === league.id
-              }"
-          >
+              'is-active': data.isChangeColorLeague === league.id
+            }">
             <a>
               <img
                 :src="league.logo"
                 alt="league_name"
                 class="image team-select-league-logo mr-2" />
-              <p
-                class="is-size-6"
-              >
+              <p class="is-size-6">
                 {{ league.name }}
               </p>
             </a>
           </li>
         </ul>
-      </div> <!-- tabs -->
+      </div>
+      <!-- tabs -->
     </div>
     <!-- else -->
     <TeamListLoader v-if="!teamFilter.length" />
