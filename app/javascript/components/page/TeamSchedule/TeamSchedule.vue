@@ -9,115 +9,21 @@
     </p>
     <MatchListLoader v-if="!data.matches.length" />
     <div v-else>
-      <div class="favorite-team-standing box columns">
-        <div
-          class="favorite-team-name-and-rank favorte-team-border-right column is-one-third">
-          <div class="favorite-team-box has-text-centered">
-            <p class="favorite-team-color has-text-white">MyTeam</p>
-          </div>
-          <!-- favorite-team-box -->
-          <div class="columns">
-            <div class="favorite-team column">
-              <div class="favorite-team-rank has-text-centered">
-                <p>
-                  <span class="is-size-1 has-text-weight-bold">{{
-                    data.favoriteTeams.rank
-                  }}</span
-                  >位
-                </p>
-              </div>
-              <!-- favorite-team-rank -->
-            </div>
-            <!-- favorite-team column-->
-            <div class="favorite-team-logo column">
-              <img
-                :src="data.favoriteTeams.team_logo"
-                alt="standings-favorite-team-logo"
-                class="image" />
-            </div>
-            <!-- favorite-team-logo column-->
-            <div class="favorite-team-name my-auto column">
-              <p class="has-text-weight-bold is-size-3">
-                {{ data.favoriteTeams.team_name }}
-              </p>
-            </div>
-            <!-- favorite-team-name column-->
-          </div>
-          <!-- columns -->
-        </div>
-        <!-- favorite-team-name-and-rank -->
-        <div
-          class="favorite-team-points favorte-team-border-right column is-2 has-text-centered">
-          <p>勝点</p>
-          <p>
-            <span class="is-size-1 has-text-weight-bold">{{
-              data.favoriteTeams.points
-            }}</span
-            >点
-          </p>
-        </div>
-        <!-- points -->
-        <div
-          class="favorite-team-played favorte-team-border-right column is-2 has-text-centered">
-          <p>試合数</p>
-          <p>
-            <span class="is-size-1 has-text-weight-bold">{{
-              data.favoriteTeams.played
-            }}</span
-            >試合
-          </p>
-          <p class="has-text-grey-light has-text-weight-bold">
-            残り{{ gameCount - data.favoriteTeams.played }}試合
-          </p>
-        </div>
-        <!-- favorite-team-played -->
-        <div class="favorite-team-schedules column ml-3">
-          <div
-            class="next-match columns is-gapless has-text-centered"
-            v-for="match in favoriteMatches"
-            :key="match.id">
-            <img
-              :src="match.competition_logo"
-              alt="favorite-team-next-match"
-              class="image next-match-competition-logo column is-3" />
-            <p
-              class="next-match-venu column is-2 has-text-white"
-              v-bind:class="
-                data.isHome === match.home_and_away
-                  ? 'has-background-success'
-                  : 'has-background-danger'
-              ">
-              {{ match.home_and_away }}
-            </p>
-            <p class="column is-3 next-match-date">
-              {{ match.date }}
-            </p>
-            <img
-              :src="match.team_logo"
-              alt="match-team-logo"
-              class="image next-match-competition-logo column" />
-            <p class="column is-1 has-text-weight-bold is-size-4">vs</p>
-            <p class="match-name column is-2 has-text-weight-bold">
-              {{ match.team_name }}
-            </p>
-          </div>
-          <!-- v-for -->
-        </div>
-        <!-- favorite-team-schedules -->
-      </div>
-      <!-- favorite-team-standing box columns-->
+      <TeamStanding
+        :standings="data.favoriteTeams"
+        :matchSchedules="favoriteMatches"
+        :favoriteId="data.favorite.team.id"/>
       <p class="is-size-3 has-text-weight-bold has-text-centered">VS</p>
-      <!----------------------------------- ライバルチーム ------------------------------>
-      <CompetitorTeamTable
+      <TeamStanding
         :standings="data.firstCompetitorTeams"
         :matchSchedules="firstCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <CompetitorTeamTable
+      <TeamStanding
         v-if="data.secondCompetitorTeams"
         :standings="data.secondCompetitorTeams"
         :matchSchedules="secondCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <CompetitorTeamTable
+      <TeamStanding
         v-if="data.thirdCompetitorTeams"
         :standings="data.thirdCompetitorTeams"
         :matchSchedules="thirdCompetitorTeamsMatches"
@@ -131,13 +37,13 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import CompetitorTeamTable from './table/CompetitorTeamTable.vue'
+import TeamStanding from './table/TeamStanding.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {
   components: {
     MatchListLoader,
-    CompetitorTeamTable
+    TeamStanding,
   },
   setup() {
     const data = reactive({

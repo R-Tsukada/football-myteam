@@ -1,7 +1,10 @@
 <template>
   <div class="favorite-team-standing box columns mt-2">
     <div
-      class="favorite-team-name-and-rank favorte-team-border-right column is-one-third">
+      class="favorite-team-name-and-rank favorte-team-border-right column is-3">
+      <div class="has-text-centered" v-show="favoriteId === standings.team_id">
+        <FavoriteTeamTag />
+      </div><!-- favorite-team-box -->
       <div class="columns">
         <div class="favorite-team column">
           <div class="favorite-team-rank has-text-centered">
@@ -23,7 +26,7 @@
         </div>
         <!-- favorite-team-logo column-->
         <div class="favorite-team-name my-auto column">
-          <p class="has-text-weight-bold is-size-3">
+          <p class="has-text-weight-bold is-size-4">
             {{ standings.team_name }}
           </p>
         </div>
@@ -41,17 +44,10 @@
         }}</span
         >点
       </p>
-      <p
-        v-bind:class="
-          favoriteTeamPoints >= standings.points
-            ? 'has-text-success'
-            : 'has-text-danger'
-        ">
-        勝ち点差<span class="has-text-weight-bold">{{
-          favoriteTeamPoints - standings.points
-        }}</span
-        >点
-      </p>
+      <DifferenceInPoints
+        :favoriteTeamPoints="favoriteTeamPoints"
+        :standingsPoints="standings.points"
+        v-show="favoriteId !== standings.team_id" />
     </div>
     <!-- points -->
     <div
@@ -68,39 +64,8 @@
       </p>
     </div>
     <!-- favorite-team-played -->
-    <div class="favorite-team-schedules column ml-3">
-      <div
-        class="next-match columns is-gapless has-text-centered"
-        v-for="match in matchSchedules"
-        :key="match.id">
-        <img
-          :src="match.competition_logo"
-          alt="favorite-team-next-match"
-          class="image next-match-competition-logo column is-3" />
-        <p
-          class="next-match-venu column is-2 has-text-white"
-          v-bind:class="
-            data.isHome === match.home_and_away
-              ? 'has-background-success'
-              : 'has-background-danger'
-          ">
-          {{ match.home_and_away }}
-        </p>
-        <p class="column is-3 next-match-date">
-          {{ match.date }}
-        </p>
-        <img
-          :src="match.team_logo"
-          alt="match-team-logo"
-          class="image next-match-competition-logo column" />
-        <p class="column is-1 has-text-weight-bold is-size-4">vs</p>
-        <p class="match-name column is-2 has-text-weight-bold">
-          {{ match.team_name }}
-        </p>
-      </div>
-      <!-- v-for -->
-    </div>
-    <!-- favorite-team-schedules -->
+    <TeamMatches
+      :matchSchedules="matchSchedules" />
   </div>
   <!-- favorite-team-standing box columns-->
 </template>
@@ -110,9 +75,19 @@ import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
+import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
+import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
+import TeamMatches from './TeamMatches'
+import StandingTest from './StandingTest'
 
 export default {
-  props: ['standings', 'matchSchedules', 'favoriteTeamPoints'],
+  props: ['standings', 'matchSchedules', 'favoriteTeamPoints', 'favoriteId'],
+  components: {
+    DifferenceInPoints,
+    FavoriteTeamTag,
+    TeamMatches,
+    StandingTest
+  },
   setup() {
     const router = useRouter()
 
@@ -120,7 +95,8 @@ export default {
 
     const data = reactive({
       isHome: 'HOME',
-      teams: []
+      teams: [],
+      favorite: []
     })
 
     const selectTeam = (standings) => {
@@ -139,7 +115,18 @@ export default {
         })
     }
 
-    onMounted(setTeams())
+    const setFavorite = async () => {
+      axios
+        .get('/api/favorites')
+        .then((response) => {
+          data.favorite = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    onMounted(setTeams(), setFavorite())
 
     const gameCount = computed(() => data.teams.length * 2)
 
