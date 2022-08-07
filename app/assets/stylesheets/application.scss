@@ -151,14 +151,16 @@ input.how-to-team-select:hover {
 $app-color: #6246ea;
 
 /* myteamのカラー */
-.favorite-team-color {
+.favorite-team-tag {
   background-color: $app-color;
+  width: 4.5rem;
+  max-width: 100%;
+  border-radius: 10px;
 }
 
-.favorite-team-box {
-  width: 5rem;
-  height: auto;
-  border-radius: 10px;
+.favorite-team-standing:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .favorte-team-border-right {
@@ -172,7 +174,6 @@ $app-color: #6246ea;
 /* 対戦予定コンペティションのロゴ */
 .next-match-competition-logo {
     width: 1rem;
-    height: auto;
     max-width: 7%;
   @include mobile {
     width: 3rem;
