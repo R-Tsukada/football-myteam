@@ -1,5 +1,21 @@
 <template>
   <div class="container pt-5">
+    <div class="selected-team columns is-gapless mx-auto has-text-centered">
+      <FavoriteTeamTag
+        class="column my-auto"
+        v-show="data.favorite.team.id === $store.state.teamId" />
+      <div class="column is-2">
+        <img
+          :src="selectedTeam[0].logo"
+          alt="selected_team_logo"
+          class="image team-logo m-auto" />
+      </div>
+      <h2
+        class="column is-8 has-text-centered has-text-bold is-size-2 has-text-weight-bold my-auto">
+        {{ selectedTeam[0].name }}の試合予定
+      </h2>
+    </div>
+    <p></p>
     <div class="tabs is-toggle is-centered">
       <ul>
         <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
@@ -39,17 +55,21 @@ import { useStore } from 'vuex'
 import MatchScheduleList from './list/MatchScheduleList.vue'
 import MatchResultList from './list/MatchResultList.vue'
 import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
+import FavoriteTeamTag from '../../atoms/FavoriteTeamTag.vue'
 
 export default {
   components: {
     MatchScheduleShowLoader,
     MatchScheduleList,
-    MatchResultList
+    MatchResultList,
+    FavoriteTeamTag
   },
   setup() {
     const data = reactive({
       schedules: [],
-      isActive: 'match_schedule'
+      isActive: 'match_schedule',
+      teams: [],
+      favorite: []
     })
 
     const store = useStore()
@@ -64,6 +84,32 @@ export default {
           console.log(error)
         })
     }
+
+    const setTeams = async () => {
+      axios
+        .get('/api/teams')
+        .then((response) => {
+          data.teams = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    const setFavorite = async () => {
+      axios
+        .get('/api/favorites')
+        .then((response) => {
+          data.favorite = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    const selectedTeam = computed(() =>
+      data.teams.filter((team) => team.id === store.state.teamId)
+    )
 
     const date = new Date()
 
@@ -88,14 +134,15 @@ export default {
       })
     })
 
-    onMounted(setMatchData())
+    onMounted(setMatchData(), setTeams(), setFavorite())
 
     return {
       data,
       date,
       formatDate,
       matchScheduleFilter,
-      matchResultsFilter
+      matchResultsFilter,
+      selectedTeam
     }
   }
 }

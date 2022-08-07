@@ -9,7 +9,7 @@
         alt="favorite-team-next-match"
         class="image next-match-competition-logo column is-3" />
       <p
-        class="next-match-venu column is-2 has-text-white"
+        class="next-match-venu column is-2 has-text-white ml-1"
         v-bind:class="
           data.isHome === match.home_and_away
             ? 'has-background-success'
@@ -24,8 +24,8 @@
         :src="match.team_logo"
         alt="match-team-logo"
         class="image next-match-competition-logo column" />
-      <p class="column is-1 has-text-weight-bold is-size-4">vs</p>
-      <p class="match-name column is-2 has-text-weight-bold is-size-6">
+      <p class="column is-1 has-text-weight-bold">vs</p>
+      <p class="match-name column is-5 has-text-weight-bold has-text-left">
         {{ match.team_name }}
       </p>
     </div>

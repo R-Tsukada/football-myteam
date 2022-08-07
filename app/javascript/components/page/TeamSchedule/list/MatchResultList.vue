@@ -1,64 +1,57 @@
 <template>
-  <div>
+  <div class="match-schedule-card mx-auto">
     <div
-      class="match-list box"
+      class="box has-text-centered"
       v-for="result in matchResultFilter"
       :key="result.id">
-      <div class="columns is-mobile">
-        <div class="ml-2">
+      <div class="columns is-gapless">
+        <div class="column is-1 my-auto">
           <img
             :src="result.competition_logo"
             alt="competition_logo"
             class="image competition-logo" />
         </div>
-        <div class="my-auto mx-2">
-          <p
-            class="has-text-white has-text-weight-bold is-size-4-tablet is-size-6-mobile"
-            v-bind:class="
-              data.isHome === result.home_and_away
-                ? 'has-background-success'
-                : 'has-background-danger'
-            ">
-            {{ result.home_and_away }}
-          </p>
-        </div>
-        <div class="my-auto mx-2">
-          <p class="has-text-weight-bold is-size-4-tablet is-size-6-mobile">
-            {{ String(result.date.match(/\d{1,2}-\d{1,2}$/)) }}
-          </p>
-        </div>
+        <p
+          class="home-and-away column is-1 my-auto has-text-white has-text-weight-bold"
+          v-bind:class="
+            data.isHome === result.home_and_away
+              ? 'has-background-success'
+              : 'has-background-danger'
+          ">
+          {{ result.home_and_away }}
+        </p>
+        <p class="match-schedule-date column is-2 my-auto has-text-weight-bold">
+          {{ String(result.date) }}
+        </p>
       </div>
       <!-- columns -->
-      <div class="columns is-mobile">
+      <div class="match-list columns m-auto">
+        <p
+          class="column has-text-centered has-text-weight-bold is-size-3-tablet is-size-6-mobile my-auto">
+          {{ result.home_team_name }}
+        </p>
         <div class="column">
-          <img :src="result.home_logo" class="image team-logo mx-auto" />
-          <p
-            class="has-text-centered has-text-weight-bold is-size-3-tablet is-size-6-mobile">
-            {{ result.home_team_name }}
-          </p>
+          <img :src="result.home_logo" class="image team-logo m-auto" />
         </div>
+        <p
+          class="column has-text-centered has-text-weight-bold is-size-1 my-auto">
+          {{ result.home_score }}
+        </p>
+        <p
+          class="column has-text-centered has-text-weight-bold is-size-3 my-auto">
+          -
+        </p>
+        <p
+          class="column has-text-centered has-text-weight-bold is-size-1 my-auto">
+          {{ result.away_score }}
+        </p>
         <div class="column">
-          <p
-            class="has-text-centered has-text-weight-bold is-size-3-tablet is-size-6-mobile mt-3">
-            {{ result.home_score }}
-          </p>
+          <img :src="result.away_logo" class="image team-logo m-auto" />
         </div>
-        <div class="column">
-          <p class="has-text-centered has-text-weight-bold is-size-3">-</p>
-        </div>
-        <div class="column">
-          <p
-            class="has-text-centered has-text-weight-bold is-size-3-tablet is-size-6-mobile mt-3">
-            {{ result.away_score }}
-          </p>
-        </div>
-        <div class="column">
-          <img :src="result.away_logo" class="image team-logo mx-auto" />
-          <p
-            class="has-text-centered has-text-weight-bold is-size-3-tablet is-size-6-mobile">
-            {{ result.away_team_name }}
-          </p>
-        </div>
+        <p
+          class="column has-text-centered has-text-weight-bold my-auto is-size-3">
+          {{ result.away_team_name }}
+        </p>
       </div>
     </div>
   </div>

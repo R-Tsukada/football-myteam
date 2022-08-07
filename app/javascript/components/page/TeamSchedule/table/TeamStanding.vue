@@ -1,5 +1,7 @@
 <template>
-  <div class="favorite-team-standing box columns mt-2" @click="selectTeam(standings)">
+  <div
+    class="favorite-team-standing box columns mt-1"
+    @click="selectTeam(standings)">
     <div
       class="favorite-team-name-and-rank favorte-team-border-right column is-3">
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
