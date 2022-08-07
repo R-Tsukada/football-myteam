@@ -12,7 +12,7 @@
       <TeamStanding
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
-        :favoriteId="data.favorite.team.id"/>
+        :favoriteId="data.favorite.team.id" />
       <p class="is-size-3 has-text-weight-bold has-text-centered">VS</p>
       <TeamStanding
         :standings="data.firstCompetitorTeams"
@@ -43,7 +43,7 @@ import MatchListLoader from '../../loader/MatchListLoader'
 export default {
   components: {
     MatchListLoader,
-    TeamStanding,
+    TeamStanding
   },
   setup() {
     const data = reactive({

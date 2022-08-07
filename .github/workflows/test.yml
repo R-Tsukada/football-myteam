@@ -26,16 +26,17 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: webpacker
-        run: |
-          yarn install --check-files
-          rails webpacker:install
-          bundle exec rails webpacker:compile
-      - name: Rspec
-        run: |
-          bundle exec rails db:create
-          bin/rails db:migrate
-          bundle exec rspec
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.4.0'
+      - name: yarn install
+        run: yarn install --check-files
+      - name: Setup DB
+        run: bundle exec rails db:create
+             bin/rails db:migrate
+      - name: Run RSpec
+        run: bundle exec rspec
       - name: Archive screenshot
         if: failure()
         uses: actions/upload-artifact@v1

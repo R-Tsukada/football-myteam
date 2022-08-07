@@ -4,7 +4,8 @@
       class="favorite-team-name-and-rank favorte-team-border-right column is-3">
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
         <FavoriteTeamTag />
-      </div><!-- favorite-team-box -->
+      </div>
+      <!-- favorite-team-box -->
       <div class="columns">
         <div class="favorite-team column">
           <div class="favorite-team-rank has-text-centered">
@@ -64,8 +65,7 @@
       </p>
     </div>
     <!-- favorite-team-played -->
-    <TeamMatches
-      :matchSchedules="matchSchedules" />
+    <TeamMatches :matchSchedules="matchSchedules" />
   </div>
   <!-- favorite-team-standing box columns-->
 </template>
@@ -78,15 +78,13 @@ import axios from 'axios'
 import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
 import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
 import TeamMatches from './TeamMatches'
-import StandingTest from './StandingTest'
 
 export default {
   props: ['standings', 'matchSchedules', 'favoriteTeamPoints', 'favoriteId'],
   components: {
     DifferenceInPoints,
     FavoriteTeamTag,
-    TeamMatches,
-    StandingTest
+    TeamMatches
   },
   setup() {
     const router = useRouter()

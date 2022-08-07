@@ -40,9 +40,9 @@ export default {
   props: ['matchSchedules'],
   setup() {
     const data = reactive({
-        isHome: 'HOME',
-        teams: [],
-        favorite: []
+      isHome: 'HOME',
+      teams: [],
+      favorite: []
     })
     return {
       data
