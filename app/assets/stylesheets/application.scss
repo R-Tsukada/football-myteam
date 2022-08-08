@@ -90,9 +90,9 @@ main {
 }
 
 .box.team-select-description {
-  background-color: #d1d1e9;
+  border: solid 1px;
   @include tablet {
-    width: 40rem;
+    width: 36rem;
   }
   @include mobile {
     width: 18rem;
