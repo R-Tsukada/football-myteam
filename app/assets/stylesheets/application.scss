@@ -124,6 +124,11 @@ input.how-to-team-select:hover {
   }
 }
 
+
+.box.standing-data {
+  width: 42rem;
+}
+
 /* Home and Awayの表示 */
 .home-and-away {
   max-width: 8%;
@@ -166,7 +171,11 @@ $app-color: #6246ea;
   opacity: 0.6;
 }
 
-.favorte-team-border-right {
+.favorte-team-points {
+  border-right: solid 1px;
+}
+
+.favorte-team-played {
   border-right: solid 1px;
 }
 

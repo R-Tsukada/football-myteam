@@ -9,21 +9,21 @@
     </p>
     <MatchListLoader v-if="!data.matches.length" />
     <div v-else>
-      <TeamStanding
+      <TeamScheduleBox
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
         :favoriteId="data.favorite.team.id" />
       <p class="is-size-3 has-text-weight-bold has-text-centered">VS</p>
-      <TeamStanding
+      <TeamScheduleBox
         :standings="data.firstCompetitorTeams"
         :matchSchedules="firstCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <TeamStanding
+      <TeamScheduleBox
         v-if="data.secondCompetitorTeams"
         :standings="data.secondCompetitorTeams"
         :matchSchedules="secondCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <TeamStanding
+      <TeamScheduleBox
         v-if="data.thirdCompetitorTeams"
         :standings="data.thirdCompetitorTeams"
         :matchSchedules="thirdCompetitorTeamsMatches"
@@ -37,13 +37,13 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import TeamStanding from './table/TeamStanding.vue'
+import TeamScheduleBox from './table/TeamScheduleBox.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {
   components: {
     MatchListLoader,
-    TeamStanding
+    TeamScheduleBox
   },
   setup() {
     const data = reactive({

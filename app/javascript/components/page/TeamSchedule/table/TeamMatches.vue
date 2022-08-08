@@ -1,7 +1,7 @@
 <template>
-  <div class="favorite-team-schedules column is-two-fifths">
+  <div class="favorite-team-schedules">
     <div
-      class="next-match columns is-gapless has-text-centered"
+      class="next-match columns is-gapless has-text-centered is-size-5-mobile"
       v-for="match in matchSchedules"
       :key="match.id">
       <img
