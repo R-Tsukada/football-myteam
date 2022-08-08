@@ -5,7 +5,7 @@ class API::MatchesController < ApplicationController
   before_action :set_show_page, only: [:show]
 
   def index
-    @match = Match.all.order(:date).first(9)
+    @match = Match.all.order(:date).where(date: Time.zone.today..)
   end
 
   def show
@@ -23,10 +23,9 @@ class API::MatchesController < ApplicationController
     MatchRequest.league(api_request_url)
   end
 
-  # レビュー用に日付を調節
   def api_request_url
     api_id = competitor_teams.unshift(current_user.favorite.team.api_id)
-    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{current_season}&team=#{i}&from=#{match_date}") }
+    api_id.map { |i| URI("https://v3.football.api-sports.io/fixtures?&season=#{Year.season}&team=#{i}&from=#{Time.zone.now.prev_month.strftime('%Y-%m-%d')}&to=#{Time.zone.now.next_month.strftime('%Y-%m-%d')}") }
   end
 
   def match_date
@@ -36,7 +35,6 @@ class API::MatchesController < ApplicationController
   def current_season
     '2021'
   end
-  # ここまで
 
   def competitor_teams
     SelectTeam.competitor(current_user)
