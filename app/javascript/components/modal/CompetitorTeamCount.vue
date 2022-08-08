@@ -2,10 +2,18 @@
   <article
     class="message is-info has-text-centered"
     v-bind:class="{
-      'message is-danger message is-danger': competitors.length >= 4
+      'message is-danger message is-danger': competitors.length >= 3
     }">
     <div class="message-body">
-      <p>{{ teamCountMessage() }}</p>
+      <div v-if="competitors.length <= 3">
+        <p>
+          残り<strong>{{ teamCountMessage() }}</strong
+          >チーム登録できます
+        </p>
+      </div>
+      <div v-else>
+        <p>登録できるのは3チームまでです</p>
+      </div>
     </div>
   </article>
 </template>
@@ -17,9 +25,7 @@ export default {
     const teamCountMessage = () => {
       const competitorLength = props.competitors.length
       if (competitorLength <= 3) {
-        return `残り${3 - competitorLength}チーム登録できます`
-      } else {
-        return '登録できるのは3チームまでです'
+        return `${3 - competitorLength}`
       }
     }
     return {

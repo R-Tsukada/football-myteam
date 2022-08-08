@@ -4,44 +4,32 @@
       class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
       リーグ戦情報
     </h2>
+    <p class="has-text-centered mb-4">
+      優勝・欧州カップ戦出場権・残留争いを楽しもう
+    </p>
     <MatchListLoader v-if="!data.matches.length" />
-    <table
-      v-else
-      class="table is-stripe is-hoverable is-clickable has-text-centered has-text-weight-bold is-size-5-tablet is-size-7-mobile">
-      <thead>
-        <tr>
-          <th>順<span class="mobile-display">位</span></th>
-          <th>チ<span class="mobile-display">ーム</span></th>
-          <th>
-            勝<span class="mobile-display">点<br />(勝ち点差)</span>
-          </th>
-          <th>
-            試<span class="mobile-display">合数<br />(残り試合数)</span>
-          </th>
-          <th>次節以降の試合</th>
-        </tr>
-      </thead>
-      <tbody>
-        <FavoriteTeamTable
-          class="has-background-link-light"
-          :standings="data.favoriteTeams"
-          :matchSchedules="favoriteMatches" />
-        <CompetitorTeamTable
-          :standings="data.firstCompetitorTeams"
-          :matchSchedules="firstCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-        <CompetitorTeamTable
-          v-if="data.secondCompetitorTeams"
-          :standings="data.secondCompetitorTeams"
-          :matchSchedules="secondCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-        <CompetitorTeamTable
-          v-if="data.thirdCompetitorTeams"
-          :standings="data.thirdCompetitorTeams"
-          :matchSchedules="thirdCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
-      </tbody>
-    </table>
+    <div v-else>
+      <TeamStanding
+        :standings="data.favoriteTeams"
+        :matchSchedules="favoriteMatches"
+        :favoriteId="data.favorite.team.id" />
+      <p class="is-size-3 has-text-weight-bold has-text-centered">VS</p>
+      <TeamStanding
+        :standings="data.firstCompetitorTeams"
+        :matchSchedules="firstCompetitorTeamsMatches"
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
+      <TeamStanding
+        v-if="data.secondCompetitorTeams"
+        :standings="data.secondCompetitorTeams"
+        :matchSchedules="secondCompetitorTeamsMatches"
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
+      <TeamStanding
+        v-if="data.thirdCompetitorTeams"
+        :standings="data.thirdCompetitorTeams"
+        :matchSchedules="thirdCompetitorTeamsMatches"
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
+    </div>
+    <!-- v-else -->
   </div>
   <!-- container -->
 </template>
@@ -49,15 +37,13 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import FavoriteTeamTable from './table/FavoriteTeamTable.vue'
-import CompetitorTeamTable from './table/CompetitorTeamTable.vue'
+import TeamStanding from './table/TeamStanding.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
 
 export default {
   components: {
     MatchListLoader,
-    FavoriteTeamTable,
-    CompetitorTeamTable
+    TeamStanding
   },
   setup() {
     const data = reactive({
@@ -68,7 +54,9 @@ export default {
       thirdCompetitorTeams: [],
       matches: [],
       favorite: [],
-      competitors: []
+      competitors: [],
+      teams: [],
+      isHome: 'HOME'
     })
 
     const setFavorite = async () => {
@@ -119,6 +107,17 @@ export default {
         })
     }
 
+    const setTeams = async () => {
+      axios
+        .get('/api/team_filter')
+        .then((response) => {
+          data.teams = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
     const favoriteMatches = computed(() =>
       data.matches.filter((f) => f.team_matches_index === data.favorite.team.id)
     )
@@ -147,8 +146,14 @@ export default {
       return `${yyyy}-${mm}-${dd}`
     }
 
+    const gameCount = computed(() => data.teams.length * 2)
+
     onMounted(() => {
-      setTeamSchedules(), setMatchSchedules(), setFavorite(), setCompetitor()
+      setTeamSchedules(),
+        setMatchSchedules(),
+        setFavorite(),
+        setCompetitor(),
+        setTeams()
     })
 
     return {
@@ -158,7 +163,8 @@ export default {
       secondCompetitorTeamsMatches,
       thirdCompetitorTeamsMatches,
       date,
-      formatDate
+      formatDate,
+      gameCount
     }
   }
 }

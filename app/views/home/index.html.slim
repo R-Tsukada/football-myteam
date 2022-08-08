@@ -1,8 +1,13 @@
 .container.px-5
   h2
-    = image_tag 'logo_black_white.png'
+    = image_tag 'footballMyTeam-logo.png'
   p.is-size-3.is-size-5-mobile.has-text-centered.has-text-weight-bold.mt-5
     | Football MyTeamは、あなたが応援しているチームの<br />リーグ戦・試合情報を簡単に知ることができるサービスです。
+  .has-text-centered.mt-6
+    .button.color-button.is-rounded.m-3.is-large
+      = link_to 'アカウント作成', new_user_registration_path, class: 'has-text-white'
+    .button.m-3.is-rounded.m-3.is-large
+      = link_to 'ログイン', new_user_session_path
   .container.mt-5
     .columns
       .column
@@ -21,8 +26,3 @@
             | 今後の対戦予定と試合会場、これまでの試合結果を確認できます
           .image
             = image_tag 'Football-2.png'
-  .has-text-centered.mt-6
-    .button.is-link.is-rounded.m-3.is-medium
-      = link_to 'アカウント作成', new_user_registration_path, class: 'has-text-white'
-    .button.m-3.is-rounded.m-3.is-medium
-      = link_to 'ログイン', new_user_session_path
