@@ -122,15 +122,13 @@ export default {
 
     const matchScheduleFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        /* return schedules.date > formatDate(date) */
-        return schedules.date > '2022-03-15'
+        return schedules.date > formatDate(date)
       })
     })
 
     const matchResultsFilter = computed(() => {
       return data.schedules.filter(function (schedules) {
-        /* return schedules.date < formatDate(date) */
-        return schedules.date < '2022-03-15'
+        return schedules.date < formatDate(date)
       })
     })
 
