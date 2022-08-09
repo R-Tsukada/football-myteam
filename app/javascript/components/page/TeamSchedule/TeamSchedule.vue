@@ -13,11 +13,12 @@
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
         :favoriteId="data.favorite.team.id" />
-      <p class="is-size-3 has-text-weight-bold has-text-centered">VS</p>
+      <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
       <TeamScheduleBox
         :standings="data.firstCompetitorTeams"
         :matchSchedules="firstCompetitorTeamsMatches"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
+        :favoriteTeamPoints="data.favoriteTeamPoints"
+      />
       <TeamScheduleBox
         v-if="data.secondCompetitorTeams"
         :standings="data.secondCompetitorTeams"

@@ -124,11 +124,6 @@ input.how-to-team-select:hover {
   }
 }
 
-
-.box.standing-data {
-  width: 42rem;
-}
-
 /* Home and Awayの表示 */
 .home-and-away {
   max-width: 8%;
@@ -154,6 +149,11 @@ input.how-to-team-select:hover {
   }
 }
 
+.box.standing-data {
+  @include mobile {
+    width: 24rem;
+  }
+}
 /* /schedulesページ */
 $app-color: #6246ea;
 
@@ -171,14 +171,26 @@ $app-color: #6246ea;
   opacity: 0.6;
 }
 
-.favorte-team-points {
+.favorite-team-name-and-rank {
   border-right: solid 1px;
 }
 
-.favorte-team-played {
+.favorite-team-points {
   border-right: solid 1px;
 }
 
+.favorite-team-played {
+  border-right: solid 1px;
+}
+
+.match-data {
+  @tablet {
+    width: 32rem;
+  }
+  @include mobile {
+    width: 30rem;
+  }
+}
 .next-match {
   border-bottom: solid 1px;
 }
