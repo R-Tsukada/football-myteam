@@ -1,14 +1,12 @@
 <template>
-  <div
-    class="favorite-team-standing box columns mt-1"
-    @click="selectTeam(standings)">
+  <div class="favorite-team-standing columns is-mobile">
     <div
-      class="favorite-team-name-and-rank favorte-team-border-right column is-3">
+      class="favorite-team-name-and-rank favorte-team-border-right column is-three-fifths">
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
         <FavoriteTeamTag />
       </div>
-      <!-- favorite-team-box -->
-      <div class="columns">
+      <!--FavoriteTeamTag-->
+      <div class="columns is-mobile">
         <div class="favorite-team column">
           <div class="favorite-team-rank has-text-centered">
             <p>
@@ -18,31 +16,30 @@
               >位
             </p>
           </div>
-          <!-- favorite-team-rank -->
+          <!--favorite=team-rank-->
         </div>
-        <!-- favorite-team column-->
-        <div class="favorite-team-logo column">
+        <!--favorite-team column-->
+        <div class="favorite-team-logo column my-auto">
           <img
             :src="standings.team_logo"
             alt="standings-favorite-team-logo"
             class="image" />
         </div>
-        <!-- favorite-team-logo column-->
-        <div class="favorite-team-name my-auto column">
+        <!--favorite-team-logo column-->
+        <div class="favorite-team-name mobile-display my-auto column">
           <p class="has-text-weight-bold is-size-4">
             {{ standings.team_name }}
           </p>
         </div>
-        <!-- favorite-team-name column-->
+        <!--favorite-team-name-->
       </div>
       <!-- columns -->
     </div>
-    <!-- favorite-team-name-and-rank -->
-    <div
-      class="favorite-team-points favorte-team-border-right column is-2 has-text-centered">
-      <p>勝点</p>
+    <!--favorite-team-name-and-rank -->
+    <div class="favorite-team-points column is-one-fifth has-text-centered">
+      <p class="is-size-7-mobile">勝点</p>
       <p>
-        <span class="is-size-1 has-text-weight-bold">{{
+        <span class="is-size-1 is-size-4-mobile has-text-weight-bold">{{
           standings.points
         }}</span
         >点
@@ -52,12 +49,11 @@
         :standingsPoints="standings.points"
         v-show="favoriteId !== standings.team_id" />
     </div>
-    <!-- points -->
-    <div
-      class="favorite-team-played favorte-team-border-right column is-2 has-text-centered">
-      <p>試合数</p>
+    <!-- favorite-team-points -->
+    <div class="favorite-team-played column is-one-fifth has-text-centered">
+      <p class="is-size-7-mobile">試合数</p>
       <p>
-        <span class="is-size-1 has-text-weight-bold">{{
+        <span class="is-size-1 is-size-4-mobile has-text-weight-bold">{{
           standings.played
         }}</span
         >試合
@@ -67,30 +63,24 @@
       </p>
     </div>
     <!-- favorite-team-played -->
-    <TeamMatches :matchSchedules="matchSchedules" />
   </div>
-  <!-- favorite-team-standing box columns-->
+  <!-- favorite-team-standing columns-->
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
+import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
-import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
-import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
-import TeamMatches from './TeamMatches'
 
 export default {
-  props: ['standings', 'matchSchedules', 'favoriteTeamPoints', 'favoriteId'],
+  props: ['standings', 'FavoriteTeamTag', 'favoriteTeamPoints', 'favoriteId'],
   components: {
     DifferenceInPoints,
-    FavoriteTeamTag,
-    TeamMatches
+    FavoriteTeamTag
   },
   setup() {
-    const router = useRouter()
-
     const store = useStore()
 
     const data = reactive({
@@ -98,11 +88,6 @@ export default {
       teams: [],
       favorite: []
     })
-
-    const selectTeam = (standings) => {
-      store.commit('teamId', standings.team_id)
-      router.push({ name: 'show', params: { id: store.state.teamId } })
-    }
 
     const setTeams = async () => {
       axios
@@ -131,7 +116,6 @@ export default {
     const gameCount = computed(() => data.teams.length * 2)
 
     return {
-      selectTeam,
       setTeams,
       gameCount,
       data,

@@ -126,9 +126,18 @@ input.how-to-team-select:hover {
 
 /* Home and Awayの表示 */
 .home-and-away {
-  max-width: 8%;
-  height: 2rem;
+  max-width: 10%;
+  height: 1.4rem;
   border-radius: 10px;
+  @include mobile {
+    max-width: 20%;
+  }
+}
+
+.home-team-name-and-logo {
+  @include mobile {
+    flex-direcition: column-reverse;
+  }
 }
 
 .match-schedule-box {
@@ -149,6 +158,11 @@ input.how-to-team-select:hover {
   }
 }
 
+.box.standing-data {
+  @include mobile {
+    width: 24rem;
+  }
+}
 /* /schedulesページ */
 $app-color: #6246ea;
 
@@ -161,13 +175,30 @@ $app-color: #6246ea;
   border-radius: 10px;
 }
 
-.favorite-team-standing:hover {
+.box.standing-data :hover {
   cursor: pointer;
   opacity: 0.6;
 }
 
-.favorte-team-border-right {
+.favorite-team-name-and-rank {
   border-right: solid 1px;
+}
+
+.favorite-team-points {
+  border-right: solid 1px;
+}
+
+.favorite-team-played {
+  border-right: solid 1px;
+}
+
+.match-data {
+  @tablet {
+    width: 32rem;
+  }
+  @include mobile {
+    width: 30rem;
+  }
 }
 
 .next-match {
@@ -199,7 +230,12 @@ $app-color: #6246ea;
 
 /* 試合詳細 */
 .match-schedule-card {
-  width: 54rem;
+  @include tablet {
+    width: 54rem;
+  }
+  @include mobile {
+    width: 20rem;
+  }
 }
 
 .selected-team {
@@ -207,7 +243,18 @@ $app-color: #6246ea;
 }
 
 .match-list {
-  width: 48rem;
+  @include tablet {
+    width: 48rem;
+  }
+  @include mobile {
+    width: 18rem;
+  }
+}
+
+.selected-team {
+  @include mobile {
+    width: 20rem;
+  }
 }
 
 
