@@ -45,17 +45,18 @@ export default {
       favorite: []
     })
 
-    const matchDay = (day) => {
-      const weekDay = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fry", "Sat"]
-      const matchDate = day
-      const dateReplace = matchDate.replace(/(?!^)-|[^-\d]/g, "")
-      const x = dateReplace.match( /(\d{4})(\d{2})(\d{2})/ )
-      const d = new Date ( x[1], x[2] -1, x[3] )
-      const mm = String(d.getMonth() + 1).padStart(2, '0')
-      const dd = String(d.getDate()).padStart(2, '0')
-      const week = weekDay[d.getDay()]
+    const matchDay = (date) => {
+      const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fry', 'Sat']
+      const matchDate = date
+      const dateFormat = matchDate.replace(/(?!^)-|[^-\d]/g, '')
+      const dateNumber = dateFormat.match(/(\d{4})(\d{2})(\d{2})/)
+      const getDate = new Date(dateNumber[1], dateNumber[2] - 1, dateNumber[3])
+      const mm = String(getDate.getMonth() + 1).padStart(2, '0')
+      const dd = String(getDate.getDate()).padStart(2, '0')
+      const week = weekDay[getDate.getDay()]
       return `${mm}/${dd}(${week})`
     }
+
     return {
       data,
       matchDay

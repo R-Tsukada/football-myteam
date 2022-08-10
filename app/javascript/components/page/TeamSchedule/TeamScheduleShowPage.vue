@@ -1,6 +1,7 @@
 <template>
   <div class="container pt-5">
-    <div class="selected-team columns is-mobile is-gapless mx-auto has-text-centered">
+    <div
+      class="selected-team columns is-mobile is-gapless mx-auto has-text-centered">
       <FavoriteTeamTag
         class="column is-one-fifth my-auto"
         v-show="data.favorite.team.id === $store.state.teamId" />
@@ -15,7 +16,7 @@
         {{ selectedTeam[0].name }}の試合予定
       </h2>
     </div>
-    <p></p>
+    <!--selected-team columns -->
     <div class="tabs is-toggle is-centered">
       <ul>
         <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
@@ -26,6 +27,7 @@
         </li>
       </ul>
     </div>
+    <!-- tabs -->
     <MatchScheduleShowLoader v-if="!data.schedules.length" />
     <div class="tab-contents" v-else>
       <div
@@ -39,13 +41,16 @@
         <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
       </div>
     </div>
+    <!-- tab-contents v-else -->
     <div class="has-text-centered">
       <button
         class="color-button button is-rounded is-medium mt-5 has-text-centered">
         <router-link to="/schedules" class="has-text-white">戻る</router-link>
       </button>
     </div>
+    <!-- has-text-centered -->
   </div>
+  <!--container -->
 </template>
 
 <script>

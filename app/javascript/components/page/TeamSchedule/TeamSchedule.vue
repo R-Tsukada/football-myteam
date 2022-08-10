@@ -17,8 +17,7 @@
       <TeamScheduleBox
         :standings="data.firstCompetitorTeams"
         :matchSchedules="firstCompetitorTeamsMatches"
-        :favoriteTeamPoints="data.favoriteTeamPoints"
-      />
+        :favoriteTeamPoints="data.favoriteTeamPoints" />
       <TeamScheduleBox
         v-if="data.secondCompetitorTeams"
         :standings="data.secondCompetitorTeams"

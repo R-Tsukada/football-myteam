@@ -20,7 +20,8 @@
           ">
           {{ result.home_and_away }}
         </p>
-        <p class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1">
+        <p
+          class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1">
           {{ matchDay(result.date) }}
         </p>
       </div>
@@ -53,9 +54,11 @@
           {{ result.away_team_name }}
         </p>
       </div>
+      <!--match-list columns-->
     </div>
+    <!-- box -->
   </div>
-  <!--columns-->
+  <!--match-schedule-card-->
 </template>
 >
 
@@ -70,11 +73,11 @@ export default {
     })
 
     const matchDay = (day) => {
-      const weekDay = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fry", "Sat"]
+      const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fry', 'Sat']
       const matchDate = day
-      const dateReplace = matchDate.replace(/(?!^)-|[^-\d]/g, "")
-      const x = dateReplace.match( /(\d{4})(\d{2})(\d{2})/ )
-      const d = new Date ( x[1], x[2] -1, x[3] )
+      const dateReplace = matchDate.replace(/(?!^)-|[^-\d]/g, '')
+      const x = dateReplace.match(/(\d{4})(\d{2})(\d{2})/)
+      const d = new Date(x[1], x[2] - 1, x[3])
       const mm = String(d.getMonth() + 1).padStart(2, '0')
       const dd = String(d.getDate()).padStart(2, '0')
       const week = weekDay[d.getDay()]
