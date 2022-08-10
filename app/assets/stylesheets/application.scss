@@ -175,7 +175,7 @@ $app-color: #6246ea;
   border-radius: 10px;
 }
 
-.favorite-team-standing:hover {
+.box.standing-data :hover {
   cursor: pointer;
   opacity: 0.6;
 }
@@ -200,6 +200,7 @@ $app-color: #6246ea;
     width: 30rem;
   }
 }
+
 .next-match {
   border-bottom: solid 1px;
 }

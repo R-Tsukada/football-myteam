@@ -1,8 +1,5 @@
 <template>
-  <!--<div class="box standing-data">-->
-  <div
-    class="favorite-team-standing columns is-mobile"
-    @click="selectTeam(standings)">
+  <div class="favorite-team-standing columns is-mobile">
     <div
       class="favorite-team-name-and-rank favorte-team-border-right column is-three-fifths">
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
@@ -68,13 +65,11 @@
     <!-- favorite-team-played -->
   </div>
   <!-- favorite-team-standing columns-->
-  <!--</div>--><!--box.standing-data-->
 </template>
 
 <script>
 import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
 import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
-import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
@@ -86,8 +81,6 @@ export default {
     FavoriteTeamTag
   },
   setup() {
-    const router = useRouter()
-
     const store = useStore()
 
     const data = reactive({
@@ -95,11 +88,6 @@ export default {
       teams: [],
       favorite: []
     })
-
-    const selectTeam = (standings) => {
-      store.commit('teamId', standings.team_id)
-      router.push({ name: 'show', params: { id: store.state.teamId } })
-    }
 
     const setTeams = async () => {
       axios
@@ -128,7 +116,6 @@ export default {
     const gameCount = computed(() => data.teams.length * 2)
 
     return {
-      selectTeam,
       setTeams,
       gameCount,
       data,
