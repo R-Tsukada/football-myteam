@@ -1,17 +1,17 @@
 <template>
   <div class="container pt-5">
-    <div class="selected-team columns is-gapless mx-auto has-text-centered">
+    <div class="selected-team columns is-mobile is-gapless mx-auto has-text-centered">
       <FavoriteTeamTag
-        class="column my-auto"
+        class="column is-one-fifth my-auto"
         v-show="data.favorite.team.id === $store.state.teamId" />
-      <div class="column is-2">
+      <div class="column is-one-quarter">
         <img
           :src="selectedTeam[0].logo"
           alt="selected_team_logo"
           class="image team-logo m-auto" />
       </div>
       <h2
-        class="column is-8 has-text-centered has-text-bold is-size-2 has-text-weight-bold my-auto">
+        class="column has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
         {{ selectedTeam[0].name }}の試合予定
       </h2>
     </div>

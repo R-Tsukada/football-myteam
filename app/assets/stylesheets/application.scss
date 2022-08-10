@@ -126,9 +126,18 @@ input.how-to-team-select:hover {
 
 /* Home and Awayの表示 */
 .home-and-away {
-  max-width: 8%;
-  height: 2rem;
+  max-width: 10%;
+  height: 1.4rem;
   border-radius: 10px;
+  @include mobile {
+    max-width: 20%;
+  }
+}
+
+.home-team-name-and-logo {
+  @include mobile {
+    flex-direcition: column-reverse;
+  }
 }
 
 .match-schedule-box {
@@ -220,7 +229,12 @@ $app-color: #6246ea;
 
 /* 試合詳細 */
 .match-schedule-card {
-  width: 54rem;
+  @include tablet {
+    width: 54rem;
+  }
+  @include mobile {
+    width: 20rem;
+  }
 }
 
 .selected-team {
@@ -228,7 +242,18 @@ $app-color: #6246ea;
 }
 
 .match-list {
-  width: 48rem;
+  @include tablet {
+    width: 48rem;
+  }
+  @include mobile {
+    width: 18rem;
+  }
+}
+
+.selected-team {
+  @include mobile {
+    width: 20rem;
+  }
 }
 
 

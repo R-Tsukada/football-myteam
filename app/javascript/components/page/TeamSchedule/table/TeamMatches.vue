@@ -18,7 +18,7 @@
         {{ match.home_and_away }}
       </p>
       <p class="column is-3 next-match-date">
-        {{ match.date }}
+        {{ matchDay(match.date) }}
       </p>
       <p class="column is-1 has-text-weight-bold">vs</p>
       <img
@@ -44,8 +44,21 @@ export default {
       teams: [],
       favorite: []
     })
+
+    const matchDay = (day) => {
+      const weekDay = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fry", "Sat"]
+      const matchDate = day
+      const dateReplace = matchDate.replace(/(?!^)-|[^-\d]/g, "")
+      const x = dateReplace.match( /(\d{4})(\d{2})(\d{2})/ )
+      const d = new Date ( x[1], x[2] -1, x[3] )
+      const mm = String(d.getMonth() + 1).padStart(2, '0')
+      const dd = String(d.getDate()).padStart(2, '0')
+      const week = weekDay[d.getDay()]
+      return `${mm}/${dd}(${week})`
+    }
     return {
-      data
+      data,
+      matchDay
     }
   }
 }
