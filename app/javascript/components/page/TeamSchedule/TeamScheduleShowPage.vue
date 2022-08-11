@@ -1,10 +1,14 @@
 <template>
   <div class="container pt-5">
     <div
-      class="selected-team columns is-mobile is-gapless mx-auto has-text-centered">
-      <FavoriteTeamTag
-        class="column is-one-fifth my-auto"
-        v-show="data.favorite.team.id === $store.state.teamId" />
+      class="selected-team columns is-mobile is-gapless mx-auto has-text-centered"
+      v-if="selectedTeam[0]"
+    >
+      <div
+        class="column is-one-fifth mx-auto"
+        v-if="data.favorite.team && data.favorite.team.id === $store.state.teamId">
+        <FavoriteTeamTag />
+      </div>
       <div class="column is-one-quarter">
         <img
           :src="selectedTeam[0].logo"
