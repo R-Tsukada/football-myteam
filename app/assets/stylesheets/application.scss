@@ -264,3 +264,11 @@ $button-color: #6246ea;
 .color-button {
   background-color: $button-color;
 }
+
+/* タブの切り替え */
+.tab-contents .content {
+  display: none;
+}
+.tab-contents .content.is-active {
+  display: block;
+}
