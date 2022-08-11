@@ -2,11 +2,12 @@
   <div class="container pt-5">
     <div
       class="selected-team columns is-mobile is-gapless mx-auto has-text-centered"
-      v-if="selectedTeam[0]"
-    >
+      v-if="selectedTeam[0]">
       <div
         class="column is-2 m-auto"
-        v-if="data.favorite.team && data.favorite.team.id === $store.state.teamId">
+        v-if="
+          data.favorite.team && data.favorite.team.id === $store.state.teamId
+        ">
         <FavoriteTeamTag />
       </div>
       <div class="column is-2">

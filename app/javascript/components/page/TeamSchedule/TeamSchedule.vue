@@ -60,67 +60,62 @@ export default {
     })
 
     const setFavorite = async () => {
-      await
-        axios
-          .get('/api/favorites')
-          .then((response) => {
-            data.favorite = response.data
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      await axios
+        .get('/api/favorites')
+        .then((response) => {
+          data.favorite = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setCompetitor = async () => {
-      await
-        axios
-          .get('/api/competitors')
-          .then((response) => {
-            data.competitors = response.data
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      await axios
+        .get('/api/competitors')
+        .then((response) => {
+          data.competitors = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setTeamSchedules = async () => {
-      await
-        axios
-          .get('/api/standings')
-          .then((response) => {
-            data.favoriteTeams = response.data[0]
-            data.favoriteTeamPoints = data.favoriteTeams.points
-            data.firstCompetitorTeams = response.data[1]
-            data.secondCompetitorTeams = response.data[2]
-            data.thirdCompetitorTeams = response.data[3]
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      await axios
+        .get('/api/standings')
+        .then((response) => {
+          data.favoriteTeams = response.data[0]
+          data.favoriteTeamPoints = data.favoriteTeams.points
+          data.firstCompetitorTeams = response.data[1]
+          data.secondCompetitorTeams = response.data[2]
+          data.thirdCompetitorTeams = response.data[3]
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setMatchSchedules = async () => {
-      await
-        axios
-          .get('/api/matches')
-          .then((response) => {
-            data.matches = response.data
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      await axios
+        .get('/api/matches')
+        .then((response) => {
+          data.matches = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const setTeams = async () => {
-      await
-        axios
-          .get('/api/team_filter')
-          .then((response) => {
-            data.teams = response.data
-          })
-          .catch((error) => {
-            console.log(error.message)
-          })
+      await axios
+        .get('/api/team_filter')
+        .then((response) => {
+          data.teams = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
 
     const favoriteMatches = computed(() =>
