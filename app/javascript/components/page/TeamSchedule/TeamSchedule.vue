@@ -7,8 +7,7 @@
     <p class="has-text-centered mb-4">
       優勝・欧州カップ戦出場権・残留争いを楽しもう
     </p>
-    <MatchListLoader v-if="!data.matches.length" />
-    <div v-else>
+    <div v-if="data.favorite.team && data.competitors[0]">
       <TeamScheduleBox
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
@@ -19,17 +18,18 @@
         :matchSchedules="firstCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
       <TeamScheduleBox
-        v-if="data.secondCompetitorTeams"
+        v-if="data.competitors[1]"
         :standings="data.secondCompetitorTeams"
         :matchSchedules="secondCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
       <TeamScheduleBox
-        v-if="data.thirdCompetitorTeams"
+        v-if="data.competitors[2]"
         :standings="data.thirdCompetitorTeams"
         :matchSchedules="thirdCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
     </div>
-    <!-- v-else -->
+    <!-- v-if -->
+    <MatchListLoader v-else />
   </div>
   <!-- container -->
 </template>
@@ -60,62 +60,67 @@ export default {
     })
 
     const setFavorite = async () => {
-      axios
-        .get('/api/favorites')
-        .then((response) => {
-          data.favorite = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+      await
+        axios
+          .get('/api/favorites')
+          .then((response) => {
+            data.favorite = response.data
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     const setCompetitor = async () => {
-      axios
-        .get('/api/competitors')
-        .then((response) => {
-          data.competitors = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+      await
+        axios
+          .get('/api/competitors')
+          .then((response) => {
+            data.competitors = response.data
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     const setTeamSchedules = async () => {
-      axios
-        .get('/api/standings')
-        .then((response) => {
-          data.favoriteTeams = response.data[0]
-          data.favoriteTeamPoints = data.favoriteTeams.points
-          data.firstCompetitorTeams = response.data[1]
-          data.secondCompetitorTeams = response.data[2]
-          data.thirdCompetitorTeams = response.data[3]
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+      await
+        axios
+          .get('/api/standings')
+          .then((response) => {
+            data.favoriteTeams = response.data[0]
+            data.favoriteTeamPoints = data.favoriteTeams.points
+            data.firstCompetitorTeams = response.data[1]
+            data.secondCompetitorTeams = response.data[2]
+            data.thirdCompetitorTeams = response.data[3]
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     const setMatchSchedules = async () => {
-      axios
-        .get('/api/matches')
-        .then((response) => {
-          data.matches = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+      await
+        axios
+          .get('/api/matches')
+          .then((response) => {
+            data.matches = response.data
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     const setTeams = async () => {
-      axios
-        .get('/api/team_filter')
-        .then((response) => {
-          data.teams = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
+      await
+        axios
+          .get('/api/team_filter')
+          .then((response) => {
+            data.teams = response.data
+          })
+          .catch((error) => {
+            console.log(error.message)
+          })
     }
 
     const favoriteMatches = computed(() =>
