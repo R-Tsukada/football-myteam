@@ -7,8 +7,7 @@
     <p class="has-text-centered mb-4">
       優勝・欧州カップ戦出場権・残留争いを楽しもう
     </p>
-    <MatchListLoader v-if="!data.matches.length" />
-    <div v-else>
+    <div v-if="data.favorite.team && data.competitors[0]">
       <TeamScheduleBox
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
@@ -19,17 +18,18 @@
         :matchSchedules="firstCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
       <TeamScheduleBox
-        v-if="data.secondCompetitorTeams"
+        v-if="data.competitors[1]"
         :standings="data.secondCompetitorTeams"
         :matchSchedules="secondCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
       <TeamScheduleBox
-        v-if="data.thirdCompetitorTeams"
+        v-if="data.competitors[2]"
         :standings="data.thirdCompetitorTeams"
         :matchSchedules="thirdCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
     </div>
-    <!-- v-else -->
+    <!-- v-if -->
+    <MatchListLoader v-else />
   </div>
   <!-- container -->
 </template>
@@ -60,7 +60,7 @@ export default {
     })
 
     const setFavorite = async () => {
-      axios
+      await axios
         .get('/api/favorites')
         .then((response) => {
           data.favorite = response.data
@@ -71,7 +71,7 @@ export default {
     }
 
     const setCompetitor = async () => {
-      axios
+      await axios
         .get('/api/competitors')
         .then((response) => {
           data.competitors = response.data
@@ -82,7 +82,7 @@ export default {
     }
 
     const setTeamSchedules = async () => {
-      axios
+      await axios
         .get('/api/standings')
         .then((response) => {
           data.favoriteTeams = response.data[0]
@@ -97,7 +97,7 @@ export default {
     }
 
     const setMatchSchedules = async () => {
-      axios
+      await axios
         .get('/api/matches')
         .then((response) => {
           data.matches = response.data
@@ -108,7 +108,7 @@ export default {
     }
 
     const setTeams = async () => {
-      axios
+      await axios
         .get('/api/team_filter')
         .then((response) => {
           data.teams = response.data

@@ -1,18 +1,23 @@
 <template>
   <div class="container pt-5">
     <div
-      class="selected-team columns is-mobile is-gapless mx-auto has-text-centered">
-      <FavoriteTeamTag
-        class="column is-one-fifth my-auto"
-        v-show="data.favorite.team.id === $store.state.teamId" />
-      <div class="column is-one-quarter">
+      class="selected-team columns is-mobile is-gapless mx-auto has-text-centered"
+      v-if="selectedTeam[0]">
+      <div
+        class="column is-2 m-auto"
+        v-if="
+          data.favorite.team && data.favorite.team.id === $store.state.teamId
+        ">
+        <FavoriteTeamTag />
+      </div>
+      <div class="column is-2">
         <img
           :src="selectedTeam[0].logo"
           alt="selected_team_logo"
           class="image team-logo m-auto" />
       </div>
       <h2
-        class="column has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
+        class="column is-8 has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
         {{ selectedTeam[0].name }}の試合予定
       </h2>
     </div>
@@ -125,17 +130,13 @@ export default {
       return `${yyyy}-${mm}-${dd}`
     }
 
-    const matchScheduleFilter = computed(() => {
-      return data.schedules.filter(function (schedules) {
-        return schedules.date > formatDate(date)
-      })
-    })
+    const matchScheduleFilter = computed(() =>
+      data.schedules.filter((schedules) => schedules.date > formatDate(date))
+    )
 
-    const matchResultsFilter = computed(() => {
-      return data.schedules.filter(function (schedules) {
-        return schedules.date < formatDate(date)
-      })
-    })
+    const matchResultsFilter = computed(() =>
+      data.schedules.filter((schedules) => schedules.date < formatDate(date))
+    )
 
     onMounted(setMatchData(), setTeams(), setFavorite())
 
@@ -150,11 +151,3 @@ export default {
   }
 }
 </script>
-<style>
-.tab-contents .content {
-  display: none;
-}
-.tab-contents .content.is-active {
-  display: block;
-}
-</style>
