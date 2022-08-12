@@ -1,36 +1,38 @@
 <template>
   <div class="container">
-    <h2
-      class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
-      リーグ戦情報
-    </h2>
-    <p class="has-text-centered mb-4">
-      優勝・欧州カップ戦出場権・残留争いを楽しもう
-    </p>
-    <MatchListLoader v-if="firstCompetitorTeamsMatches.length === 0" />
-    <!--<div v-if="data.favorite.team && data.competitors[0]">-->
-    <div v-else>
-      <TeamScheduleBox
-        :standings="data.favoriteTeams"
-        :matchSchedules="favoriteMatches"
-        :favoriteId="data.favorite.team.id" />
-      <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
-      <TeamScheduleBox
-        :standings="data.firstCompetitorTeams"
-        :matchSchedules="firstCompetitorTeamsMatches"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <TeamScheduleBox
-        v-if="data.competitors[1]"
-        :standings="data.secondCompetitorTeams"
-        :matchSchedules="secondCompetitorTeamsMatches"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
-      <TeamScheduleBox
-        v-if="data.competitors[2]"
-        :standings="data.thirdCompetitorTeams"
-        :matchSchedules="thirdCompetitorTeamsMatches"
-        :favoriteTeamPoints="data.favoriteTeamPoints" />
+    <div class="section">
+      <h2
+        class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
+        リーグ戦情報
+      </h2>
+      <p class="has-text-centered mb-4">
+        優勝・欧州カップ戦出場権・残留争いを楽しもう
+      </p>
+      <MatchListLoader v-if="firstCompetitorTeamsMatches.length === 0" />
+      <div v-else>
+        <TeamScheduleBox
+          :standings="data.favoriteTeams"
+          :matchSchedules="favoriteMatches"
+          :favoriteId="data.favorite.team.id" />
+        <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
+        <TeamScheduleBox
+          :standings="data.firstCompetitorTeams"
+          :matchSchedules="firstCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <TeamScheduleBox
+          v-if="data.competitors[1]"
+          :standings="data.secondCompetitorTeams"
+          :matchSchedules="secondCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+        <TeamScheduleBox
+          v-if="data.competitors[2]"
+          :standings="data.thirdCompetitorTeams"
+          :matchSchedules="thirdCompetitorTeamsMatches"
+          :favoriteTeamPoints="data.favoriteTeamPoints" />
+      </div>
+      <!-- v-else -->
     </div>
-    <!-- v-else -->
+    <!-- section -->
   </div>
   <!-- container -->
 </template>
