@@ -1,6 +1,6 @@
 <template>
   <div clsss="main-page">
-    <div class="box standing-data columns mb-3" @click="selectTeam(standings)">
+    <div class="box standing-and-matches columns mb-3" @click="selectTeam(standings)">
       <StandingData
         :standings="standings"
         :favoriteTeamPoints="favoriteTeamPoints"
@@ -10,7 +10,7 @@
         :matchSchedules="matchSchedules"
         class="match-data column is-two-fifths" />
     </div>
-    <!--box-standing-data-->
+    <!--box-standing-and-matches-->
   </div>
   <!--manin-page-->
 </template>

@@ -158,11 +158,17 @@ input.how-to-team-select:hover {
   }
 }
 
-.box.standing-data {
+.box.standing-and-matches {
   @include mobile {
     width: 24rem;
   }
 }
+
+.box.standing-and-matches:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 /* /schedulesページ */
 $app-color: #6246ea;
 
@@ -173,11 +179,6 @@ $app-color: #6246ea;
   height: 2rem;
   max-width: 100%;
   border-radius: 10px;
-}
-
-.box.standing-data :hover {
-  cursor: pointer;
-  opacity: 0.6;
 }
 
 .favorite-team-name-and-rank {
