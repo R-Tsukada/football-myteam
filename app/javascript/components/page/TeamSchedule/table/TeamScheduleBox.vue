@@ -7,7 +7,7 @@
         :favoriteId="favoriteId"
         class="standing-data column is-three-fifths" />
       <TeamMatches
-        :matchSchedules="matchSchedules"
+        :matchSchedules="matchSchedules.slice(0, 3)"
         class="match-data column is-two-fifths" />
     </div>
     <!--box-standing-and-matches-->
