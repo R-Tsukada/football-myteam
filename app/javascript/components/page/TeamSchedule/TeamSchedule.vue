@@ -7,7 +7,9 @@
     <p class="has-text-centered mb-4">
       優勝・欧州カップ戦出場権・残留争いを楽しもう
     </p>
-    <div v-if="data.favorite.team && data.competitors[0]">
+    <MatchListLoader v-if="firstCompetitorTeamsMatches.length === 0" />
+    <!--<div v-if="data.favorite.team && data.competitors[0]">-->
+    <div v-else>
       <TeamScheduleBox
         :standings="data.favoriteTeams"
         :matchSchedules="favoriteMatches"
@@ -28,8 +30,7 @@
         :matchSchedules="thirdCompetitorTeamsMatches"
         :favoriteTeamPoints="data.favoriteTeamPoints" />
     </div>
-    <!-- v-if -->
-    <MatchListLoader v-else />
+    <!-- v-else -->
   </div>
   <!-- container -->
 </template>
