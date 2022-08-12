@@ -127,7 +127,7 @@ input.how-to-team-select:hover {
 /* Home and Awayの表示 */
 .home-and-away {
   max-width: 10%;
-  height: 1.4rem;
+  height: auto;
   border-radius: 10px;
   @include mobile {
     max-width: 20%;
@@ -158,11 +158,17 @@ input.how-to-team-select:hover {
   }
 }
 
-.box.standing-data {
+.box.standing-and-matches {
   @include mobile {
     width: 24rem;
   }
 }
+
+.box.standing-and-matches:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 /* /schedulesページ */
 $app-color: #6246ea;
 
@@ -173,11 +179,6 @@ $app-color: #6246ea;
   height: 2rem;
   max-width: 100%;
   border-radius: 10px;
-}
-
-.box.standing-data :hover {
-  cursor: pointer;
-  opacity: 0.6;
 }
 
 .favorite-team-name-and-rank {
@@ -193,11 +194,11 @@ $app-color: #6246ea;
 }
 
 .match-data {
-  @tablet {
+  @tablet tablet{
     width: 32rem;
   }
   @include mobile {
-    width: 30rem;
+    width: 23rem;
   }
 }
 
@@ -208,20 +209,19 @@ $app-color: #6246ea;
 /* 対戦予定コンペティションのロゴ */
 .next-match-competition-logo {
     width: 1rem;
-    height: 1.6rem;
-    max-width: 7%;
-  @include mobile {
-    width: 3rem;
-    max-width: 100%;
-  }
+    height: auto;
+    max-width: 10%;
 }
 
 .next-match-venu {
   width: 2rem;
-  height: 1.5rem;
+  height: auto;
   max-width: 100%;
-  border: node;
+  border: none;
   border-radius: 10px;
+  @include mobile {
+    max-width: 20%;
+  }
 }
 
 .match-name {

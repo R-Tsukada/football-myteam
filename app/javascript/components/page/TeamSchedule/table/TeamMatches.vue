@@ -7,9 +7,9 @@
       <img
         :src="match.competition_logo"
         alt="favorite-team-next-match"
-        class="image next-match-competition-logo column is-1" />
+        class="image next-match-competition-logo column my-auto" />
       <p
-        class="next-match-venu column is-2 has-text-white"
+        class="next-match-venu column has-text-white my-auto"
         v-bind:class="
           data.isHome === match.home_and_away
             ? 'has-background-success'
@@ -17,15 +17,15 @@
         ">
         {{ match.home_and_away }}
       </p>
-      <p class="column is-3 next-match-date">
+      <p class="column is-4 next-match-date my-auto">
         {{ matchDay(match.date) }}
       </p>
-      <p class="column is-1 has-text-weight-bold">vs</p>
+      <!--<p class="column has-text-weight-bold my-auto">vs</p>-->
       <img
         :src="match.team_logo"
         alt="match-team-logo"
-        class="image next-match-competition-logo column is-1" />
-      <p class="match-name mobile-display column is-4 has-text-weight-bold">
+        class="image next-match-competition-logo column my-auto" />
+      <p class="match-name mobile-display column has-text-weight-bold my-auto">
         {{ match.team_name }}
       </p>
     </div>
