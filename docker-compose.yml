@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web: &app
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
+    volumes:
+      - .:/football
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - chrome
+    tty: true
+    stdin_open: true
+  webpacker:
+    <<: *app
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: ./bin/webpack-dev-server
+    ports:
+      - '3035:3035'
+  chrome:
+    image: selenium/standalone-chrome-debug:latest
+    shm_size: 256m
+    ports:
+      - "4444:4444"
+      - "5900:5900"
