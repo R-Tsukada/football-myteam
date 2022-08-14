@@ -119,9 +119,9 @@ export default {
 
     const changeTitle = computed(() => {
       if (data.isActive == 'match_schedule') {
-        return "予定"
+        return '予定'
       } else {
-        return "結果"
+        return '結果'
       }
     })
 
