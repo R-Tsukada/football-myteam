@@ -10,24 +10,39 @@ export const router = createRouter({
   routes: [
     {
       path: '/leagues',
-      component: TeamList
+      component: TeamList,
+      meta: { title: '応援しているチームを登録' }
     },
     {
       path: '/competitors',
-      component: CompetitorTeamSelect
+      component: CompetitorTeamSelect,
+      meta: { title: 'ライバルチームを登録' }
     },
     {
       path: '/schedules',
-      component: TeamSchedule
+      component: TeamSchedule,
+      meta: { title: 'リーグ戦情報' }
     },
     {
       path: '/schedules/:id',
       name: 'show',
-      component: TeamScheduleShowPage
+      component: TeamScheduleShowPage,
+      meta: { title: '試合情報の詳細' }
     },
     {
       path: '/:pathMatch(.*)*',
-      component: NotFound
+      component: NotFound,
+      meta: { title: 'ページが見つかりません' }
     }
   ]
+})
+
+const DEFAULT_TITLE = 'Football MyTeam'
+
+router.afterEach((to) => {
+  const title = to.meta.title
+    ? `${to.meta.title} | ${DEFAULT_TITLE}`
+    : DEFAULT_TITLE
+
+  document.title = title
 })
