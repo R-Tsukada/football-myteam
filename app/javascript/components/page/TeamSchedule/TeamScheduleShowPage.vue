@@ -18,7 +18,7 @@
       </div>
       <h2
         class="column is-8 has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
-        {{ selectedTeam[0].name }}の試合予定
+        {{ selectedTeam[0].name }}の試合{{ changeTitle }}
       </h2>
     </div>
     <!--selected-team columns -->
@@ -117,6 +117,14 @@ export default {
         })
     }
 
+    const changeTitle = computed(() => {
+      if (data.isActive == 'match_schedule') {
+        return "予定"
+      } else {
+        return "結果"
+      }
+    })
+
     const selectedTeam = computed(() =>
       data.teams.filter((team) => team.id === store.state.teamId)
     )
@@ -146,7 +154,8 @@ export default {
       formatDate,
       matchScheduleFilter,
       matchResultsFilter,
-      selectedTeam
+      selectedTeam,
+      changeTitle
     }
   }
 }
