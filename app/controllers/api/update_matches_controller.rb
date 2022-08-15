@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class API::UpdateMatchesController < ApplicationController
-  before_action :set_match
+  before_action :api_request
   before_action :authenticate_user!
 
   def index
