@@ -2,14 +2,19 @@
 
 class API::UpdateMatchesController < ApplicationController
   before_action :set_match
+  before_action :authenticate_user!
 
   def index
     @match = Match.all.order(:date).where(date: Time.zone.today..)
   end
 
+  def batch_request
+    api_request
+  end
+
   private
 
-  def set_match
+  def api_request
     Match.delete_all
     MatchRequest.league(api_request_url)
   end

@@ -8,6 +8,10 @@ class API::UpdateStandingsController < ApplicationController
     @standing = Standing.all
   end
 
+  def batch_request
+    api_request
+  end
+
   private
 
   def api_request
