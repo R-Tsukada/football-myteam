@@ -10,6 +10,9 @@
       </p>
       <MatchListLoader v-if="firstCompetitorTeamsMatches.length === 0" />
       <div v-else>
+        <div class="mb-3 has-text-right">
+          <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
+        </div>
         <TeamScheduleBox
           :standings="data.favoriteTeams"
           :matchSchedules="favoriteMatches"
@@ -121,6 +124,25 @@ export default {
         })
     }
 
+    const toDoubleDigits = function (num) {
+      num += ''
+      if (num.length === 1) {
+        num = '0' + num
+      }
+      return num
+    }
+
+    const updateDate = (date) => {
+      const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fry', 'Sat']
+      const getDate = new Date(date)
+      const mm = String(getDate.getMonth() + 1).padStart(2, '0')
+      const dd = String(getDate.getDate()).padStart(2, '0')
+      const week = weekDay[getDate.getDay()]
+      const hh = toDoubleDigits(getDate.getHours())
+      const min = toDoubleDigits(getDate.getMinutes())
+      return `${mm}/${dd}(${week})${hh}:${min}`
+    }
+
     const favoriteMatches = computed(() =>
       data.matches.filter((f) => f.team_matches_index === data.favorite.team.id)
     )
@@ -165,6 +187,8 @@ export default {
       firstCompetitorTeamsMatches,
       secondCompetitorTeamsMatches,
       thirdCompetitorTeamsMatches,
+      toDoubleDigits,
+      updateDate,
       date,
       formatDate,
       gameCount
