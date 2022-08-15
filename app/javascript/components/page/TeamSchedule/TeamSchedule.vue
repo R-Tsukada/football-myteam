@@ -12,6 +12,7 @@
       <div v-else>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
+          <button class="button my-1" @click="dataUpdate">更新する</button>
         </div>
         <TeamScheduleBox
           :standings="data.favoriteTeams"
@@ -124,6 +125,41 @@ export default {
         })
     }
 
+    const updateMatches = async () => {
+      await axios
+        .get('/api/update_matches')
+        .then((response) => {
+          data.matches = response.data
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    const updateStadings = async () => {
+      await axios
+        .get('/api/standings')
+        .then((response) => {
+          data.favoriteTeams = response.data[0]
+          data.favoriteTeamPoints = data.favoriteTeams.points
+          data.firstCompetitorTeams = response.data[1]
+          data.secondCompetitorTeams = response.data[2]
+          data.thirdCompetitorTeams = response.data[3]
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }
+
+    const resetMatchesAndStandings = () => {
+      data.matches = []
+      data.favoriteTeams = []
+      data.favoriteTeamPoints = []
+      data.firstCompetitorTeams = []
+      data.secondCompetitorTeams = []
+      data.thirdCompetitorTeams = []
+    }
+
     const toDoubleDigits = function (num) {
       num += ''
       if (num.length === 1) {
@@ -141,6 +177,12 @@ export default {
       const hh = toDoubleDigits(getDate.getHours())
       const min = toDoubleDigits(getDate.getMinutes())
       return `${mm}/${dd}(${week})${hh}:${min}`
+    }
+
+    const dataUpdate = async () => {
+      resetMatchesAndStandings()
+      updateMatches()
+      updateStadings()
     }
 
     const favoriteMatches = computed(() =>
@@ -189,6 +231,10 @@ export default {
       thirdCompetitorTeamsMatches,
       toDoubleDigits,
       updateDate,
+      dataUpdate,
+      resetMatchesAndStandings,
+      updateMatches,
+      updateStadings,
       date,
       formatDate,
       gameCount
