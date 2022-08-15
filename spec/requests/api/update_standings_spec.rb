@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe 'API::Standings', type: :request do
-  describe 'GET /api/standings/index' do
+RSpec.describe 'API::UpdateStandings', type: :request do
+  describe 'GET /update_standings/index' do
     it 'returns http success' do
       league = FactoryBot.create(:league)
       team1 = FactoryBot.create(:team, :arsenal, league: league)

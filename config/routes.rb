@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :standings, only: [:index, :show]
     resources :team_filter, only: [:index]
     resources :matches, only: [:index, :show]
+    resources :update_matches, only: [:index]
+    resources :update_standings, only: [:index]
   end
   get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
   get 'terms_of_service', to: 'home#terms_of_service', as: 'terms_of_service'

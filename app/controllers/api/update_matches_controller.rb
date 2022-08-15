@@ -1,28 +1,20 @@
 # frozen_string_literal: true
 
-class API::MatchesController < ApplicationController
-  before_action :set_show_page, only: [:show]
-  before_action :match_api_request
+class API::UpdateMatchesController < ApplicationController
+  before_action :set_match
+  before_action :authenticate_user!
 
   def index
     @match = Match.all.order(:date).where(date: Time.zone.today..)
   end
 
-  def show
-    @match_show = Match.all.where(team_matches_index: @team_id).order(:date)
+  def batch_request
+    api_request
   end
 
   private
 
-  def set_show_page
-    @team_id = Team.find(params[:id])
-  end
-
-  def match_api_request
-    set_match if Match.all.blank?
-  end
-
-  def set_match
+  def api_request
     Match.delete_all
     MatchRequest.league(api_request_url)
   end

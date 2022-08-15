@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
-class API::StandingsController < ApplicationController
-  before_action :authenticate_user!
+class API::UpdateStandingsController < ApplicationController
   before_action :api_request
+  before_action :authenticate_user!
 
   def index
     @standing = Standing.all
   end
 
-  def show; end
+  def batch_request
+    api_request
+  end
 
   private
 
   def api_request
-    set_standing if Standing.all.blank?
-  end
-
-  def set_standing
     Standing.delete_all
     StandingRequest.league(api_request_url)
   end
