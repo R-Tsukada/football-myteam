@@ -9,10 +9,6 @@ class API::UpdateMatchesController < ApplicationController
 
   private
 
-  def set_show_page
-    @team_id = Team.find(params[:id])
-  end
-
   def set_match
     Match.delete_all
     MatchRequest.league(api_request_url)
