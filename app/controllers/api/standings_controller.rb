@@ -14,7 +14,7 @@ class API::StandingsController < ApplicationController
 
   def api_request
     # set_standing if Standing.all.blank?
-    set_match
+    set_standing
   end
 
   def set_standing
