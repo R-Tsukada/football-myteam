@@ -19,7 +19,8 @@ class API::MatchesController < ApplicationController
   end
 
   def match_api_request
-    set_match if Match.all.blank?
+    # set_match if Match.all.blank?
+    set_match
   end
 
   def set_match
