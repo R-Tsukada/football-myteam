@@ -15,7 +15,7 @@ RSpec.describe '応援しているチームを登録する', type: :system, js: 
     FactoryBot.create(:team, :sassuolo, league: serie_a)
 
     visit root_path
-    first('.button').click_link 'アカウント作成'
+    all('.button')[2].click_link 'アカウント作成'
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
