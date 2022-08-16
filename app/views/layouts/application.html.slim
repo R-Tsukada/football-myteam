@@ -15,19 +15,27 @@ html
     header
       .navbar.is-transparent.is-fixed-top.p-2.has-background-main
         .navbar-brand
-          .title
+          .title.my-auto
             = link_to root_path do
               = image_tag('football_logo.svg', alt: 'football_myteam_logo', class: 'image title-logo')
-        .navbar-menu
-          .navbar-end
-            .navbar-item.has-text-white.mx-2
-              - if user_signed_in?
-                = link_to '登録しているチームを変更する', '/leagues', class: 'has-text-white mx-2'
-                = link_to 'プロフィール変更', edit_user_registration_path, class: 'has-text-white mx-2'
-                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'has-text-white mx-2'
-              - else
-                = link_to 'アカウントを作成', new_user_registration_path, class: 'has-text-white mx-2'
-                = link_to 'ログイン', new_user_session_path, class: 'has-text-white mx-2'
+          a.navbar-burger.has-text-white role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
+            span aria-hidden="true"
+              |
+            span aria-hidden="true"
+              |
+            span aria-hidden="true"
+              |
+        .navbar-end
+          #targetMenu.navbar-menu.has-background-main
+            - if user_signed_in?
+                = link_to 'チームを変更する', '/leagues', class: 'burger-menu-item navbar-item has-text-white'
+                = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white'
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item has-text-white'
+            - else
+              .navbar-item
+                = link_to 'アカウントを作成', new_user_registration_path
+              .navbar-item
+                = link_to 'ログイン', new_user_session_path
       p
         .notice.is-size-4.p-5.has-text-centered.has-text-info
           = notice
