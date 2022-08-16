@@ -6,7 +6,7 @@ RSpec.describe 'NotFoundPage', type: :system, js: true do
   it 'display 404 page', js: true do
     visit root_path
 
-    first('.button').click_link 'アカウント作成'
+    all('.button')[2].click_link 'アカウント作成'
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
