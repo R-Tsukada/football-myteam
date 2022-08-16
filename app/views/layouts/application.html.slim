@@ -25,17 +25,19 @@ html
               |
             span aria-hidden="true"
               |
-        .navbar-end
-          #targetMenu.navbar-menu.has-background-main
+        #targetMenu.navbar-menu.has-background-main
+          .navbar-start
             - if user_signed_in?
                 = link_to 'チームを変更する', '/leagues', class: 'burger-menu-item navbar-item has-text-white'
                 = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white'
-                = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item has-text-white'
+          .navbar-end
+            - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button'
             - else
               .navbar-item
-                = link_to 'アカウントを作成', new_user_registration_path
+                = link_to 'Sign up', new_user_registration_path, class: 'burger-menu-item navbar-item button'
               .navbar-item
-                = link_to 'ログイン', new_user_session_path
+                = link_to 'Login', new_user_session_path, class: 'burger-menu-item navbar-item button'
       p
         .notice.is-size-4.p-5.has-text-centered.has-text-info
           = notice
