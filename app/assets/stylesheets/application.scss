@@ -232,6 +232,9 @@ $app-color: #6246ea;
 
 .next-match-date {
   width: 6rem;
+  @include mobile {
+    margin-right: 0.75rem;
+  }
 }
 
 .match-name {
