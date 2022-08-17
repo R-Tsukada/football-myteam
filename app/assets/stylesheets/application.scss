@@ -54,6 +54,17 @@ main {
 .team-logo {
   width: 5rem;
   max-width: 100%;
+  @include mobile {
+    max-width: 80%;
+  }
+}
+
+.selected-team-logo-show-page {
+  width: 4rem;
+  max-width: 100%;
+  @include mobile {
+    max-width: 80%;
+  }
 }
 
 .standings-team-logo {

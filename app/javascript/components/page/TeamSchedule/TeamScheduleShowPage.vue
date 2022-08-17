@@ -1,25 +1,25 @@
 <template>
-  <div class="container pt-5">
+  <div class="container">
     <h2
-      class="selected-team is-mobile is-gapless is-flex is-justify-content-center is-align-items-center mx-auto mb-6"
+      class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto mb-2"
       v-if="selectedTeam[0]">
       <span
-        class="is-2 m-auto"
+        class="favorite-team-tag my-auto mr-2"
         v-if="
           data.favorite.team && data.favorite.team.id === $store.state.teamId
         ">
         <FavoriteTeamTag />
       </span>
-      <div class="column is-2">
+      <div class="mr-2">
         <img
           :src="selectedTeam[0].logo"
           alt="selected_team_logo"
-          class="image team-logo m-auto" />
-      </div><!-- column -->
+          class="image selected-team-logo-show-page m-auto" />
+      </div><!-- mr-2.selected-team-togo-show-page -->
       <div
-        class="is-8 has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
+        class="selected-team-name-and-matches has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
         {{ selectedTeam[0].name }}の試合{{ changeTitle }}
-      </div><!-- is-8 -->
+      </div><!-- selected-team-name-and-matches -->
     </h2><!--selected-team -->
     <div class="tabs is-toggle is-centered">
       <ul>
