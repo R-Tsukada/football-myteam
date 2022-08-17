@@ -257,7 +257,6 @@ $app-color: #6246ea;
   }
 }
 
-
 /* ボタン */
 $button-color: #6246ea;
 
@@ -269,8 +268,13 @@ $button-color: #6246ea;
 .tab-contents .content {
   display: none;
 }
+
 .tab-contents .content.is-active {
   display: block;
+}
+
+.schedule-column-logo {
+  padding: 0;
 }
 
 .burger-menu-item {

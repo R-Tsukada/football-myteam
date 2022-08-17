@@ -31,9 +31,10 @@
           class="column m-auto has-text-centered has-text-weight-bold is-size-3-tablet mobile-display">
           {{ result.home_team_name }}
         </p>
-        <div class="column m-auto">
+        <div class="column m-auto schedule-column-logo">
           <img :src="result.home_logo" class="image team-logo m-auto" />
         </div>
+        <!-- schedule-column-logo -->
         <p
           class="column has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto">
           {{ result.home_score }}
@@ -46,9 +47,10 @@
           class="column has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto">
           {{ result.away_score }}
         </p>
-        <div class="column m-auto">
+        <div class="column m-auto schedule-column-logo">
           <img :src="result.away_logo" class="image team-logo m-auto" />
         </div>
+        <!-- schedule-column-logo -->
         <p
           class="column has-text-centered has-text-weight-bold m-auto is-size-3-tablet mobile-display">
           {{ result.away_team_name }}
