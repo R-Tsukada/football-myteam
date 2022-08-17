@@ -1,7 +1,7 @@
 @import "bulma";
 
-/* layout */
 $main: #6246ea;
+$border-color: #DDD;
 
 body {
   display: flex;
@@ -88,7 +88,6 @@ main {
     max-width: 100%;
   }
 }
-
 
 /* リーグまたはチーム選択時 */
 .select-button {
@@ -197,15 +196,15 @@ $app-color: #6246ea;
 }
 
 .favorite-team-name-and-rank {
-  border-right: solid 1px;
+  border-right: solid 1px $border-color;
 }
 
 .favorite-team-points {
-  border-right: solid 1px;
+  border-right: solid 1px $border-color;
 }
 
 .favorite-team-played {
-  border-right: solid 1px;
+  border-right: solid 1px $border-color;
 }
 
 .match-data {
@@ -218,7 +217,7 @@ $app-color: #6246ea;
 }
 
 .next-match {
-  border-bottom: solid 1px;
+  border-bottom: solid 1px $border-color;
 }
 
 /* 対戦予定コンペティションのロゴ */
