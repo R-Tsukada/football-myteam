@@ -15,12 +15,15 @@
           :src="selectedTeam[0].logo"
           alt="selected_team_logo"
           class="image selected-team-logo-show-page m-auto" />
-      </div><!-- mr-2.selected-team-togo-show-page -->
+      </div>
+      <!-- mr-2.selected-team-togo-show-page -->
       <div
         class="selected-team-name-and-matches has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
         {{ selectedTeam[0].name }}の試合{{ changeTitle }}
-      </div><!-- selected-team-name-and-matches -->
-    </h2><!--selected-team -->
+      </div>
+      <!-- selected-team-name-and-matches -->
+    </h2>
+    <!--selected-team -->
     <div class="tabs is-toggle is-centered">
       <ul>
         <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
