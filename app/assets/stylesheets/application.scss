@@ -223,20 +223,16 @@ $app-color: #6246ea;
 
 /* 対戦予定コンペティションのロゴ */
 .next-match-competition-logo {
-    width: 1rem;
-    height: auto;
-    max-width: 10%;
+    width: 3rem;
 }
 
 .next-match-venu {
-  width: 2rem;
-  height: auto;
-  max-width: 100%;
-  border: none;
+  width: 4rem;
   border-radius: 10px;
-  @include mobile {
-    max-width: 20%;
-  }
+}
+
+.next-match-date {
+  width: 6rem;
 }
 
 .match-name {
