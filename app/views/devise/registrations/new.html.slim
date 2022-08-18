@@ -6,7 +6,7 @@
       = render 'devise/shared/error_messages', resource: resource
       .field.has-text-left.has-text-weight-medium
         = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'football-myteam@example.com'
       .field.has-text-left.has-text-weight-medium
         = f.label :password
         - if @minimum_password_length
