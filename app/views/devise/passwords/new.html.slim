@@ -1,11 +1,13 @@
-h2
-  | Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render 'devise/shared/error_messages', resource: resource
-  .field
-    = f.label :email
-  br
-  = f.email_field :email, autofocus: true, autocomplete: 'email'
-  .actions
-    = f.submit 'Send me reset password instructions'
-= render 'devise/shared/links'
+.container
+  .section
+    h2.is-size-2.is-size-4-mobile.has-text-weight-semibold.has-text-centered.mb-3
+      | パスワードを変更する
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render 'devise/shared/error_messages', resource: resource
+      .field.has-text-left.has-text-weight-medium
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'football-myteam@example.com'
+      .actions.has-text-centered
+        = f.submit 'パスワードをリセットする', class: 'is-size-5 is-size-7-mobile color-button button is-rounded is-medium has-text-white mt-3'
+    .has-text-right.has-text-weight-medium
+      = render 'devise/shared/links'
