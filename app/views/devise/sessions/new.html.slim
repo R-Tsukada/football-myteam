@@ -1,18 +1,19 @@
-.container.mx-auto.pt-5
-  h2.is-size-2.is-size-4-mobile.has-text-weight-semibold.has-text-centered
-    | ログイン
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field.has-text-left.has-text-weight-medium
-      = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
-    .field.has-text-left.has-text-weight-medium
-      = f.label :password
-      = f.password_field :password, autocomplete: 'current-password', class: 'input'
-    - if devise_mapping.rememberable?
-      .field.has-text-weight-medium.has-text-right
-        = f.check_box :remember_me
-        = f.label :remember_me
-      .actions.has-text-centered
-        = f.submit t('.log_in'), class: 'color-button button is-rounded is-medium has-text-white mt-5'
-  .has-text-right.has-text-weight-medium.mt-3
-    = render 'devise/shared/links'
+.container
+  .section
+    h2.is-size-2.is-size-4-mobile.has-text-weight-semibold.has-text-centered
+      | ログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.has-text-left.has-text-weight-medium
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
+      .field.has-text-left.has-text-weight-medium
+        = f.label :password
+        = f.password_field :password, autocomplete: 'current-password', class: 'input'
+      - if devise_mapping.rememberable?
+        .field.has-text-weight-medium.has-text-right
+          = f.check_box :remember_me
+          = f.label :remember_me
+        .actions.has-text-centered
+          = f.submit t('.log_in'), class: 'color-button button is-rounded is-medium has-text-white mt-5'
+    .has-text-right.has-text-weight-medium.mt-3
+      = render 'devise/shared/links'
