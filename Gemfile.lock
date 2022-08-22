@@ -108,6 +108,7 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -153,6 +154,17 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
+    oauth (0.5.10)
+    omniauth (2.1.0)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-oauth (1.2.0)
+      oauth
+      omniauth (>= 1.0, < 3)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     orm_adapter (0.5.0)
     parallel (1.21.0)
     parser (3.1.1.0)
@@ -170,6 +182,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
+    rack-protection (2.2.2)
+      rack
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -338,6 +352,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  omniauth-twitter
   pg (~> 1.1)
   pry
   pry-nav

@@ -27,6 +27,7 @@ gem 'net-smtp', require: false
 gem 'bulma-rails', '~> 0.9.3'
 gem 'devise'
 gem 'devise-i18n'
+gem 'omniauth-twitter'
 gem 'meta-tags'
 gem 'net-imap'
 gem 'net-pop'
