@@ -2,7 +2,13 @@
 
 class HomeController < ApplicationController
   def index
-    redirect_to '/schedules' if current_user
+    if current_user && current_user.favorite.present?
+      redirect_to '/schedules'
+    elsif current_user
+      redirect_to '/leagues'
+    else
+      root_path
+    end
   end
 
   def privacy_policy; end
