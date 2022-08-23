@@ -1,4 +1,5 @@
 @import "bulma";
+@import "font-awesome";
 
 $main: #6246ea;
 $border-color: #DDD;
@@ -296,4 +297,8 @@ $button-color: #6246ea;
 
 .burger-menu-item {
   text-align: center;
+}
+
+.twitter-color {
+  background-color: #00acee;
 }
