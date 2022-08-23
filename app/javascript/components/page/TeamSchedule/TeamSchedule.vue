@@ -5,12 +5,18 @@
         class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
         リーグ戦情報
       </h2>
-      <p class="has-text-centered has-text-weight-bold mb-4 ">
+      <p class="has-text-centered has-text-weight-bold mb-4">
         優勝・欧州カップ戦出場権・残留争いを楽しもう
       </p>
-      <div v-if="!firstCompetitorTeamsMatches.length" class="first-api-request has-text-centered">
+      <div
+        v-if="!firstCompetitorTeamsMatches.length"
+        class="first-api-request has-text-centered">
         <p>試合情報を取得してください</p>
-        <button class="button my-1 color-button has-text-white" @click="dataUpdate">試合情報を取得する</button>
+        <button
+          class="button my-1 color-button has-text-white"
+          @click="dataUpdate">
+          試合情報を取得する
+        </button>
         <MatchListLoader />
       </div>
       <div v-else>
