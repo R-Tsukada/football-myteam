@@ -16,5 +16,10 @@
         = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length}文字以上入力してください"
       .actions.has-text-centered
         = f.submit t('.sign_up'), class: 'color-button button is-rounded is-medium has-text-white'
-    .has-text-right.has-text-weight-medium
-      = render 'devise/shared/links'
+    .twitter-login-button.has-text-centered
+      .is-size-3
+        | or
+      .button.is-rounded.twitter-color.has-text-white
+        .i.fa-brands.fa-twitter.fa-2x.m-2
+        - resource_class.omniauth_providers.each do |provider|
+          = link_to 'Twitterで登録する', omniauth_authorize_path(resource_name, provider), method: :post, class: 'has-text-white'
