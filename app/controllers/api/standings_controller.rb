@@ -2,7 +2,6 @@
 
 class API::StandingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :api_request
 
   def index
     @standing = Standing.all
@@ -10,12 +9,11 @@ class API::StandingsController < ApplicationController
 
   def show; end
 
-  private
-
   def api_request
-    # set_standing if Standing.all.blank?
     set_standing
   end
+
+  private
 
   def set_standing
     Standing.delete_all
