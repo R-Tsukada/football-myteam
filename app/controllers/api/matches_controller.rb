@@ -2,7 +2,6 @@
 
 class API::MatchesController < ApplicationController
   before_action :set_show_page, only: [:show]
-  before_action :match_api_request
 
   def index
     @match = Match.all.order(:date).where(date: Time.zone.today..)
@@ -12,15 +11,14 @@ class API::MatchesController < ApplicationController
     @match_show = Match.all.where(team_matches_index: @team_id).order(:date)
   end
 
+  def api_request
+    set_match
+  end
+
   private
 
   def set_show_page
     @team_id = Team.find(params[:id])
-  end
-
-  def match_api_request
-    # set_match if Match.all.blank?
-    set_match
   end
 
   def set_match
