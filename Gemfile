@@ -27,6 +27,7 @@ gem 'net-smtp', require: false
 gem 'bulma-rails', '~> 0.9.3'
 gem 'devise'
 gem 'devise-i18n'
+gem "font-awesome-sass", "~> 6.1.2"
 gem 'omniauth-twitter'
 gem 'omniauth-rails_csrf_protection'
 gem 'meta-tags'
