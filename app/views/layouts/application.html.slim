@@ -26,10 +26,10 @@ html
             span aria-hidden="true"
               |
         #targetMenu.navbar-menu.has-background-main
-          .navbar-start
+          .navbar-start.mx-auto
             - if user_signed_in?
-                = link_to 'チームを変更する', '/leagues', class: 'burger-menu-item navbar-item has-text-white'
-                = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white'
+                = link_to 'チームを変更', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
+                = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-white has-text-weight-medium'
           .navbar-end
             - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button'
