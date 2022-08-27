@@ -4,4 +4,4 @@ bundle exec rubocop -A
 bundle exec slim-lint app/views -c config/slim_lint.yml
 bin/yarn lint
 bin/yarn run prettier --write app/javascript
-
+bundle exec slim-lint app/views -c config/slim_lint.yml
