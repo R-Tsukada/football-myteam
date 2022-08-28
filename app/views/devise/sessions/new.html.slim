@@ -5,10 +5,10 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field.has-text-left.has-text-weight-medium
         = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'football-myteam@example.com'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'E-mail'
       .field.has-text-left.has-text-weight-medium
         = f.label :password
-        = f.password_field :password, autocomplete: 'current-password', class: 'input'
+        = f.password_field :password, autocomplete: 'current-password', class: 'input', placeholder: 'Password'
       - if devise_mapping.rememberable?
         .field.has-text-weight-medium.has-text-right
           = f.check_box :remember_me
