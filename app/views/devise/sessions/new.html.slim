@@ -15,5 +15,10 @@
           = f.label :remember_me
         .actions.has-text-centered
           = f.submit t('.log_in'), class: 'color-button button is-rounded is-medium has-text-white mt-5'
-    .has-text-right.has-text-weight-medium.mt-3
-      = render 'devise/shared/links'
+      .p.has-text-centered.is-size-3.has-text-grey-light
+        | OR
+      .twitter-login-button.has-text-centered.mt-3
+        .button.is-rounded.twitter-color.has-text-white
+          .i.fa-brands.fa-twitter.fa-2x.m-2
+          - resource_class.omniauth_providers.each do |provider|
+            = link_to 'Twitterでログインする', omniauth_authorize_path(resource_name, provider), method: :post, class: 'has-text-white'
