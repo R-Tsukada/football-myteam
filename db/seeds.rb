@@ -33,7 +33,7 @@ Team.create(
   [
     {
       "id": 1,
-      "name": 'Manchester United',
+      "name": 'Man United',
       "logo": 'https://media.api-sports.io/football/teams/33.png',
       "api_id": 33,
       "league_id": 1,
@@ -185,7 +185,7 @@ Team.create(
     },
     {
       "id": 14,
-      "name": 'Manchester City',
+      "name": 'Man City',
       "logo": 'https://media.api-sports.io/football/teams/50.png',
       "api_id": 50,
       "league_id": 1,
