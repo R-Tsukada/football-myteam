@@ -10,4 +10,5 @@ class Team < ApplicationRecord
   has_one :favorite, dependent: :destroy
   has_many :competitor, dependent: :destroy
   has_one :standing, dependent: :destroy
+  has_many :match, dependent: :destroy
 end
