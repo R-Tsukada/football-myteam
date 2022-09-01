@@ -31,6 +31,7 @@ League.create(
 
 Team.create(
   [
+  # --------- Premier ---------------
     {
       "id": 1,
       "name": 'Man United',
@@ -284,6 +285,7 @@ Team.create(
     #   "stadium": 'Carrow Road',
     #   "last_season_rank": ''
     # },
+    # --------- SelieA ---------------
     {
       "id": 21,
       "name": 'Lazio',
@@ -537,6 +539,7 @@ Team.create(
       "stadium": 'U-Power Stadium',
       "last_season_rank": ''
     },
+    # --------- LaLiga ---------------
     {
       "id": 41,
       "name": 'Barcelona',
@@ -790,6 +793,7 @@ Team.create(
       "stadium": 'Visit Mallorca Estadi',
       "last_season_rank": 16
     },
+    # --------- LaLiga ---------------
     {
       "id": 61,
       "name": 'Bayern Munich',
@@ -843,7 +847,6 @@ Team.create(
       "league_id": 4,
       "stadium": 'wohninvest WESERSTADION',
       "home_city": 'Bremen',
-
       "last_season_rank": ''
     },
     {
