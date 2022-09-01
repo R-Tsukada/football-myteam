@@ -2,6 +2,7 @@
 
 class API::StandingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :api_request
 
   def index
     @standing = Standing.all
@@ -10,7 +11,7 @@ class API::StandingsController < ApplicationController
   def show; end
 
   def api_request
-    set_standing
+    set_standing if current_user.favorite.team.standing.blank?
   end
 
   private

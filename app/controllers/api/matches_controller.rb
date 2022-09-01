@@ -2,6 +2,7 @@
 
 class API::MatchesController < ApplicationController
   before_action :set_show_page, only: [:show]
+  before_action :api_request
 
   def index
     @match = Match.all.order(:date).where(date: Time.zone.today..)
@@ -12,7 +13,7 @@ class API::MatchesController < ApplicationController
   end
 
   def api_request
-    set_match
+    set_match if current_user.favorite.team.standing.blank?
   end
 
   private
