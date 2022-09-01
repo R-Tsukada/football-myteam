@@ -388,7 +388,7 @@ Team.create(
     {
       "id": 30,
       "name": 'Sampdoria',
-      "cide": 'SAM',
+      "code": 'SAM',
       "logo": 'https://media.api-sports.io/football/teams/498.png',
       "api_id": 498,
       "league_id": 2,
