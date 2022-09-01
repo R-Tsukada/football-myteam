@@ -31,7 +31,7 @@ League.create(
 
 Team.create(
   [
-  # --------- Premier ---------------
+    # --------- Premier ---------------
     {
       "id": 1,
       "name": 'Man United',
@@ -729,14 +729,14 @@ Team.create(
     },
     # 2021-2022降格
     # {
-      # "id": 55,
-      # "name": 'Granada CF',
-      # "logo": 'https://media.api-sports.io/football/teams/715.png',
-      # "api_id": 715,
-      # "league_id": 3,
-      # "home_city": 'Granada',
-      # "stadium": 'Estadio Nuevo Los Cármenes',
-      # "last_season_rank": 9
+    # "id": 55,
+    # "name": 'Granada CF',
+    # "logo": 'https://media.api-sports.io/football/teams/715.png',
+    # "api_id": 715,
+    # "league_id": 3,
+    # "home_city": 'Granada',
+    # "stadium": 'Estadio Nuevo Los Cármenes',
+    # "last_season_rank": 9
     # },
     {
       "id": 56,
