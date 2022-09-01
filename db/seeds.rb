@@ -34,6 +34,7 @@ Team.create(
     {
       "id": 1,
       "name": 'Man United',
+      "code": 'MUN',
       "logo": 'https://media.api-sports.io/football/teams/33.png',
       "api_id": 33,
       "league_id": 1,
@@ -44,6 +45,7 @@ Team.create(
     {
       "id": 2,
       "name": 'Newcastle',
+      "code": 'NEW',
       "logo": 'https://media.api-sports.io/football/teams/34.png',
       "api_id": 34,
       "league_id": 1,
@@ -65,6 +67,7 @@ Team.create(
     {
       "id": 79,
       "name": 'Bournemouth',
+      "code": 'BOU',
       "logo": 'https://media.api-sports.io/football/teams/35.png',
       "api_id": 35,
       "league_id": 1,
@@ -75,6 +78,7 @@ Team.create(
     {
       "id": 80,
       "name": 'Fulham',
+      "code": 'FUL',
       "logo": 'https://media.api-sports.io/football/teams/36.png',
       "api_id": 36,
       "league_id": 1,
@@ -85,6 +89,7 @@ Team.create(
     {
       "id": 4,
       "name": 'Wolves',
+      "code": 'WOL',
       "logo": 'https://media.api-sports.io/football/teams/39.png',
       "api_id": 39,
       "league_id": 1,
@@ -95,6 +100,7 @@ Team.create(
     {
       "id": 5,
       "name": 'Liverpool',
+      "code": 'LIV',
       "logo": 'https://media.api-sports.io/football/teams/40.png',
       "api_id": 40,
       "league_id": 1,
@@ -105,6 +111,7 @@ Team.create(
     {
       "id": 6,
       "name": 'Southampton',
+      "code": 'SOU',
       "logo": 'https://media.api-sports.io/football/teams/41.png',
       "api_id": 41,
       "league_id": 1,
@@ -115,6 +122,7 @@ Team.create(
     {
       "id": 7,
       "name": 'Arsenal',
+      "code": 'ARS',
       "logo": 'https://media.api-sports.io/football/teams/42.png',
       "api_id": 42,
       "league_id": 1,
@@ -136,6 +144,7 @@ Team.create(
     {
       "id": 9,
       "name": 'Everton',
+      "code": 'EVE',
       "logo": 'https://media.api-sports.io/football/teams/45.png',
       "api_id": 45,
       "league_id": 1,
@@ -146,6 +155,7 @@ Team.create(
     {
       "id": 10,
       "name": 'Leicester',
+      "code": 'LEI',
       "logo": 'https://media.api-sports.io/football/teams/46.png',
       "api_id": 46,
       "league_id": 1,
@@ -156,6 +166,7 @@ Team.create(
     {
       "id": 11,
       "name": 'Tottenham',
+      "code": 'TOT',
       "logo": 'https://media.api-sports.io/football/teams/47.png',
       "api_id": 47,
       "league_id": 1,
@@ -166,6 +177,7 @@ Team.create(
     {
       "id": 12,
       "name": 'West Ham',
+      "code": 'WES',
       "logo": 'https://media.api-sports.io/football/teams/48.png',
       "api_id": 48,
       "league_id": 1,
@@ -176,6 +188,7 @@ Team.create(
     {
       "id": 13,
       "name": 'Chelsea',
+      "code": 'CHE',
       "logo": 'https://media.api-sports.io/football/teams/49.png',
       "api_id": 49,
       "league_id": 1,
@@ -186,6 +199,7 @@ Team.create(
     {
       "id": 14,
       "name": 'Man City',
+      "code": 'MAC',
       "logo": 'https://media.api-sports.io/football/teams/50.png',
       "api_id": 50,
       "league_id": 1,
@@ -196,6 +210,7 @@ Team.create(
     {
       "id": 15,
       "name": 'Brighton',
+      "code": 'BRI',
       "logo": 'https://media.api-sports.io/football/teams/51.png',
       "api_id": 51,
       "league_id": 1,
@@ -206,6 +221,7 @@ Team.create(
     {
       "id": 16,
       "name": 'Crystal Palace',
+      "code": 'CRY',
       "logo": 'https://media.api-sports.io/football/teams/52.png',
       "api_id": 52,
       "league_id": 1,
@@ -216,6 +232,7 @@ Team.create(
     {
       "id": 17,
       "name": 'Brentford',
+      "code": 'BRE',
       "logo": 'https://media.api-sports.io/football/teams/55.png',
       "api_id": 55,
       "league_id": 1,
@@ -226,6 +243,7 @@ Team.create(
     {
       "id": 18,
       "name": 'Leeds',
+      "code": 'LEE',
       "logo": 'https://media.api-sports.io/football/teams/63.png',
       "api_id": 63,
       "league_id": 1,
@@ -236,6 +254,7 @@ Team.create(
     {
       "id": 81,
       "name": 'Nottm Forest',
+      "code": 'NOT',
       "logo": 'https://media.api-sports.io/football/teams/65.png',
       "api_id": 65,
       "league_id": 1,
@@ -246,6 +265,7 @@ Team.create(
     {
       "id": 19,
       "name": 'Aston Villa',
+      "code": 'AST',
       "logo": 'https://media.api-sports.io/football/teams/66.png',
       "api_id": 66,
       "league_id": 1,
@@ -267,6 +287,7 @@ Team.create(
     {
       "id": 21,
       "name": 'Lazio',
+      "code": 'LAZ',
       "logo": 'https://media.api-sports.io/football/teams/487.png',
       "api_id": 487,
       "league_id": 2,
@@ -277,6 +298,7 @@ Team.create(
     {
       "id": 22,
       "name": 'Sassuolo',
+      "code": 'SAS',
       "logo": 'https://media.api-sports.io/football/teams/488.png',
       "api_id": 488,
       "league_id": 2,
@@ -287,6 +309,7 @@ Team.create(
     {
       "id": 23,
       "name": 'AC Milan',
+      "code": 'MIL',
       "logo": 'https://media.api-sports.io/football/teams/489.png',
       "api_id": 489,
       "league_id": 2,
@@ -308,6 +331,7 @@ Team.create(
     {
       "id": 25,
       "name": 'Napoli',
+      "code": 'NAP',
       "logo": 'https://media.api-sports.io/football/teams/492.png',
       "api_id": 492,
       "league_id": 2,
@@ -318,6 +342,7 @@ Team.create(
     {
       "id": 26,
       "name": 'Udinese',
+      "code": 'UDI',
       "logo": 'https://media.api-sports.io/football/teams/494.png',
       "api_id": 494,
       "league_id": 2,
@@ -339,6 +364,7 @@ Team.create(
     {
       "id": 28,
       "name": 'Juventus',
+      "code": 'JUV',
       "logo": 'https://media.api-sports.io/football/teams/496.png',
       "api_id": 496,
       "league_id": 2,
@@ -349,6 +375,7 @@ Team.create(
     {
       "id": 29,
       "name": 'AS Roma',
+      "code": 'ROM',
       "logo": 'https://media.api-sports.io/football/teams/497.png',
       "api_id": 497,
       "league_id": 2,
@@ -359,6 +386,7 @@ Team.create(
     {
       "id": 30,
       "name": 'Sampdoria',
+      "cide": 'SAM',
       "logo": 'https://media.api-sports.io/football/teams/498.png',
       "api_id": 498,
       "league_id": 2,
@@ -369,6 +397,7 @@ Team.create(
     {
       "id": 31,
       "name": 'Atalanta',
+      "code": 'ATA',
       "logo": 'https://media.api-sports.io/football/teams/499.png',
       "api_id": 499,
       "league_id": 2,
@@ -379,6 +408,7 @@ Team.create(
     {
       "id": 32,
       "name": 'Bologna',
+      "code": 'BOL',
       "logo": 'https://media.api-sports.io/football/teams/500.png',
       "api_id": 500,
       "league_id": 2,
@@ -389,6 +419,7 @@ Team.create(
     {
       "id": 33,
       "name": 'Fiorentina',
+      "code": 'FIO',
       "logo": 'https://media.api-sports.io/football/teams/502.png',
       "api_id": 502,
       "league_id": 2,
@@ -399,6 +430,7 @@ Team.create(
     {
       "id": 34,
       "name": 'Torino',
+      "code": 'TOR',
       "logo": 'https://media.api-sports.io/football/teams/503.png',
       "api_id": 503,
       "league_id": 2,
@@ -409,6 +441,7 @@ Team.create(
     {
       "id": 35,
       "name": 'Verona',
+      "code": 'VER',
       "logo": 'https://media.api-sports.io/football/teams/504.png',
       "api_id": 504,
       "league_id": 2,
@@ -419,6 +452,7 @@ Team.create(
     {
       "id": 36,
       "name": 'Inter',
+      "code": 'INT',
       "logo": 'https://media.api-sports.io/football/teams/505.png',
       "api_id": 505,
       "league_id": 2,
@@ -429,6 +463,7 @@ Team.create(
     {
       "id": 37,
       "name": 'Empoli',
+      "code": 'EMP',
       "logo": 'https://media.api-sports.io/football/teams/511.png',
       "api_id": 511,
       "league_id": 2,
@@ -439,6 +474,7 @@ Team.create(
     {
       "id": 38,
       "name": 'Salernitana',
+      "code": 'SAL',
       "logo": 'https://media.api-sports.io/football/teams/514.png',
       "api_id": 514,
       "league_id": 2,
@@ -449,6 +485,7 @@ Team.create(
     {
       "id": 39,
       "name": 'Spezia',
+      "code": 'SPE',
       "logo": 'https://media.api-sports.io/football/teams/515.png',
       "api_id": 515,
       "league_id": 2,
@@ -470,6 +507,7 @@ Team.create(
     {
       "id": 82,
       "name": 'Cremonese',
+      "code": 'CRE',
       "logo": 'https://media.api-sports.io/football/teams/520.png',
       "api_id": 520,
       "league_id": 2,
@@ -480,6 +518,7 @@ Team.create(
     {
       "id": 83,
       "name": 'Lecce',
+      "code": 'LEC',
       "logo": 'https://media.api-sports.io/football/teams/867.png',
       "api_id": 867,
       "league_id": 2,
@@ -490,6 +529,7 @@ Team.create(
     {
       "id": 84,
       "name": 'Monza',
+      "code": 'MON',
       "logo": 'https://media.api-sports.io/football/teams/1579.png',
       "api_id": 1579,
       "league_id": 2,
@@ -500,6 +540,7 @@ Team.create(
     {
       "id": 41,
       "name": 'Barcelona',
+      "code": 'BAR',
       "logo": 'https://media.api-sports.io/football/teams/529.png',
       "api_id": 529,
       "league_id": 3,
@@ -510,6 +551,7 @@ Team.create(
     {
       "id": 42,
       "name": 'Atletico Madrid',
+      "code": 'MAD',
       "logo": 'https://media.api-sports.io/football/teams/530.png',
       "api_id": 530,
       "league_id": 3,
@@ -520,6 +562,7 @@ Team.create(
     {
       "id": 43,
       "name": 'Athletic Club',
+      "code": 'BIL',
       "logo": 'https://media.api-sports.io/football/teams/531.png',
       "api_id": 531,
       "league_id": 3,
@@ -530,6 +573,7 @@ Team.create(
     {
       "id": 44,
       "name": 'Valencia',
+      "code": 'VAL',
       "logo": 'https://media.api-sports.io/football/teams/532.png',
       "api_id": 532,
       "league_id": 3,
@@ -540,6 +584,7 @@ Team.create(
     {
       "id": 45,
       "name": 'Villarreal',
+      "code": 'VIL',
       "logo": 'https://media.api-sports.io/football/teams/533.png',
       "api_id": 533,
       "league_id": 3,
@@ -550,6 +595,7 @@ Team.create(
     {
       "id": 46,
       "name": 'Sevilla',
+      "code": 'SEV',
       "logo": 'https://media.api-sports.io/football/teams/536.png',
       "api_id": 536,
       "league_id": 3,
@@ -560,6 +606,7 @@ Team.create(
     {
       "id": 47,
       "name": 'Celta Vigo',
+      "code": 'CEL',
       "logo": 'https://media.api-sports.io/football/teams/538.png',
       "api_id": 538,
       "league_id": 3,
@@ -581,6 +628,7 @@ Team.create(
     {
       "id": 49,
       "name": 'Espanyol',
+      "code": 'ESP',
       "logo": 'https://media.api-sports.io/football/teams/540.png',
       "api_id": 540,
       "league_id": 3,
@@ -591,6 +639,7 @@ Team.create(
     {
       "id": 50,
       "name": 'Real Madrid',
+      "code": 'REA',
       "logo": 'https://media.api-sports.io/football/teams/541.png',
       "api_id": 541,
       "league_id": 3,
@@ -612,6 +661,7 @@ Team.create(
     {
       "id": 52,
       "name": 'Real Betis',
+      "code": 'BET',
       "logo": 'https://media.api-sports.io/football/teams/543.png',
       "api_id": 543,
       "league_id": 3,
@@ -622,6 +672,7 @@ Team.create(
     {
       "id": 53,
       "name": 'Getafe',
+      "code": 'GET',
       "logo": 'https://media.api-sports.io/football/teams/546.png',
       "api_id": 546,
       "league_id": 3,
@@ -632,6 +683,7 @@ Team.create(
     {
       "id": 89,
       "name": 'Girona',
+      "code": 'GIR',
       "logo": 'https://media.api-sports.io/football/teams/547.png',
       "api_id": 547,
       "league_id": 3,
@@ -642,6 +694,7 @@ Team.create(
     {
       "id": 54,
       "name": 'Real Sociedad',
+      "code": 'RSO',
       "logo": 'https://media.api-sports.io/football/teams/548.png',
       "api_id": 548,
       "league_id": 3,
@@ -652,6 +705,7 @@ Team.create(
     {
       "id": 85,
       "name": 'Valladolid',
+      "code": 'VAL',
       "logo": 'https://media.api-sports.io/football/teams/720.png',
       "api_id": 720,
       "league_id": 3,
@@ -662,6 +716,7 @@ Team.create(
     {
       "id": 86,
       "name": 'Almeria',
+      "code": 'ALM',
       "logo": 'https://media.api-sports.io/football/teams/723.png',
       "api_id": 723,
       "league_id": 3,
@@ -683,6 +738,7 @@ Team.create(
     {
       "id": 56,
       "name": 'Cadiz',
+      "code": 'CAD',
       "logo": 'https://media.api-sports.io/football/teams/724.png',
       "api_id": 724,
       "league_id": 3,
@@ -693,6 +749,7 @@ Team.create(
     {
       "id": 57,
       "name": 'Osasuna',
+      "code": 'OSA',
       "logo": 'https://media.api-sports.io/football/teams/727.png',
       "api_id": 727,
       "league_id": 3,
@@ -703,6 +760,7 @@ Team.create(
     {
       "id": 58,
       "name": 'Rayo Vallecano',
+      "code": 'RAY',
       "logo": 'https://media.api-sports.io/football/teams/728.png',
       "api_id": 728,
       "league_id": 3,
@@ -713,6 +771,7 @@ Team.create(
     {
       "id": 59,
       "name": 'Elche',
+      "code": 'ELC',
       "logo": 'https://media.api-sports.io/football/teams/797.png',
       "api_id": 797,
       "league_id": 3,
@@ -723,6 +782,7 @@ Team.create(
     {
       "id": 60,
       "name": 'Mallorca',
+      "code": 'MAL',
       "logo": 'https://media.api-sports.io/football/teams/798.png',
       "api_id": 798,
       "league_id": 3,
@@ -733,6 +793,7 @@ Team.create(
     {
       "id": 61,
       "name": 'Bayern Munich',
+      "code": 'BAY',
       "logo": 'https://media.api-sports.io/football/teams/157.png',
       "api_id": 157,
       "league_id": 4,
@@ -743,6 +804,7 @@ Team.create(
     {
       "id": 62,
       "name": 'Hertha Berlin',
+      "code": 'HER',
       "logo": 'https://media.api-sports.io/football/teams/159.png',
       "api_id": 159,
       "league_id": 4,
@@ -753,6 +815,7 @@ Team.create(
     {
       "id": 63,
       "name": 'SC Freiburg',
+      "code": 'FRE',
       "logo": 'https://media.api-sports.io/football/teams/160.png',
       "api_id": 160,
       "league_id": 4,
@@ -763,6 +826,7 @@ Team.create(
     {
       "id": 64,
       "name": 'VfL Wolfsburg',
+      "code": 'WOL',
       "logo": 'https://media.api-sports.io/football/teams/161.png',
       "api_id": 161,
       "league_id": 4,
@@ -773,6 +837,7 @@ Team.create(
     {
       "id": 87,
       "name": 'Werder Bremen',
+      "code": 'WER',
       "logo": 'https://media.api-sports.io/football/teams/162.png',
       "api_id": 162,
       "league_id": 4,
@@ -784,6 +849,7 @@ Team.create(
     {
       "id": 65,
       "name": 'Borussia Monchengladbach',
+      "code": 'MOE',
       "logo": 'https://media.api-sports.io/football/teams/163.png',
       "api_id": 163,
       "league_id": 4,
@@ -794,6 +860,7 @@ Team.create(
     {
       "id": 66,
       "name": 'FSV Mainz 05',
+      "code": 'MAI',
       "logo": 'https://media.api-sports.io/football/teams/164.png',
       "api_id": 164,
       "league_id": 4,
@@ -804,6 +871,7 @@ Team.create(
     {
       "id": 67,
       "name": 'Borussia Dortmund',
+      "code": 'DOR',
       "logo": 'https://media.api-sports.io/football/teams/165.png',
       "api_id": 165,
       "league_id": 4,
@@ -814,6 +882,7 @@ Team.create(
     {
       "id": 68,
       "name": '1899 Hoffenheim',
+      "code": 'HOF',
       "logo": 'https://media.api-sports.io/football/teams/167.png',
       "api_id": 167,
       "league_id": 4,
@@ -824,6 +893,7 @@ Team.create(
     {
       "id": 69,
       "name": 'Bayer Leverkusen',
+      "code": 'BAY',
       "logo": 'https://media.api-sports.io/football/teams/168.png',
       "api_id": 168,
       "league_id": 4,
@@ -834,6 +904,7 @@ Team.create(
     {
       "id": 70,
       "name": 'Eintracht Frankfurt',
+      "code": 'EIN',
       "logo": 'https://media.api-sports.io/football/teams/169.png',
       "api_id": 169,
       "league_id": 4,
@@ -844,6 +915,7 @@ Team.create(
     {
       "id": 71,
       "name": 'FC Augsburg',
+      "code": 'AUG',
       "logo": 'https://media.api-sports.io/football/teams/170.png',
       "api_id": 170,
       "league_id": 4,
@@ -854,6 +926,7 @@ Team.create(
     {
       "id": 72,
       "name": 'VfB Stuttgart',
+      "code": 'STU',
       "logo": 'https://media.api-sports.io/football/teams/172.png',
       "api_id": 172,
       "league_id": 4,
@@ -864,6 +937,7 @@ Team.create(
     {
       "id": 73,
       "name": 'RB Leipzig',
+      "code": 'LEI',
       "logo": 'https://media.api-sports.io/football/teams/173.png',
       "api_id": 173,
       "league_id": 4,
@@ -874,6 +948,7 @@ Team.create(
     {
       "id": 88,
       "name": 'FC Schalke 04',
+      "code": 'SCH',
       "logo": 'https://media.api-sports.io/football/teams/174.png',
       "api_id": 174,
       "league_id": 4,
@@ -884,6 +959,7 @@ Team.create(
     {
       "id": 74,
       "name": 'VfL BOCHUM',
+      "code": 'BOC',
       "logo": 'https://media.api-sports.io/football/teams/176.png',
       "api_id": 176,
       "league_id": 4,
@@ -905,6 +981,7 @@ Team.create(
     {
       "id": 76,
       "name": 'Union Berlin',
+      "code": 'UNI',
       "logo": 'https://media.api-sports.io/football/teams/182.png',
       "api_id": 182,
       "league_id": 4,
@@ -926,6 +1003,7 @@ Team.create(
     {
       "id": 78,
       "name": 'FC Koln',
+      "code": 'KOL',
       "logo": 'https://media.api-sports.io/football/teams/192.png',
       "api_id": 192,
       "league_id": 4,
