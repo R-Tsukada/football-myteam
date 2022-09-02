@@ -15,11 +15,11 @@ RSpec.describe Match, type: :model do
     expect(match.errors[:date]).to include('を入力してください')
   end
 
-  it 'is valid without a team_matches_index' do
-    match = FactoryBot.build(:match, team_matches_index: nil)
+  it 'is valid without a team_id' do
+    match = FactoryBot.build(:match, team_id: nil)
 
     match.valid?
-    expect(match.errors[:team_matches_index]).to include('を入力してください')
+    expect(match.errors[:team_id]).to include('を入力してください')
   end
 
   it 'is valid without a season' do
