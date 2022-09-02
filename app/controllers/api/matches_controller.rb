@@ -5,7 +5,11 @@ class API::MatchesController < ApplicationController
   before_action :api_request
 
   def index
-    @match = Match.all.order(:date).where(date: Time.zone.today..)
+    favorite_team = current_user.favorite.team
+    competitors = current_user.competitor.map(&:team_id)
+    teams = competitors.unshift(favorite_team.id)
+    match = Match.all.order(:date).where(date: Time.zone.today..).where(team_id: teams)
+    @match = match
   end
 
   def show
@@ -13,7 +17,7 @@ class API::MatchesController < ApplicationController
   end
 
   def api_request
-    set_match if current_user.favorite.team.standing.blank?
+    set_match if current_user.favorite.team.match.blank?
   end
 
   private
@@ -23,7 +27,6 @@ class API::MatchesController < ApplicationController
   end
 
   def set_match
-    Match.delete_all
     MatchRequest.league(api_request_url)
   end
 

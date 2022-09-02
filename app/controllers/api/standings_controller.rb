@@ -5,7 +5,11 @@ class API::StandingsController < ApplicationController
   before_action :api_request
 
   def index
-    @standing = Standing.all
+    favorite_team = current_user.favorite.team.id
+    competitor_teams = current_user.competitor.map(&:team_id)
+    teams = competitor_teams.unshift(favorite_team)
+    standing = Standing.where(team_id: teams)
+    @standing = standing
   end
 
   def show; end
@@ -17,7 +21,6 @@ class API::StandingsController < ApplicationController
   private
 
   def set_standing
-    Standing.delete_all
     StandingRequest.league(api_request_url)
   end
 
