@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_01_073929) do
+ActiveRecord::Schema.define(version: 2022_09_02_234525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2022_09_01_073929) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "team_matches_index"
     t.string "season", null: false
     t.date "date", null: false
     t.string "competition_name", null: false
