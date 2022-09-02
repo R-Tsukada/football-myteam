@@ -32,7 +32,7 @@ class API::UpdateStandingsController < ApplicationController
   end
 
   def competitor_team_api_id
-    SelectTeam.competitor(current_user)
+    SelectTeam.competitor_team_api_id(current_user)
   end
 
   def league_api_id(favorite_team)

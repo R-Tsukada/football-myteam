@@ -38,6 +38,6 @@ class API::MatchesController < ApplicationController
   end
 
   def competitor_teams
-    SelectTeam.competitor(current_user)
+    SelectTeam.competitor_team_api_id(current_user)
   end
 end
