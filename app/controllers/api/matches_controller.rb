@@ -9,7 +9,7 @@ class API::MatchesController < ApplicationController
   end
 
   def show
-    @match_show = Match.all.where(team_matches_index: @team_id).order(:date)
+    @match_show = Match.all.where(team_id: @team_id).order(:date)
   end
 
   def api_request

@@ -186,21 +186,21 @@ export default {
     }
 
     const favoriteMatches = computed(() =>
-      data.matches.filter((f) => f.team_matches_index === data.favorite.team.id)
+      data.matches.filter((f) => f.team_id === data.favorite.team.id)
     )
     const firstCompetitorTeamsMatches = computed(() =>
       data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[0].team_id
+        (f) => f.team_id === data.competitors[0].team_id
       )
     )
     const secondCompetitorTeamsMatches = computed(() =>
       data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[1].team_id
+        (f) => f.team_id === data.competitors[1].team_id
       )
     )
     const thirdCompetitorTeamsMatches = computed(() =>
       data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[2].team_id
+        (f) => f.team_id === data.competitors[2].team_id
       )
     )
 
