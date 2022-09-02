@@ -5,7 +5,11 @@ class API::UpdateMatchesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @match = Match.all.order(:date).where(date: Time.zone.today..)
+    favorite_team = current_user.favorite.team
+    competitors = current_user.competitor.map(&:team_id)
+    teams = competitors.unshift(favorite_team.id)
+    match = Match.all.order(:date).where(date: Time.zone.today..).where(team_id: teams)
+    @match = match
   end
 
   def batch_request
@@ -15,7 +19,10 @@ class API::UpdateMatchesController < ApplicationController
   private
 
   def api_request
-    Match.delete_all
+    favorite_team = current_user.favorite.team
+    competitors = current_user.competitor.map(&:team_id)
+    teams = competitors.unshift(favorite_team.id)
+    Match.all.where(team_id: teams).delete_all
     MatchRequest.league(api_request_url)
   end
 

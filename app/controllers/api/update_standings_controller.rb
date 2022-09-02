@@ -5,7 +5,11 @@ class API::UpdateStandingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @standing = Standing.all
+    favorite_team = current_user.favorite.team.id
+    competitor_teams = current_user.competitor.map(&:team_id)
+    teams = competitor_teams.unshift(favorite_team)
+    standing = Standing.where(team_id: teams)
+    @standing = standing
   end
 
   def batch_request
@@ -15,7 +19,10 @@ class API::UpdateStandingsController < ApplicationController
   private
 
   def api_request
-    Standing.delete_all
+    favorite_team = current_user.favorite.team.id
+    competitor_teams = current_user.competitor.map(&:team_id)
+    teams = competitor_teams.unshift(favorite_team)
+    Standing.all.where(team_id: teams).delete_all
     StandingRequest.league(api_request_url)
   end
 
