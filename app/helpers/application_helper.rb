@@ -19,7 +19,7 @@ module ApplicationHelper
       },
       twitter: {
         title: :title,
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@ryo0270590',
         description: :description,
         image: image_url('logo_black_white.png'),
