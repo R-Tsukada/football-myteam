@@ -8,17 +8,7 @@
       <p class="has-text-centered has-text-weight-bold mb-4">
         優勝・欧州カップ戦出場権・残留争いを楽しもう
       </p>
-      <div
-        v-if="!firstCompetitorTeamsMatches.length"
-        class="first-api-request has-text-centered">
-        <p>試合情報を取得してください</p>
-        <button
-          class="button my-1 color-button has-text-white"
-          @click="dataUpdate">
-          試合情報を取得する
-        </button>
-        <MatchListLoader />
-      </div>
+      <MatchListLoader v-if="!favoriteMatches.length" />
       <div v-else>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
@@ -196,22 +186,16 @@ export default {
     }
 
     const favoriteMatches = computed(() =>
-      data.matches.filter((f) => f.team_matches_index === data.favorite.team.id)
+      data.matches.filter((f) => f.team_id === data.favorite.team.id)
     )
     const firstCompetitorTeamsMatches = computed(() =>
-      data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[0].team_id
-      )
+      data.matches.filter((f) => f.team_id === data.competitors[0].team_id)
     )
     const secondCompetitorTeamsMatches = computed(() =>
-      data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[1].team_id
-      )
+      data.matches.filter((f) => f.team_id === data.competitors[1].team_id)
     )
     const thirdCompetitorTeamsMatches = computed(() =>
-      data.matches.filter(
-        (f) => f.team_matches_index === data.competitors[2].team_id
-      )
+      data.matches.filter((f) => f.team_id === data.competitors[2].team_id)
     )
 
     const date = new Date()

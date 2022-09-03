@@ -9,10 +9,10 @@ RSpec.describe SelectTeam, type: :model do
 
   it 'is return the api_id of the following competitor team' do
     FactoryBot.create(:competitor, user: user, team: team)
-    expect(SelectTeam.competitor(user)).to eq [42]
+    expect(SelectTeam.competitor_team_api_id(user)).to eq [42]
   end
 
   it 'is not return when not following competitor team' do
-    expect(SelectTeam.competitor(user)).to eq []
+    expect(SelectTeam.competitor_team_api_id(user)).to eq []
   end
 end

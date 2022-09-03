@@ -5,17 +5,13 @@ class API::UpdateStandingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @standing = Standing.all
-  end
-
-  def batch_request
-    api_request
+    @standing = Standing.where(team_id: selected_team_ids)
   end
 
   private
 
   def api_request
-    Standing.delete_all
+    Standing.all.where(team_id: selected_team_ids).delete_all
     StandingRequest.league(api_request_url)
   end
 
@@ -24,8 +20,16 @@ class API::UpdateStandingsController < ApplicationController
     team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id(favorite_team)}&season=#{Year.season}&team=#{number}") }
   end
 
+  def selected_team_ids
+    competitor_team_id.unshift(current_user.favorite.team.id)
+  end
+
+  def competitor_team_id
+    SelectTeam.competitor_team_id(current_user)
+  end
+
   def competitor_team_api_id
-    SelectTeam.competitor(current_user)
+    SelectTeam.competitor_team_api_id(current_user)
   end
 
   def league_api_id(favorite_team)
