@@ -160,25 +160,24 @@
       </div>
       <!-- v-else -->
       <div class="buttons is-centered mt-6">
-        <button
-          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          @click="selectAgain">
-          チームの選択方法を選び直す
-        </button>
-        <button
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
-          <router-link to="/schedules" class="has-text-white"
-            >選んだチームを登録する</router-link
-          >
-        </button>
-        <button
-          v-else
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          title="Disabled button"
-          disabled>
-          選んだチームを登録する
-        </button>
+        <BackToPageButton
+          class="is-rounded"
+          label="チームの選択方法を選び直す"
+          @click="selectAgain" />
+        <router-link to="/schedules">
+          <DetermineButton
+            class="color-button is-rounded has-text-white"
+            label="選んだチームを登録する"
+            v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
+          />
+          <DetermineButton
+            v-else
+            class="color-button is-rounded"
+            title="Disabled button"
+            disabled
+            label="選んだチームを登録する"
+          />
+        </router-link>
       </div>
       <!-- buttons -->
     </div>
