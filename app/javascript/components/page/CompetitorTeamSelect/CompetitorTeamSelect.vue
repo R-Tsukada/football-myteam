@@ -102,28 +102,23 @@
       </div>
       <!-- columns -->
       <br />
-      <div class="buttons is-centered">
-        <button
-          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          @click="selectAgain">
-          チームの選び方を変更する
-        </button>
-        <button
+        <BackToPageButton
+          @click="selectAgain"
+          class="is-rounded"
+          label="チームの選び方を変更する"
+        />
+        <BaseButton
           v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile">
-          <router-link to="/schedules" class="has-text-white"
-            >選んだチームを登録する</router-link
-          >
-        </button>
-        <button
+          class="color-button is-rounded has-text-white"
+          label="選んだチームを登録する"
+        />
+        <BaseButton
           v-else
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
+          class="is-rounded"
+          label="選んだチームを登録する"
           title="Disabled button"
-          disabled>
-          選んだチームを登録する
-        </button>
-      </div>
-      <!-- buttons -->
+          disabled
+        />
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
@@ -198,12 +193,16 @@ import { reactive, onMounted } from 'vue'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 import TeamListLoader from '../../loader/TeamListLoader'
+import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
+import BaseButton from '../../atoms/Button/BaseButton.vue'
 
 export default {
   components: {
     TeamListLoader,
     CompetitorValidation,
-    CompetitorTeamCount
+    CompetitorTeamCount,
+    BackToPageButton,
+    BaseButton
   },
   setup() {
     const data = reactive({
