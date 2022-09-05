@@ -204,7 +204,7 @@ export default {
     CompetitorTeamCount,
     BackToPageButton,
     BaseButton,
-    DetermineButton,
+    DetermineButton
   },
   setup() {
     const data = reactive({
