@@ -50,10 +50,9 @@
     </div>
     <!-- tab-contents v-else -->
     <div class="has-text-centered">
-      <button
-        class="color-button button is-rounded is-medium mt-5 has-text-centered">
-        <router-link to="/schedules" class="has-text-white">戻る</router-link>
-      </button>
+      <router-link to="/schedules"
+        ><BackToPageButton label="リーグ戦一覧に戻る" class="is-rounded"
+      /></router-link>
     </div>
     <!-- has-text-centered -->
   </div>
@@ -68,13 +67,15 @@ import MatchScheduleList from './list/MatchScheduleList.vue'
 import MatchResultList from './list/MatchResultList.vue'
 import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
 import FavoriteTeamTag from '../../atoms/FavoriteTeamTag.vue'
+import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 
 export default {
   components: {
     MatchScheduleShowLoader,
     MatchScheduleList,
     MatchResultList,
-    FavoriteTeamTag
+    FavoriteTeamTag,
+    BackToPageButton
   },
   setup() {
     const data = reactive({
