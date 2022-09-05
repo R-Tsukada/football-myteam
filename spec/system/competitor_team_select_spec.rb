@@ -50,8 +50,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content '選んだチームを登録する'
   end
 
-  it 'チームの選択方法を選ばなかった時のメッセージを表示', js: true do
-    click_button 'チームの選択方法を決定する'
-    expect(page).to have_content 'ライバルチームの選択方法を一つ選んでください'
+  it 'ボタンがdisabledになっている', js: true do
+    expect(page).to have_button 'チームの選択方法を決定する', disabled: true
   end
 end
