@@ -50,22 +50,19 @@
       <router-link to="/leagues">
         <BackToPageButton
           class="is-rounded mx-auto"
-          label="応援しているチームを選び直す"
-        />
+          label="応援しているチームを選び直す" />
       </router-link>
       <BaseButton
         v-if="data.checkedName.length === 0"
-        class="is-rounded  color-button"
+        class="is-rounded color-button"
         label="チームの選択方法を決定する"
         title="Disabled button"
-        disabled
-      />
+        disabled />
       <DetermineButton
         v-else
         class="color-button is-rounded has-text-white"
         label="チームの選択方法を決定する"
-        @click="selectTeam"
-      />
+        @click="selectTeam" />
     </div>
     <!-- has-text-centered -->
     <!--ライバルチームの選択方法を選んでもらったあと-->
@@ -110,23 +107,20 @@
       </div>
       <!-- columns -->
       <br />
-        <BackToPageButton
-          @click="selectAgain"
-          class="is-rounded"
-          label="チームの選び方を変更する"
-        />
-        <DetermineButton
-          v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
-          class="color-button is-rounded has-text-white"
-          label="選んだチームを登録する"
-        />
-        <DetermineButton
-          v-else
-          class="is-rounded"
-          label="選んだチームを登録する"
-          title="Disabled button"
-          disabled
-        />
+      <BackToPageButton
+        @click="selectAgain"
+        class="is-rounded"
+        label="チームの選び方を変更する" />
+      <DetermineButton
+        v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
+        class="color-button is-rounded has-text-white"
+        label="選んだチームを登録する" />
+      <DetermineButton
+        v-else
+        class="is-rounded"
+        label="選んだチームを登録する"
+        title="Disabled button"
+        disabled />
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
@@ -176,15 +170,15 @@
           <DetermineButton
             class="color-button is-rounded has-text-white"
             label="選んだチームを登録する"
-            v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
-          />
+            v-if="
+              data.competitors.length >= 1 && data.competitors.length <= 3
+            " />
           <DetermineButton
             v-else
             class="color-button is-rounded"
             title="Disabled button"
             disabled
-            label="選んだチームを登録する"
-          />
+            label="選んだチームを登録する" />
         </router-link>
       </div>
       <!-- buttons -->
@@ -193,13 +187,12 @@
   </div>
   <!-- container -->
 </template>
-
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
-import TeamListLoader from '../../loader/TeamListLoader'
+import TeamListLoader from '../../loader/TeamListLoader.vue'
 import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 import BaseButton from '../../atoms/Button/BaseButton.vue'
 import DetermineButton from '../../atoms/Button/DetermineButton.vue'
@@ -211,7 +204,7 @@ export default {
     CompetitorTeamCount,
     BackToPageButton,
     BaseButton,
-    DetermineButton
+    DetermineButton,
   },
   setup() {
     const data = reactive({
