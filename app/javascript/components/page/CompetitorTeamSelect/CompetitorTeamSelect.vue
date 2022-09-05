@@ -167,7 +167,7 @@
         <!-- columns -->
       </div>
       <!-- v-else -->
-      <div class="buttons is-centered mt-6">
+      <div class="back-or-select-buttons mt-4">
         <BackToPageButton
           class="is-rounded"
           label="チームの選択方法を選び直す"
