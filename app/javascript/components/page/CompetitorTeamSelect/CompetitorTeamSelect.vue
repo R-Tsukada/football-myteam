@@ -107,12 +107,12 @@
           class="is-rounded"
           label="チームの選び方を変更する"
         />
-        <BaseButton
+        <DetermineButton
           v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
           class="color-button is-rounded has-text-white"
           label="選んだチームを登録する"
         />
-        <BaseButton
+        <DetermineButton
           v-else
           class="is-rounded"
           label="選んだチームを登録する"
@@ -195,6 +195,7 @@ import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 import TeamListLoader from '../../loader/TeamListLoader'
 import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 import BaseButton from '../../atoms/Button/BaseButton.vue'
+import DetermineButton from '../../atoms/Button/DetermineButton.vue'
 
 export default {
   components: {
@@ -202,7 +203,8 @@ export default {
     CompetitorValidation,
     CompetitorTeamCount,
     BackToPageButton,
-    BaseButton
+    BaseButton,
+    DetermineButton
   },
   setup() {
     const data = reactive({
