@@ -12,7 +12,7 @@
       <div v-else>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
-          <button class="button my-1" @click="dataUpdate">更新する</button>
+          <BaseButton class="my-1" @click="dataUpdate" label="Update" />
         </div>
         <TeamScheduleBox
           :standings="data.favoriteTeams"
@@ -46,11 +46,13 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import TeamScheduleBox from './table/TeamScheduleBox.vue'
 import MatchListLoader from '../../loader/MatchListLoader'
+import BaseButton from '../../atoms/Button/BaseButton.vue'
 
 export default {
   components: {
     MatchListLoader,
-    TeamScheduleBox
+    TeamScheduleBox,
+    BaseButton
   },
   setup() {
     const data = reactive({

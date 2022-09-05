@@ -47,17 +47,22 @@
         <!-- columns -->
       </div>
       <!-- v-show -->
-      <button
-        class="button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile">
-        <router-link to="/leagues" class="has-text-black"
-          >応援しているチームを選び直す</router-link
-        >
-      </button>
-      <button
-        class="color-button button is-rounded is-medium mt-5 ml-3 has-text-white is-size-4-tablet is-size-7-mobile"
-        @click="selectTeam">
-        チームの選択方法を決定する
-      </button>
+      <router-link to="/leagues">
+        <BackToPageButton
+          class="is-rounded mx-auto"
+          label="応援しているチームを選び直す" />
+      </router-link>
+      <BaseButton
+        v-if="data.checkedName.length === 0"
+        class="is-rounded color-button"
+        label="チームの選択方法を決定する"
+        title="Disabled button"
+        disabled />
+      <DetermineButton
+        v-else
+        class="color-button is-rounded has-text-white"
+        label="チームの選択方法を決定する"
+        @click="selectTeam" />
     </div>
     <!-- has-text-centered -->
     <!--ライバルチームの選択方法を選んでもらったあと-->
@@ -102,28 +107,20 @@
       </div>
       <!-- columns -->
       <br />
-      <div class="buttons is-centered">
-        <button
-          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          @click="selectAgain">
-          チームの選び方を変更する
-        </button>
-        <button
-          v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile">
-          <router-link to="/schedules" class="has-text-white"
-            >選んだチームを登録する</router-link
-          >
-        </button>
-        <button
-          v-else
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          title="Disabled button"
-          disabled>
-          選んだチームを登録する
-        </button>
-      </div>
-      <!-- buttons -->
+      <BackToPageButton
+        @click="selectAgain"
+        class="is-rounded"
+        label="チームの選び方を変更する" />
+      <DetermineButton
+        v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
+        class="color-button is-rounded has-text-white"
+        label="選んだチームを登録する" />
+      <DetermineButton
+        v-else
+        class="is-rounded"
+        label="選んだチームを登録する"
+        title="Disabled button"
+        disabled />
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
@@ -164,26 +161,25 @@
         <!-- columns -->
       </div>
       <!-- v-else -->
-      <div class="buttons is-centered mt-6">
-        <button
-          class="button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          @click="selectAgain">
-          チームの選択方法を選び直す
-        </button>
-        <button
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          v-if="data.competitors.length >= 1 && data.competitors.length <= 3">
-          <router-link to="/schedules" class="has-text-white"
-            >選んだチームを登録する</router-link
-          >
-        </button>
-        <button
-          v-else
-          class="color-button button is-rounded is-medium is-size-4-tablet is-size-7-mobile"
-          title="Disabled button"
-          disabled>
-          選んだチームを登録する
-        </button>
+      <div class="back-or-select-buttons mt-4">
+        <BackToPageButton
+          class="is-rounded"
+          label="チームの選択方法を選び直す"
+          @click="selectAgain" />
+        <router-link to="/schedules">
+          <DetermineButton
+            class="color-button is-rounded has-text-white"
+            label="選んだチームを登録する"
+            v-if="
+              data.competitors.length >= 1 && data.competitors.length <= 3
+            " />
+          <DetermineButton
+            v-else
+            class="color-button is-rounded"
+            title="Disabled button"
+            disabled
+            label="選んだチームを登録する" />
+        </router-link>
       </div>
       <!-- buttons -->
     </div>
@@ -191,19 +187,24 @@
   </div>
   <!-- container -->
 </template>
-
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
-import TeamListLoader from '../../loader/TeamListLoader'
+import TeamListLoader from '../../loader/TeamListLoader.vue'
+import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
+import BaseButton from '../../atoms/Button/BaseButton.vue'
+import DetermineButton from '../../atoms/Button/DetermineButton.vue'
 
 export default {
   components: {
     TeamListLoader,
     CompetitorValidation,
-    CompetitorTeamCount
+    CompetitorTeamCount,
+    BackToPageButton,
+    BaseButton,
+    DetermineButton
   },
   setup() {
     const data = reactive({
