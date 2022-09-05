@@ -1,5 +1,5 @@
 <template>
-  <button class="button has-text-centered ">
+  <button class="button has-text-centered">
     <span class="icon-text">
       <span class="icon">
         <i class="fa-solid fa-arrow-left"></i>

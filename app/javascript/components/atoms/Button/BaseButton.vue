@@ -1,5 +1,5 @@
 <template>
-  <button class="button has-text-centered ">
+  <button class="button has-text-centered">
     {{ label }}
   </button>
 </template>
