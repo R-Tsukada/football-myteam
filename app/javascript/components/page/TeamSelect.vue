@@ -28,7 +28,8 @@
     </div>
     <LeagueListLoader v-if="!data.leagues.length" />
     <div v-else>
-      <h3 class="has-text-centered is-size-3 is-size-6-mobile my-4 has-text-weight-bold">
+      <h3
+        class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3">
         リーグを選択
       </h3>
       <div class="tabs is-boxed is-fullwidth">
@@ -55,7 +56,8 @@
     <!-- else -->
     <TeamListLoader v-if="!teamFilter.length" />
     <div v-else>
-      <h3 class="has-text-centered is-size-3 is-size-6-mobile my-6 has-text-weight-bold">
+      <h3
+        class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold my-3">
         チームを選択
       </h3>
       <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
