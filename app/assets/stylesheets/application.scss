@@ -163,7 +163,7 @@ input.how-to-team-select:hover {
   }
 }
 
-.mobile-display {
+.not-displayed-when-with-mobile-display {
   @include mobile {
     display: none;
   }

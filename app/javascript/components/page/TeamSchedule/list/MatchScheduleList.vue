@@ -28,7 +28,7 @@
       <!-- columns -->
       <div class="match-list columns is-mobile mx-auto">
         <p
-          class="column my-auto has-text-weight-bold is-size-3-tablet mobile-display">
+          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
           {{ schedule.home_team_name }}
         </p>
         <div class="column has-text-centered">
@@ -47,7 +47,7 @@
             class="image team-logo mx-auto" />
         </div>
         <p
-          class="column my-auto has-text-weight-bold is-size-3-tablet mobile-display">
+          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
           {{ schedule.away_team_name }}
         </p>
       </div>

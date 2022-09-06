@@ -50,7 +50,7 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
     expect(page).to have_content '選んだチームを登録する'
   end
 
-  it 'ボタンがdisabledになっている', js: true do
+  it 'not selected when button is disabled', js: true do
     expect(page).to have_button 'チームの選択方法を決定する', disabled: true
   end
 end

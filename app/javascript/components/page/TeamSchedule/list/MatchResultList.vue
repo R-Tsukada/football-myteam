@@ -28,7 +28,7 @@
       <!-- columns -->
       <div class="match-list columns is-mobile m-auto">
         <p
-          class="column m-auto has-text-centered has-text-weight-bold is-size-3-tablet mobile-display">
+          class="column m-auto has-text-centered has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
           {{ result.home_team_name }}
         </p>
         <div class="column schedule-column-logo m-auto">
@@ -52,7 +52,7 @@
         </div>
         <!-- schedule-column-logo -->
         <p
-          class="column has-text-centered has-text-weight-bold m-auto is-size-3-tablet mobile-display">
+          class="column has-text-centered has-text-weight-bold m-auto is-size-3-tablet not-displayed-when-with-mobile-display">
           {{ result.away_team_name }}
         </p>
       </div>

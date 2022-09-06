@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2
-      class="has-text-centered is-size-2-tablet is-size-4-mobile has-text-weight-bold">
+      class="has-text-centered is-size-2-tablet is-size-6-mobile has-text-weight-bold">
       応援しているチームを選んでください
     </h2>
     <div
@@ -24,14 +24,15 @@
     <div
       class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold mt-3"
       v-else>
-      <router-link to="/competitors"> ライバルチームのみ変更する </router-link>
+      <router-link to="/competitors">ライバルチームのみ変更する</router-link>
     </div>
     <LeagueListLoader v-if="!data.leagues.length" />
     <div v-else>
-      <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
+      <h3
+        class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3">
         リーグを選択
       </h3>
-      <div class="tabs is-boxed is-fullwidth is-large">
+      <div class="tabs is-boxed is-fullwidth">
         <ul v-for="league in data.leagues" :key="league.id">
           <li
             @click="selectLeague(league)"
@@ -43,7 +44,7 @@
                 :src="league.logo"
                 alt="league_name"
                 class="image team-select-league-logo mr-2" />
-              <p class="is-size-6">
+              <p class="is-size-6 not-displayed-when-with-mobile-display">
                 {{ league.name }}
               </p>
             </a>
@@ -55,7 +56,8 @@
     <!-- else -->
     <TeamListLoader v-if="!teamFilter.length" />
     <div v-else>
-      <h3 class="has-text-centered is-size-3 my-6 has-text-weight-bold">
+      <h3
+        class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold my-3">
         チームを選択
       </h3>
       <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
