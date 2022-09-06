@@ -92,17 +92,7 @@
         <!-- columns -->
       </div>
       <!-- v-else -->
-      <router-link to="/competitors" v-if="data.isChangeColorTeam">
-        <DetermineButton
-          label="応援しているチームを決定する"
-          class="is-rounded color-button has-text-white is-size-7-mobile mt-3" />
-      </router-link>
-      <DetermineButton
-        v-else
-        label="応援しているチームを決定する"
-        class="is-rounded color-button is-size-7-mobile mt-3"
-        title="Disabled button"
-        disabled />
+      <FavoriteSelectButton :isChangeColorTeam="data.isChangeColorTeam" />
     </div>
     <!--section -->
   </div>
@@ -114,13 +104,13 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import LeagueListLoader from '../loader/LeagueListLoader'
 import TeamListLoader from '../loader/TeamListLoader'
-import DetermineButton from '../atoms/Button/DetermineButton'
+import FavoriteSelectButton from '../Molecules/BooleanButton/FavoriteSelectButton.vue'
 
 export default {
   components: {
     TeamListLoader,
     LeagueListLoader,
-    DetermineButton
+    FavoriteSelectButton
   },
   setup() {
     const data = reactive({
