@@ -26,7 +26,8 @@
         :src="match.team_logo"
         alt="match-team-logo"
         class="image next-match-competition-logo" />
-      <p class="match-name mobile-display has-text-weight-bold">
+      <p
+        class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
         {{ match.team_name }}
       </p>
       <!-- match-name -->

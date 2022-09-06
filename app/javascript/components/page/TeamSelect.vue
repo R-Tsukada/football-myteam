@@ -31,7 +31,7 @@
       <h3 class="has-text-centered is-size-3 my-4 has-text-weight-bold">
         リーグを選択
       </h3>
-      <div class="tabs is-boxed is-fullwidth is-large">
+      <div class="tabs is-boxed is-fullwidth">
         <ul v-for="league in data.leagues" :key="league.id">
           <li
             @click="selectLeague(league)"
@@ -43,7 +43,7 @@
                 :src="league.logo"
                 alt="league_name"
                 class="image team-select-league-logo mr-2" />
-              <p class="is-size-6">
+              <p class="is-size-6 not-displayed-when-with-mobile-display">
                 {{ league.name }}
               </p>
             </a>
