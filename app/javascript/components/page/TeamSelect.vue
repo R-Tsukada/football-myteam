@@ -43,7 +43,7 @@
               <a>
                 <img
                   :src="league.logo"
-                  alt="league_name"
+                  :alt="league.name"
                   class="image team-select-league-logo mr-2" />
                 <p class="is-size-6 not-displayed-when-with-mobile-display">
                   {{ league.name }}
@@ -73,7 +73,10 @@
                 'has-background-link-light is-selected':
                   data.isChangeColorTeam === team.id
               }">
-              <img :src="team.logo" class="image mx-auto team-logo" />
+              <img
+                :src="team.logo"
+                :alt="team.name"
+                class="image mx-auto team-logo" />
               <p
                 class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
                 v-bind:class="{
@@ -92,8 +95,14 @@
       <router-link to="/competitors" v-if="data.isChangeColorTeam">
         <DetermineButton
           label="応援しているチームを決定する"
-          class="is-rounded color-button has-text-white mt-2" />
+          class="is-rounded color-button has-text-white is-size-7-mobile mt-3" />
       </router-link>
+      <DetermineButton
+        v-else
+        label="応援しているチームを決定する"
+        class="is-rounded color-button is-size-7-mobile mt-3"
+        title="Disabled button"
+        disabled />
     </div>
     <!--section -->
   </div>
