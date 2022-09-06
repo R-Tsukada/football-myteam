@@ -19,8 +19,10 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
 
   it 'select teams that were close to last seasons standings', js: true do
     expect(page).to have_content 'ライバルチームの選び方を選択してください'
+    expect(page).to have_button 'チームの選択方法を決定する', disabled: true
     choose '昨シーズンの順位が近いチームを選ぶ'
     click_button 'チームの選択方法を決定する'
+    expect(page).to have_button '選んだチームを登録する', disabled: true
     expect(page).to have_content 'Manchester United'
     expect(page).to_not have_content 'Tottenham'
     all('img')[1].click
@@ -29,8 +31,10 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
   end
 
   it 'select team that is close to home', js: true do
+    expect(page).to have_button 'チームの選択方法を決定する', disabled: true
     choose '本拠地が近いチームを選ぶ'
     click_button 'チームの選択方法を決定する'
+    expect(page).to have_button '選んだチームを登録する', disabled: true
     expect(page).to have_content 'Tottenham'
     expect(page).to_not have_content 'Manchester United'
     all('img')[1].click
@@ -39,8 +43,10 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
   end
 
   it 'select competitor teams by self', js: true do
+    expect(page).to have_button 'チームの選択方法を決定する', disabled: true
     choose '自分でライバルチームを選ぶ'
     click_button 'チームの選択方法を決定する'
+    expect(page).to have_button '選んだチームを登録する', disabled: true
     expect(page).to have_content 'Tottenham'
     expect(page).to have_content 'Manchester United'
     expect(page).to have_content '残り3チーム登録できます'
