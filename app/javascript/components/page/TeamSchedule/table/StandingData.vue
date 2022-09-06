@@ -26,7 +26,8 @@
             class="image" />
         </div>
         <!--favorite-team-logo column-->
-        <div class="favorite-team-name mobile-display my-auto column">
+        <div
+          class="favorite-team-name not-displayed-when-with-mobile-display my-auto column">
           <p class="has-text-weight-bold is-size-4">
             {{ standings.team_name }}
           </p>
