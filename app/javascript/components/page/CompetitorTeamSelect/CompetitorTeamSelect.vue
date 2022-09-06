@@ -1,11 +1,6 @@
 <template>
   <div class="container has-text-centered">
     <!-- ライバルチーム選択方法を選んでもらう -->
-    <div class="notification is-danger is-size-4" v-show="data.isSelected">
-      <button class="delete" @click="deleteMessage"></button>
-      ライバルチームの選択方法を一つ選んでください
-    </div>
-    <!-- notification -->
     <div v-show="data.isShowing">
       <div class="mx-auto">
         <h2
@@ -113,16 +108,7 @@
         @click="selectAgain"
         class="is-rounded"
         label="チームの選び方を変更する" />
-      <DetermineButton
-        v-if="data.competitors.length >= 1 && data.competitors.length <= 3"
-        class="color-button is-rounded has-text-white"
-        label="選んだチームを登録する" />
-      <DetermineButton
-        v-else
-        class="is-rounded"
-        label="選んだチームを登録する"
-        title="Disabled button"
-        disabled />
+      <CompetitorSelectButton :competitors="data.competitors" />
     </div>
     <!--自分でチーム選んでもらう -->
     <!-- v-show -->
@@ -168,20 +154,7 @@
           class="is-rounded"
           label="チームの選択方法を選び直す"
           @click="selectAgain" />
-        <router-link to="/schedules">
-          <DetermineButton
-            class="color-button is-rounded has-text-white"
-            label="選んだチームを登録する"
-            v-if="
-              data.competitors.length >= 1 && data.competitors.length <= 3
-            " />
-          <DetermineButton
-            v-else
-            class="color-button is-rounded"
-            title="Disabled button"
-            disabled
-            label="選んだチームを登録する" />
-        </router-link>
+        <CompetitorSelectButton :competitors="data.competitors" />
       </div>
       <!-- buttons -->
     </div>
@@ -197,7 +170,8 @@ import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 import TeamListLoader from '../../loader/TeamListLoader.vue'
 import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 import BaseButton from '../../atoms/Button/BaseButton.vue'
-import DetermineButton from '../../atoms/Button/DetermineButton.vue'
+import DetermineButton from '../../atoms/Button/DetermineButton'
+import CompetitorSelectButton from '../../Molecules/BooleanButton/CompetitorSelectButton'
 
 export default {
   components: {
@@ -206,7 +180,8 @@ export default {
     CompetitorTeamCount,
     BackToPageButton,
     BaseButton,
-    DetermineButton
+    DetermineButton,
+    CompetitorSelectButton
   },
   setup() {
     const data = reactive({
