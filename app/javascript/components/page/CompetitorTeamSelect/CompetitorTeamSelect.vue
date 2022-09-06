@@ -74,7 +74,7 @@
         :competitors="data.competitors"
         v-if="data.isShowingMessage" />
       <CompetitorValidation v-else />
-      <div class="columns is-mobile">
+      <div class="columns is-multiline is-mobile">
         <div
           class="column mx-auto"
           v-for="team in data.selectedTeams"
@@ -91,14 +91,14 @@
               :src="team.logo"
               class="image competitor-team-logo mx-auto pt-1" />
             <p
-              class="has-text-weight-medium mt-2 is-size-4-tablet is-size-7-mobile">
+              class="has-text-weight-medium mt-2 is-size-2-tablet is-size-7-mobile">
               {{ team.name }}
             </p>
-            <p class="has-text-weight-medium is-size-4-tablet is-size-7-mobile">
-              {{ team.last_season_rank }}位
+            <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
+              <span class="is-size-5-tablet is-size-7-mobile">21-22:</span>{{ team.last_season_rank }}<span>位</span>
             </p>
-            <p class="has-text-weight-medium is-size-4-tablet is-size-7-mobile">
-              {{ team.home_city }}
+            <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
+              <span class="is-size-5-tablet is-size-7-mobile">Home:</span>{{ team.home_city }}
             </p>
           </div>
           <!-- card -->
