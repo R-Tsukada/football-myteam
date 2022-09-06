@@ -95,10 +95,12 @@
               {{ team.name }}
             </p>
             <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
-              <span class="is-size-5-tablet is-size-7-mobile">21-22:</span>{{ team.last_season_rank }}<span>位</span>
+              <span class="is-size-5-tablet is-size-7-mobile">21-22:</span
+              >{{ team.last_season_rank }}<span>位</span>
             </p>
             <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
-              <span class="is-size-5-tablet is-size-7-mobile">Home:</span>{{ team.home_city }}
+              <span class="is-size-5-tablet is-size-7-mobile">Home:</span
+              >{{ team.home_city }}
             </p>
           </div>
           <!-- card -->
