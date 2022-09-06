@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '応援しているチームを登録する', type: :system, js: true do
+RSpec.describe 'register selected a favorite team', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   before do
@@ -22,7 +22,7 @@ RSpec.describe '応援しているチームを登録する', type: :system, js: 
     click_button 'アカウント登録'
   end
 
-  it 'リーグをクリックするとそのリーグに所属しているチームが表示される', js: true do
+  it 'Select one of the leagues shown. The teams belonging to the league you selected will then be displayed', js: true do
     expect(page).to have_content 'Premier League'
     sleep 2.0
     all('img')[1].click
@@ -35,7 +35,7 @@ RSpec.describe '応援しているチームを登録する', type: :system, js: 
     expect(page).to have_content 'Sassuolo'
   end
 
-  it 'チームをクリックするとボタンが表示される', js: true do
+  it 'select one of the teams shown and a button will appear', js: true do
     expect(page).to have_content 'Premier League'
     sleep 2.0
     all('img')[1].click

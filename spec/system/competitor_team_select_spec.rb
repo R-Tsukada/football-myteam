@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'ライバルチームを登録する', type: :system, js: true do
+RSpec.describe 'register selected competitor teams', type: :system, js: true do
   before do
     @user = FactoryBot.create(:user)
     premier_league = FactoryBot.create(:league, :premier_league)
@@ -17,7 +17,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     visit '/competitors'
   end
 
-  it '昨シーズンの順位が近いチームを選ぶ', js: true do
+  it 'select teams that were close to last seasons standings', js: true do
     expect(page).to have_content 'ライバルチームの選び方を選択してください'
     choose '昨シーズンの順位が近いチームを選ぶ'
     click_button 'チームの選択方法を決定する'
@@ -28,7 +28,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content '選んだチームを登録する'
   end
 
-  it '本拠地が近いチームを選ぶ', js: true do
+  it 'select team that is close to home', js: true do
     choose '本拠地が近いチームを選ぶ'
     click_button 'チームの選択方法を決定する'
     expect(page).to have_content 'Tottenham'
@@ -38,7 +38,7 @@ RSpec.describe 'ライバルチームを登録する', type: :system, js: true d
     expect(page).to have_content '選んだチームを登録する'
   end
 
-  it '自分でライバルチームを選ぶ', js: true do
+  it 'select competitor teams by self', js: true do
     choose '自分でライバルチームを選ぶ'
     click_button 'チームの選択方法を決定する'
     expect(page).to have_content 'Tottenham'
