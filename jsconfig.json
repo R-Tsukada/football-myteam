@@ -1,0 +1,13 @@
+{
+  "include": [
+    "app/javascript/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": "app",
+    "paths": {
+      "components/*": [
+        "app/javascript/*"
+      ]
+    }
+  }
+}
