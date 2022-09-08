@@ -16,37 +16,12 @@
       チームを選択
     </h3>
     <section>
-      <div class="columns is-mobile is-flex-wrap-wrap has-text-centered">
-        <div
-          class="column is-one-fifth-tablet is-one-third-mobile has-text-centered"
-          v-for="team in teamFilter"
-          :key="team.id">
-          <div
-            class="card has-hover-action select-button"
-            @click="selectTeam(team)"
-            v-bind:class="{
-              'has-background-link-light is-selected':
-                data.isChangeColorTeam === team.id
-            }">
-            <img
-              :src="team.logo"
-              :alt="team.name"
-              class="image mx-auto team-logo" />
-            <p
-              class="has-text-weight-semibold mt-2 is-size-6-tablet is-size-7-mobile is-break-all"
-              v-bind:class="{
-                'has-text-weight-bold': data.isChangeColorTeam === team.id
-              }">
-              {{ team.name }}
-            </p>
-          </div>
-          <!-- card -->
-        </div>
-        <!-- column -->
-      </div>
-      <!-- columns -->
+      <TeamList
+        :teamFilter="teamFilter"
+        :selectedTeam="data.selectedTeam"
+        @selectTeam="selectTeam" />
     </section>
-    <FavoriteSelectButton :isChangeColorTeam="data.isChangeColorTeam" />
+    <FavoriteSelectButton :selectedTeam="data.selectedTeam" />
   </div>
 </template>
 <script>
@@ -55,26 +30,28 @@ import axios from 'axios'
 import LeagueListLoader from '../loader/LeagueListLoader.vue'
 import FavoriteSelectButton from '../Molecules/BooleanButton/FavoriteSelectButton.vue'
 import LeagueList from '../Organism/LeagueList.vue'
+import TeamList from '../Organism/TeamList.vue'
 
 export default {
   components: {
     LeagueListLoader,
     FavoriteSelectButton,
-    LeagueList
+    LeagueList,
+    TeamList
   },
   setup() {
     const data = reactive({
       leagues: [],
       teams: [],
       selectedLeague: '',
-      isChangeColorTeam: ''
+      selectedTeam: ''
     })
 
     const setFavorite = async () => {
       axios
         .get('/api/favorites')
         .then((response) => {
-          data.isChangeColorTeam = response.data.team['id']
+          data.selectedTeam = response.data.team['id']
           data.selectedLeague = response.data.team['league_id']
         })
         .catch((error) => {
@@ -110,16 +87,16 @@ export default {
       })
     })
 
-    const selectTeam = (team) => {
-      data.isChangeColorTeam === team.id
-        ? (data.isChangeColorTeam = '')
-        : (data.isChangeColorTeam = team.id)
-      addFavoriteTeam(team)
+    const selectTeam = (...args) => {
+      data.selectedTeam === args[0]
+        ? (data.selectedTeam = '')
+        : (data.selectedTeam = args[0])
+      addFavoriteTeam(args[0])
     }
 
     const addFavoriteTeam = async (team) => {
       axios.post('api/favorites', {
-        id: team.id
+        id: team
       })
     }
 
