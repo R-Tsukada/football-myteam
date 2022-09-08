@@ -6,26 +6,10 @@
     </h3>
     <section>
       <LeagueListLoader v-if="!data.leagues.length" />
-      <div class="tabs is-boxed is-fullwidth">
-        <ul v-for="league in data.leagues" :key="league.id">
-          <li
-            @click="selectLeague(league)"
-            v-bind:class="{
-              'is-active': data.isChangeColorLeague === league.id
-            }">
-            <a>
-              <img
-                :src="league.logo"
-                :alt="league.name"
-                class="image team-select-league-logo mr-2" />
-              <p class="is-size-6 not-displayed-when-with-mobile-display">
-                {{ league.name }}
-              </p>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- tabs -->
+      <LeagueList
+        :leagues="data.leagues"
+        :selectedLeague="data.selectedLeague"
+        @selectLeague="selectLeague" />
     </section>
     <h3
       class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold my-3">
@@ -70,17 +54,19 @@ import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
 import LeagueListLoader from '../loader/LeagueListLoader.vue'
 import FavoriteSelectButton from '../Molecules/BooleanButton/FavoriteSelectButton.vue'
+import LeagueList from '../Organism/LeagueList.vue'
 
 export default {
   components: {
     LeagueListLoader,
-    FavoriteSelectButton
+    FavoriteSelectButton,
+    LeagueList
   },
   setup() {
     const data = reactive({
       leagues: [],
       teams: [],
-      isChangeColorLeague: '',
+      selectedLeague: '',
       isChangeColorTeam: ''
     })
 
@@ -89,7 +75,7 @@ export default {
         .get('/api/favorites')
         .then((response) => {
           data.isChangeColorTeam = response.data.team['id']
-          data.isChangeColorLeague = response.data.team['league_id']
+          data.selectedLeague = response.data.team['league_id']
         })
         .catch((error) => {
           console.log(error.message)
@@ -117,14 +103,8 @@ export default {
         })
     }
 
-    const selectLeague = (league) => {
-      data.isChangeColorLeague === league.id
-        ? (data.isChangeColorLeague = '')
-        : (data.isChangeColorLeague = league.id)
-    }
-
     const teamFilter = computed(() => {
-      const number = data.isChangeColorLeague
+      const number = data.selectedLeague
       return data.teams.filter(function (value) {
         return value.league_id === number
       })
@@ -143,14 +123,20 @@ export default {
       })
     }
 
+    const selectLeague = (...args) => {
+      data.selectedLeague === args[0]
+        ? (data.selectedLeague = '')
+        : (data.selectedLeague = args[0])
+    }
+
     onMounted(setFavorite(), setTeam(), setLeague())
 
     return {
       data,
-      selectLeague,
       teamFilter,
       selectTeam,
-      addFavoriteTeam
+      addFavoriteTeam,
+      selectLeague
     }
   }
 }

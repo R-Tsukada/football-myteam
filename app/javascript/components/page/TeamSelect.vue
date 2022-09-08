@@ -13,7 +13,7 @@
           class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold">
           <p>ライバルチームのみ変更する</p>
         </router-link>
-        <LeagueList />
+        <LeagueAndTeamSelect />
       </section>
     </section>
     <!--section -->
@@ -25,12 +25,12 @@
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import TeamSelectDescription from '../Molecules/TeamSelectDescription.vue'
-import LeagueList from '../Molecules/LeagueList.vue'
+import LeagueAndTeamSelect from '../Molecules/LeagueAndTeamSelect.vue'
 
 export default {
   components: {
     TeamSelectDescription,
-    LeagueList
+    LeagueAndTeamSelect
   },
   setup() {
     const data = reactive({
