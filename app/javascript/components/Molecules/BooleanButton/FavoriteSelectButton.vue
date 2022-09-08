@@ -17,7 +17,7 @@ import DetermineButton from '../../atoms/Button/DetermineButton.vue'
 export default {
   props: {
     isChangeColorTeam: {
-      type: String
+      type: Number
     }
   },
   components: {
