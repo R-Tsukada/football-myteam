@@ -85,23 +85,17 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import CompetitorValidation from '../../modal/CompetitorValidation.vue'
-import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
 import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 import BaseButton from '../../atoms/Button/BaseButton.vue'
 import DetermineButton from '../../atoms/Button/DetermineButton'
-import CompetitorSelectButton from '../../Molecules/BooleanButton/CompetitorSelectButton'
 import CompetitorTeamSelectSelf from '../../Molecules/CompetitorTeamSelectSelf.vue'
 import CompetitorTeamSelectHomeOrRank from '../../Molecules/CompetitorTeamSelectHomeOrRank.vue'
 
 export default {
   components: {
-    CompetitorValidation,
-    CompetitorTeamCount,
     BackToPageButton,
     BaseButton,
     DetermineButton,
-    CompetitorSelectButton,
     CompetitorTeamSelectSelf,
     CompetitorTeamSelectHomeOrRank
   },
