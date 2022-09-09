@@ -111,34 +111,15 @@
       <CompetitorSelectButton :competitors="data.competitors" />
     </div>
     <!--自分でチーム選んでもらう -->
-    <!-- v-show -->
-    <div v-show="data.isFreeSelect">
-      <h2
-        class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
-        ライバルチームを最大3チームまで選んでください
-      </h2>
-      <CompetitorTeamCount
+    <div v-if="data.isFreeSelect">
+      <CompetitorTeamSelectSelf
+        :teams="data.teams"
         :competitors="data.competitors"
-        v-if="data.isShowingMessage" />
-      <CompetitorValidation v-else />
-      <TeamListLoader v-if="!data.teams.length" />
-      <div v-else>
-        <TeamList
-          :teams="data.teams"
-          :competitors="data.competitors"
-          @selectTeam="followTeam" />
-      </div>
-      <!-- v-else -->
-      <div class="back-or-select-buttons mt-4">
-        <BackToPageButton
-          class="is-rounded"
-          label="チームの選択方法を選び直す"
-          @click="selectAgain" />
-        <CompetitorSelectButton :competitors="data.competitors" />
-      </div>
-      <!-- buttons -->
+        :isShowingMessage="data.isShowingMessage"
+        @selectTeam="followTeam"
+        @selectAgain="selectAgain" />
     </div>
-    <!-- v-show -->
+    <!-- v-if -->
   </div>
   <!-- container -->
 </template>
@@ -147,23 +128,21 @@ import axios from 'axios'
 import { reactive, onMounted } from 'vue'
 import CompetitorValidation from '../../modal/CompetitorValidation.vue'
 import CompetitorTeamCount from '../../modal/CompetitorTeamCount.vue'
-import TeamListLoader from '../../loader/TeamListLoader.vue'
 import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 import BaseButton from '../../atoms/Button/BaseButton.vue'
 import DetermineButton from '../../atoms/Button/DetermineButton'
 import CompetitorSelectButton from '../../Molecules/BooleanButton/CompetitorSelectButton'
-import TeamList from '../../Organism/CompetitorTeamList.vue'
+import CompetitorTeamSelectSelf from '../../Molecules/CompetitorTeamSelectSelf.vue'
 
 export default {
   components: {
-    TeamListLoader,
     CompetitorValidation,
     CompetitorTeamCount,
     BackToPageButton,
     BaseButton,
     DetermineButton,
     CompetitorSelectButton,
-    TeamList
+    CompetitorTeamSelectSelf
   },
   setup() {
     const data = reactive({
@@ -249,6 +228,7 @@ export default {
     }
 
     const selectAgain = () => {
+      alert('success')
       data.isShowing = true
       data.isAdding = false
       data.isFreeSelect = false
