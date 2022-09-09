@@ -1,5 +1,5 @@
 <template>
-  <div class="match-schedule-card mx-auto">
+  <div class="match-schedule-card mx-auto mb-4">
     <div
       class="box has-text-centered"
       v-for="result in matchResultFilter"

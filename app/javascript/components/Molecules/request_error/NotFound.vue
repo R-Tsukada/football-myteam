@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
+import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
 
 export default {
   components: {

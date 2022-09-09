@@ -85,11 +85,11 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
-import BaseButton from '../../atoms/Button/BaseButton.vue'
-import DetermineButton from '../../atoms/Button/DetermineButton'
-import CompetitorTeamSelectSelf from '../../Molecules/CompetitorTeamSelectSelf.vue'
-import CompetitorTeamSelectHomeOrRank from '../../Molecules/CompetitorTeamSelectHomeOrRank.vue'
+import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
+import BaseButton from '../atoms/Button/BaseButton.vue'
+import DetermineButton from '../atoms/Button/DetermineButton'
+import CompetitorTeamSelectSelf from '../Molecules/CompetitorTeamSelectSelf.vue'
+import CompetitorTeamSelectHomeOrRank from '../Molecules/CompetitorTeamSelectHomeOrRank.vue'
 
 export default {
   components: {

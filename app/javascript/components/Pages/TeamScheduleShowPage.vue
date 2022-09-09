@@ -49,12 +49,6 @@
       </div>
     </div>
     <!-- tab-contents v-else -->
-    <div class="has-text-centered">
-      <router-link to="/schedules"
-        ><BackToPageButton label="リーグ戦一覧に戻る" class="is-rounded"
-      /></router-link>
-    </div>
-    <!-- has-text-centered -->
   </div>
   <!--container -->
 </template>
@@ -63,19 +57,17 @@
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
-import MatchScheduleList from './list/MatchScheduleList.vue'
-import MatchResultList from './list/MatchResultList.vue'
-import MatchScheduleShowLoader from '../../loader/MatchScheduleShowLoader'
-import FavoriteTeamTag from '../../atoms/FavoriteTeamTag.vue'
-import BackToPageButton from '../../atoms/Button/BackToPageButton.vue'
+import MatchScheduleList from '../Molecules/list/MatchScheduleList'
+import MatchResultList from '../Molecules/list/MatchResultList'
+import MatchScheduleShowLoader from '../atoms/loader/MatchScheduleShowLoader'
+import FavoriteTeamTag from '../atoms/FavoriteTeamTag'
 
 export default {
   components: {
     MatchScheduleShowLoader,
     MatchScheduleList,
     MatchResultList,
-    FavoriteTeamTag,
-    BackToPageButton
+    FavoriteTeamTag
   },
   setup() {
     const data = reactive({

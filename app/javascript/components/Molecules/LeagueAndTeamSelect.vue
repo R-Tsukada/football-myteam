@@ -27,7 +27,7 @@
 <script>
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
-import LeagueListLoader from '../loader/LeagueListLoader.vue'
+import LeagueListLoader from '../atoms/loader/LeagueListLoader.vue'
 import FavoriteSelectButton from '../Molecules/BooleanButton/FavoriteSelectButton.vue'
 import LeagueList from '../Organism/LeagueList.vue'
 import TeamList from '../Organism/TeamList.vue'

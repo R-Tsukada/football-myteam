@@ -26,9 +26,9 @@
 </template>
 <script>
 import CompetitorTeamList from '../Organism/CompetitorTeamList.vue'
-import CompetitorValidation from '../modal/CompetitorValidation.vue'
-import CompetitorTeamCount from '../modal/CompetitorTeamCount.vue'
-import TeamListLoader from '../loader/TeamListLoader.vue'
+import CompetitorValidation from '../atoms/modal/CompetitorValidation.vue'
+import CompetitorTeamCount from '../atoms/modal/CompetitorTeamCount.vue'
+import TeamListLoader from '../atoms/loader/TeamListLoader.vue'
 import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
 import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton'
 
