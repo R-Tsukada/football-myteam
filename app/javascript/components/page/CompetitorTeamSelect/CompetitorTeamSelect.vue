@@ -62,53 +62,12 @@
     <!-- has-text-centered -->
     <!--ライバルチームの選択方法を選んでもらったあと-->
     <div v-show="data.isAdding">
-      <h3 class="is-size-2-tablet is-size-5-mobile has-text-weight-bold mb-3">
-        登録したいチームを選んでください
-      </h3>
-      <CompetitorTeamCount
+      <CompetitorTeamSelectHomeOrRank
         :competitors="data.competitors"
-        v-if="data.isShowingMessage" />
-      <CompetitorValidation v-else />
-      <div class="columns is-multiline is-mobile">
-        <div
-          class="column mx-auto"
-          v-for="team in data.selectedTeams"
-          :key="team.id">
-          <div
-            class="card has-hover-action select-button"
-            @click="followTeam(team)"
-            v-bind:class="{
-              'has-background-link-light is-selected': data.competitors.some(
-                (competitor) => competitor.team_id === team.id
-              )
-            }">
-            <img
-              :src="team.logo"
-              class="image competitor-team-logo mx-auto pt-1" />
-            <p
-              class="has-text-weight-medium mt-2 is-size-2-tablet is-size-7-mobile">
-              {{ team.name }}
-            </p>
-            <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
-              <span class="is-size-5-tablet is-size-7-mobile">21-22:</span
-              >{{ team.last_season_rank }}<span>位</span>
-            </p>
-            <p class="has-text-weight-medium is-size-3-tablet is-size-5-mobile">
-              <span class="is-size-5-tablet is-size-7-mobile">Home:</span
-              >{{ team.home_city }}
-            </p>
-          </div>
-          <!-- card -->
-        </div>
-        <!-- column -->
-      </div>
-      <!-- columns -->
-      <br />
-      <BackToPageButton
-        @click="selectAgain"
-        class="is-rounded"
-        label="チームの選び方を変更する" />
-      <CompetitorSelectButton :competitors="data.competitors" />
+        :isShowingMessage="data.isShowingMessage"
+        :teams="data.selectedTeams"
+        @followTeam="followTeam"
+        @selectAgain="selectAgain" />
     </div>
     <!--自分でチーム選んでもらう -->
     <div v-if="data.isFreeSelect">
@@ -133,6 +92,7 @@ import BaseButton from '../../atoms/Button/BaseButton.vue'
 import DetermineButton from '../../atoms/Button/DetermineButton'
 import CompetitorSelectButton from '../../Molecules/BooleanButton/CompetitorSelectButton'
 import CompetitorTeamSelectSelf from '../../Molecules/CompetitorTeamSelectSelf.vue'
+import CompetitorTeamSelectHomeOrRank from '../../Molecules/CompetitorTeamSelectHomeOrRank.vue'
 
 export default {
   components: {
@@ -142,7 +102,8 @@ export default {
     BaseButton,
     DetermineButton,
     CompetitorSelectButton,
-    CompetitorTeamSelectSelf
+    CompetitorTeamSelectSelf,
+    CompetitorTeamSelectHomeOrRank
   },
   setup() {
     const data = reactive({
@@ -228,7 +189,6 @@ export default {
     }
 
     const selectAgain = () => {
-      alert('success')
       data.isShowing = true
       data.isAdding = false
       data.isFreeSelect = false

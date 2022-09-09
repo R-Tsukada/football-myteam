@@ -12,7 +12,7 @@
         v-else
         :teams="teams"
         :competitors="competitors"
-        @selectTeam="followTeam" />
+        @selectTeam="selectTeam" />
       <div class="back-or-select-buttons mt-4">
         <BackToPageButton
           class="is-rounded"
