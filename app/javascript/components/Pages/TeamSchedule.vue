@@ -44,9 +44,9 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
-import TeamScheduleBox from './table/TeamScheduleBox.vue'
-import MatchListLoader from '../../loader/MatchListLoader'
-import BaseButton from '../../atoms/Button/BaseButton.vue'
+import TeamScheduleBox from '../Organism/table/TeamScheduleBox.vue'
+import MatchListLoader from '../atoms/loader/MatchListLoader'
+import BaseButton from '../atoms/Button/BaseButton.vue'
 
 export default {
   components: {

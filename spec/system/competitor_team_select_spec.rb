@@ -25,6 +25,7 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
     expect(page).to have_button '選んだチームを登録する', disabled: true
     expect(page).to have_content 'Manchester United'
     expect(page).to_not have_content 'Tottenham'
+    sleep 2.0
     all('img')[1].click
     expect(page).to have_content '残り2チーム登録できます'
     expect(page).to have_content '選んだチームを登録する'
@@ -37,6 +38,7 @@ RSpec.describe 'register selected competitor teams', type: :system, js: true do
     expect(page).to have_button '選んだチームを登録する', disabled: true
     expect(page).to have_content 'Tottenham'
     expect(page).to_not have_content 'Manchester United'
+    sleep 2.0
     all('img')[1].click
     expect(page).to have_content '残り2チーム登録できます'
     expect(page).to have_content '選んだチームを登録する'

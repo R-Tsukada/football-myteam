@@ -1,7 +1,7 @@
 <template>
   <div class="favorite-team-standing columns is-mobile">
     <div
-      class="favorite-team-name-and-rank favorte-team-border-right column is-three-fifths">
+      class="favorite-team-name-and-rank favorite-team-border-right column is-three-fifths">
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
         <FavoriteTeamTag />
       </div>
@@ -69,14 +69,14 @@
 </template>
 
 <script>
-import DifferenceInPoints from '../../../atoms/DifferenceInPoints'
-import FavoriteTeamTag from '../../../atoms/FavoriteTeamTag'
+import DifferenceInPoints from '../../atoms/DifferenceInPoints'
+import FavoriteTeamTag from '../../atoms/FavoriteTeamTag'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'
 
 export default {
-  props: ['standings', 'FavoriteTeamTag', 'favoriteTeamPoints', 'favoriteId'],
+  props: ['standings', 'favoriteTeamPoints', 'favoriteId'],
   components: {
     DifferenceInPoints,
     FavoriteTeamTag

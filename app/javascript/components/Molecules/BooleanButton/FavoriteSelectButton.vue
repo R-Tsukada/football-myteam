@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/competitors" v-if="isChangeColorTeam">
+  <router-link to="/competitors" v-if="selectedTeam">
     <DetermineButton
       label="応援しているチームを決定する"
       class="is-rounded color-button has-text-white is-size-7-mobile mt-3" />
@@ -16,8 +16,8 @@ import DetermineButton from '../../atoms/Button/DetermineButton.vue'
 
 export default {
   props: {
-    isChangeColorTeam: {
-      type: String
+    selectedTeam: {
+      type: Number
     }
   },
   components: {

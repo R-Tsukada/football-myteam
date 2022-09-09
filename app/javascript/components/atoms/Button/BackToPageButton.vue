@@ -10,10 +10,6 @@
 </template>
 <script>
 export default {
-  props: {
-    label: {
-      type: String
-    }
-  }
+  props: ['label']
 }
 </script>

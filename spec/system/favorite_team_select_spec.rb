@@ -41,6 +41,7 @@ RSpec.describe 'register selected a favorite team', type: :system, js: true do
     sleep 2.0
     all('img')[1].click
     expect(page).to have_content 'Arsenal'
+    sleep 2.0
     all('img')[3].click
     expect(page).to have_button '応援しているチームを決定する', disabled: false
   end
