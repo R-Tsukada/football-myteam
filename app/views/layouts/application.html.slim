@@ -26,10 +26,12 @@ html
             span aria-hidden="true"
               |
         #targetMenu.navbar-menu.has-background-main
-          .navbar-start.mx-auto
+          .navbar-start.m-auto
             - if user_signed_in?
-                = link_to 'チームを変更', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
-                = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-white has-text-weight-medium'
+              ul
+                li = link_to 'HOME', root_path, class: 'burger-menu-item navbar-item home has-text-white has-text-weight-medium'
+                li = link_to 'TEAM', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
+                li = link_to 'ACCOUNT', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
           .navbar-end
             - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button'
