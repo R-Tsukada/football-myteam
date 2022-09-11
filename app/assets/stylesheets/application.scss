@@ -308,3 +308,8 @@ $button-color: #6246ea;
   justify-content: center;
 }
 
+.navbar-start ul li a:hover,
+.navbar-start ul li a:focus {
+  background-image: linear-gradient(to bottom, transparent 80%, #ffffff 81%, transparent 82%);
+}
+
