@@ -23,7 +23,7 @@ main {
 }
 
 .title-logo {
-  width: 250px;
+  width: 20rem;
 }
 
 /* favorite team select*/
@@ -301,4 +301,18 @@ $button-color: #6246ea;
 
 .twitter-color {
   background-color: #00acee;
+}
+
+.navbar-start ul {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-start ul li a:hover,
+.navbar-start ul li a:focus {
+  background-image: linear-gradient(to bottom, transparent 80%, #ffffff 81%, transparent 82%);
+}
+
+.devise-page-width {
+  width: 24rem;
 }

@@ -17,7 +17,7 @@ html
         .navbar-brand
           .title.my-auto
             = link_to root_path do
-              = image_tag('football_logo.svg', alt: 'football_myteam_logo', class: 'image title-logo')
+              = image_tag('football-logo.svg', alt: 'football_myteam_logo', class: 'image title-logo')
           a.navbar-burger.has-text-white role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
             span aria-hidden="true"
               |
@@ -26,18 +26,18 @@ html
             span aria-hidden="true"
               |
         #targetMenu.navbar-menu.has-background-main
-          .navbar-start.mx-auto
+          .navbar-start.m-auto
             - if user_signed_in?
-                = link_to 'チームを変更', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
-                = link_to 'プロフィール変更', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-white has-text-weight-medium'
-          .navbar-end
+              ul
+                li = link_to 'HOME', root_path, class: 'burger-menu-item navbar-item home has-text-white has-text-weight-medium'
+                li = link_to 'TEAM', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
+                li = link_to 'ACCOUNT', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
+          .navbar-end.my-auto
             - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button'
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-small is-rounded'
             - else
               .navbar-item
-                = link_to 'Sign up', new_user_registration_path, class: 'burger-menu-item navbar-item button'
-              .navbar-item
-                = link_to 'Login', new_user_session_path, class: 'burger-menu-item navbar-item button'
+                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-small is-rounded'
       p
         .notice.is-size-4.p-5.has-text-centered.has-text-info
           = notice
