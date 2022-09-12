@@ -1,6 +1,13 @@
 <template>
   <div class="columns is-multiline is-mobile">
-    <div class="column mx-auto" v-for="team in teams" :key="team.id">
+    <SorryMessage
+      v-if="teams.length === 0"
+      class="mx-auto"
+      label="同じ本拠地のチームがありません。 他の方法でチームを選んでください" />
+    <div
+      class="column is-one-third mx-auto"
+      v-for="team in teams"
+      :key="team.id">
       <div
         class="card has-hover-action select-button"
         @click="followTeam(team)"
@@ -30,7 +37,12 @@
   <!-- columns -->
 </template>
 <script>
+import SorryMessage from '../atoms/SorryMessage.vue'
+
 export default {
+  components: {
+    SorryMessage
+  },
   props: ['teams', 'competitors'],
   setup(props, context) {
     const followTeam = (team) => {
