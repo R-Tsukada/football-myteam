@@ -3,11 +3,9 @@
     = image_tag 'footballMyTeam-logo.png'
   p.is-size-3.is-size-5-mobile.has-text-centered.has-text-weight-bold.mt-5
     | Football MyTeamは、あなたが応援しているチームと<br />そのライバルチームのリーグ戦・試合情報を<br />簡単に知ることができるサービスです。
-  .has-text-centered.mt-6
-    .button.color-button.is-rounded.m-3.is-large
-      = link_to 'アカウント作成', new_user_registration_path, class: 'has-text-white'
-    .button.m-3.is-rounded.m-3.is-large
-      = link_to 'ログイン', new_user_session_path
+  .has-text-centered.mt-3
+    .button.color-button
+      = link_to 'Sign up', new_user_registration_path, class: 'has-text-white'
   .container.mt-5
     h2.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered
       | 登録したチームのリーグ戦・試合情報を一覧で確認
