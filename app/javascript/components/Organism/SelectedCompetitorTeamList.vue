@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-multiline is-mobile">
-    <div class="column mx-auto" v-for="team in teams" :key="team.id">
+    <div class="column is-one-third mx-auto" v-for="team in teams" :key="team.id">
       <div
         class="card has-hover-action select-button"
         @click="followTeam(team)"
