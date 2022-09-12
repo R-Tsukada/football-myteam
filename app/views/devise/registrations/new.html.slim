@@ -8,11 +8,11 @@
         .field.devise-page-width.mx-auto
           = f.label :email
           = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'example@app.com'
-        .field.registrations-width.mx-auto
+        .field.devise-page-width.mx-auto
           = f.label :password
           - if @minimum_password_length
             = f.password_field :password, autocomplete: 'new-password', class: 'input', placeholder: "Passwrd(more than #{@minimum_password_length} characters)"
-        .field.registrations-width.mx-auto
+        .field.devise-page-width.mx-auto
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: 'Password(confirm)'
         .actions.has-text-centered
