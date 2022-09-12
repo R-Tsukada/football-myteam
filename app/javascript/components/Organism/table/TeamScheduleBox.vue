@@ -1,7 +1,7 @@
 <template>
   <div clsss="main-page">
     <div
-      class="box standing-and-matches columns mb-3"
+      class="box standing-and-matches columns my-6"
       @click="selectTeam(standings)">
       <StandingData
         :standings="standings"
