@@ -16,48 +16,48 @@ RSpec.describe 'devise', type: :system, js: true do
     FactoryBot.create(:favorite, user: user, team: team1)
     FactoryBot.create(:competitor, user: user, team: team2)
 
-    all('.button')[3].click_link 'ログイン'
+    click_on 'Log in'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
+    click_button 'Log in Using Email'
 
     expect(page).to have_content 'ログインしました'
   end
 
   it 'email error when login.', js: true do
-    all('.button')[3].click_link 'ログイン'
+    click_on 'Log in'
     fill_in 'Eメール', with: 'error@example.com'
     fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
+    click_button 'Log in Using Email'
 
     expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
 
   it 'password error when login.', js: true do
-    all('.button')[3].click_link 'ログイン'
+    click_on 'Log in'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: 'xxxxxx'
-    click_button 'ログイン'
+    click_button 'Log in Using Email'
 
     expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
 
   it 'user create new account', js: true do
-    all('.button')[2].click_link 'アカウント作成'
+    click_on 'Sign up'
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
-    click_button 'アカウント登録'
+    click_button 'Sign up Using Email'
 
     expect(page).to have_content 'アカウント登録が完了しました'
   end
 
   it 'password validation enabled during account creation', js: true do
-    all('.button')[2].click_link 'アカウント作成'
+    click_on 'Sign up'
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '1234'
     fill_in 'パスワード（確認用）', with: '1234'
-    click_button 'アカウント登録'
+    click_button 'Sign up Using Email'
 
     expect(page).to have_content 'パスワードは6文字以上で入力してください'
   end

@@ -15,11 +15,11 @@ RSpec.describe 'register selected a favorite team', type: :system, js: true do
     FactoryBot.create(:team, :sassuolo, league: serie_a)
 
     visit root_path
-    all('.button')[2].click_link 'アカウント作成'
+    all('.button')[1].click_link 'Sign up'
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
-    click_button 'アカウント登録'
+    click_button 'Sign up Using Email'
   end
 
   it 'Select one of the leagues shown. The teams belonging to the league you selected will then be displayed', js: true do
