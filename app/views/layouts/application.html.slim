@@ -32,14 +32,12 @@ html
                 li = link_to 'HOME', root_path, class: 'burger-menu-item navbar-item home has-text-white has-text-weight-medium'
                 li = link_to 'TEAM', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
                 li = link_to 'ACCOUNT', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
-          .navbar-end
+          .navbar-end.my-auto
             - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button'
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-small is-rounded'
             - else
               .navbar-item
-                = link_to 'Sign up', new_user_registration_path, class: 'burger-menu-item navbar-item button'
-              .navbar-item
-                = link_to 'Login', new_user_session_path, class: 'burger-menu-item navbar-item button'
+                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-small is-rounded'
       p
         .notice.is-size-4.p-5.has-text-centered.has-text-info
           = notice
