@@ -316,3 +316,15 @@ $button-color: #6246ea;
 .devise-page-width {
   width: 24rem;
 }
+
+.burger-menu-item.button {
+  @include mobile {
+    width: 8rem;
+  }
+}
+
+.navbar-end {
+  @include mobile {
+    margin-top: 1rem;
+  }
+}
