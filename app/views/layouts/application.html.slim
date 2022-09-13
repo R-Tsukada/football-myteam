@@ -28,10 +28,10 @@ html
         #targetMenu.navbar-menu.has-background-main
           .navbar-start.m-auto
             - if user_signed_in?
-              ul
-                li = link_to 'HOME', root_path, class: 'burger-menu-item navbar-item home has-text-white has-text-weight-medium'
-                li = link_to 'TEAM', '/leagues', class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
-                li = link_to 'ACCOUNT', edit_user_registration_path, class: 'burger-menu-item navbar-item has-text-white has-text-weight-medium'
+              .columns
+                = link_to 'HOME', root_path, class: 'column burger-menu-item navbar-item home has-text-white has-text-weight-medium'
+                = link_to 'TEAM', '/leagues', class: 'column burger-menu-item navbar-item has-text-white has-text-weight-medium'
+                = link_to 'ACCOUNT', edit_user_registration_path, class: 'column burger-menu-item navbar-item has-text-white has-text-weight-medium'
           .navbar-end.my-auto
             - if user_signed_in?
                 = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-small is-rounded'
