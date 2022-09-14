@@ -11,7 +11,7 @@
         .field.devise-page-width.mx-auto
           = f.label :password
           - if @minimum_password_length
-            = f.password_field :password, autocomplete: 'new-password', class: 'input', placeholder: "Passwrd(more than #{@minimum_password_length} characters)"
+            = f.password_field :password, autocomplete: 'new-password', class: 'input', placeholder: "Password"
         .field.devise-page-width.mx-auto
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: 'Password(confirm)'
