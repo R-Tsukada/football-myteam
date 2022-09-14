@@ -1,33 +1,31 @@
-.section.mx-auto
-  h2.is-size-2.has-text-weight-semibold.has-text-centered
-    = t('.edit')
-  = form_with model: @user, url: user_registration_path, html: { method: :put } do |f|
-    = render 'devise/shared/error_messages', resource: resource
-    .container
-      .field.has-text-left.has-text-weight-semibold.my-4
-        = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          div
+.container
+  .section
+    h2.is-size-2.is-size-4-mobile.has-text-weight-semibold.has-text-centered
+      = t('.edit')
+    .section
+      = form_with model: @user, url: user_registration_path, html: { method: :put } do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .field.devise-page-width.mx-auto.has-text-weight-semibold.is-size-6-mobile
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
             | Currently waiting confirmation for:
             = resource.unconfirmed_email
-      .field
-        .container.has-text-left.has-text-weight-semibold.my-4
+        .field.devise-page-width.mx-auto.has-text-weight-semibold.is-size-6-mobile
           = f.label :current_password
           i
-          = f.password_field :current_password, autocomplete: 'current-password', class: 'input', placeholder: t('.current')
-        .container.has-text-left.has-text-weight-semibold.my-4
+          = f.password_field :current_password, autocomplete: 'current-password', class: 'input', placeholder: 'Password'
+        .field.devise-page-width.mx-auto.has-text-weight-semibold.is-size-6-mobile
           = f.label :password
           = t('.blank_message')
           i
-          = f.password_field :password, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length} 文字以上入力してください"
-      - if @minimum_password_length
-        .container.has-text-left.has-text-weight-semibold.my-4
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "#{@minimum_password_length} 文字以上入力してください"
-
-        .actions.has-text-centered
-          = f.submit t('.update'), class: 'color-button button is-rounded is-medium has-text-white'
+          = f.password_field :password, autocomplete: 'new-password', class: 'input', placeholder: "New Password"
+          - if @minimum_password_length
+            .field.devise-page-width.mx-auto.has-text-weight-semibold.is-size-6-mobile
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: "Password(confirm)"
+          .actions.has-text-centered
+            = f.submit t('.update'), class: 'color-button button is-rounded has-text-white mt-2'
   br
   .has-text-right
     = link_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: t('.delete') }, method: :delete
