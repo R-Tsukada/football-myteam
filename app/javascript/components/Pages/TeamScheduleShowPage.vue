@@ -24,31 +24,38 @@
       <!-- selected-team-name-and-matches -->
     </h2>
     <!--selected-team -->
-    <div class="tabs is-toggle is-centered">
-      <ul>
-        <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
-          <a v-on:click="data.isActive = 'match_schedule'">試合予定</a>
-        </li>
-        <li v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-          <a v-on:click="data.isActive = 'match_result'">試合結果</a>
-        </li>
-      </ul>
-    </div>
-    <!-- tabs -->
-    <MatchScheduleShowLoader v-if="!data.schedules.length" />
-    <div class="tab-contents" v-else>
-      <div
-        class="content"
-        v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
-        <MatchScheduleList :matchScheduleFilter="matchScheduleFilter" />
+    <section>
+      <div class="tabs is-toggle is-centered">
+        <ul>
+          <li v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
+            <a v-on:click="data.isActive = 'match_schedule'">試合予定</a>
+          </li>
+          <li v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
+            <a v-on:click="data.isActive = 'match_result'">試合結果</a>
+          </li>
+        </ul>
       </div>
-      <div
-        class="content"
-        v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-        <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
+      <!-- tabs -->
+      <MatchScheduleShowLoader v-if="!data.schedules.length" />
+      <div class="tab-contents" v-else>
+        <div
+          class="content"
+          v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
+          <MatchScheduleList :matchScheduleFilter="matchScheduleFilter" />
+        </div>
+        <div
+          class="content"
+          v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
+          <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
+        </div>
       </div>
-    </div>
-    <!-- tab-contents v-else -->
+      <!-- tab-contents v-else -->
+      <div class="has-text-centered">
+        <router-link to="/schedules">
+          <BackToPageButton label="戻る" />
+        </router-link>
+      </div>
+    </section>
   </div>
   <!--container -->
 </template>
@@ -61,13 +68,15 @@ import MatchScheduleList from '../Molecules/list/MatchScheduleList'
 import MatchResultList from '../Molecules/list/MatchResultList'
 import MatchScheduleShowLoader from '../atoms/loader/MatchScheduleShowLoader'
 import FavoriteTeamTag from '../atoms/FavoriteTeamTag'
+import BackToPageButton from '../atoms/Button/BackToPageButton'
 
 export default {
   components: {
     MatchScheduleShowLoader,
     MatchScheduleList,
     MatchResultList,
-    FavoriteTeamTag
+    FavoriteTeamTag,
+    BackToPageButton
   },
   setup() {
     const data = reactive({
