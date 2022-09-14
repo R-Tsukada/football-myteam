@@ -61,4 +61,18 @@ RSpec.describe 'devise', type: :system, js: true do
 
     expect(page).to have_content 'パスワードは6文字以上で入力してください'
   end
+
+  it 'able to transition to login page' do
+    click_on 'Sign up'
+    expect(page).to have_content 'アカウントを作成'
+    click_on 'すでにアカウントをお持ちの場合：ログイン'
+    expect(page).to have_content 'ログイン'
+  end
+
+  it 'able to transition to sign up page' do
+    click_on 'Log in'
+    expect(page).to have_content 'ログイン'
+    click_on 'アカウントを新しく作る場合はこちら'
+    expect(page).to have_content 'アカウントを作成'
+  end
 end
