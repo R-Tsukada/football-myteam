@@ -6,7 +6,7 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field.field.devise-page-width.mx-auto
           = f.label :email
-          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'E-mail'
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input', placeholder: 'example@app.com'
         .field.field.devise-page-width.mx-auto
           = f.label :password
           = f.password_field :password, autocomplete: 'current-password', class: 'input', placeholder: 'Password'
