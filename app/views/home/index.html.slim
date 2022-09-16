@@ -8,55 +8,7 @@
     .has-text-centered.mt-3
       .button.color-button
         = link_to 'Sign up', new_user_registration_path, class: 'has-text-white'
-      h3.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered
-      .section
-        | 登録したチームのリーグ戦・試合情報を一覧で確認
-        .box
-          .image
-            = video_tag 'main_page.mp4', playsinline: true, autoplay: true, loop: true, muted: true
-      h3.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered.mb-4
-        |前後1ヶ月の試合予定・試合結果も確認することができます
-      .section
-        .columns
-          .column
-            .box
-              .image
-                = video_tag 'show_game_list.mp4', playsinline: true, autoplay: true, loop: true, muted: true
-          .column
-            p
-              |より詳細な試合情報を知りたい場合はチームをクリックしてください。<br />今後の試合予定に加えて、これまでの試合結果も確認することができます。
-      h3.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered.mb-4
-        |欧州4大リーグの中から好きなチームを選ぶことができます
-      .sectin
-        .columns
-          .column
-            p
-              |チームは欧州4大リーグのプレミアリーグ、セリエA、ラリーガ、ブンデスリーガの中から好きなチームを選ぶことができます。
-          .column
-            .box
-              .image
-                = video_tag 'favorite_team_select.mp4', playsinline: true, autoplay: true, loop: true, muted: true
-      h3.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered.mb-4
-        |ライバルチームの選び方は3種類
-      .section
-        .columns
-          .column
-            .box
-              p.is-size-7
-                | 昨シーズンの順位が近いチームを選ぶ
-              .image
-                = image_tag 'competitor_team_select-last_season_rank.png'
-          .column
-            .box
-              p.is-size-7
-                | 同じ本拠地のチームを選ぶ
-              .image
-                = image_tag 'competitor_team_select_home_stadium.png'
-          .column
-            .box
-              p.is-size-7
-                | 自分で好きなチームを選ぶ
-              .image
-                = image_tag 'competitor_team_select.png'
-        p.is-size-6
-          |サッカーに詳しくなくても安心してください。ライバルチームの選び方は3種類あります。<br />選択方法は「昨シーズンの順位が近いチーム」、「同じ本拠地のチーム」「自分で好きなチームを選ぶ」の中から選ぶことができます。
+      = render 'schedules_description'
+      = render 'match_schedules_and_result_description'
+      = render 'league_list_description'
+      = render 'competitor_select_description'
