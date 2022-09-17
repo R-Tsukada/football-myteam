@@ -14,6 +14,25 @@ main {
   flex: 1;
 }
 
+.flash-messege-position {
+  margin-top: 6rem;
+}
+
+.flash-messega-box {
+  border: 1px solid;
+  border-radius: 0.75px;
+  width: 16rem
+}
+
+.flash-none-display {
+  opacity: 0;
+}
+
+.br::before {
+  content: "\A" ;
+	white-space: pre ;
+}
+
 .has-background-main {
   background-color: $main;
 }
