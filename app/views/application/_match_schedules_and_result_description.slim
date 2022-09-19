@@ -1,11 +1,18 @@
-h3.is-size-4.is-size-6-mobile.has-text-weight-bold.py-3.has-text-centered.mb-4
-  |前後1ヶ月の試合予定・試合結果も確認することができます
-.section
-  .columns
-    .column
-      .box
-        .image
-          = video_tag 'show_game_list.mp4', playsinline: true, autoplay: true, loop: true, muted: true
-    .column
-      p
-        |より詳細な試合情報を知りたい場合はチームをクリックしてください。<br />今後の試合予定に加えて、これまでの試合結果も確認することができます。
+container
+  section.secound-description-background-color.p-6.border-top.border-bottom
+    .columns
+      .column.is-three-fifths.my-auto
+        .box
+          .image
+            = video_tag 'show_game_list.mp4', playsinline: true, autoplay: true, loop: true, muted: true
+      .column.my-auto
+        h2.is-size-2.is-size-4-mobile.has-text-weight-bold.py-3.has-text-centered.mb-4
+          span.has-text-white
+            | 前後1ヶ月の
+          span.br.has-text-white
+            | 試合予定・試合結果
+        p.is-size-5.is-size-7-mobile.br.secound-description-text-color
+          span
+            | より詳細な試合情報を知りたい場合はチームをクリックしてください。
+          span.br
+            | 今後の試合予定に加えて、これまでの試合結果も確認することができます。

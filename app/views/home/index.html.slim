@@ -1,12 +1,16 @@
 container
   section.top-view
-    = image_tag 'top-page-view.svg'
-    p.is-size-3.is-size-5-mobile.has-text-centered.has-text-weight-bold.mt-5
-      | Football MyTeamは、あなたが応援しているチームと<br />そのライバルチームのリーグ戦・試合情報を<br />簡単に知ることができるサービスです。
-    .has-text-centered.mt-3
-      .button.color-button
-        = link_to 'Sign up', new_user_registration_path, class: 'has-text-white'
-      = render 'schedules_description'
-      = render 'match_schedules_and_result_description'
-      = render 'league_list_description'
-      = render 'competitor_select_description'
+    .h2
+      = image_tag 'top-page-view.svg'
+      p.is-size-3.is-size-6-mobile.has-text-centered.has-text-weight-bold.my-5
+        span
+          | Football MyTeamは、あなたが登録したチームの
+        span.br
+          | 順位表と試合予定・結果を一覧表示できるサービスです
+      .has-text-centered.mt-3
+        .button.is-large.color-button
+          = link_to 'Sign up', new_user_registration_path, class: 'has-text-white'
+        = render 'schedules_description'
+        = render 'match_schedules_and_result_description'
+        = render 'league_list_description'
+        = render 'competitor_select_description'

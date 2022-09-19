@@ -18,7 +18,7 @@ html
           .title.my-auto
             = link_to root_path do
               = image_tag('football-logo.svg', alt: 'football_myteam_logo', class: 'image title-logo')
-          a.navbar-burger.has-text-white role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
+          a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
             span aria-hidden="true"
               |
             span aria-hidden="true"
@@ -34,10 +34,10 @@ html
                 = link_to 'ACCOUNT', edit_user_registration_path, class: 'column burger-menu-item navbar-item has-text-weight-medium'
           .navbar-end.mt-4
             - if user_signed_in?
-                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-small is-rounded m-auto'
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-rounded m-auto'
             - else
               .navbar-item
-                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-small is-rounded m-auto'
+                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-rounded m-auto'
       - if notice
         #flash.notice.flash-messege-position.is-size-4.has-text-centered.has-text-info.has-background-info-light.mx-auto
           = notice
@@ -47,7 +47,7 @@ html
             | Failed
           span.br.is-size-6.has-text-danger
             = alert
-    main
+    main.mt-6
       = yield
     footer
       = render 'footer'

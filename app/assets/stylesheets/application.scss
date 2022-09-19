@@ -4,7 +4,7 @@
 $main: #3da9fc;
 $border-color: #DDD;
 $app-color: #6246ea;
-$button-color: #3da9fc;
+$button-color: #6246ea;
 
 body {
   display: flex;
@@ -14,6 +14,18 @@ body {
 
 main {
   flex: 1;
+}
+
+.first-description-background-color {
+  background-color: #7d6ae0;
+}
+
+.secound-description-background-color {
+  background-color: #151617;
+}
+
+.secound-description-text-color {
+  color: #a7a9be;
 }
 
 section.top-view {
@@ -241,7 +253,7 @@ input.how-to-team-select:hover {
 }
 
 .match-data {
-  @tablet tablet{
+  @include tablet{
     width: 32rem;
   }
   @include mobile {
@@ -255,7 +267,7 @@ input.how-to-team-select:hover {
 
 /* 対戦予定コンペティションのロゴ */
 .next-match-competition-logo {
-    width: 3rem;
+  width: 3rem;
 }
 
 .next-match-venu {
