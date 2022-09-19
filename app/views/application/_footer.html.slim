@@ -1,12 +1,12 @@
-footer.navbar.pt-3.mt-6
-  .hero-body
-    .has-text-centered
-      .columns
-        .column.p.is-one-third
-          = link_to '利用規約', terms_of_service_path, class: 'has-text-white'
-        .column.p.is-one-third
-          = link_to 'プライバシポリシー', privacy_policy_path, class: 'has-text-white'
-        .column.p.is-one-third
-          = link_to 'GitHub Project', 'https://github.com/R-Tsukada/football-calendar', class: 'has-text-white'
-    .content.has-text-centered.mt-5
-      = link_to '@ryo0270590', 'https://twitter.com/ryo02730590', class: 'has-text-white'
+section
+  .navbar.border-top
+    .hero-body.has-text-centered
+      .columns.is-mobile
+        .column.p.is-one-third.is-size-7-mobile
+          = link_to '利用規約', terms_of_service_path
+        .column.p.is-one-third.is-size-7-mobile
+          = link_to 'プライバシポリシー', privacy_policy_path
+        .column.p.is-one-third.is-size-7-mobile
+          = link_to 'GitHub Project', 'https://github.com/R-Tsukada/football-calendar'
+      .content.is-size-7-mobile
+        = link_to '@ryo0270590', 'https://twitter.com/ryo02730590'

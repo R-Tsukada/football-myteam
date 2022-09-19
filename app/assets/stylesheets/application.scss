@@ -1,8 +1,10 @@
 @import "bulma";
 @import "font-awesome";
 
-$main: #6246ea;
+$main: #3da9fc;
 $border-color: #DDD;
+$app-color: #6246ea;
+$button-color: #3da9fc;
 
 body {
   display: flex;
@@ -12,6 +14,16 @@ body {
 
 main {
   flex: 1;
+}
+
+section.top-view {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.top-page {
+  background-image: url(../images/top-page-view.svg);
+  padding-top: 10vh;
 }
 
 .flash-messege-position {
@@ -33,12 +45,16 @@ main {
 	white-space: pre ;
 }
 
-.has-background-main {
-  background-color: $main;
+.border-bottom {
+  border-bottom: solid 1px $border-color;
 }
 
-.hero-body {
-  background-color: #6246ea;
+.border-top {
+  border-top: solid 1px $border-color;
+}
+
+.has-background-main {
+  background-color: $main;
 }
 
 .title-logo {
@@ -199,9 +215,6 @@ input.how-to-team-select:hover {
   opacity: 0.6;
 }
 
-/* /schedulesページ */
-$app-color: #6246ea;
-
 /* myteamのカラー */
 .favorite-team-tag {
   background-color: $app-color;
@@ -289,9 +302,6 @@ $app-color: #6246ea;
     width: 20rem;
   }
 }
-
-/* ボタン */
-$button-color: #6246ea;
 
 .color-button {
   background-color: $button-color;
