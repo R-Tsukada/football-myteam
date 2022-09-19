@@ -1,8 +1,10 @@
 @import "bulma";
 @import "font-awesome";
 
-$main: #6246ea;
+$main: #3da9fc;
 $border-color: #DDD;
+$app-color: #6246ea;
+$button-color: #6246ea;
 
 body {
   display: flex;
@@ -14,12 +16,57 @@ main {
   flex: 1;
 }
 
-.has-background-main {
-  background-color: $main;
+.first-description-background-color {
+  background-color: #7d6ae0;
 }
 
-.hero-body {
-  background-color: #6246ea;
+.secound-description-background-color {
+  background-color: #151617;
+}
+
+.secound-description-text-color {
+  color: #a7a9be;
+}
+
+section.top-view {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.top-page {
+  background-image: url(../images/top-page-view.svg);
+  padding-top: 10vh;
+}
+
+.flash-messege-position {
+  margin-top: 6rem;
+}
+
+.flash-messega-box {
+  border: 1px solid;
+  border-radius: 0.75px;
+  width: 16rem
+}
+
+.flash-none-display {
+  opacity: 0;
+}
+
+.br::before {
+  content: "\A" ;
+	white-space: pre ;
+}
+
+.border-bottom {
+  border-bottom: solid 1px $border-color;
+}
+
+.border-top {
+  border-top: solid 1px $border-color;
+}
+
+.has-background-main {
+  background-color: $main;
 }
 
 .title-logo {
@@ -180,9 +227,6 @@ input.how-to-team-select:hover {
   opacity: 0.6;
 }
 
-/* /schedulesページ */
-$app-color: #6246ea;
-
 /* myteamのカラー */
 .favorite-team-tag {
   background-color: $app-color;
@@ -209,7 +253,7 @@ $app-color: #6246ea;
 }
 
 .match-data {
-  @tablet tablet{
+  @include tablet{
     width: 32rem;
   }
   @include mobile {
@@ -223,7 +267,7 @@ $app-color: #6246ea;
 
 /* 対戦予定コンペティションのロゴ */
 .next-match-competition-logo {
-    width: 3rem;
+  width: 3rem;
 }
 
 .next-match-venu {
@@ -270,9 +314,6 @@ $app-color: #6246ea;
     width: 20rem;
   }
 }
-
-/* ボタン */
-$button-color: #6246ea;
 
 .color-button {
   background-color: $button-color;

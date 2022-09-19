@@ -13,37 +13,41 @@ html
       = render 'google_analytics'
   body
     header
-      .navbar.is-transparent.is-fixed-top.p-2.has-background-main
+      .navbar.is-transparent.is-fixed-top.p-2.border-bottom
         .navbar-brand
           .title.my-auto
             = link_to root_path do
               = image_tag('football-logo.svg', alt: 'football_myteam_logo', class: 'image title-logo')
-          a.navbar-burger.has-text-white role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
+          a.navbar-burger role="button" aria-label="menu" aria-expanded="false" data-target="targetMenu"
             span aria-hidden="true"
               |
             span aria-hidden="true"
               |
             span aria-hidden="true"
               |
-        #targetMenu.navbar-menu.has-background-main
+        #targetMenu.navbar-menu
           .navbar-start.m-auto
             - if user_signed_in?
               .columns
-                = link_to 'HOME', root_path, class: 'column burger-menu-item navbar-item home has-text-white has-text-weight-medium'
-                = link_to 'TEAM', '/leagues', class: 'column burger-menu-item navbar-item has-text-white has-text-weight-medium'
-                = link_to 'ACCOUNT', edit_user_registration_path, class: 'column burger-menu-item navbar-item has-text-white has-text-weight-medium'
+                = link_to 'HOME', root_path, class: 'column burger-menu-item navbar-item home has-text-weight-medium'
+                = link_to 'TEAM', '/leagues', class: 'column burger-menu-item navbar-item has-text-weight-medium'
+                = link_to 'ACCOUNT', edit_user_registration_path, class: 'column burger-menu-item navbar-item has-text-weight-medium'
           .navbar-end.mt-4
             - if user_signed_in?
-                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-small is-rounded m-auto'
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'burger-menu-item navbar-item button is-rounded m-auto'
             - else
               .navbar-item
-                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-small is-rounded m-auto'
-      p
-        .notice.is-size-4.p-5.has-text-centered.has-text-info
+                = link_to 'Log in', new_user_session_path, class: 'burger-menu-item navbar-item button is-rounded m-auto'
+      - if notice
+        #flash.notice.flash-messege-position.is-size-4.has-text-centered.has-text-info.has-background-info-light.mx-auto
           = notice
-      p
-        .alert.is-size-4.p-5.has-text-centered.has-text-danger
-          = alert
-    main
+      - if alert
+        .alert.flash-messege-position.has-text-centered.has-background-danger-light.mx-auto
+          span.is-size-4.has-text-danger
+            | Failed
+          span.br.is-size-6.has-text-danger
+            = alert
+    main.mt-6
       = yield
-    = render 'footer'
+    footer
+      = render 'footer'

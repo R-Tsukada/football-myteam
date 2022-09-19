@@ -6,6 +6,7 @@
 import Rails from '@rails/ujs'
 import 'main.js'
 import 'head.js'
+import 'flash_message.js'
 import * as ActiveStorage from '@rails/activestorage'
 
 Rails.start()
