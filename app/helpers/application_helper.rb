@@ -20,7 +20,7 @@ module ApplicationHelper
       twitter: {
         title: :title,
         card: 'summary_large_image',
-        site: '@ryo0270590',
+        site: '@ryo02730590',
         description: :description,
         image: image_url('first-view-image.png'),
         domain: 'https://football-myteam.herokuapp.com/'
