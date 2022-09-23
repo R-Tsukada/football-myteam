@@ -15,14 +15,14 @@ module ApplicationHelper
         title: :title,
         description: :description,
         url: 'https://football-myteam.herokuapp.com/',
-        image: image_url('top-page-view.svg')
+        image: image_url('first-view-image.png')
       },
       twitter: {
         title: :title,
         card: 'summary_large_image',
         site: '@ryo0270590',
         description: :description,
-        image: image_url('top-page-view.svg'),
+        image: image_url('first-view-image.png'),
         domain: 'https://football-myteam.herokuapp.com/'
       }
     }
