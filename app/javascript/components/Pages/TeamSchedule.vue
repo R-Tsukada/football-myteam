@@ -15,22 +15,22 @@
           <BaseButton class="my-1" @click="dataUpdate" label="Update" />
         </div>
         <TeamScheduleBox
-          :standings="data.favoriteTeams"
+          :standings="favoriteStanding[0]"
           :matchSchedules="favoriteMatches"
           :favoriteId="data.favorite.team.id" />
         <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
         <TeamScheduleBox
-          :standings="data.firstCompetitorTeams"
+          :standings="firstCompetitorStanding[0]"
           :matchSchedules="firstCompetitorTeamsMatches"
           :favoriteTeamPoints="data.favoriteTeamPoints" />
         <TeamScheduleBox
           v-if="data.competitors[1]"
-          :standings="data.secondCompetitorTeams"
+          :standings="secondCompetitorStanding[0]"
           :matchSchedules="secondCompetitorTeamsMatches"
           :favoriteTeamPoints="data.favoriteTeamPoints" />
         <TeamScheduleBox
           v-if="data.competitors[2]"
-          :standings="data.thirdCompetitorTeams"
+          :standings="thirdCompetitorStanding[0]"
           :matchSchedules="thirdCompetitorTeamsMatches"
           :favoriteTeamPoints="data.favoriteTeamPoints" />
       </div>
@@ -58,14 +58,12 @@ export default {
     const data = reactive({
       favoriteTeams: [],
       favoriteTeamPoints: '',
-      firstCompetitorTeams: [],
-      secondCompetitorTeams: [],
-      thirdCompetitorTeams: [],
       matches: [],
       favorite: [],
       competitors: [],
       teams: [],
-      isHome: 'HOME'
+      isHome: 'HOME',
+      standings: []
     })
 
     const setFavorite = async () => {
@@ -90,15 +88,13 @@ export default {
         })
     }
 
-    const setTeamSchedules = async () => {
+    const setStandings = async () => {
       await axios
         .get('/api/standings')
         .then((response) => {
+          data.standings = response.data
           data.favoriteTeams = response.data[0]
           data.favoriteTeamPoints = data.favoriteTeams.points
-          data.firstCompetitorTeams = response.data[1]
-          data.secondCompetitorTeams = response.data[2]
-          data.thirdCompetitorTeams = response.data[3]
         })
         .catch((error) => {
           console.log(error.message)
@@ -116,6 +112,7 @@ export default {
         })
     }
 
+    /* gameCountで使われる */
     const setTeams = async () => {
       await axios
         .get('/api/team_filter')
@@ -126,6 +123,8 @@ export default {
           console.log(error.message)
         })
     }
+
+    const gameCount = computed(() => data.teams.length * 2)
 
     const updateMatches = async () => {
       await axios
@@ -187,6 +186,22 @@ export default {
       updateStadings()
     }
 
+    const favoriteStanding = computed(() =>
+      data.standings.filter((f) => f.team_id === data.favorite.team.id)
+    )
+
+    const firstCompetitorStanding = computed(() =>
+      data.standings.filter((f) => f.team_id === data.competitors[0].team_id)
+    )
+
+    const secondCompetitorStanding = computed(() =>
+      data.standings.filter((f) => f.team_id === data.competitors[1].team_id)
+    )
+
+    const thirdCompetitorStanding = computed(() =>
+      data.standings.filter((f) => f.team_id === data.competitors[2].team_id)
+    )
+
     const favoriteMatches = computed(() =>
       data.matches.filter((f) => f.team_id === data.favorite.team.id)
     )
@@ -209,10 +224,8 @@ export default {
       return `${yyyy}-${mm}-${dd}`
     }
 
-    const gameCount = computed(() => data.teams.length * 2)
-
     onMounted(() => {
-      setTeamSchedules(),
+      setStandings(),
         setMatchSchedules(),
         setFavorite(),
         setCompetitor(),
@@ -233,7 +246,11 @@ export default {
       updateStadings,
       date,
       formatDate,
-      gameCount
+      gameCount,
+      favoriteStanding,
+      firstCompetitorStanding,
+      secondCompetitorStanding,
+      thirdCompetitorStanding
     }
   }
 }
