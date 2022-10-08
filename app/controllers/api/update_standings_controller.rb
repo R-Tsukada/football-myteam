@@ -12,7 +12,7 @@ class API::UpdateStandingsController < ApplicationController
 
   def api_request
     Standing.all.where(team_id: selected_team_ids).delete_all
-    StandingRequest.league(api_request_url)
+    AccessLog.all(api_request_url)
   end
 
   def api_request_url

@@ -17,7 +17,7 @@ class API::StandingsController < ApplicationController
   private
 
   def set_standing
-    StandingRequest.league(api_request_url)
+    AccessLog.all(api_request_url)
   end
 
   def api_request_url
