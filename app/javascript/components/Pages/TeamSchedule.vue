@@ -141,11 +141,9 @@ export default {
       await axios
         .get('/api/update_standings')
         .then((response) => {
+          data.standings = response.data
           data.favoriteTeams = response.data[0]
           data.favoriteTeamPoints = data.favoriteTeams.points
-          data.firstCompetitorTeams = response.data[1]
-          data.secondCompetitorTeams = response.data[2]
-          data.thirdCompetitorTeams = response.data[3]
         })
         .catch((error) => {
           console.log(error.message)
@@ -154,11 +152,9 @@ export default {
 
     const resetMatchesAndStandings = () => {
       data.matches = []
+      data.standings = []
       data.favoriteTeams = []
       data.favoriteTeamPoints = []
-      data.firstCompetitorTeams = []
-      data.secondCompetitorTeams = []
-      data.thirdCompetitorTeams = []
     }
 
     const toDoubleDigits = function (num) {
