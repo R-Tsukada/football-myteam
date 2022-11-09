@@ -109,7 +109,6 @@ export default {
         })
     }
 
-    /* gameCountで使われる */
     const setTeams = async () => {
       await axios
         .get('/api/team_filter')
@@ -122,35 +121,6 @@ export default {
     }
 
     const gameCount = computed(() => data.teams.length * 2)
-
-    const updateMatches = async () => {
-      await axios
-        .get('/api/update_matches')
-        .then((response) => {
-          data.matches = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
-    }
-
-    const updateStadings = async () => {
-      await axios
-        .get('/api/update_standings')
-        .then((response) => {
-          data.standings = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
-    }
-
-    const resetMatchesAndStandings = () => {
-      data.matches = []
-      data.standings = []
-      data.favoriteTeams = []
-      data.favoriteTeamPoints = []
-    }
 
     const toDoubleDigits = function (num) {
       num += ''
@@ -169,12 +139,6 @@ export default {
       const hh = toDoubleDigits(getDate.getHours())
       const min = toDoubleDigits(getDate.getMinutes())
       return `${mm}/${dd}(${week})${hh}:${min}`
-    }
-
-    const dataUpdate = async () => {
-      resetMatchesAndStandings()
-      updateMatches()
-      updateStadings()
     }
 
     const favoriteStanding = computed(() =>
@@ -231,10 +195,6 @@ export default {
       thirdCompetitorTeamsMatches,
       toDoubleDigits,
       updateDate,
-      dataUpdate,
-      resetMatchesAndStandings,
-      updateMatches,
-      updateStadings,
       date,
       formatDate,
       gameCount,
