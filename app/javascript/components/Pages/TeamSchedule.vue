@@ -21,17 +21,17 @@
         <TeamScheduleBox
           :standings="firstCompetitorStanding[0]"
           :matchSchedules="firstCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[1]"
           :standings="secondCompetitorStanding[0]"
           :matchSchedules="secondCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[2]"
           :standings="thirdCompetitorStanding[0]"
           :matchSchedules="thirdCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
       </div>
       <!-- v-else -->
     </div>
@@ -139,8 +139,6 @@ export default {
         .get('/api/update_standings')
         .then((response) => {
           data.standings = response.data
-          data.favoriteTeams = response.data[0]
-          data.favoriteTeamPoints = data.favoriteTeams.points
         })
         .catch((error) => {
           console.log(error.message)
