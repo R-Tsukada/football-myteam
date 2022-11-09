@@ -13,7 +13,7 @@ RSpec.describe MatchRequest, type: :model do
   it 'is ensure that the MatchRequest.league method is executed' do
     api_matche_mock = double(matches)
     allow(MatchRequest).to receive(:league).and_return(api_matche_mock)
-    expect { MatchRequest.league(registered_teames) }.not_to raise_error
+    expect { MatchRequest.league }.not_to raise_error
   end
 
   it 'is ensure that the MatchRequest.save_match method is executed' do

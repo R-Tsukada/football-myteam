@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MatchRequest
-  def self.league(api_request_url)
+  def self.league
     api_request_url.each do |url|
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
@@ -13,33 +13,37 @@ class MatchRequest
 
       response = http.request(request)
       results = JSON.parse(response.body)
-      api = results
-      create(api)
+      api_request = results['response']
+      api_request.each { |api| create(api) }
     end
   rescue StandardError => e
     Rails.logger.debug e.full_message
   end
 
   def self.create(api)
-    api['response'].each_index do |a|
-      match = Match.new
-      match.season = [api][0]['parameters']['season']
-      current_team = Team.find_by(api_id: [api][0]['parameters']['team'])
-      match.team_id = current_team.id
-      match.date = [api][0]['response'][a]['fixture']['date']
-      stadium = [api][0]['response'][a]['fixture']['venue']['name']
-      match.home_and_away = stadium == current_team.stadium ? 'HOME' : 'AWAY'
-      match.competition_name = [api][0]['response'][a]['league']['name']
-      match.competition_logo = [api][0]['response'][a]['league']['logo']
-      match.home_team_name = [api][0]['response'][a]['teams']['home']['name']
-      match.away_team_name = [api][0]['response'][a]['teams']['away']['name']
-      match.team_name = match.home_team_name == current_team.name ? match.away_team_name : match.home_team_name
-      match.home_logo = [api][0]['response'][a]['teams']['home']['logo']
-      match.away_logo = [api][0]['response'][a]['teams']['away']['logo']
-      match.team_logo = match.home_logo == current_team.logo ? match.away_logo : match.home_logo
-      match.home_score = [api][0]['response'][a]['score']['fulltime']['home']
-      match.away_score = [api][0]['response'][a]['score']['fulltime']['away']
-      match.save
+    match = Match.new
+    match.season = api['league']['season']
+    match.date = api['fixture']['date']
+    match.home_and_away = api['fixture']['venue']['name']
+    match.competition_name = api['league']['name']
+    match.competition_logo = api['league']['logo']
+    match.home_team_name = api['teams']['home']['name']
+    match.away_team_name = api['teams']['away']['name']
+    match.home_logo = api['teams']['home']['logo']
+    match.away_logo = api['teams']['away']['logo']
+    match.home_score = api['goals']['home']
+    match.away_score = api['goals']['away']
+    team = Team.find_by(api_id: api['teams']['home']['id'])
+    match.team_id = team.id
+    match.team_name = match.home_team_name
+    match.team_logo = match.home_logo
+    match.save
+  end
+
+  def self.api_request_url
+    league_api_id = League.all.map(&:api_id)
+    league_api_id.map do |league|
+      URI("https://v3.football.api-sports.io/fixtures?&league=#{league}&season=#{Year.season}&from=#{Time.zone.now.prev_month.strftime('%Y-%m-%d')}&to=#{Time.zone.now.next_month.strftime('%Y-%m-%d')}")
     end
   end
 end
