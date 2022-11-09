@@ -21,11 +21,6 @@ class API::StandingsController < ApplicationController
     AccessLog.all
   end
 
-  def api_request_url
-    team_numbers = competitor_team_api_id.unshift(favorite_team.api_id)
-    team_numbers.map { |number| URI("https://v3.football.api-sports.io/standings?league=#{league_api_id(favorite_team)}&season=#{Year.season}&team=#{number}") }
-  end
-
   def selected_team_ids
     competitor_team_id.unshift(current_user.favorite.team.id)
   end
