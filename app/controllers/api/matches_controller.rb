@@ -6,7 +6,8 @@ class API::MatchesController < ApplicationController
   def index
     teams = selected_team_ids.map { |id| Team.find(id) }
     team_names = teams.map(&:name)
-    @match = Match.all.order(:date).where(date: Time.zone.today..).where(home_team_name: team_names).or(Match.where(away_team_name: team_names))
+    matches = Match.all.order(:date).where(home_team_name: team_names).or(Match.where(away_team_name: team_names))
+    @match = matches.select { |match| match.date >= Time.zone.today }
   end
 
   def show

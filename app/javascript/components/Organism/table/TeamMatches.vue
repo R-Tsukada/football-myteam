@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
   <div class="favorite-team-schedules py-0">
     <div
@@ -8,28 +9,39 @@
         :src="match.competition_logo"
         alt="favorite-team-next-match"
         class="image next-match-competition-logo" />
-      <p
-        class="next-match-venu has-text-white mr-1"
-        v-bind:class="
-          data.isHome === match.home_and_away
-            ? 'has-background-success'
-            : 'has-background-danger'
-        ">
-        {{ match.home_and_away }}
-      </p>
+      <div
+        v-if="currentTeam.stadium === match.home_and_away"
+        class="next-match-venu">
+        <p class="has-text-white mr-1 has-background-success">HOME</p>
+      </div>
+      <div v-else class="next-match-venu">
+        <p class="has-text-white mr-1 has-background-danger">AWAY</p>
+      </div>
       <!-- next-match-venu -->
       <p class="next-match-date">
         {{ matchDay(match.date) }}
       </p>
       <!-- next-match-date -->
-      <img
-        :src="match.team_logo"
-        alt="match-team-logo"
-        class="image next-match-competition-logo" />
-      <p
-        class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
-        {{ match.team_name }}
-      </p>
+      <div v-if="currentTeam.name === match.home_team_name">
+        <img
+          :src="match.away_logo"
+          alt="match-team-logo"
+          class="image next-match-competition-logo" />
+        <p
+          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
+          {{ match.away_team_name }}
+        </p>
+      </div>
+      <div v-else>
+        <img
+          :src="match.home_logo"
+          alt="match-team-logo"
+          class="image next-match-competition-logo" />
+        <p
+          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
+          {{ match.home_team_name }}
+        </p>
+      </div>
       <!-- match-name -->
     </div>
     <!-- next-match -->
@@ -40,7 +52,7 @@
 <script>
 import { reactive } from 'vue'
 export default {
-  props: ['matchSchedules'],
+  props: ['matchSchedules', 'currentTeam'],
   setup() {
     const data = reactive({
       isHome: 'HOME',

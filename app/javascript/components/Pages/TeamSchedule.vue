@@ -15,21 +15,25 @@
         </div>
         <TeamScheduleBox
           :standings="favoriteStanding[0]"
+          :currentTeam="data.favorite.team"
           :matchSchedules="favoriteMatches"
           :favoriteId="data.favorite.team.id" />
         <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
         <TeamScheduleBox
           :standings="firstCompetitorStanding[0]"
+          :currentTeam="data.competitors[0]"
           :matchSchedules="firstCompetitorTeamsMatches"
           :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[1]"
           :standings="secondCompetitorStanding[0]"
+          :currentTeam="data.competitors[1]"
           :matchSchedules="secondCompetitorTeamsMatches"
           :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[2]"
           :standings="thirdCompetitorStanding[0]"
+          :currentTeam="data.competitors[2]"
           :matchSchedules="thirdCompetitorTeamsMatches"
           :favoriteTeamPoints="favoriteStanding[0].points" />
       </div>
@@ -146,28 +150,44 @@ export default {
     )
 
     const firstCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[0].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[0].id)
     )
 
     const secondCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[1].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[1].id)
     )
 
     const thirdCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[2].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[2].id)
     )
 
     const favoriteMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.favorite.team.id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.favorite.team.name ||
+          f.away_team_name === data.favorite.team.name
+      )
     )
     const firstCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[0].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[0].name ||
+          f.away_team_name === data.competitors[0].name
+      )
     )
     const secondCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[1].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[1].name ||
+          f.away_team_name === data.competitors[1].name
+      )
     )
     const thirdCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[2].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[2].name ||
+          f.away_team_name === data.competitors[2].name
+      )
     )
 
     const date = new Date()

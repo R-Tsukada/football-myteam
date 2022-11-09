@@ -1,1 +1,1 @@
-json.team @favorite_team, :id, :home_city, :last_season_rank, :league_id
+json.team @favorite_team, :id, :name, :home_city, :last_season_rank, :league_id, :stadium
