@@ -4,7 +4,7 @@ class AccessLog
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  def self.all(url)
-    StandingRequest.league(url)
+  def self.all
+    StandingRequest.league
   end
 end

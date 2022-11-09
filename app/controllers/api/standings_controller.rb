@@ -17,7 +17,8 @@ class API::StandingsController < ApplicationController
   private
 
   def set_standing
-    AccessLog.all(api_request_url)
+    Standing.delete_all
+    AccessLog.all
   end
 
   def api_request_url

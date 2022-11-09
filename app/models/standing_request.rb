@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class StandingRequest
-  def self.league(url)
-    url.each do |n|
+  def self.league
+    api_request_url.each do |n|
       http = Net::HTTP.new(n.host, n.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -13,8 +13,8 @@ class StandingRequest
 
       response = http.request(request)
       results = JSON.parse(response.body)
-      api = results['response'][0]['league']['standings'][0][0]
-      create(api)
+      api = results['response'][0]['league']['standings'][0]
+      api.each { |a| create(a) }
     end
   rescue StandardError => e
     Rails.logger.debug e.full_message
@@ -31,5 +31,11 @@ class StandingRequest
     standing.points = api['points']
     standing.played = api['all']['played']
     standing.save
+  end
+
+  def self.api_request_url
+    leagues = League.all
+    league_api_id = leagues.map(&:api_id)
+    league_api_id.map { |league| URI("https://v3.football.api-sports.io/standings?league=#{league}&season=#{Year.season}") }
   end
 end

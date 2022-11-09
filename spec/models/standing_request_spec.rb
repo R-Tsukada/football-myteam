@@ -12,7 +12,7 @@ RSpec.describe StandingRequest, type: :model do
   it 'is ensure that the StandingRequest.request_response method is executed' do
     standings_mock = double(standings)
     allow(StandingRequest).to receive(:league).and_return(standings_mock)
-    expect { StandingRequest.league(registered_teames) }.not_to raise_error
+    expect { StandingRequest.league }.not_to raise_error
   end
 
   it 'is ensure that the StandingRequest.save_standing method is executed' do
