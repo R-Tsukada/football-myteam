@@ -4,8 +4,6 @@ class API::MatchesController < ApplicationController
   before_action :set_show_page, only: [:show]
 
   def index
-    teams = selected_team_ids.map { |id| Team.find(id) }
-    team_names = teams.map(&:name)
     matches = Match.all.order(:date).where(home_team_name: team_names).or(Match.where(away_team_name: team_names))
     @match = matches.select { |match| match.date >= Time.zone.today }
   end
@@ -16,12 +14,13 @@ class API::MatchesController < ApplicationController
 
   private
 
-  def set_show_page
-    @team_id = Team.find(params[:id])
+  def team_names
+    teams = selected_team_ids.map { |id| Team.find(id) }
+    teams.map(&:name)
   end
 
-  def set_match
-    MatchAccessLog.all
+  def set_show_page
+    @team_id = Team.find(params[:id])
   end
 
   def selected_team_ids

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MatchRequest
-  def self.league
+  def self.call
     api_request_url.each do |url|
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
@@ -14,13 +14,13 @@ class MatchRequest
       response = http.request(request)
       results = JSON.parse(response.body)
       api_request = results['response']
-      api_request.each { |api| create(api) }
+      api_request.each { |api| data_save(api) }
     end
   rescue StandardError => e
     Rails.logger.debug e.full_message
   end
 
-  def self.create(api)
+  def self.data_save(api)
     match = Match.new
     match.season = api['league']['season']
     match.date = api['fixture']['date']

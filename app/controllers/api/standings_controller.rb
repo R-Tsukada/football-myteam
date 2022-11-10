@@ -2,7 +2,6 @@
 
 class API::StandingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :api_request
 
   def index
     @standing = Standing.where(team_id: selected_team_ids)
@@ -10,16 +9,7 @@ class API::StandingsController < ApplicationController
 
   def show; end
 
-  def api_request
-    set_standing if current_user.favorite.team.standing.blank?
-  end
-
   private
-
-  def set_standing
-    Standing.delete_all
-    AccessLog.all
-  end
 
   def selected_team_ids
     competitor_team_id.unshift(current_user.favorite.team.id)

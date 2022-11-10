@@ -5,6 +5,6 @@ class StandingAccessLog
   include ActiveModel::Attributes
 
   def self.all
-    StandingRequest.league
+    StandingRequest.call
   end
 end

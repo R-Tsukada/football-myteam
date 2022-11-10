@@ -5,6 +5,6 @@ class MatchAccessLog
   include ActiveModel::Attributes
 
   def self.all
-    MatchRequest.league
+    MatchRequest.call
   end
 end
