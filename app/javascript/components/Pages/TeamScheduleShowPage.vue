@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2
-      class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto mb-2"
+      class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto my-6"
       v-if="selectedTeam[0]">
       <span
         class="favorite-team-tag my-auto mr-2"
