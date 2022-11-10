@@ -41,12 +41,16 @@
         <div
           class="content"
           v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
-          <MatchScheduleList :matchScheduleFilter="matchScheduleFilter" />
+          <MatchScheduleList
+            :matchScheduleFilter="matchScheduleFilter"
+            :selectedTeam="selectedTeam" />
         </div>
         <div
           class="content"
           v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-          <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
+          <MatchResultList
+            :matchResultFilter="matchResultsFilter.reverse()"
+            :selectedTeam="selectedTeam" />
         </div>
       </div>
       <!-- tab-contents v-else -->
