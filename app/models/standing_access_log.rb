@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AccessLog
+class StandingAccessLog
   include ActiveModel::Model
   include ActiveModel::Attributes
 
