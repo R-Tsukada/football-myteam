@@ -12,27 +12,30 @@
       <div v-else>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
-          <BaseButton class="my-1" @click="dataUpdate" label="Update" />
         </div>
         <TeamScheduleBox
           :standings="favoriteStanding[0]"
+          :currentTeam="data.favorite.team"
           :matchSchedules="favoriteMatches"
           :favoriteId="data.favorite.team.id" />
         <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
         <TeamScheduleBox
           :standings="firstCompetitorStanding[0]"
+          :currentTeam="data.competitors[0]"
           :matchSchedules="firstCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[1]"
           :standings="secondCompetitorStanding[0]"
+          :currentTeam="data.competitors[1]"
           :matchSchedules="secondCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
         <TeamScheduleBox
           v-if="data.competitors[2]"
           :standings="thirdCompetitorStanding[0]"
+          :currentTeam="data.competitors[2]"
           :matchSchedules="thirdCompetitorTeamsMatches"
-          :favoriteTeamPoints="data.favoriteTeamPoints" />
+          :favoriteTeamPoints="favoriteStanding[0].points" />
       </div>
       <!-- v-else -->
     </div>
@@ -46,13 +49,11 @@ import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import TeamScheduleBox from '../Organism/table/TeamScheduleBox.vue'
 import MatchListLoader from '../atoms/loader/MatchListLoader'
-import BaseButton from '../atoms/Button/BaseButton.vue'
 
 export default {
   components: {
     MatchListLoader,
-    TeamScheduleBox,
-    BaseButton
+    TeamScheduleBox
   },
   setup() {
     const data = reactive({
@@ -112,7 +113,6 @@ export default {
         })
     }
 
-    /* gameCountで使われる */
     const setTeams = async () => {
       await axios
         .get('/api/team_filter')
@@ -125,41 +125,6 @@ export default {
     }
 
     const gameCount = computed(() => data.teams.length * 2)
-
-    const updateMatches = async () => {
-      await axios
-        .get('/api/update_matches')
-        .then((response) => {
-          data.matches = response.data
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
-    }
-
-    const updateStadings = async () => {
-      await axios
-        .get('/api/update_standings')
-        .then((response) => {
-          data.favoriteTeams = response.data[0]
-          data.favoriteTeamPoints = data.favoriteTeams.points
-          data.firstCompetitorTeams = response.data[1]
-          data.secondCompetitorTeams = response.data[2]
-          data.thirdCompetitorTeams = response.data[3]
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
-    }
-
-    const resetMatchesAndStandings = () => {
-      data.matches = []
-      data.favoriteTeams = []
-      data.favoriteTeamPoints = []
-      data.firstCompetitorTeams = []
-      data.secondCompetitorTeams = []
-      data.thirdCompetitorTeams = []
-    }
 
     const toDoubleDigits = function (num) {
       num += ''
@@ -180,39 +145,49 @@ export default {
       return `${mm}/${dd}(${week})${hh}:${min}`
     }
 
-    const dataUpdate = async () => {
-      resetMatchesAndStandings()
-      updateMatches()
-      updateStadings()
-    }
-
     const favoriteStanding = computed(() =>
       data.standings.filter((f) => f.team_id === data.favorite.team.id)
     )
 
     const firstCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[0].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[0].id)
     )
 
     const secondCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[1].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[1].id)
     )
 
     const thirdCompetitorStanding = computed(() =>
-      data.standings.filter((f) => f.team_id === data.competitors[2].team_id)
+      data.standings.filter((f) => f.team_id === data.competitors[2].id)
     )
 
     const favoriteMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.favorite.team.id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.favorite.team.name ||
+          f.away_team_name === data.favorite.team.name
+      )
     )
     const firstCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[0].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[0].name ||
+          f.away_team_name === data.competitors[0].name
+      )
     )
     const secondCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[1].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[1].name ||
+          f.away_team_name === data.competitors[1].name
+      )
     )
     const thirdCompetitorTeamsMatches = computed(() =>
-      data.matches.filter((f) => f.team_id === data.competitors[2].team_id)
+      data.matches.filter(
+        (f) =>
+          f.home_team_name === data.competitors[2].name ||
+          f.away_team_name === data.competitors[2].name
+      )
     )
 
     const date = new Date()
@@ -240,10 +215,6 @@ export default {
       thirdCompetitorTeamsMatches,
       toDoubleDigits,
       updateDate,
-      dataUpdate,
-      resetMatchesAndStandings,
-      updateMatches,
-      updateStadings,
       date,
       formatDate,
       gameCount,

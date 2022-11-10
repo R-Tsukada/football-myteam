@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2
-      class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto mb-2"
+      class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto my-6"
       v-if="selectedTeam[0]">
       <span
         class="favorite-team-tag my-auto mr-2"
@@ -41,12 +41,16 @@
         <div
           class="content"
           v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
-          <MatchScheduleList :matchScheduleFilter="matchScheduleFilter" />
+          <MatchScheduleList
+            :matchScheduleFilter="matchScheduleFilter"
+            :selectedTeam="selectedTeam" />
         </div>
         <div
           class="content"
           v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
-          <MatchResultList :matchResultFilter="matchResultsFilter.reverse()" />
+          <MatchResultList
+            :matchResultFilter="matchResultsFilter.reverse()"
+            :selectedTeam="selectedTeam" />
         </div>
       </div>
       <!-- tab-contents v-else -->

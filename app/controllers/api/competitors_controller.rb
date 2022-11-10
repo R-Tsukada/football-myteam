@@ -5,8 +5,7 @@ class API::CompetitorsController < ApplicationController
   before_action :set_competitor_team, only: %i[create]
 
   def index
-    user = current_user
-    @competitor = user.competitor
+    @competitor = current_user.competitor.map { |c| Team.find(c.team_id) }
   end
 
   def create

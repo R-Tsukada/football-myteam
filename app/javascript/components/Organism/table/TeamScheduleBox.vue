@@ -10,6 +10,7 @@
         class="standing-data column is-three-fifths" />
       <TeamMatches
         :matchSchedules="matchSchedules.slice(0, 3)"
+        :currentTeam="currentTeam"
         class="match-data column is-two-fifths" />
     </div>
     <!--box-standing-and-matches-->
@@ -24,7 +25,13 @@ import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default {
-  props: ['standings', 'matchSchedules', 'favoriteTeamPoints', 'favoriteId'],
+  props: [
+    'standings',
+    'currentTeam',
+    'matchSchedules',
+    'favoriteTeamPoints',
+    'favoriteId'
+  ],
   components: {
     TeamMatches,
     StandingData

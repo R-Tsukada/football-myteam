@@ -11,15 +11,16 @@
             alt="competition_logo"
             class="competition-logo" />
         </div>
-        <p
-          class="home-and-away column has-text-white has-text-weight-bold my-auto"
-          v-bind:class="
-            data.isHome === schedule.home_and_away
-              ? 'has-background-success'
-              : 'has-background-danger'
-          ">
-          {{ schedule.home_and_away }}
-        </p>
+        <div
+          v-if="selectedTeam[0].stadium === schedule.home_and_away"
+          class="home-and-away column has-text-white has-text-weight-bold has-background-success my-auto">
+          <p>HOME</p>
+        </div>
+        <div
+          v-else
+          class="home-and-away column has-text-white has-text-weight-bold has-background-danger my-auto">
+          <p>AWAY</p>
+        </div>
         <p
           class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1">
           {{ matchDay(schedule.date) }}
@@ -60,7 +61,7 @@
 import { reactive } from 'vue'
 
 export default {
-  props: ['matchScheduleFilter'],
+  props: ['matchScheduleFilter', 'selectedTeam'],
   setup() {
     const data = reactive({
       isHome: 'HOME'
