@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: football_production
-  username: football
+  username: football-myteam
   password: <%= ENV['FOOTBALL_DATABASE_PASSWORD'] %>
