@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   db:
-    image: postgres
+    image: postgres:14.0
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
@@ -12,7 +12,7 @@ services:
     environment:
       SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
     volumes:
-      - .:/football
+      - .:/football-myteam
     environment:
       - WEBPACKER_DEV_SERVER_HOST=webpacker
     ports:
