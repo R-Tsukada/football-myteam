@@ -4,7 +4,11 @@ class StandingAccessLog
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  def self.all
-    StandingRequest.call
+  def initialize
+    @standing_request = StandingRequest.new
+  end
+
+  def all
+    @standing_request.call
   end
 end

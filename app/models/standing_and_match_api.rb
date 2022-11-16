@@ -4,7 +4,7 @@ class StandingAndMatchAPI
   def self.request
     Match.delete_all
     Standing.delete_all
-    StandingAccessLog.all
-    MatchAccessLog.all
+    StandingAccessLog.new.all
+    MatchAccessLog.new.all
   end
 end

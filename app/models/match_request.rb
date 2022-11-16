@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class MatchRequest
-  def self.call
-    api_request_url.each do |url|
+  def initialize
+    @build_url = BuildUrl.new
+  end
+
+  def call
+    @build_url.match.each do |url|
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -20,7 +24,7 @@ class MatchRequest
     Rails.logger.debug e.full_message
   end
 
-  def self.data_save(api)
+  def data_save(api)
     match = Match.new
     match.season = api['league']['season']
     match.date = api['fixture']['date']
@@ -38,12 +42,5 @@ class MatchRequest
     match.team_name = match.home_team_name
     match.team_logo = match.home_logo
     match.save
-  end
-
-  def self.api_request_url
-    league_api_id = League.all.map(&:api_id)
-    league_api_id.map do |league|
-      URI("https://v3.football.api-sports.io/fixtures?&league=#{league}&season=#{Year.season}&from=#{Time.zone.now.prev_month.strftime('%Y-%m-%d')}&to=#{Time.zone.now.next_month.strftime('%Y-%m-%d')}")
-    end
   end
 end
