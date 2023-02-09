@@ -34,7 +34,7 @@ Team.create(
     # --------- Premier ---------------
     {
       "id": 1,
-      "name": 'Man United',
+      "name": 'Manchester United',
       "code": 'MUN',
       "logo": 'https://media.api-sports.io/football/teams/33.png',
       "api_id": 33,
@@ -199,7 +199,7 @@ Team.create(
     },
     {
       "id": 14,
-      "name": 'Man City',
+      "name": 'Manchester City',
       "code": 'MAC',
       "logo": 'https://media.api-sports.io/football/teams/50.png',
       "api_id": 50,
