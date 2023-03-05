@@ -2,7 +2,7 @@
   <router-link to="/competitors" v-if="selectedTeam">
     <DetermineButton
       label="応援しているチームを決定する"
-      class="is-rounded color-button has-text-white is-size-7-mobile mt-3" />
+      class="is-rounded color-button has-text-white is-size-7-mobile m-5" />
   </router-link>
   <DetermineButton
     v-else
