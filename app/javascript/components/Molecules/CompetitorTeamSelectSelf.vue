@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2
-      class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
+      class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-5">
       ライバルチームを最大3チームまで選んでください
     </h2>
     <section>
@@ -15,7 +15,7 @@
         @selectTeam="selectTeam" />
       <div class="back-or-select-buttons mt-4">
         <BackToPageButton
-          class="is-rounded"
+          class="is-rounded mb-3"
           label="チームの選択方法を選び直す"
           @click="selectAgain" />
         <CompetitorSelectButton :competitors="competitors" />

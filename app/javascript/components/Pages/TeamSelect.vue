@@ -2,7 +2,7 @@
   <div class="container">
     <section class="has-text-centered">
       <h2
-        class="has-text-centered is-size-2-tablet is-size-6-mobile has-text-weight-bold">
+        class="has-text-centered is-size-2-tablet is-size-6-mobile has-text-weight-bold mt-6 mb-4">
         応援しているチームを選んでください
       </h2>
       <section>

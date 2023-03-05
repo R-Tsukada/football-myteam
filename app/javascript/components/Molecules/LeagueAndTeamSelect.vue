@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3
-      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3">
+      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3 mb-5">
       リーグを選択
     </h3>
     <section>

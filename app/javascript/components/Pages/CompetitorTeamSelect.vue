@@ -1,10 +1,10 @@
 <template>
-  <div class="container has-text-centered">
+  <div class="container has-text-centered mt-6">
     <!-- ライバルチーム選択方法を選んでもらう -->
     <div v-show="data.isShowing">
       <div class="mx-auto">
         <h2
-          class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3">
+          class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-6">
           ライバルチームの選び方を選択してください
         </h2>
         <div class="columns is-multiline is-centered mt-4 mx-auto">
