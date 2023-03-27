@@ -9,7 +9,7 @@
         @click="selectTeam(team)"
         v-bind:class="{
           'has-background-link-light is-selected': competitors.some(
-            (competitor) => competitor.team_id === team.id
+            (competitor) => competitor.id === team.id
           )
         }">
         <img :src="team.logo" class="image team-logo mx-auto" />
