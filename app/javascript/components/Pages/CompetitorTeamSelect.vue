@@ -191,11 +191,11 @@ export default {
     // 自分でチームを選択する
     const followTeam = (team) => {
       selectCompetitorTeams(team.id)
-      data.competitors.some((competitor) => competitor.team_id === team.id)
+      data.competitors.some((competitor) => competitor.id === team.id)
         ? (data.competitors = data.competitors.filter(
-            (competitor) => competitor.team_id !== team.id
+            (competitor) => competitor.id !== team.id
           ))
-        : data.competitors.push({ team_id: team.id })
+        : data.competitors.push({ id: team.id })
     }
 
     const selectCompetitorTeams = (team_id) => {
