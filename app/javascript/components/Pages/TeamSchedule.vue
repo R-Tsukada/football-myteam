@@ -5,11 +5,11 @@
         class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
         リーグ戦情報
       </h2>
-      <div v-if="!favoriteMatches.length && isSeasonOff" >
+      <div v-if="!favoriteMatches.length && isSeasonOff">
         <p class="has-text-centered has-text-weight-bold mb-4">
           シーズンオフ中です
         </p>
-        <img class='mx-auto' src="/season-off.svg" alt="season-off">
+        <img class="mx-auto" src="/season-off.svg" alt="season-off" />
       </div>
       <MatchListLoader v-else-if="!favoriteMatches.length" />
       <div v-else>
@@ -206,9 +206,9 @@ export default {
     }
 
     const isSeasonOff = computed(() => {
-      const month = date.getMonth() + 1; // getMonth()は0から始まるため、+1する
-      return month >= 5 && month <= 8; // 5月から8月までを夏とする
-    });
+      const month = date.getMonth() + 1 // getMonth()は0から始まるため、+1する
+      return month >= 5 && month <= 8 // 5月から8月までを夏とする
+    })
 
     onMounted(() => {
       setStandings(),
