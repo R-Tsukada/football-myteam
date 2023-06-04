@@ -10,6 +10,11 @@
 </template>
 <script>
 export default {
-  props: ['label']
+  props: {
+    label: {
+      type: String,
+      default: '戻る'
+    }
+  }
 }
 </script>
