@@ -13,6 +13,12 @@ environment.loaders.prepend('vue', {
   ]
 })
 
+environment.loaders.append('mjs', {
+  test: /\.mjs$/,
+  include: /node_modules/,
+  type: 'javascript/auto',
+})
+
 environment.plugins.prepend(
   'Define',
   new DefinePlugin({
