@@ -48,7 +48,7 @@ export default {
         })
     }
 
-    onMounted(setCompetitors())
+    onMounted(() => setCompetitors())
 
     return {
       data
