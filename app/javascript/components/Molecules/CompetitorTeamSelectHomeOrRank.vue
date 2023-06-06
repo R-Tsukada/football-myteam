@@ -4,8 +4,7 @@
       登録したいチームを選んでください
     </h2>
     <section>
-      <CompetitorTeamCount :competitors="competitors" v-if="isShowingMessage" />
-      <CompetitorValidation v-else />
+      <CompetitorTeamCount :competitors="competitors" />
       <SelectedCompetitorTeamList
         :teams="teams"
         :competitors="competitors"
@@ -22,7 +21,6 @@
 </template>
 <script>
 import CompetitorTeamCount from '../atoms/modal/CompetitorTeamCount.vue'
-import CompetitorValidation from '../atoms/modal/CompetitorValidation.vue'
 import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton'
 import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
 import SelectedCompetitorTeamList from '../Organism/SelectedCompetitorTeamList.vue'
@@ -30,12 +28,11 @@ import SelectedCompetitorTeamList from '../Organism/SelectedCompetitorTeamList.v
 export default {
   components: {
     CompetitorTeamCount,
-    CompetitorValidation,
     CompetitorSelectButton,
     BackToPageButton,
     SelectedCompetitorTeamList
   },
-  props: ['teams', 'competitors', 'isShowingMessage'],
+  props: ['teams', 'competitors'],
   setup(props, context) {
     const followTeam = (team) => {
       context.emit('followTeam', team)
