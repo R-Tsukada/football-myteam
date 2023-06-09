@@ -24,16 +24,26 @@ import CompetitorTeamCount from '../atoms/modal/CompetitorTeamCount.vue'
 import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton'
 import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
 import SelectedCompetitorTeamList from '../Organism/SelectedCompetitorTeamList.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   components: {
     CompetitorTeamCount,
     CompetitorSelectButton,
     BackToPageButton,
     SelectedCompetitorTeamList
   },
-  props: ['teams', 'competitors'],
-  setup(props, context) {
+  props: {
+    teams: {
+      type: Array,
+      required: true
+    },
+    competitors: {
+      type: Array,
+      required: true
+    }
+  },
+  setup(context) {
     const followTeam = (team) => {
       context.emit('followTeam', team)
     }
@@ -45,5 +55,5 @@ export default {
       selectAgain
     }
   }
-}
+})
 </script>
