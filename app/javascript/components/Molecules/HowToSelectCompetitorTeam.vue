@@ -1,12 +1,13 @@
 <template>
   <div class="columns is-multiline is-centered mt-4 mx-auto">
-    <div class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
+    <div
+      class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
       <label class="has-text-weight-medium" for="rank">
         <input
           type="radio"
           class="how-to-team-select rank mb-4"
           value="rank"
-          v-model="checkedName" />
+          v-model="localCheckedName" />
         昨シーズンの順位が近いチームを選ぶ</label
       >
       <br />
@@ -15,7 +16,7 @@
           type="radio"
           class="how-to-team-select home mb-4"
           value="home"
-          v-model="checkedName" />
+          v-model="localCheckedName" />
         本拠地が近いチームを選ぶ</label
       >
       <br />
@@ -24,7 +25,7 @@
           type="radio"
           class="how-to-team-select self mb-4"
           value="self"
-          v-model="checkedName" />
+          v-model="localCheckedName" />
         自分でライバルチームを選ぶ</label
       >
     </div>
@@ -39,16 +40,15 @@ export default defineComponent({
     checkedName: String
   },
   setup(props, { emit }) {
-    const checkedName = ref(props.checkedName)
+    const localCheckedName = ref(props.checkedName)
 
-    watch(checkedName, () => {
-      emit('update:checkedName', checkedName.value)
+    watch(localCheckedName, (newVal) => {
+      emit('update:checkedName', newVal)
     })
 
     return {
-      checkedName,
+      localCheckedName
     }
   }
 })
 </script>
-

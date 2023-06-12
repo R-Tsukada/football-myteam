@@ -7,7 +7,9 @@
           class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-6">
           ライバルチームの選び方を選択してください
         </h2>
-        <HowToSelectCompetitorTeam :checkedName="data.checkedName" @update:checkedName="updateCheckedName"/>
+        <HowToSelectCompetitorTeam
+          :checkedName="data.checkedName"
+          @update:checkedName="updateCheckedName" />
       </div>
       <!-- v-show -->
       <router-link to="/leagues">
@@ -67,8 +69,8 @@ export default {
     DetermineButton,
     CompetitorTeamSelectSelf,
     CompetitorTeamSelectHomeOrRank,
-    HowToSelectCompetitorTeam,
-},
+    HowToSelectCompetitorTeam
+  },
   setup() {
     const data = reactive({
       teams: [],
@@ -177,7 +179,7 @@ export default {
           console.log(error.message)
         })
     }
-    const updateCheckedName = ( newVal) => {
+    const updateCheckedName = (newVal) => {
       data.checkedName = newVal
     }
 

@@ -6,7 +6,6 @@ import axios from 'axios'
 
 jest.mock('axios')
 
-// ルートを定義します
 const routes = [
   {
     path: '/competitors',
@@ -18,7 +17,6 @@ const routes = [
   }
 ]
 
-// ルーターインスタンスを作成します
 const router = createRouter({
   history: createWebHistory(),
   routes
