@@ -19,7 +19,9 @@ import DetermineButton from '../../atoms/Button/DetermineButton.vue'
 export default {
   props: {
     competitors: {
-      type: String
+      type: Array,
+      required: true,
+      default: () => []
     }
   },
   components: {

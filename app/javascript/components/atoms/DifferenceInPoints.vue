@@ -14,6 +14,17 @@
 
 <script>
 export default {
-  props: ['favoriteTeamPoints', 'standingsPoints']
+  props: {
+    favoriteTeamPoints: {
+      type: Number,
+      default: 0,
+      required: true
+    },
+    standingsPoints: {
+      type: Number,
+      default: 0,
+      required: true
+    }
+  }
 }
 </script>
