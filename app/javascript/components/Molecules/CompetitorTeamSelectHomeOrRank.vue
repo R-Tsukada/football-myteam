@@ -43,12 +43,12 @@ export default defineComponent({
       required: true
     }
   },
-  setup(context) {
+  setup(props, { emit }) {
     const followTeam = (team) => {
-      context.emit('followTeam', team)
+      emit('followTeam', team)
     }
     const selectAgain = () => {
-      context.emit('selectAgain')
+      emit('selectAgain')
     }
     return {
       followTeam,

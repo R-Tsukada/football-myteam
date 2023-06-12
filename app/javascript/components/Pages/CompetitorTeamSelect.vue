@@ -7,39 +7,7 @@
           class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-6">
           ライバルチームの選び方を選択してください
         </h2>
-        <div class="columns is-multiline is-centered mt-4 mx-auto">
-          <div
-            class="v-model-radiobutton column is-one-quarter-fullhd is-one-third-widescreen is-half-desktop is-half-tablet has-text-left">
-            <label class="has-text-weight-medium" for="rank">
-              <input
-                type="radio"
-                class="how-to-team-select rank mb-4"
-                value="rank"
-                v-model="data.checkedName" />
-              昨シーズンの順位が近いチームを選ぶ</label
-            >
-            <br />
-            <label class="has-text-weight-medium" for="home">
-              <input
-                type="radio"
-                class="how-to-team-select home mb-4"
-                value="home"
-                v-model="data.checkedName" />
-              本拠地が近いチームを選ぶ</label
-            >
-            <br />
-            <label class="has-text-weight-medium" for="self">
-              <input
-                type="radio"
-                class="how-to-team-select self mb-4"
-                value="self"
-                v-model="data.checkedName" />
-              自分でライバルチームを選ぶ</label
-            >
-          </div>
-          <!-- v-model-radiobutton -->
-        </div>
-        <!-- columns -->
+        <HowToSelectCompetitorTeam :checkedName="data.checkedName" @update:checkedName="updateCheckedName"/>
       </div>
       <!-- v-show -->
       <router-link to="/leagues">
@@ -90,6 +58,7 @@ import BaseButton from '../atoms/Button/BaseButton.vue'
 import DetermineButton from '../atoms/Button/DetermineButton'
 import CompetitorTeamSelectSelf from '../Molecules/CompetitorTeamSelectSelf.vue'
 import CompetitorTeamSelectHomeOrRank from '../Molecules/CompetitorTeamSelectHomeOrRank.vue'
+import HowToSelectCompetitorTeam from '../Molecules/HowToSelectCompetitorTeam.vue'
 
 export default {
   components: {
@@ -97,8 +66,9 @@ export default {
     BaseButton,
     DetermineButton,
     CompetitorTeamSelectSelf,
-    CompetitorTeamSelectHomeOrRank
-  },
+    CompetitorTeamSelectHomeOrRank,
+    HowToSelectCompetitorTeam,
+},
   setup() {
     const data = reactive({
       teams: [],
@@ -207,6 +177,9 @@ export default {
           console.log(error.message)
         })
     }
+    const updateCheckedName = ( newVal) => {
+      data.checkedName = newVal
+    }
 
     onMounted(setTeam(), setFavorite(), setCompetitors())
 
@@ -217,7 +190,8 @@ export default {
       selectTeam,
       selectAgain,
       deleteMessage,
-      followTeam
+      followTeam,
+      updateCheckedName
     }
   }
 }
