@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import HowToSelectCompetitorTeam from 'Molecules/HowToSelectCompetitorTeam.vue'
+import HowToSelectCompetitorTeam from 'components/Molecules/HowToSelectCompetitorTeam.vue'
 
 describe('HowToSelectCompetitorTeam', () => {
   it('renders three radio buttons', () => {

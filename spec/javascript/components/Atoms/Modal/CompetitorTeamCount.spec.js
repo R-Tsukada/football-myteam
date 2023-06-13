@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import CompetitorTeamCount from 'atoms/modal/CompetitorTeamCount.vue'
+import CompetitorTeamCount from 'components/atoms/modal/CompetitorTeamCount.vue'
 
 describe('Competitodescribe', () => {
   it('renders the correct message when competitors length is less than 3', () => {

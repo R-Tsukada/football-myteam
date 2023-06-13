@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import CompetitorTeamSelectSelf from 'Molecules/CompetitorTeamSelectSelf.vue'
+import CompetitorTeamSelectSelf from 'components/Molecules/CompetitorTeamSelectSelf.vue'
 
 describe('CompetitorTeamSelectSelf', () => {
   it('renders correctly with initial props', () => {

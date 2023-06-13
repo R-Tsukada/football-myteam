@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import DetermineButton from 'atoms/Button/DetermineButton'
+import DetermineButton from 'components/atoms/Button/DetermineButton'
 
 describe('DetermineButton', () => {
   it('renders label prop when passed', () => {

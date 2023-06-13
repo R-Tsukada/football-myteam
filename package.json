@@ -23,7 +23,7 @@
     ],
     "moduleDirectories": [
       "node_modules",
-      "app/javascript/components"
+      "app/javascript/src"
     ],
     "transform": {
       ".*\\.(vue)$": "@vue/vue3-jest",
@@ -58,6 +58,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7.22.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@vue/vue3-jest": "28",
     "babel-jest": "27.4.5",
     "babel-preset-es2015": "^6.24.1",

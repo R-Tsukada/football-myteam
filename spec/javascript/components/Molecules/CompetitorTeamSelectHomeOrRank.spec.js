@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import CompetitorTeamSelectHomeOrRank from 'Molecules/CompetitorTeamSelectHomeOrRank.vue'
+import CompetitorTeamSelectHomeOrRank from 'components/Molecules/CompetitorTeamSelectHomeOrRank.vue'
 
 describe('CompetitorTeamSelectHomeOrRank.vue', () => {
   it('renders the component', () => {

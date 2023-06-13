@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import BackToPageButton from 'atoms/Button/BackToPageButton'
+import BackToPageButton from 'components/atoms/Button/BackToPageButton'
 
 describe('BackToPageButton', () => {
   it('renders label prop when passed', () => {
