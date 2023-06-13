@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TeamList from '../components/Pages/TeamSelect.vue'
-import CompetitorTeamSelect from '../components/Pages/CompetitorTeamSelect.vue'
-import TeamSchedule from '../components/Pages/TeamSchedule.vue'
-import TeamScheduleShowPage from '../components/Pages/TeamScheduleShowPage.vue'
+import TeamList from '../Pages/TeamSelect.vue'
+import CompetitorTeamSelect from '../Pages/CompetitorTeamSelect.vue'
+import TeamSchedule from '../Pages/TeamSchedule.vue'
+import TeamScheduleShowPage from '../Pages/TeamScheduleShowPage.vue'
 import NotFound from '../components/Molecules/request_error/NotFound.vue'
 
 export const router = createRouter({

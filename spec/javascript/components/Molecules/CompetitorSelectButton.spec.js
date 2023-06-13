@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import CompetitorSelectButton from 'Molecules/BooleanButton/CompetitorSelectButton.vue'
+import CompetitorSelectButton from 'components/Molecules/BooleanButton/CompetitorSelectButton.vue'
 
 describe('CompetitorSelectButton.vue', () => {
   it('renders router-link and enables DetermineButton when competitors length is between 1 and 3', () => {

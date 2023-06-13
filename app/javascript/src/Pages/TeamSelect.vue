@@ -24,8 +24,8 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import TeamSelectDescription from '../Molecules/TeamSelectDescription.vue'
-import LeagueAndTeamSelect from '../Molecules/LeagueAndTeamSelect.vue'
+import TeamSelectDescription from '../components/Molecules/TeamSelectDescription.vue'
+import LeagueAndTeamSelect from '../components/Molecules/LeagueAndTeamSelect.vue'
 
 export default {
   components: {

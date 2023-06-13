@@ -55,12 +55,12 @@
 <script>
 import axios from 'axios'
 import { reactive, onMounted } from 'vue'
-import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
-import BaseButton from '../atoms/Button/BaseButton.vue'
-import DetermineButton from '../atoms/Button/DetermineButton'
-import CompetitorTeamSelectSelf from '../Molecules/CompetitorTeamSelectSelf.vue'
-import CompetitorTeamSelectHomeOrRank from '../Molecules/CompetitorTeamSelectHomeOrRank.vue'
-import HowToSelectCompetitorTeam from '../Molecules/HowToSelectCompetitorTeam.vue'
+import BackToPageButton from '../components/atoms/Button/BackToPageButton.vue'
+import BaseButton from '../components/atoms/Button/BaseButton.vue'
+import DetermineButton from '../components/atoms/Button/DetermineButton'
+import CompetitorTeamSelectSelf from '../components/Molecules/CompetitorTeamSelectSelf.vue'
+import CompetitorTeamSelectHomeOrRank from '../components/Molecules/CompetitorTeamSelectHomeOrRank.vue'
+import HowToSelectCompetitorTeam from '../components/Molecules/HowToSelectCompetitorTeam.vue'
 
 export default {
   components: {

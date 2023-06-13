@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import DifferenceInPoints from 'atoms/DifferenceInPoints.vue'
+import DifferenceInPoints from 'components/atoms/DifferenceInPoints.vue'
 
 describe('DifferenceInPoints', () => {
   it('renders has-text-success class when favoriteTeamPoints is greater or equal to standingsPoints', () => {
