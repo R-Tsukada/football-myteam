@@ -46,6 +46,7 @@
     "axios": "^0.26.1",
     "bulma": "^0.9.3",
     "jest": "28",
+    "ts-loader": "^9.4.3",
     "vue": "^3.2.31",
     "vue-content-loader": "^2.0.1",
     "vue-loader": "^17.0.0",
