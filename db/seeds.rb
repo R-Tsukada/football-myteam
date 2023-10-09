@@ -840,7 +840,7 @@ Team.create(
       "stadium": 'Visit Mallorca Estadi',
       "last_season_rank": 16
     },
-    # --------- LaLiga ---------------
+    # --------- Bundes ---------------
     {
       "id": 61,
       "name": 'Bayern Munich',
@@ -852,17 +852,18 @@ Team.create(
       "stadium": 'Allianz Arena',
       "last_season_rank": 1
     },
-    {
-      "id": 62,
-      "name": 'Hertha Berlin',
-      "code": 'HER',
-      "logo": 'https://media.api-sports.io/football/teams/159.png',
-      "api_id": 159,
-      "league_id": 4,
-      "home_city": 'Berlin',
-      "stadium": 'Olympiastadion Berlin',
-      "last_season_rank": 16
-    },
+    # 2022-2023降格
+    #{
+    #  "id": 62,
+    #  "name": 'Hertha Berlin',
+    #  "code": 'HER',
+    #  "logo": 'https://media.api-sports.io/football/teams/159.png',
+    #  "api_id": 159,
+    #  "league_id": 4,
+    #  "home_city": 'Berlin',
+    #  "stadium": 'Olympiastadion Berlin',
+    #  "last_season_rank": 16
+    #},
     {
       "id": 63,
       "name": 'SC Freiburg',
@@ -995,17 +996,18 @@ Team.create(
       "stadium": 'Red Bull Arena',
       "last_season_rank": 4
     },
-    {
-      "id": 88,
-      "name": 'FC Schalke 04',
-      "code": 'SCH',
-      "logo": 'https://media.api-sports.io/football/teams/174.png',
-      "api_id": 174,
-      "league_id": 4,
-      "home_city": 'Gelsenkirchen',
-      "stadium": 'VELTINS-Arena',
-      "last_season_rank": ''
-    },
+    #2022-2023降格
+    #{
+    #  "id": 88,
+    #  "name": 'FC Schalke 04',
+    #  "code": 'SCH',
+    #  "logo": 'https://media.api-sports.io/football/teams/174.png',
+    #  "api_id": 174,
+    #  "league_id": 4,
+    #  "home_city": 'Gelsenkirchen',
+    #  "stadium": 'VELTINS-Arena',
+    #  "last_season_rank": ''
+    #},
     {
       "id": 74,
       "name": 'VfL BOCHUM',
@@ -1016,6 +1018,29 @@ Team.create(
       "home_city": 'Bochum',
       "stadium": 'Vonovia Ruhrstadion',
       "last_season_rank": 13
+    },
+    {
+      "id": 180,
+      "name": "FC Heidenheim",
+      "code": "HEI",
+      "logo": "https://media-4.api-sports.io/football/teams/180.png",
+      "api_id": 180,
+      "league_id": 4,
+      "home_city": "Heidenheim an der Brenz",
+      "stadium": "Voith-Arena",
+      "last_season_rank": 0
+    },
+    {
+      "id": 181,
+      "name": "SV Darmstadt 98",
+      "code": "DAR",
+      "country": "Germany",
+      "logo": "https://media-4.api-sports.io/football/teams/181.png",
+      "api_id": 181,
+      "league_id": 4,
+      "home_city": "Darmstadt",
+      "stadium": "Merck-Stadion am Böllenfalltor",
+      "last_season_rank": 0
     },
     # 2021-2022降格
     # {
