@@ -41,7 +41,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Manchester',
       "stadium": 'Old Trafford',
-      "last_season_rank": 6
+      "last_season_rank": 3
     },
     {
       "id": 2,
@@ -52,7 +52,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Newcastle upon Tyne',
       "stadium": "St. James' Park",
-      "last_season_rank": 11
+      "last_season_rank": 4
     },
     # 2021-2022降格
     # {
@@ -74,7 +74,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Bournemouth',
       "stadium": 'Vitality Stadium',
-      "last_season_rank": ''
+      "last_season_rank": 15
     },
     {
       "id": 80,
@@ -85,7 +85,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Craven Cottage',
-      "last_season_rank": ''
+      "last_season_rank": 10
     },
     {
       "id": 4,
@@ -96,7 +96,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Wolverhampton, West Midlands',
       "stadium": 'Molineux Stadium',
-      "last_season_rank": 10
+      "last_season_rank": 13
     },
     {
       "id": 5,
@@ -107,19 +107,20 @@ Team.create(
       "league_id": 1,
       "home_city": 'Liverpool',
       "stadium": 'Anfield',
-      "last_season_rank": 2
+      "last_season_rank": 5
     },
-    {
-      "id": 6,
-      "name": 'Southampton',
-      "code": 'SOU',
-      "logo": 'https://media.api-sports.io/football/teams/41.png',
-      "api_id": 41,
-      "league_id": 1,
-      "home_city": 'Southampton, Hampshire',
-      "stadium": "St. Mary's Stadium",
-      "last_season_rank": 15
-    },
+    # 2022-2023降格
+    #{
+    # "id": 6,
+    #  "name": 'Southampton',
+    #  "code": 'SOU',
+    #  "logo": 'https://media.api-sports.io/football/teams/41.png',
+    #  "api_id": 41,
+    #  "league_id": 1,
+    #  "home_city": 'Southampton, Hampshire',
+    #  "stadium": "St. Mary's Stadium",
+    #  "last_season_rank": 15
+    #},
     {
       "id": 7,
       "name": 'Arsenal',
@@ -129,19 +130,18 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Emirates Stadium',
-      "last_season_rank": 5
+      "last_season_rank": 2
     },
-    # 2021-2022降格
-    # {
-    #   "id": 8,
-    #   "name": 'Burnley',
-    #   "logo": 'https://media.api-sports.io/football/teams/44.png',
-    #   "api_id": 44,
-    #   "league_id": 1,
-    #   "home_city": 'Burnley',
-    #   "stadium": 'Turf Moor',
-    #   "last_season_rank": 17
-    # },
+    {
+      "id": 8,
+      "name": 'Burnley',
+      "logo": 'https://media.api-sports.io/football/teams/44.png',
+      "api_id": 44,
+      "league_id": 1,
+      "home_city": 'Burnley',
+      "stadium": 'Turf Moor',
+      "last_season_rank": 21
+    },
     {
       "id": 9,
       "name": 'Everton',
@@ -151,19 +151,19 @@ Team.create(
       "league_id": 1,
       "home_city": 'Liverpool',
       "stadium": 'Goodison Park',
-      "last_season_rank": 16
+      "last_season_rank": 17
     },
-    {
-      "id": 10,
-      "name": 'Leicester',
-      "code": 'LEI',
-      "logo": 'https://media.api-sports.io/football/teams/46.png',
-      "api_id": 46,
-      "league_id": 1,
-      "home_city": 'Leicester, Leicestershire',
-      "stadium": 'King Power Stadium',
-      "last_season_rank": 8
-    },
+    #{
+    #  "id": 10,
+    #  "name": 'Leicester',
+    #  "code": 'LEI',
+    #  "logo": 'https://media.api-sports.io/football/teams/46.png',
+    #  "api_id": 46,
+    #  "league_id": 1,
+    #  "home_city": 'Leicester, Leicestershire',
+    #  "stadium": 'King Power Stadium',
+    #  "last_season_rank": 8
+    #},
     {
       "id": 11,
       "name": 'Tottenham',
@@ -173,7 +173,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Tottenham Hotspur Stadium',
-      "last_season_rank": 4
+      "last_season_rank": 8
     },
     {
       "id": 12,
@@ -184,7 +184,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'London Stadium',
-      "last_season_rank": 7
+      "last_season_rank": 14
     },
     {
       "id": 13,
@@ -195,7 +195,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Stamford Bridge',
-      "last_season_rank": 3
+      "last_season_rank": 12
     },
     {
       "id": 14,
@@ -217,7 +217,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Falmer, East Sussex',
       "stadium": 'The American Express Community Stadium',
-      "last_season_rank": 9
+      "last_season_rank": 6
     },
     {
       "id": 16,
@@ -228,7 +228,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Selhurst Park',
-      "last_season_rank": 12
+      "last_season_rank": 11
     },
     {
       "id": 17,
@@ -239,19 +239,20 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Brentford Community Stadium',
-      "last_season_rank": 13
+      "last_season_rank": 9
     },
-    {
-      "id": 18,
-      "name": 'Leeds',
-      "code": 'LEE',
-      "logo": 'https://media.api-sports.io/football/teams/63.png',
-      "api_id": 63,
-      "league_id": 1,
-      "home_city": 'Leeds',
-      "stadium": 'Elland Road',
-      "last_season_rank": 17
-    },
+    #2022-2023降格
+    #{
+    # "id": 18,
+    # "name": 'Leeds',
+    # "code": 'LEE',
+    # "logo": 'https://media.api-sports.io/football/teams/63.png',
+    # "api_id": 63,
+    # "league_id": 1,
+    # "home_city": 'Leeds',
+    # "stadium": 'Elland Road',
+    # "last_season_rank": 17
+    #},
     {
       "id": 81,
       "name": 'Nottm Forest',
@@ -261,7 +262,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Nottingham',
       "stadium": 'The City Ground',
-      "last_season_rank": ''
+      "last_season_rank": 16
     },
     {
       "id": 19,
@@ -272,8 +273,30 @@ Team.create(
       "league_id": 1,
       "home_city": 'Birmingham',
       "stadium": 'Villa Park',
-      "last_season_rank": 14
+      "last_season_rank": 7
     },
+    {
+      "id": 88,
+      "name": "Sheffield Utd",
+      "code": "SHE",
+      "logo": "https://media-4.api-sports.io/football/teams/62.png",
+      "api_id": 62,
+      "league_id": 1,
+      "home_city": "Sheffield",
+      "stadium": "Bramall Lane",
+      "last_season_rank": 22
+    },
+    {
+      "id": 89,
+      "name": "Luton",
+      "code": "LUT",
+      "logo": "https://media-4.api-sports.io/football/teams/1359.png",
+      "api_id": 1359,
+      "league_id": 1,
+      "home_city": "Luton",
+      "stadium": "Kenilworth Road",
+      "last_season_rank": 23
+    }
     # 2021-2022降格
     # {
     #   "id": 20,
