@@ -342,17 +342,16 @@ Team.create(
       "stadium": 'Stadio Giuseppe Meazza',
       "last_season_rank": 1
     },
-    # 2021-2022降格
-    # {
-    #   "id": 24,
-    #   "name": 'Cagliari',
-    #   "logo": 'https://media.api-sports.io/football/teams/490.png',
-    #   "api_id": 490,
-    #   "league_id": 2,
-    #   "home_city": 'Cagliari',
-    #   "stadium": 'Unipol Domus',
-    #   "last_season_rank": 16
-    # },
+    {
+      "id": 24,
+      "name": 'Cagliari',
+      "logo": 'https://media.api-sports.io/football/teams/490.png',
+      "api_id": 490,
+      "league_id": 2,
+      "home_city": 'Cagliari',
+      "stadium": 'Unipol Domus',
+      "last_season_rank": 16
+    },
     {
       "id": 25,
       "name": 'Napoli',
@@ -375,17 +374,16 @@ Team.create(
       "stadium": 'Dacia Arena',
       "last_season_rank": 12
     },
-    # 2021-2022降格
-    # {
-    #   "id": 27,
-    #   "name": 'Genoa',
-    #   "logo": 'https://media.api-sports.io/football/teams/495.png',
-    #   "api_id": 495,
-    #   "league_id": 2,
-    #   "home_city": 'Genova',
-    #   "stadium": 'Stadio Comunale Luigi Ferraris',
-    #   "last_season_rank": 11
-    # },
+    {
+      "id": 27,
+      "name": 'Genoa',
+      "logo": 'https://media.api-sports.io/football/teams/495.png',
+      "api_id": 495,
+      "league_id": 2,
+      "home_city": 'Genova',
+      "stadium": 'Stadio Comunale Luigi Ferraris',
+      "last_season_rank": 11
+    },
     {
       "id": 28,
       "name": 'Juventus',
@@ -408,17 +406,18 @@ Team.create(
       "stadium": 'Stadio Olimpico',
       "last_season_rank": 6
     },
-    {
-      "id": 30,
-      "name": 'Sampdoria',
-      "code": 'SAM',
-      "logo": 'https://media.api-sports.io/football/teams/498.png',
-      "api_id": 498,
-      "league_id": 2,
-      "home_city": 'Genova',
-      "stadium": 'Stadio Comunale Luigi Ferraris',
-      "last_season_rank": 15
-    },
+    #2022-2023降格
+    #{
+    #  "id": 30,
+    #  "name": 'Sampdoria',
+    #  "code": 'SAM',
+    #  "logo": 'https://media.api-sports.io/football/teams/498.png',
+    #  "api_id": 498,
+    #  "league_id": 2,
+    #  "home_city": 'Genova',
+    #  "stadium": 'Stadio Comunale Luigi Ferraris',
+    #  "last_season_rank": 15
+    #},
     {
       "id": 31,
       "name": 'Atalanta',
@@ -497,6 +496,17 @@ Team.create(
       "last_season_rank": 14
     },
     {
+      "id": 90,
+      "name": "Frosinone",
+      "code": "FRO",
+      "logo": "https://media-4.api-sports.io/football/teams/512.png",
+      "api_id": 512,
+      "league_id": 2,
+      "home_city": "Frosinone",
+      "stadium": "Stadio Benito Stirpe",
+      "last_season_rank": 
+    },
+    {
       "id": 38,
       "name": 'Salernitana',
       "code": 'SAL',
@@ -507,17 +517,18 @@ Team.create(
       "stadium": 'Stadio Arechi',
       "last_season_rank": 17
     },
-    {
-      "id": 39,
-      "name": 'Spezia',
-      "code": 'SPE',
-      "logo": 'https://media.api-sports.io/football/teams/515.png',
-      "api_id": 515,
-      "league_id": 2,
-      "home_city": 'La Spezia',
-      "stadium": 'Stadio Alberto Picco',
-      "last_season_rank": 16
-    },
+    # 2022-2023降格
+    #{
+    #  "id": 39,
+    #  "name": 'Spezia',
+    #  "code": 'SPE',
+    #  "logo": 'https://media.api-sports.io/football/teams/515.png',
+    #  "api_id": 515,
+    #  "league_id": 2,
+    #  "home_city": 'La Spezia',
+    #  "stadium": 'Stadio Alberto Picco',
+    #  "last_season_rank": 16
+    #},
     # 2021-2022降格
     # {
     #   "id": 40,
@@ -529,17 +540,18 @@ Team.create(
     #   "stadium": 'Stadio Pierluigi Penzo',
     #   "last_season_rank": ''
     # },
-    {
-      "id": 82,
-      "name": 'Cremonese',
-      "code": 'CRE',
-      "logo": 'https://media.api-sports.io/football/teams/520.png',
-      "api_id": 520,
-      "league_id": 2,
-      "home_city": 'Cremona',
-      "stadium": 'Stadio Giovanni Zini',
-      "last_season_rank": ''
-    },
+    #2022-2023降格
+    #{
+    # "id": 82,
+    #  "name": 'Cremonese',
+    #  "code": 'CRE',
+    #  "logo": 'https://media.api-sports.io/football/teams/520.png',
+    #  "api_id": 520,
+    #  "league_id": 2,
+    #  "home_city": 'Cremona',
+    #  "stadium": 'Stadio Giovanni Zini',
+    #  "last_season_rank": ''
+    #},
     {
       "id": 83,
       "name": 'Lecce',
