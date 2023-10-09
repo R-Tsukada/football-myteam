@@ -1,33 +1,33 @@
 # frozen_string_literal: true
 
-League.create(
-  [
-    {
-      "id": 1,
-      "api_id": 39,
-      "name": 'Premier',
-      "logo": 'https://media.api-sports.io/football/leagues/39.png'
-    },
-    {
-      "id": 2,
-      "api_id": 135,
-      "name": 'Serie A',
-      "logo": 'https://media.api-sports.io/football/leagues/135.png'
-    },
-    {
-      "id": 3,
-      "api_id": 140,
-      "name": 'La Liga',
-      "logo": 'https://media.api-sports.io/football/leagues/140.png'
-    },
-    {
-      "id": 4,
-      "api_id": 78,
-      "name": 'Bundes',
-      "logo": 'https://media.api-sports.io/football/leagues/78.png'
-    }
-  ]
-)
+#League.create(
+#  [
+#    {
+#      "id": 1,
+#      "api_id": 39,
+#      "name": 'Premier',
+#      "logo": 'https://media.api-sports.io/football/leagues/39.png'
+#    },
+#    {
+#      "id": 2,
+#      "api_id": 135,
+#      "name": 'Serie A',
+#      "logo": 'https://media.api-sports.io/football/leagues/135.png'
+#    },
+#    {
+#      "id": 3,
+#      "api_id": 140,
+#      "name": 'La Liga',
+#      "logo": 'https://media.api-sports.io/football/leagues/140.png'
+#    },
+#    {
+#      "id": 4,
+#      "api_id": 78,
+#      "name": 'Bundes',
+#      "logo": 'https://media.api-sports.io/football/leagues/78.png'
+#    }
+#  ]
+#)
 
 Team.create(
   [
@@ -287,7 +287,7 @@ Team.create(
       "last_season_rank": 22
     },
     {
-      "id": 89,
+      "id": 1359,
       "name": "Luton",
       "code": "LUT",
       "logo": "https://media-4.api-sports.io/football/teams/1359.png",
@@ -296,7 +296,7 @@ Team.create(
       "home_city": "Luton",
       "stadium": "Kenilworth Road",
       "last_season_rank": 23
-    }
+    },
     # 2021-2022降格
     # {
     #   "id": 20,
@@ -457,7 +457,7 @@ Team.create(
       "code": 'TOR',
       "logo": 'https://media.api-sports.io/football/teams/503.png',
       "api_id": 503,
-      "league_d": 2,
+      "league_id": 2,
       "home_city": 'Torino',
       "stadium": 'Stadio Olimpico Grande Torino',
       "last_season_rank": 10
@@ -730,7 +730,7 @@ Team.create(
       "last_season_rank": 15
     },
     {
-      "id": 89,
+      "id": 547,
       "name": 'Girona',
       "code": 'GIR',
       "logo": 'https://media.api-sports.io/football/teams/547.png',
@@ -1034,7 +1034,6 @@ Team.create(
       "id": 181,
       "name": "SV Darmstadt 98",
       "code": "DAR",
-      "country": "Germany",
       "logo": "https://media-4.api-sports.io/football/teams/181.png",
       "api_id": 181,
       "league_id": 4,
