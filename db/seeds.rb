@@ -631,6 +631,17 @@ Team.create(
       "last_season_rank": 7
     },
     {
+      "id": 534,
+      "name": "Las Palmas",
+      "code": "PAL",
+      "logo": "https://media-4.api-sports.io/football/teams/534.png",
+      "api_id": 534,
+      "league_id": 3,
+      "home_city": "Las Palmas de Gran Canaria",
+      "stadium": "Estadio de Gran Canaria",
+      "last_season_rank": 0
+    },
+    {
       "id": 46,
       "name": 'Sevilla',
       "code": 'SEV',
@@ -663,17 +674,18 @@ Team.create(
     #   "stadium": 'Estadio Ciudad de Valencia',
     #   "last_season_rank": 14
     # },
-    {
-      "id": 49,
-      "name": 'Espanyol',
-      "code": 'ESP',
-      "logo": 'https://media.api-sports.io/football/teams/540.png',
-      "api_id": 540,
-      "league_id": 3,
-      "home_city": 'Cornella de Llobregat',
-      "stadium": 'RCDE Stadium',
-      "last_season_rank": 14
-    },
+    # 2022-2023降格
+    #{
+    #  "id": 49,
+    #  "name": 'Espanyol',
+    #  "code": 'ESP',
+    #  "logo": 'https://media.api-sports.io/football/teams/540.png',
+    #  "api_id": 540,
+    #  "league_id": 3,
+    #  "home_city": 'Cornella de Llobregat',
+    #  "stadium": 'RCDE Stadium',
+    #  "last_season_rank": 14
+    #},
     {
       "id": 50,
       "name": 'Real Madrid',
@@ -685,17 +697,16 @@ Team.create(
       "stadium": 'Estadio Santiago Bernabéu',
       "last_season_rank": 1
     },
-    # 2021-2022降格
-    # {
-    #   "id": 51,
-    #   "name": 'Alaves',
-    #   "logo": 'https://media.api-sports.io/football/teams/542.png',
-    #   "api_id": 542,
-    #   "league_id": 3,
-    #   "home_city": 'Vitoria-Gasteiz',
-    #   "stadium": 'Estadio de Mendizorroza',
-    #   "last_season_rank": 16
-    # },
+    {
+      "id": 51,
+      "name": 'Alaves',
+      "logo": 'https://media.api-sports.io/football/teams/542.png',
+      "api_id": 542,
+      "league_id": 3,
+      "home_city": 'Vitoria-Gasteiz',
+      "stadium": 'Estadio de Mendizorroza',
+      "last_season_rank": 16
+    },
     {
       "id": 52,
       "name": 'Real Betis',
@@ -740,17 +751,18 @@ Team.create(
       "stadium": 'Reale Arena',
       "last_season_rank": 6
     },
-    {
-      "id": 85,
-      "name": 'Valladolid',
-      "code": 'VAL',
-      "logo": 'https://media.api-sports.io/football/teams/720.png',
-      "api_id": 720,
-      "league_id": 3,
-      "home_city": 'Avenida del Mundial 82',
-      "stadium": 'Estadio Municipal José Zorrilla',
-      "last_season_rank": ''
-    },
+    # 2022-2023降格
+    #{
+    #"id": 85,
+    #"name": 'Valladolid',
+    #"code": 'VAL',
+    #"logo": 'https://media.api-sports.io/football/teams/720.png',
+    #"api_id": 720,
+    #"league_id": 3,
+    #"home_city": 'Avenida del Mundial 82',
+    #"stadium": 'Estadio Municipal José Zorrilla',
+    #"last_season_rank": ''
+    #},
     {
       "id": 86,
       "name": 'Almeria',
@@ -762,17 +774,16 @@ Team.create(
       "stadium": 'Estadio de los Juegos Mediterráneos',
       "last_season_rank": ''
     },
-    # 2021-2022降格
-    # {
-    # "id": 55,
-    # "name": 'Granada CF',
-    # "logo": 'https://media.api-sports.io/football/teams/715.png',
-    # "api_id": 715,
-    # "league_id": 3,
-    # "home_city": 'Granada',
-    # "stadium": 'Estadio Nuevo Los Cármenes',
-    # "last_season_rank": 9
-    # },
+    {
+      "id": 55,
+      "name": 'Granada CF',
+      "logo": 'https://media.api-sports.io/football/teams/715.png',
+      "api_id": 715,
+      "league_id": 3,
+      "home_city": 'Granada',
+      "stadium": 'Estadio Nuevo Los Cármenes',
+      "last_season_rank": 
+    },
     {
       "id": 56,
       "name": 'Cadiz',
@@ -806,17 +817,18 @@ Team.create(
       "home_city": 'Madrid',
       "last_season_rank": 12
     },
-    {
-      "id": 59,
-      "name": 'Elche',
-      "code": 'ELC',
-      "logo": 'https://media.api-sports.io/football/teams/797.png',
-      "api_id": 797,
-      "league_id": 3,
-      "home_city": 'Elche',
-      "stadium": 'Estadio Manuel Martínez Valero',
-      "last_season_rank": 13
-    },
+    # 2022-2023降格
+    #{
+    #  "id": 59,
+    #  "name": 'Elche',
+    #  "code": 'ELC',
+    #  "logo": 'https://media.api-sports.io/football/teams/797.png',
+    #  "api_id": 797,
+    #  "league_id": 3,
+    #  "home_city": 'Elche',
+    #  "stadium": 'Estadio Manuel Martínez Valero',
+    #  "last_season_rank": 13
+    #},
     {
       "id": 60,
       "name": 'Mallorca',
