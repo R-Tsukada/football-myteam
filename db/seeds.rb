@@ -1,33 +1,33 @@
 # frozen_string_literal: true
 
-League.create(
-  [
-    {
-      "id": 1,
-      "api_id": 39,
-      "name": 'Premier',
-      "logo": 'https://media.api-sports.io/football/leagues/39.png'
-    },
-    {
-      "id": 2,
-      "api_id": 135,
-      "name": 'Serie A',
-      "logo": 'https://media.api-sports.io/football/leagues/135.png'
-    },
-    {
-      "id": 3,
-      "api_id": 140,
-      "name": 'La Liga',
-      "logo": 'https://media.api-sports.io/football/leagues/140.png'
-    },
-    {
-      "id": 4,
-      "api_id": 78,
-      "name": 'Bundes',
-      "logo": 'https://media.api-sports.io/football/leagues/78.png'
-    }
-  ]
-)
+# League.create(
+#  [
+#    {
+#      "id": 1,
+#      "api_id": 39,
+#      "name": 'Premier',
+#      "logo": 'https://media.api-sports.io/football/leagues/39.png'
+#    },
+#    {
+#      "id": 2,
+#      "api_id": 135,
+#      "name": 'Serie A',
+#      "logo": 'https://media.api-sports.io/football/leagues/135.png'
+#    },
+#    {
+#      "id": 3,
+#      "api_id": 140,
+#      "name": 'La Liga',
+#      "logo": 'https://media.api-sports.io/football/leagues/140.png'
+#    },
+#    {
+#      "id": 4,
+#      "api_id": 78,
+#      "name": 'Bundes',
+#      "logo": 'https://media.api-sports.io/football/leagues/78.png'
+#    }
+#  ]
+# )
 
 Team.create(
   [
@@ -41,7 +41,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Manchester',
       "stadium": 'Old Trafford',
-      "last_season_rank": 6
+      "last_season_rank": 3
     },
     {
       "id": 2,
@@ -52,7 +52,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Newcastle upon Tyne',
       "stadium": "St. James' Park",
-      "last_season_rank": 11
+      "last_season_rank": 4
     },
     # 2021-2022降格
     # {
@@ -74,7 +74,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Bournemouth',
       "stadium": 'Vitality Stadium',
-      "last_season_rank": ''
+      "last_season_rank": 15
     },
     {
       "id": 80,
@@ -85,7 +85,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Craven Cottage',
-      "last_season_rank": ''
+      "last_season_rank": 10
     },
     {
       "id": 4,
@@ -96,7 +96,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Wolverhampton, West Midlands',
       "stadium": 'Molineux Stadium',
-      "last_season_rank": 10
+      "last_season_rank": 13
     },
     {
       "id": 5,
@@ -107,19 +107,20 @@ Team.create(
       "league_id": 1,
       "home_city": 'Liverpool',
       "stadium": 'Anfield',
-      "last_season_rank": 2
+      "last_season_rank": 5
     },
-    {
-      "id": 6,
-      "name": 'Southampton',
-      "code": 'SOU',
-      "logo": 'https://media.api-sports.io/football/teams/41.png',
-      "api_id": 41,
-      "league_id": 1,
-      "home_city": 'Southampton, Hampshire',
-      "stadium": "St. Mary's Stadium",
-      "last_season_rank": 15
-    },
+    # 2022-2023降格
+    # {
+    # "id": 6,
+    #  "name": 'Southampton',
+    #  "code": 'SOU',
+    #  "logo": 'https://media.api-sports.io/football/teams/41.png',
+    #  "api_id": 41,
+    #  "league_id": 1,
+    #  "home_city": 'Southampton, Hampshire',
+    #  "stadium": "St. Mary's Stadium",
+    #  "last_season_rank": 15
+    # },
     {
       "id": 7,
       "name": 'Arsenal',
@@ -129,19 +130,18 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Emirates Stadium',
-      "last_season_rank": 5
+      "last_season_rank": 2
     },
-    # 2021-2022降格
-    # {
-    #   "id": 8,
-    #   "name": 'Burnley',
-    #   "logo": 'https://media.api-sports.io/football/teams/44.png',
-    #   "api_id": 44,
-    #   "league_id": 1,
-    #   "home_city": 'Burnley',
-    #   "stadium": 'Turf Moor',
-    #   "last_season_rank": 17
-    # },
+    {
+      "id": 8,
+      "name": 'Burnley',
+      "logo": 'https://media.api-sports.io/football/teams/44.png',
+      "api_id": 44,
+      "league_id": 1,
+      "home_city": 'Burnley',
+      "stadium": 'Turf Moor',
+      "last_season_rank": 21
+    },
     {
       "id": 9,
       "name": 'Everton',
@@ -151,19 +151,19 @@ Team.create(
       "league_id": 1,
       "home_city": 'Liverpool',
       "stadium": 'Goodison Park',
-      "last_season_rank": 16
+      "last_season_rank": 17
     },
-    {
-      "id": 10,
-      "name": 'Leicester',
-      "code": 'LEI',
-      "logo": 'https://media.api-sports.io/football/teams/46.png',
-      "api_id": 46,
-      "league_id": 1,
-      "home_city": 'Leicester, Leicestershire',
-      "stadium": 'King Power Stadium',
-      "last_season_rank": 8
-    },
+    # {
+    #  "id": 10,
+    #  "name": 'Leicester',
+    #  "code": 'LEI',
+    #  "logo": 'https://media.api-sports.io/football/teams/46.png',
+    #  "api_id": 46,
+    #  "league_id": 1,
+    #  "home_city": 'Leicester, Leicestershire',
+    #  "stadium": 'King Power Stadium',
+    #  "last_season_rank": 8
+    # },
     {
       "id": 11,
       "name": 'Tottenham',
@@ -173,7 +173,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Tottenham Hotspur Stadium',
-      "last_season_rank": 4
+      "last_season_rank": 8
     },
     {
       "id": 12,
@@ -184,7 +184,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'London Stadium',
-      "last_season_rank": 7
+      "last_season_rank": 14
     },
     {
       "id": 13,
@@ -195,7 +195,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Stamford Bridge',
-      "last_season_rank": 3
+      "last_season_rank": 12
     },
     {
       "id": 14,
@@ -217,7 +217,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Falmer, East Sussex',
       "stadium": 'The American Express Community Stadium',
-      "last_season_rank": 9
+      "last_season_rank": 6
     },
     {
       "id": 16,
@@ -228,7 +228,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Selhurst Park',
-      "last_season_rank": 12
+      "last_season_rank": 11
     },
     {
       "id": 17,
@@ -239,19 +239,20 @@ Team.create(
       "league_id": 1,
       "home_city": 'London',
       "stadium": 'Brentford Community Stadium',
-      "last_season_rank": 13
+      "last_season_rank": 9
     },
-    {
-      "id": 18,
-      "name": 'Leeds',
-      "code": 'LEE',
-      "logo": 'https://media.api-sports.io/football/teams/63.png',
-      "api_id": 63,
-      "league_id": 1,
-      "home_city": 'Leeds',
-      "stadium": 'Elland Road',
-      "last_season_rank": 17
-    },
+    # 2022-2023降格
+    # {
+    # "id": 18,
+    # "name": 'Leeds',
+    # "code": 'LEE',
+    # "logo": 'https://media.api-sports.io/football/teams/63.png',
+    # "api_id": 63,
+    # "league_id": 1,
+    # "home_city": 'Leeds',
+    # "stadium": 'Elland Road',
+    # "last_season_rank": 17
+    # },
     {
       "id": 81,
       "name": 'Nottm Forest',
@@ -261,7 +262,7 @@ Team.create(
       "league_id": 1,
       "home_city": 'Nottingham',
       "stadium": 'The City Ground',
-      "last_season_rank": ''
+      "last_season_rank": 16
     },
     {
       "id": 19,
@@ -272,7 +273,29 @@ Team.create(
       "league_id": 1,
       "home_city": 'Birmingham',
       "stadium": 'Villa Park',
-      "last_season_rank": 14
+      "last_season_rank": 7
+    },
+    {
+      "id": 88,
+      "name": 'Sheffield Utd',
+      "code": 'SHE',
+      "logo": 'https://media-4.api-sports.io/football/teams/62.png',
+      "api_id": 62,
+      "league_id": 1,
+      "home_city": 'Sheffield',
+      "stadium": 'Bramall Lane',
+      "last_season_rank": 22
+    },
+    {
+      "id": 1359,
+      "name": 'Luton',
+      "code": 'LUT',
+      "logo": 'https://media-4.api-sports.io/football/teams/1359.png',
+      "api_id": 1359,
+      "league_id": 1,
+      "home_city": 'Luton',
+      "stadium": 'Kenilworth Road',
+      "last_season_rank": 23
     },
     # 2021-2022降格
     # {
@@ -295,7 +318,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Roma',
       "stadium": 'Stadio Olimpico',
-      "last_season_rank": 5
+      "last_season_rank": 2
     },
     {
       "id": 22,
@@ -306,7 +329,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Reggio nell&apos;Emilia',
       "stadium": 'MAPEI Stadium - Città del Tricolore',
-      "last_season_rank": 11
+      "last_season_rank": 13
     },
     {
       "id": 23,
@@ -317,19 +340,18 @@ Team.create(
       "league_id": 2,
       "home_city": 'Milano',
       "stadium": 'Stadio Giuseppe Meazza',
-      "last_season_rank": 1
+      "last_season_rank": 4
     },
-    # 2021-2022降格
-    # {
-    #   "id": 24,
-    #   "name": 'Cagliari',
-    #   "logo": 'https://media.api-sports.io/football/teams/490.png',
-    #   "api_id": 490,
-    #   "league_id": 2,
-    #   "home_city": 'Cagliari',
-    #   "stadium": 'Unipol Domus',
-    #   "last_season_rank": 16
-    # },
+    {
+      "id": 24,
+      "name": 'Cagliari',
+      "logo": 'https://media.api-sports.io/football/teams/490.png',
+      "api_id": 490,
+      "league_id": 2,
+      "home_city": 'Cagliari',
+      "stadium": 'Unipol Domus',
+      "last_season_rank": 23
+    },
     {
       "id": 25,
       "name": 'Napoli',
@@ -339,7 +361,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Napoli',
       "stadium": 'Stadio Diego Armando Maradona',
-      "last_season_rank": 3
+      "last_season_rank": 1
     },
     {
       "id": 26,
@@ -352,17 +374,16 @@ Team.create(
       "stadium": 'Dacia Arena',
       "last_season_rank": 12
     },
-    # 2021-2022降格
-    # {
-    #   "id": 27,
-    #   "name": 'Genoa',
-    #   "logo": 'https://media.api-sports.io/football/teams/495.png',
-    #   "api_id": 495,
-    #   "league_id": 2,
-    #   "home_city": 'Genova',
-    #   "stadium": 'Stadio Comunale Luigi Ferraris',
-    #   "last_season_rank": 11
-    # },
+    {
+      "id": 27,
+      "name": 'Genoa',
+      "logo": 'https://media.api-sports.io/football/teams/495.png',
+      "api_id": 495,
+      "league_id": 2,
+      "home_city": 'Genova',
+      "stadium": 'Stadio Comunale Luigi Ferraris',
+      "last_season_rank": 22
+    },
     {
       "id": 28,
       "name": 'Juventus',
@@ -372,7 +393,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Torino',
       "stadium": 'Allianz Stadium',
-      "last_season_rank": 4
+      "last_season_rank": 7
     },
     {
       "id": 29,
@@ -385,17 +406,18 @@ Team.create(
       "stadium": 'Stadio Olimpico',
       "last_season_rank": 6
     },
-    {
-      "id": 30,
-      "name": 'Sampdoria',
-      "code": 'SAM',
-      "logo": 'https://media.api-sports.io/football/teams/498.png',
-      "api_id": 498,
-      "league_id": 2,
-      "home_city": 'Genova',
-      "stadium": 'Stadio Comunale Luigi Ferraris',
-      "last_season_rank": 15
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 30,
+    #  "name": 'Sampdoria',
+    #  "code": 'SAM',
+    #  "logo": 'https://media.api-sports.io/football/teams/498.png',
+    #  "api_id": 498,
+    #  "league_id": 2,
+    #  "home_city": 'Genova',
+    #  "stadium": 'Stadio Comunale Luigi Ferraris',
+    #  "last_season_rank": 15
+    # },
     {
       "id": 31,
       "name": 'Atalanta',
@@ -405,7 +427,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Bergamo',
       "stadium": 'Gewiss Stadium',
-      "last_season_rank": 8
+      "last_season_rank": 5
     },
     {
       "id": 32,
@@ -416,7 +438,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Bologna',
       "stadium": "Stadio Renato Dall'Ara",
-      "last_season_rank": 13
+      "last_season_rank": 9
     },
     {
       "id": 33,
@@ -427,7 +449,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Firenze',
       "stadium": 'Stadio Artemio Franchi',
-      "last_season_rank": 7
+      "last_season_rank": 8
     },
     {
       "id": 34,
@@ -449,7 +471,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Verona',
       "stadium": "Stadio Marc'Antonio Bentegodi",
-      "last_season_rank": 9
+      "last_season_rank": 18
     },
     {
       "id": 36,
@@ -460,7 +482,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Milano',
       "stadium": 'Stadio Giuseppe Meazza',
-      "last_season_rank": 2
+      "last_season_rank": 3
     },
     {
       "id": 37,
@@ -474,6 +496,17 @@ Team.create(
       "last_season_rank": 14
     },
     {
+      "id": 90,
+      "name": 'Frosinone',
+      "code": 'FRO',
+      "logo": 'https://media-4.api-sports.io/football/teams/512.png',
+      "api_id": 512,
+      "league_id": 2,
+      "home_city": 'Frosinone',
+      "stadium": 'Stadio Benito Stirpe',
+      "last_season_rank": 21
+    },
+    {
       "id": 38,
       "name": 'Salernitana',
       "code": 'SAL',
@@ -482,19 +515,20 @@ Team.create(
       "league_id": 2,
       "home_city": 'Salerno',
       "stadium": 'Stadio Arechi',
-      "last_season_rank": 17
+      "last_season_rank": 15
     },
-    {
-      "id": 39,
-      "name": 'Spezia',
-      "code": 'SPE',
-      "logo": 'https://media.api-sports.io/football/teams/515.png',
-      "api_id": 515,
-      "league_id": 2,
-      "home_city": 'La Spezia',
-      "stadium": 'Stadio Alberto Picco',
-      "last_season_rank": 16
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 39,
+    #  "name": 'Spezia',
+    #  "code": 'SPE',
+    #  "logo": 'https://media.api-sports.io/football/teams/515.png',
+    #  "api_id": 515,
+    #  "league_id": 2,
+    #  "home_city": 'La Spezia',
+    #  "stadium": 'Stadio Alberto Picco',
+    #  "last_season_rank": 16
+    # },
     # 2021-2022降格
     # {
     #   "id": 40,
@@ -506,17 +540,18 @@ Team.create(
     #   "stadium": 'Stadio Pierluigi Penzo',
     #   "last_season_rank": ''
     # },
-    {
-      "id": 82,
-      "name": 'Cremonese',
-      "code": 'CRE',
-      "logo": 'https://media.api-sports.io/football/teams/520.png',
-      "api_id": 520,
-      "league_id": 2,
-      "home_city": 'Cremona',
-      "stadium": 'Stadio Giovanni Zini',
-      "last_season_rank": ''
-    },
+    # 2022-2023降格
+    # {
+    # "id": 82,
+    #  "name": 'Cremonese',
+    #  "code": 'CRE',
+    #  "logo": 'https://media.api-sports.io/football/teams/520.png',
+    #  "api_id": 520,
+    #  "league_id": 2,
+    #  "home_city": 'Cremona',
+    #  "stadium": 'Stadio Giovanni Zini',
+    #  "last_season_rank": ''
+    # },
     {
       "id": 83,
       "name": 'Lecce',
@@ -526,7 +561,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Lecce',
       "stadium": 'Stadio Comunale Via del Mare',
-      "last_season_rank": ''
+      "last_season_rank": 16
     },
     {
       "id": 84,
@@ -537,7 +572,7 @@ Team.create(
       "league_id": 2,
       "home_city": 'Monza',
       "stadium": 'U-Power Stadium',
-      "last_season_rank": ''
+      "last_season_rank": 11
     },
     # --------- LaLiga ---------------
     {
@@ -549,7 +584,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Barcelona',
       "stadium": 'Camp Nou',
-      "last_season_rank": 2
+      "last_season_rank": 1
     },
     {
       "id": 42,
@@ -582,7 +617,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Valencia',
       "stadium": 'Estadio de Mestalla',
-      "last_season_rank": 9
+      "last_season_rank": 16
     },
     {
       "id": 45,
@@ -593,7 +628,18 @@ Team.create(
       "league_id": 3,
       "home_city": 'Villarreal',
       "stadium": 'Estadio de la Cerámica',
-      "last_season_rank": 7
+      "last_season_rank": 5
+    },
+    {
+      "id": 534,
+      "name": 'Las Palmas',
+      "code": 'PAL',
+      "logo": 'https://media-4.api-sports.io/football/teams/534.png',
+      "api_id": 534,
+      "league_id": 3,
+      "home_city": 'Las Palmas de Gran Canaria',
+      "stadium": 'Estadio de Gran Canaria',
+      "last_season_rank": 22
     },
     {
       "id": 46,
@@ -604,7 +650,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Sevilla',
       "stadium": 'Estadio Ramón Sánchez Pizjuán',
-      "last_season_rank": 11
+      "last_season_rank": 12
     },
     {
       "id": 47,
@@ -615,7 +661,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Vigo',
       "stadium": 'Abanca-Balaídos',
-      "last_season_rank": 8
+      "last_season_rank": 13
     },
     # 2021-2022降格
     # {
@@ -628,17 +674,18 @@ Team.create(
     #   "stadium": 'Estadio Ciudad de Valencia',
     #   "last_season_rank": 14
     # },
-    {
-      "id": 49,
-      "name": 'Espanyol',
-      "code": 'ESP',
-      "logo": 'https://media.api-sports.io/football/teams/540.png',
-      "api_id": 540,
-      "league_id": 3,
-      "home_city": 'Cornella de Llobregat',
-      "stadium": 'RCDE Stadium',
-      "last_season_rank": 14
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 49,
+    #  "name": 'Espanyol',
+    #  "code": 'ESP',
+    #  "logo": 'https://media.api-sports.io/football/teams/540.png',
+    #  "api_id": 540,
+    #  "league_id": 3,
+    #  "home_city": 'Cornella de Llobregat',
+    #  "stadium": 'RCDE Stadium',
+    #  "last_season_rank": 14
+    # },
     {
       "id": 50,
       "name": 'Real Madrid',
@@ -648,19 +695,18 @@ Team.create(
       "league_id": 3,
       "home_city": 'Madrid',
       "stadium": 'Estadio Santiago Bernabéu',
-      "last_season_rank": 1
+      "last_season_rank": 2
     },
-    # 2021-2022降格
-    # {
-    #   "id": 51,
-    #   "name": 'Alaves',
-    #   "logo": 'https://media.api-sports.io/football/teams/542.png',
-    #   "api_id": 542,
-    #   "league_id": 3,
-    #   "home_city": 'Vitoria-Gasteiz',
-    #   "stadium": 'Estadio de Mendizorroza',
-    #   "last_season_rank": 16
-    # },
+    {
+      "id": 51,
+      "name": 'Alaves',
+      "logo": 'https://media.api-sports.io/football/teams/542.png',
+      "api_id": 542,
+      "league_id": 3,
+      "home_city": 'Vitoria-Gasteiz',
+      "stadium": 'Estadio de Mendizorroza',
+      "last_season_rank": 22
+    },
     {
       "id": 52,
       "name": 'Real Betis',
@@ -670,7 +716,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Sevilla',
       "stadium": 'Estadio Benito Villamarín',
-      "last_season_rank": 5
+      "last_season_rank": 6
     },
     {
       "id": 53,
@@ -684,7 +730,7 @@ Team.create(
       "last_season_rank": 15
     },
     {
-      "id": 89,
+      "id": 547,
       "name": 'Girona',
       "code": 'GIR',
       "logo": 'https://media.api-sports.io/football/teams/547.png',
@@ -692,7 +738,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Girona',
       "stadium": 'Estadi Municipal de Montilivi',
-      "last_season_rank": ''
+      "last_season_rank": 10
     },
     {
       "id": 54,
@@ -703,19 +749,20 @@ Team.create(
       "league_id": 3,
       "home_city": 'Donostia-San Sebastián',
       "stadium": 'Reale Arena',
-      "last_season_rank": 6
+      "last_season_rank": 4
     },
-    {
-      "id": 85,
-      "name": 'Valladolid',
-      "code": 'VAL',
-      "logo": 'https://media.api-sports.io/football/teams/720.png',
-      "api_id": 720,
-      "league_id": 3,
-      "home_city": 'Avenida del Mundial 82',
-      "stadium": 'Estadio Municipal José Zorrilla',
-      "last_season_rank": ''
-    },
+    # 2022-2023降格
+    # {
+    # "id": 85,
+    # "name": 'Valladolid',
+    # "code": 'VAL',
+    # "logo": 'https://media.api-sports.io/football/teams/720.png',
+    # "api_id": 720,
+    # "league_id": 3,
+    # "home_city": 'Avenida del Mundial 82',
+    # "stadium": 'Estadio Municipal José Zorrilla',
+    # "last_season_rank": ''
+    # },
     {
       "id": 86,
       "name": 'Almeria',
@@ -725,19 +772,18 @@ Team.create(
       "league_id": 3,
       "home_city": 'Calle de Belladona',
       "stadium": 'Estadio de los Juegos Mediterráneos',
-      "last_season_rank": ''
+      "last_season_rank": 17
     },
-    # 2021-2022降格
-    # {
-    # "id": 55,
-    # "name": 'Granada CF',
-    # "logo": 'https://media.api-sports.io/football/teams/715.png',
-    # "api_id": 715,
-    # "league_id": 3,
-    # "home_city": 'Granada',
-    # "stadium": 'Estadio Nuevo Los Cármenes',
-    # "last_season_rank": 9
-    # },
+    {
+      "id": 55,
+      "name": 'Granada CF',
+      "logo": 'https://media.api-sports.io/football/teams/715.png',
+      "api_id": 715,
+      "league_id": 3,
+      "home_city": 'Granada',
+      "stadium": 'Estadio Nuevo Los Cármenes',
+      "last_season_rank": 21
+    },
     {
       "id": 56,
       "name": 'Cadiz',
@@ -747,7 +793,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Cádiz',
       "stadium": 'Estadio Nuevo Mirandilla',
-      "last_season_rank": 17
+      "last_season_rank": 14
     },
     {
       "id": 57,
@@ -758,7 +804,7 @@ Team.create(
       "league_id": 3,
       "home_city": 'Iruñea',
       "stadium": 'Estadio El Sadar',
-      "last_season_rank": 10
+      "last_season_rank": 7
     },
     {
       "id": 58,
@@ -769,19 +815,20 @@ Team.create(
       "league_id": 3,
       "stadium": 'Estadio de Vallecas',
       "home_city": 'Madrid',
-      "last_season_rank": 12
+      "last_season_rank": 11
     },
-    {
-      "id": 59,
-      "name": 'Elche',
-      "code": 'ELC',
-      "logo": 'https://media.api-sports.io/football/teams/797.png',
-      "api_id": 797,
-      "league_id": 3,
-      "home_city": 'Elche',
-      "stadium": 'Estadio Manuel Martínez Valero',
-      "last_season_rank": 13
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 59,
+    #  "name": 'Elche',
+    #  "code": 'ELC',
+    #  "logo": 'https://media.api-sports.io/football/teams/797.png',
+    #  "api_id": 797,
+    #  "league_id": 3,
+    #  "home_city": 'Elche',
+    #  "stadium": 'Estadio Manuel Martínez Valero',
+    #  "last_season_rank": 13
+    # },
     {
       "id": 60,
       "name": 'Mallorca',
@@ -791,9 +838,9 @@ Team.create(
       "league_id": 3,
       "home_city": 'Palma de Mallorca',
       "stadium": 'Visit Mallorca Estadi',
-      "last_season_rank": 16
+      "last_season_rank": 9
     },
-    # --------- LaLiga ---------------
+    # --------- Bundes ---------------
     {
       "id": 61,
       "name": 'Bayern Munich',
@@ -805,17 +852,18 @@ Team.create(
       "stadium": 'Allianz Arena',
       "last_season_rank": 1
     },
-    {
-      "id": 62,
-      "name": 'Hertha Berlin',
-      "code": 'HER',
-      "logo": 'https://media.api-sports.io/football/teams/159.png',
-      "api_id": 159,
-      "league_id": 4,
-      "home_city": 'Berlin',
-      "stadium": 'Olympiastadion Berlin',
-      "last_season_rank": 16
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 62,
+    #  "name": 'Hertha Berlin',
+    #  "code": 'HER',
+    #  "logo": 'https://media.api-sports.io/football/teams/159.png',
+    #  "api_id": 159,
+    #  "league_id": 4,
+    #  "home_city": 'Berlin',
+    #  "stadium": 'Olympiastadion Berlin',
+    #  "last_season_rank": 16
+    # },
     {
       "id": 63,
       "name": 'SC Freiburg',
@@ -825,7 +873,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Freiburg im Breisgau',
       "stadium": 'Europa-Park Stadion',
-      "last_season_rank": 6
+      "last_season_rank": 5
     },
     {
       "id": 64,
@@ -836,7 +884,7 @@ Team.create(
       "league_id": 4,
       "stadium": 'VOLKSWAGEN ARENA',
       "home_city": 'Wolfsburg',
-      "last_season_rank": 12
+      "last_season_rank": 8
     },
     {
       "id": 87,
@@ -847,7 +895,7 @@ Team.create(
       "league_id": 4,
       "stadium": 'wohninvest WESERSTADION',
       "home_city": 'Bremen',
-      "last_season_rank": ''
+      "last_season_rank": 13
     },
     {
       "id": 65,
@@ -869,7 +917,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Mainz',
       "stadium": 'MEWA ARENA',
-      "last_season_rank": 8
+      "last_season_rank": 9
     },
     {
       "id": 67,
@@ -891,7 +939,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Sinsheim',
       "stadium": 'PreZero Arena',
-      "last_season_rank": 9
+      "last_season_rank": 12
     },
     {
       "id": 69,
@@ -902,7 +950,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Leverkusen',
       "stadium": 'BayArena',
-      "last_season_rank": 3
+      "last_season_rank": 6
     },
     {
       "id": 70,
@@ -913,7 +961,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Frankfurt am Main',
       "stadium": 'Deutsche Bank Park',
-      "last_season_rank": 11
+      "last_season_rank": 7
     },
     {
       "id": 71,
@@ -924,7 +972,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Augsburg',
       "stadium": 'WWK Arena',
-      "last_season_rank": 14
+      "last_season_rank": 15
     },
     {
       "id": 72,
@@ -935,7 +983,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Stuttgart',
       "stadium": 'Mercedes-Benz-Arena',
-      "last_season_rank": 15
+      "last_season_rank": 16
     },
     {
       "id": 73,
@@ -946,19 +994,20 @@ Team.create(
       "league_id": 4,
       "home_city": 'Leipzig',
       "stadium": 'Red Bull Arena',
-      "last_season_rank": 4
+      "last_season_rank": 3
     },
-    {
-      "id": 88,
-      "name": 'FC Schalke 04',
-      "code": 'SCH',
-      "logo": 'https://media.api-sports.io/football/teams/174.png',
-      "api_id": 174,
-      "league_id": 4,
-      "home_city": 'Gelsenkirchen',
-      "stadium": 'VELTINS-Arena',
-      "last_season_rank": ''
-    },
+    # 2022-2023降格
+    # {
+    #  "id": 88,
+    #  "name": 'FC Schalke 04',
+    #  "code": 'SCH',
+    #  "logo": 'https://media.api-sports.io/football/teams/174.png',
+    #  "api_id": 174,
+    #  "league_id": 4,
+    #  "home_city": 'Gelsenkirchen',
+    #  "stadium": 'VELTINS-Arena',
+    #  "last_season_rank": ''
+    # },
     {
       "id": 74,
       "name": 'VfL BOCHUM',
@@ -968,7 +1017,29 @@ Team.create(
       "league_id": 4,
       "home_city": 'Bochum',
       "stadium": 'Vonovia Ruhrstadion',
-      "last_season_rank": 13
+      "last_season_rank": 8
+    },
+    {
+      "id": 180,
+      "name": 'FC Heidenheim',
+      "code": 'HEI',
+      "logo": 'https://media-4.api-sports.io/football/teams/180.png',
+      "api_id": 180,
+      "league_id": 4,
+      "home_city": 'Heidenheim an der Brenz',
+      "stadium": 'Voith-Arena',
+      "last_season_rank": 19
+    },
+    {
+      "id": 181,
+      "name": 'SV Darmstadt 98',
+      "code": 'DAR',
+      "logo": 'https://media-4.api-sports.io/football/teams/181.png',
+      "api_id": 181,
+      "league_id": 4,
+      "home_city": 'Darmstadt',
+      "stadium": 'Merck-Stadion am Böllenfalltor',
+      "last_season_rank": 20
     },
     # 2021-2022降格
     # {
@@ -990,7 +1061,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Berlin',
       "stadium": 'Stadion An der Alten Försterei',
-      "last_season_rank": 5
+      "last_season_rank": 4
     },
     # 2021-2022降格
     # {
@@ -1012,7 +1083,7 @@ Team.create(
       "league_id": 4,
       "home_city": 'Köln',
       "stadium": 'RheinEnergieStadion',
-      "last_season_rank": 7
+      "last_season_rank": 11
     }
   ]
 )
