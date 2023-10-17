@@ -11,12 +11,24 @@ describe('CompetitorTeamSelectSelf', () => {
       }
     })
 
-    expect(wrapper.find('h2').text()).toBe('ライバルチームを最大3チームまで選んでください')
-    expect(wrapper.findComponent({ name: 'CompetitorTeamCount' }).exists()).toBe(false)
-    expect(wrapper.findComponent({ name: 'CompetitorTeamList' }).exists()).toBe(false)
-    expect(wrapper.findComponent({ name: 'TeamListLoader' }).exists()).toBe(true)
-    expect(wrapper.findComponent({ name: 'BackToPageButton' }).exists()).toBe(true)
-    expect(wrapper.findComponent({ name: 'CompetitorSelectButton' }).exists()).toBe(true)
+    expect(wrapper.find('h2').text()).toBe(
+      'ライバルチームを最大3チームまで選んでください'
+    )
+    expect(
+      wrapper.findComponent({ name: 'CompetitorTeamCount' }).exists()
+    ).toBe(false)
+    expect(wrapper.findComponent({ name: 'CompetitorTeamList' }).exists()).toBe(
+      false
+    )
+    expect(wrapper.findComponent({ name: 'TeamListLoader' }).exists()).toBe(
+      true
+    )
+    expect(wrapper.findComponent({ name: 'BackToPageButton' }).exists()).toBe(
+      true
+    )
+    expect(
+      wrapper.findComponent({ name: 'CompetitorSelectButton' }).exists()
+    ).toBe(true)
   })
 
   it('emits selectTeam event when selectTeam method is called', async () => {

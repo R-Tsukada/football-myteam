@@ -2,16 +2,19 @@
   <div clsss="main-page">
     <div
       class="box standing-and-matches columns my-6"
-      @click="selectTeam(standings)">
+      @click="selectTeam(standings)"
+    >
       <StandingData
         :standings="standings"
         :favoriteTeamPoints="favoriteTeamPoints"
         :favoriteId="favoriteId"
-        class="standing-data column is-three-fifths" />
+        class="standing-data column is-three-fifths"
+      />
       <TeamMatches
         :matchSchedules="matchSchedules.slice(0, 3)"
         :currentTeam="currentTeam"
-        class="match-data column is-two-fifths" />
+        class="match-data column is-two-fifths"
+      />
     </div>
     <!--box-standing-and-matches-->
   </div>

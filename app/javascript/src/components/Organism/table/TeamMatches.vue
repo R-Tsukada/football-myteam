@@ -4,14 +4,17 @@
     <div
       class="next-match has-text-centered is-size-5-mobile is-flex is-align-items-center py-2"
       v-for="match in matchSchedules"
-      :key="match.id">
+      :key="match.id"
+    >
       <img
         :src="match.competition_logo"
         alt="favorite-team-next-match"
-        class="image next-match-competition-logo" />
+        class="image next-match-competition-logo"
+      />
       <div
         v-if="currentTeam.stadium === match.home_and_away"
-        class="next-match-venu">
+        class="next-match-venu"
+      >
         <p class="has-text-white mr-1 has-background-success">HOME</p>
       </div>
       <div v-else class="next-match-venu">
@@ -26,9 +29,11 @@
         <img
           :src="match.away_logo"
           alt="match-team-logo"
-          class="image next-match-competition-logo" />
+          class="image next-match-competition-logo"
+        />
         <p
-          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
+          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold"
+        >
           {{ match.away_team_name }}
         </p>
       </div>
@@ -36,9 +41,11 @@
         <img
           :src="match.home_logo"
           alt="match-team-logo"
-          class="image next-match-competition-logo" />
+          class="image next-match-competition-logo"
+        />
         <p
-          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold">
+          class="match-name not-displayed-when-with-mobile-display has-text-weight-bold"
+        >
           {{ match.home_team_name }}
         </p>
       </div>

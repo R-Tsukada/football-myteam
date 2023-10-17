@@ -3,33 +3,39 @@
     <div
       class="box has-text-centered"
       v-for="result in matchResultFilter"
-      :key="result.id">
+      :key="result.id"
+    >
       <div class="columns is-mobile is-gapless">
         <div class="column has-text-right mr-1 my-auto">
           <img
             :src="result.competition_logo"
             alt="competition_logo"
-            class="competition-logo" />
+            class="competition-logo"
+          />
         </div>
         <div
           v-if="selectedTeam[0].stadium === result.home_and_away"
-          class="home-and-away column has-text-white has-text-weight-bold has-background-success my-auto">
+          class="home-and-away column has-text-white has-text-weight-bold has-background-success my-auto"
+        >
           <p>HOME</p>
         </div>
         <div
           v-else
-          class="home-and-away column has-text-white has-text-weight-bold has-background-danger my-auto">
+          class="home-and-away column has-text-white has-text-weight-bold has-background-danger my-auto"
+        >
           <p>AWAY</p>
         </div>
         <p
-          class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1">
+          class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1"
+        >
           {{ matchDay(result.date) }}
         </p>
       </div>
       <!-- columns -->
       <div class="match-list columns is-mobile m-auto">
         <p
-          class="column m-auto has-text-centered has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
+          class="column m-auto has-text-centered has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display"
+        >
           {{ result.home_team_name }}
         </p>
         <div class="column schedule-column-logo m-auto">
@@ -37,15 +43,18 @@
         </div>
         <!-- schedule-column-logo -->
         <p
-          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto">
+          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto"
+        >
           {{ result.home_score }}
         </p>
         <p
-          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-3 is-size-5-mobile m-auto">
+          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-3 is-size-5-mobile m-auto"
+        >
           -
         </p>
         <p
-          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto">
+          class="column schedule-column-score has-text-centered has-text-weight-bold is-size-1 is-size-3-mobile m-auto"
+        >
           {{ result.away_score }}
         </p>
         <div class="column m-auto schedule-column-logo">
@@ -53,7 +62,8 @@
         </div>
         <!-- schedule-column-logo -->
         <p
-          class="column has-text-centered has-text-weight-bold m-auto is-size-3-tablet not-displayed-when-with-mobile-display">
+          class="column has-text-centered has-text-weight-bold m-auto is-size-3-tablet not-displayed-when-with-mobile-display"
+        >
           {{ result.away_team_name }}
         </p>
       </div>

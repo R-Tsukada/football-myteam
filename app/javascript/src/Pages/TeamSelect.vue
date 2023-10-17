@@ -2,7 +2,8 @@
   <div class="container">
     <section class="has-text-centered">
       <h2
-        class="has-text-centered is-size-2-tablet is-size-6-mobile has-text-weight-bold mt-6 mb-4">
+        class="has-text-centered is-size-2-tablet is-size-6-mobile has-text-weight-bold mt-6 mb-4"
+      >
         応援しているチームを選んでください
       </h2>
       <section>
@@ -10,7 +11,8 @@
         <router-link
           to="/competitors"
           v-else
-          class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold">
+          class="has-text-right is-size-6-tablet is-size-7-mobile has-text-weight-bold"
+        >
           <p>ライバルチームのみ変更する</p>
         </router-link>
         <LeagueAndTeamSelect />

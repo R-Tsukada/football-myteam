@@ -1,7 +1,8 @@
 <template>
   <div>
     <h3
-      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3 mb-5">
+      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold mt-3 mb-5"
+    >
       リーグを選択
     </h3>
     <section>
@@ -9,17 +10,20 @@
       <LeagueList
         :leagues="data.leagues"
         :selectedLeague="data.selectedLeague"
-        @selectLeague="selectLeague" />
+        @selectLeague="selectLeague"
+      />
     </section>
     <h3
-      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold my-3">
+      class="has-text-centered is-size-3 is-size-6-mobile has-text-weight-bold my-3"
+    >
       チームを選択
     </h3>
     <section>
       <TeamList
         :teamFilter="teamFilter"
         :selectedTeam="data.selectedTeam"
-        @selectTeam="selectTeam" />
+        @selectTeam="selectTeam"
+      />
     </section>
     <FavoriteSelectButton :selectedTeam="data.selectedTeam" />
   </div>

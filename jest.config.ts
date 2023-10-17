@@ -1,26 +1,14 @@
 export default {
-  roots: [
-    "spec/javascript"
-  ],
+  roots: ['spec/javascript'],
   testEnvironmentOptions: {
-    customExportConditions: [
-      "node",
-      "node-addons"
-    ]
+    customExportConditions: ['node', 'node-addons']
   },
-  moduleFileExtensions: [
-    "js",
-    "vue",
-    "ts"
-  ],
-  moduleDirectories: [
-    "node_modules",
-    "app/javascript/src"
-  ],
+  moduleFileExtensions: ['js', 'vue', 'ts'],
+  moduleDirectories: ['node_modules', 'app/javascript/src'],
   transform: {
-    ".*\\.(vue)$": "@vue/vue3-jest",
-    "^.+\\.js$": "babel-jest"
+    '.*\\.(vue)$': '@vue/vue3-jest',
+    '^.+\\.js$': 'babel-jest'
   },
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   preset: 'ts-jest'
 }

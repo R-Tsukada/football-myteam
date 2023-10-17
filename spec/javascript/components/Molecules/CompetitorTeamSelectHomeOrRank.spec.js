@@ -5,12 +5,11 @@ describe('CompetitorTeamSelectHomeOrRank.vue', () => {
   it('renders the component', () => {
     const wrapper = shallowMount(CompetitorTeamSelectHomeOrRank, {
       propsData: {
-        teams: [
-          { id: 1, name: 'team1' },
-        ],
+        teams: [{ id: 1, name: 'team1' }],
         competitors: [
           {
-            id: 2, name: 'team2'
+            id: 2,
+            name: 'team2'
           }
         ]
       }

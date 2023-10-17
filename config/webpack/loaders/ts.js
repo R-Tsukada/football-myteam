@@ -2,7 +2,7 @@ module.exports = {
   test: /\.tsx$/,
   loader: 'ts-loader',
   options: {
-    appendTsSuffixTo: [/\.vue$/],
+    appendTsSuffixTo: [/\.vue$/]
   },
-  exclude: /node_modules/,
-};
+  exclude: /node_modules/
+}

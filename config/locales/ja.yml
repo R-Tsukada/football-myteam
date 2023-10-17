@@ -4,10 +4,10 @@ ja:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+          has_one: '%{record}が存在しているので削除できません'
+          has_many: '%{record}が存在しているので削除できません'
   errors:
-    format: "%{attribute}%{message}"
+    format: '%{attribute}%{message}'
     messages:
       accepted: を受諾してください
       blank: を入力してください
@@ -36,8 +36,8 @@ ja:
     template:
       body: 次の項目を確認してください
       header:
-        one: "%{model}にエラーが発生しました"
-        other: "%{model}に%{count}個のエラーが発生しました"
+        one: '%{model}にエラーが発生しました'
+        other: '%{model}に%{count}個のエラーが発生しました'
   helpers:
     select:
       prompt: 選択してください
@@ -76,4 +76,3 @@ ja:
     sessions:
       new:
         log_in: 'ログイン'
-

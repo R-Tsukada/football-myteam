@@ -2,7 +2,8 @@
   <div class="container">
     <div class="section">
       <h2
-        class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6">
+        class="is-size-2-tablet is-size-4-mobile has-text-centered has-text-weight-bold pb-6"
+      >
         リーグ戦情報
       </h2>
       <div v-if="!favoriteMatches.length && isSeasonOff">
@@ -23,25 +24,29 @@
           :standings="favoriteStanding[0]"
           :currentTeam="data.favorite.team"
           :matchSchedules="favoriteMatches"
-          :favoriteId="data.favorite.team.id" />
+          :favoriteId="data.favorite.team.id"
+        />
         <p class="is-size-3 has-text-weight-bold has-text-centered my-5">VS</p>
         <TeamScheduleBox
           :standings="firstCompetitorStanding[0]"
           :currentTeam="data.competitors[0]"
           :matchSchedules="firstCompetitorTeamsMatches"
-          :favoriteTeamPoints="favoriteStanding[0].points" />
+          :favoriteTeamPoints="favoriteStanding[0].points"
+        />
         <TeamScheduleBox
           v-if="data.competitors[1]"
           :standings="secondCompetitorStanding[0]"
           :currentTeam="data.competitors[1]"
           :matchSchedules="secondCompetitorTeamsMatches"
-          :favoriteTeamPoints="favoriteStanding[0].points" />
+          :favoriteTeamPoints="favoriteStanding[0].points"
+        />
         <TeamScheduleBox
           v-if="data.competitors[2]"
           :standings="thirdCompetitorStanding[0]"
           :currentTeam="data.competitors[2]"
           :matchSchedules="thirdCompetitorTeamsMatches"
-          :favoriteTeamPoints="favoriteStanding[0].points" />
+          :favoriteTeamPoints="favoriteStanding[0].points"
+        />
       </div>
       <!-- v-else -->
     </div>
