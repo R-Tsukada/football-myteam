@@ -26,6 +26,10 @@ environment.plugins.prepend(
   })
 )
 
+environment.config.merge({
+  node: false
+})
+
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('ts', ts)
 module.exports = environment
