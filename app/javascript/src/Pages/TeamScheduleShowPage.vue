@@ -2,23 +2,27 @@
   <div class="container">
     <h2
       class="selected-team is-flex is-justify-content-center is-align-items-center mx-auto my-6"
-      v-if="selectedTeam[0]">
+      v-if="selectedTeam[0]"
+    >
       <span
         class="favorite-team-tag my-auto mr-2"
         v-if="
           data.favorite.team && data.favorite.team.id === $store.state.teamId
-        ">
+        "
+      >
         <FavoriteTeamTag />
       </span>
       <div class="mr-2">
         <img
           :src="selectedTeam[0].logo"
           alt="selected_team_logo"
-          class="image selected-team-logo-show-page m-auto" />
+          class="image selected-team-logo-show-page m-auto"
+        />
       </div>
       <!-- mr-2.selected-team-togo-show-page -->
       <div
-        class="selected-team-name-and-matches has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto">
+        class="selected-team-name-and-matches has-text-bold is-size-2 is-size-6-mobile has-text-weight-bold has-text-left my-auto"
+      >
         {{ selectedTeam[0].name }}の試合{{ changeTitle }}
       </div>
       <!-- selected-team-name-and-matches -->
@@ -40,17 +44,21 @@
       <div class="tab-contents" v-else>
         <div
           class="content"
-          v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }">
+          v-bind:class="{ 'is-active': data.isActive == 'match_schedule' }"
+        >
           <MatchScheduleList
             :matchScheduleFilter="matchScheduleFilter"
-            :selectedTeam="selectedTeam" />
+            :selectedTeam="selectedTeam"
+          />
         </div>
         <div
           class="content"
-          v-bind:class="{ 'is-active': data.isActive == 'match_result' }">
+          v-bind:class="{ 'is-active': data.isActive == 'match_result' }"
+        >
           <MatchResultList
             :matchResultFilter="matchResultsFilter.reverse()"
-            :selectedTeam="selectedTeam" />
+            :selectedTeam="selectedTeam"
+          />
         </div>
       </div>
       <!-- tab-contents v-else -->

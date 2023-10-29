@@ -3,40 +3,47 @@
     <div
       class="box has-text-centered"
       v-for="schedule in matchScheduleFilter"
-      :key="schedule.id">
+      :key="schedule.id"
+    >
       <div class="columns is-mobile is-gapless">
         <div class="column has-text-right mr-1 my-auto">
           <img
             :src="schedule.competition_logo"
             alt="competition_logo"
-            class="competition-logo" />
+            class="competition-logo"
+          />
         </div>
         <div
           v-if="selectedTeam[0].stadium === schedule.home_and_away"
-          class="home-and-away column has-text-white has-text-weight-bold has-background-success my-auto">
+          class="home-and-away column has-text-white has-text-weight-bold has-background-success my-auto"
+        >
           <p>HOME</p>
         </div>
         <div
           v-else
-          class="home-and-away column has-text-white has-text-weight-bold has-background-danger my-auto">
+          class="home-and-away column has-text-white has-text-weight-bold has-background-danger my-auto"
+        >
           <p>AWAY</p>
         </div>
         <p
-          class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1">
+          class="match-schedule-date column has-text-weight-bold has-text-left my-auto ml-1"
+        >
           {{ matchDay(schedule.date) }}
         </p>
       </div>
       <!-- columns -->
       <div class="match-list columns is-mobile mx-auto">
         <p
-          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
+          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display"
+        >
           {{ schedule.home_team_name }}
         </p>
         <div class="column has-text-centered">
           <img
             :src="schedule.home_logo"
             alt="home_team_logo"
-            class="image team-logo mx-auto" />
+            class="image team-logo mx-auto"
+          />
         </div>
         <div class="column my-auto has-text-centered is-size-3 mt-4">
           <p class="has-text-weight-bold">vs</p>
@@ -45,10 +52,12 @@
           <img
             :src="schedule.away_logo"
             alt="away_team_logo"
-            class="image team-logo mx-auto" />
+            class="image team-logo mx-auto"
+          />
         </div>
         <p
-          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display">
+          class="column my-auto has-text-weight-bold is-size-3-tablet not-displayed-when-with-mobile-display"
+        >
           {{ schedule.away_team_name }}
         </p>
       </div>

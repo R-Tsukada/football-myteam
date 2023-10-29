@@ -4,30 +4,35 @@
     <div v-show="data.isShowing">
       <div class="mx-auto">
         <h2
-          class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-6">
+          class="is-size-2-tablet is-size-5-mobile has-text-left-mobile has-text-weight-bold p-3 mt-6"
+        >
           ライバルチームの選び方を選択してください
         </h2>
         <HowToSelectCompetitorTeam
           :checkedName="data.checkedName"
-          @update:checkedName="updateCheckedName" />
+          @update:checkedName="updateCheckedName"
+        />
       </div>
       <!-- v-show -->
       <router-link to="/leagues">
         <BackToPageButton
           class="is-rounded mx-auto"
-          label="応援しているチームを選び直す" />
+          label="応援しているチームを選び直す"
+        />
       </router-link>
       <BaseButton
         v-if="data.checkedName.length === 0"
         class="is-rounded color-button"
         label="チームの選択方法を決定する"
         title="Disabled button"
-        disabled />
+        disabled
+      />
       <DetermineButton
         v-else
         class="color-button is-rounded has-text-white"
         label="チームの選択方法を決定する"
-        @click="selectTeam" />
+        @click="selectTeam"
+      />
     </div>
     <!-- has-text-centered -->
     <!--ライバルチームの選択方法を選んでもらったあと-->
@@ -37,7 +42,8 @@
         :isShowingMessage="data.isShowingMessage"
         :teams="data.selectedTeams"
         @followTeam="followTeam"
-        @selectAgain="selectAgain" />
+        @selectAgain="selectAgain"
+      />
     </div>
     <!--自分でチーム選んでもらう -->
     <div v-if="data.isFreeSelect">
@@ -46,7 +52,8 @@
         :competitors="data.competitors"
         :isShowingMessage="data.isShowingMessage"
         @selectTeam="followTeam"
-        @selectAgain="selectAgain" />
+        @selectAgain="selectAgain"
+      />
     </div>
     <!-- v-if -->
   </div>

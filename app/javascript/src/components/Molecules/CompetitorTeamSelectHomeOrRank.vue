@@ -8,12 +8,14 @@
       <SelectedCompetitorTeamList
         :teams="teams"
         :competitors="competitors"
-        @followTeam="followTeam" />
+        @followTeam="followTeam"
+      />
       <div class="back-or-select-buttons mt-4">
         <BackToPageButton
           @click="selectAgain"
           class="is-rounded"
-          label="チームの選び方を変更する" />
+          label="チームの選び方を変更する"
+        />
         <CompetitorSelectButton :competitors="competitors" />
       </div>
     </section>

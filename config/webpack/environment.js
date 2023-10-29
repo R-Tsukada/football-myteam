@@ -15,7 +15,7 @@ environment.loaders.prepend('vue', {
 environment.loaders.append('mjs', {
   test: /\.mjs$/,
   include: /node_modules/,
-  type: 'javascript/auto',
+  type: 'javascript/auto'
 })
 
 environment.plugins.prepend(
@@ -25,6 +25,10 @@ environment.plugins.prepend(
     __VUE_PROD_DEVTOOLS__: false
   })
 )
+
+environment.config.merge({
+  node: false
+})
 
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('ts', ts)

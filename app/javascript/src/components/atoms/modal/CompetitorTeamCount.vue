@@ -3,7 +3,8 @@
     class="message is-info has-text-centered"
     v-bind:class="{
       'message is-danger': competitors.length >= 3
-    }">
+    }"
+  >
     <div class="message-body">
       <div v-if="competitors.length > 3">
         <p>登録できるのは3チームまでです</p>

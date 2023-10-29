@@ -1,7 +1,8 @@
 <template>
   <div class="favorite-team-standing columns is-mobile">
     <div
-      class="favorite-team-name-and-rank favorite-team-border-right column is-three-fifths">
+      class="favorite-team-name-and-rank favorite-team-border-right column is-three-fifths"
+    >
       <div class="has-text-centered" v-show="favoriteId === standings.team_id">
         <FavoriteTeamTag />
       </div>
@@ -23,11 +24,13 @@
           <img
             :src="standings.team_logo"
             alt="standings-favorite-team-logo"
-            class="image" />
+            class="image"
+          />
         </div>
         <!--favorite-team-logo column-->
         <div
-          class="favorite-team-name not-displayed-when-with-mobile-display my-auto column">
+          class="favorite-team-name not-displayed-when-with-mobile-display my-auto column"
+        >
           <p class="has-text-weight-bold is-size-4">
             {{ standings.team_name }}
           </p>
@@ -48,7 +51,8 @@
       <DifferenceInPoints
         :favoriteTeamPoints="favoriteTeamPoints"
         :standingsPoints="standings.points"
-        v-show="favoriteId !== standings.team_id" />
+        v-show="favoriteId !== standings.team_id"
+      />
     </div>
     <!-- favorite-team-points -->
     <div class="favorite-team-played column is-one-fifth has-text-centered">

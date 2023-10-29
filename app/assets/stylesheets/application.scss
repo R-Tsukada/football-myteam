@@ -1,8 +1,8 @@
-@import "bulma";
-@import "font-awesome";
+@import 'bulma';
+@import 'font-awesome';
 
 $main: #3da9fc;
-$border-color: #DDD;
+$border-color: #ddd;
 $app-color: #6246ea;
 $button-color: #6246ea;
 
@@ -45,7 +45,7 @@ section.top-view {
 .flash-messega-box {
   border: 1px solid;
   border-radius: 0.75px;
-  width: 16rem
+  width: 16rem;
 }
 
 .flash-none-display {
@@ -53,8 +53,8 @@ section.top-view {
 }
 
 .br::before {
-  content: "\A" ;
-	white-space: pre ;
+  content: '\A';
+  white-space: pre;
 }
 
 .border-bottom {
@@ -174,8 +174,8 @@ input.how-to-team-select:hover {
 }
 
 .competitor-team-logo {
-    width: 5rem;
-    max-width: 100%;
+  width: 5rem;
+  max-width: 100%;
   @include mobile {
     width: 3rem;
     max-width: 100%;
@@ -253,7 +253,7 @@ input.how-to-team-select:hover {
 }
 
 .match-data {
-  @include tablet{
+  @include tablet {
     width: 32rem;
   }
   @include mobile {
@@ -351,7 +351,12 @@ input.how-to-team-select:hover {
 
 .navbar-start ul li a:hover,
 .navbar-start ul li a:focus {
-  background-image: linear-gradient(to bottom, transparent 80%, #ffffff 81%, transparent 82%);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 80%,
+    #ffffff 81%,
+    transparent 82%
+  );
 }
 
 .devise-page-width {

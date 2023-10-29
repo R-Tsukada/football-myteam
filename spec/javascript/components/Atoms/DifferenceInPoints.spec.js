@@ -22,6 +22,8 @@ describe('DifferenceInPoints', () => {
     const wrapper = shallowMount(DifferenceInPoints, {
       propsData: { favoriteTeamPoints, standingsPoints }
     })
-    expect(wrapper.text()).toContain(`勝ち点差${favoriteTeamPoints - standingsPoints}点`)
+    expect(wrapper.text()).toContain(
+      `勝ち点差${favoriteTeamPoints - standingsPoints}点`
+    )
   })
 })

@@ -5,7 +5,11 @@ describe('CompetitorSelectButton.vue', () => {
   it('renders router-link and enables DetermineButton when competitors length is between 1 and 3', () => {
     const wrapper = mount(CompetitorSelectButton, {
       propsData: {
-        competitors: [{id: 1, name: 'チームA'}, {id: 2, name: 'チームB'}, {id: 3, name: 'チームC'}] // 3 competitors
+        competitors: [
+          { id: 1, name: 'チームA' },
+          { id: 2, name: 'チームB' },
+          { id: 3, name: 'チームC' }
+        ] // 3 competitors
       }
     })
 
