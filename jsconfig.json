@@ -1,14 +1,11 @@
 {
   "include": [
-    "app/javascript/src*",
-    "app/javascript/src/flash_message.js",
-    "app/javascript/src/packs",
-    "app/javascript/src/store"
+    "app/javascript/src/*"
   ],
   "compilerOptions": {
     "baseUrl": "app",
     "paths": {
-      "components/*": ["app/javascript/src/*"]
+      "components/*": ["app/javascript/src/components"]
     }
   }
 }
