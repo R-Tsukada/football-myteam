@@ -4,9 +4,9 @@
 // that code so it'll be compiled.
 
 import Rails from '@rails/ujs'
-import 'main.js'
-import 'head.js'
-import 'flash_message.js'
+import '../src/main.js'
+import '../src/head.js'
+import '../src/flash_message.js'
 import * as ActiveStorage from '@rails/activestorage'
 
 Rails.start()
