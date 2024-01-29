@@ -252,14 +252,14 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (5.0.3)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      railties (>= 5.2)
-      rspec-core (~> 3.10)
-      rspec-expectations (~> 3.10)
-      rspec-mocks (~> 3.10)
-      rspec-support (~> 3.10)
+    rspec-rails (6.1.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
     rspec-support (3.12.1)
     rubocop (1.60.2)
       json (~> 2.3)
@@ -369,43 +369,43 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (>= 1.4.4)
-  bulma-rails (~> 0.9.3)
+  bootsnap
+  bulma-rails
   byebug
-  capybara (>= 3.26)
+  capybara
   devise
   devise-i18n
-  dotenv-rails (~> 2.7, >= 2.7.5)
+  dotenv-rails
   factory_bot_rails
-  font-awesome-sass (~> 6.1.2)
+  font-awesome-sass
   html2slim
-  jbuilder (~> 2.7)
-  listen (~> 3.3)
+  jbuilder
+  listen
   meta-tags
   net-imap
   net-pop
   net-smtp
   omniauth-rails_csrf_protection
   omniauth-twitter
-  pg (~> 1.1)
+  pg
   pry
   pry-nav
-  puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
+  puma
+  rack-mini-profiler
   rails (~> 6.1.5)
-  rspec-rails (~> 5.0.0)
+  rspec-rails
   rubocop
-  rubocop-fjord (~> 0.2.0)
+  rubocop-fjord
   rubocop-minitest
   rubocop-performance
   rubocop-rails
-  sass-rails (>= 6)
-  selenium-webdriver (>= 4.0.0.rc1)
+  sass-rails
+  selenium-webdriver
   slim-rails
   slim_lint
   spring
   tzinfo-data
-  web-console (>= 4.1.0)
+  web-console
   webdrivers
   webpacker (~> 5.0)
   whenever
