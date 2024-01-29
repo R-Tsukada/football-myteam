@@ -6,7 +6,7 @@ RSpec.describe 'Api::TeamFilters', type: :request do
   describe 'GET /api/team_filter' do
     it 'returns http success' do
       league = FactoryBot.create(:league)
-      team = FactoryBot.create(:team, league: league)
+      team = FactoryBot.create(:team, league:)
       user = FactoryBot.build(:user)
       sign_in user
       user.favorite_team_follow(team)

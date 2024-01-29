@@ -5,16 +5,16 @@ require 'rails_helper'
 RSpec.describe 'devise', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
-  let(:team1) { FactoryBot.create(:team, :arsenal, league: league) }
-  let(:team2) { FactoryBot.create(:team, :manchester_united, league: league) }
+  let(:team1) { FactoryBot.create(:team, :arsenal, league:) }
+  let(:team2) { FactoryBot.create(:team, :manchester_united, league:) }
 
   before do
     visit root_path
   end
 
   it 'user can login', js: true do
-    FactoryBot.create(:favorite, user: user, team: team1)
-    FactoryBot.create(:competitor, user: user, team: team2)
+    FactoryBot.create(:favorite, user:, team: team1)
+    FactoryBot.create(:competitor, user:, team: team2)
 
     click_on 'Log in'
     fill_in 'Eメール', with: user.email
