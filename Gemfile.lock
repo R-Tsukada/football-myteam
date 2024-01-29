@@ -392,7 +392,7 @@ DEPENDENCIES
   pry-nav
   puma
   rack-mini-profiler
-  rails (~> 6.1.5)
+  rails (~> 6.1, >= 6.1.7.6)
   rspec-rails
   rubocop
   rubocop-fjord
