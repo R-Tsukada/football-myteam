@@ -421,6 +421,7 @@ DEPENDENCIES
   jbuilder
   listen
   meta-tags
+  msgpack (~> 1.7, >= 1.7.2)
   net-imap
   net-pop
   net-smtp
