@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Standing, type: :model do
   league = FactoryBot.build(:league, :premier_league)
-  FactoryBot.build(:team, league: league)
+  FactoryBot.build(:team, league:)
 
   it 'is valid without a team_id' do
     standing = FactoryBot.build(:standing, :manchester_united, team_id: nil)

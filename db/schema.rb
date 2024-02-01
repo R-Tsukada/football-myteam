@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_234525) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_01_30_001438) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "competitors", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "team_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_competitors_on_team_id"
     t.index ["user_id"], name: "index_competitors_on_user_id"
   end
@@ -27,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "team_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_favorites_on_team_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
@@ -36,8 +35,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
   create_table "leagues", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "api_id"
     t.index ["logo"], name: "index_leagues_on_logo", unique: true
     t.index ["name"], name: "index_leagues_on_name", unique: true
@@ -53,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
     t.string "home_score"
     t.string "away_score"
     t.string "home_and_away", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "home_team_name"
     t.string "away_team_name"
     t.string "home_logo"
@@ -70,8 +69,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
     t.integer "rank", null: false
     t.integer "points", null: false
     t.integer "played", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_standings_on_team_id"
   end
 
@@ -81,8 +80,8 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
     t.string "logo", null: false
     t.string "home_city", null: false
     t.bigint "league_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "stadium"
     t.integer "last_season_rank"
     t.string "code"
@@ -96,10 +95,10 @@ ActiveRecord::Schema.define(version: 2022_09_02_234525) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true

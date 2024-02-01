@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:league) { FactoryBot.create(:league) }
-  let(:team) { FactoryBot.create(:team, league: league) }
+  let(:team) { FactoryBot.create(:team, league:) }
 
   it 'is valid with a email, password' do
     user = FactoryBot.create(:user)
