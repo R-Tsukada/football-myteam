@@ -19,7 +19,7 @@ RSpec.describe 'devise', type: :system, js: true do
     click_on 'Log in'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: user.password
-    click_button 'Log in Using Email'
+    click_button 'Login'
 
     expect(page).to have_content 'ログインしました'
   end
@@ -28,7 +28,7 @@ RSpec.describe 'devise', type: :system, js: true do
     click_on 'Log in'
     fill_in 'Eメール', with: 'error@example.com'
     fill_in 'パスワード', with: user.password
-    click_button 'Log in Using Email'
+    click_button 'Login'
 
     expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
@@ -37,7 +37,7 @@ RSpec.describe 'devise', type: :system, js: true do
     click_on 'Log in'
     fill_in 'Eメール', with: user.email
     fill_in 'パスワード', with: 'xxxxxx'
-    click_button 'Log in Using Email'
+    click_button 'Login'
 
     expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
@@ -47,7 +47,7 @@ RSpec.describe 'devise', type: :system, js: true do
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
-    click_button 'Sign up Using Email'
+    click_button 'Sign up'
 
     expect(page).to have_content 'アカウント登録が完了しました'
   end
@@ -57,7 +57,7 @@ RSpec.describe 'devise', type: :system, js: true do
     fill_in 'Eメール', with: 'abc@example.com'
     fill_in 'パスワード', with: '1234'
     fill_in 'パスワード（確認用）', with: '1234'
-    click_button 'Sign up Using Email'
+    click_button 'Sign up'
 
     expect(page).to have_content 'パスワードは6文字以上で入力してください'
   end

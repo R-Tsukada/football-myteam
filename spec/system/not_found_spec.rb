@@ -10,7 +10,7 @@ RSpec.describe 'NotFoundPage', type: :system, js: true do
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
-    click_button 'Sign up Using Email'
+    click_button 'Sign up'
 
     visit '/rails'
     expect(page).to have_content "404\nお探しのページが見つかりませんでした"

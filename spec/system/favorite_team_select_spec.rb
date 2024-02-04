@@ -19,7 +19,7 @@ RSpec.describe 'register selected a favorite team', type: :system, js: true do
     fill_in 'Eメール', with: 'fjord2022@example.com'
     fill_in 'パスワード', with: '123456'
     fill_in 'パスワード（確認用）', with: '123456'
-    click_button 'Sign up Using Email'
+    click_button 'Sign up'
   end
 
   it 'Select one of the leagues shown. The teams belonging to the league you selected will then be displayed', js: true do

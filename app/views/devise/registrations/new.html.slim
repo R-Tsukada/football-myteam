@@ -16,6 +16,6 @@
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input', placeholder: 'Password(confirm)'
         .actions.has-text-centered
-          = f.submit 'Sign up Using Email', class: 'sign-up-using-mail color-button button is-rounded has-text-white'
+          = f.submit 'Sign up', class: 'sign-up-using-mail color-button button is-rounded has-text-white'
       .mt-4.has-text-centered
         = link_to 'すでにアカウントをお持ちの場合：ログイン', new_user_session_path
