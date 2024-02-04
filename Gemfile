@@ -32,7 +32,6 @@ gem 'meta-tags'
 gem 'net-imap'
 gem 'net-pop'
 gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-twitter'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 gem 'msgpack', '~> 1.7', '>= 1.7.2'
