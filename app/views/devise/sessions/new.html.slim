@@ -16,10 +16,5 @@
             = f.label :remember_me
           .actions.has-text-centered
             = f.submit 'Log in Using Email', class: 'color-button button is-rounded has-text-white'
-        .twitter-login-button.has-text-centered.mt-2
-          .button.is-rounded.twitter-color.has-text-white
-            .i.fa-brands.fa-twitter.fa-2x.p-2
-            - resource_class.omniauth_providers.each do |provider|
-              = link_to 'Log in Using Twitter', omniauth_authorize_path(resource_name, provider), method: :post, class: 'has-text-white'
       .mt-4.has-text-centered
         = link_to 'アカウントを新しく作る場合はこちら', new_user_registration_path

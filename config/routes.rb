@@ -3,8 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions',
-    :omniauth_callbacks => "omniauth_callbacks"
+    sessions: 'users/sessions'
   }
   resources :leagues, only: %i(index)
   resources :home, only: %i(index)
