@@ -16,7 +16,6 @@ RUN bundle install
 COPY package.json /football-myteam/package.json
 COPY yarn.lock  /football-myteam/yarn.lock
 RUN yarn install --check-files
-RUN bundle exec rails webpacker:install
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
