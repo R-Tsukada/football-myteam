@@ -579,8 +579,13 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-performance
   rubocop-rails
+<<<<<<< HEAD
   sass-rails
   selenium-webdriver
+=======
+  sass-rails (>= 6)
+  selenium-webdriver (~> 4.23)
+>>>>>>> 6500856 (セレニウムテストが動かなくなっていたため修正する)
   slim-rails
   slim_lint
   spring
