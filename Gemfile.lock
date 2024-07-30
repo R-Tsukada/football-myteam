@@ -143,6 +143,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsbundling-rails (1.3.1)
+      railties (>= 6.0.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -400,8 +402,14 @@ DEPENDENCIES
   factory_bot_rails
   font-awesome-sass
   html2slim
+<<<<<<< HEAD
   jbuilder
   listen
+=======
+  jbuilder (~> 2.7)
+  jsbundling-rails
+  listen (~> 3.3)
+>>>>>>> eda3979 (jsbundling-railsをインストールする)
   meta-tags
   msgpack (~> 1.7, >= 1.7.2)
   net-imap

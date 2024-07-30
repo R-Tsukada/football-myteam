@@ -1,7 +1,6 @@
 const { environment } = require('@rails/webpacker')
 const { VueLoaderPlugin } = require('vue-loader')
 const { DefinePlugin } = require('webpack')
-const ts = require('./loaders/ts')
 
 environment.loaders.prepend('vue', {
   test: /\.vue$/,
@@ -31,5 +30,4 @@ environment.config.merge({
 })
 
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
-environment.loaders.prepend('ts', ts)
 module.exports = environment
