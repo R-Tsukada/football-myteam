@@ -21,6 +21,8 @@ jobs:
         env:
           RAILS_ENV: test
       - name: RSpec
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           docker-compose run web bundle exec rspec
         env:
