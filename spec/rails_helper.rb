@@ -76,21 +76,19 @@ RSpec.configure do |config|
     Capybara::Selenium::Driver.new(
       app,
       browser: :remote,
-      url: url,
+      url:,
       capabilities: [options]
     )
   end
 
-  RSpec.configure do |config|
-    config.before(:each, type: :system) do
-      driven_by :rack_test
-    end
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
 
-    config.before(:each, type: :system, js: true) do
-      driven_by :remote_chrome
-      Capybara.server_host = '0.0.0.0'
-      Capybara.server_port = 3001
-      Capybara.app_host = "http://web:3001"
-    end
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+    Capybara.server_host = '0.0.0.0'
+    Capybara.server_port = 3001
+    Capybara.app_host = 'http://web:3001'
   end
 end
