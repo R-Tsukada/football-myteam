@@ -10,11 +10,10 @@ gem 'rails', '~> 7.1', '>= 7.1.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 6.4', '>= 6.4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -33,8 +32,8 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'omniauth-rails_csrf_protection'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
-gem 'msgpack', '~> 1.7', '>= 1.7.2'
+gem 'bootsnap', '>= 1.4.4', require: false
+gem 'jsbundling-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,8 +64,8 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver', '~> 4.23'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
