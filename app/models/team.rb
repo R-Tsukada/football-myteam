@@ -5,10 +5,11 @@ class Team < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :logo, presence: true, uniqueness: true
   validates :home_city, presence: true
+  validates :active, inclusion: { in: [true, false] }
 
   belongs_to :league
   has_one :favorite, dependent: :destroy
-  has_many :competitor, dependent: :destroy
+  has_many :competitors, dependent: :destroy
   has_one :standing, dependent: :destroy
-  has_many :match, dependent: :destroy
+  has_many :matches, dependent: :destroy
 end
