@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'net/http'
+require 'openssl'
+require 'json'
+
 class StandingRequest
   def initialize
     @build_url = BuildUrl.new
