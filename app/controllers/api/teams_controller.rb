@@ -2,6 +2,6 @@
 
 class API::TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.all.where(active: true)
   end
 end

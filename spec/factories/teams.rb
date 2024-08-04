@@ -7,6 +7,8 @@ FactoryBot.define do
     sequence(:logo) { |n| "https://media.api-sports.io/football/teams/#{n}.png" }
     sequence(:api_id) { |n| n }
     home_city { 'London' }
+    active { true }
+    association :league
 
     trait :arsenal do
       id { 1 }
