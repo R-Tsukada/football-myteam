@@ -38,7 +38,7 @@ RSpec.describe Team, type: :model do
   end
 
   it 'is invalid with a duplicate logo' do
-    FactoryBot.create(:team, logo: 'https://media.api-sports.io/football/teams/42.png', league)
+    FactoryBot.create(:team, logo: 'https://media.api-sports.io/football/teams/42.png', league:)
     team.valid?
     expect(team.errors[:logo]).to include('はすでに存在します')
   end
