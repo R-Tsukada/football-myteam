@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div class="favorite-team-schedules py-0">
+  <div class="favorite-team-schedules mx-auto">
     <div
       class="next-match has-text-centered is-size-5-mobile is-flex is-align-items-center py-2"
       v-for="match in matchSchedules"
@@ -25,11 +25,14 @@
         {{ matchDay(match.date) }}
       </p>
       <!-- next-match-date -->
-      <div v-if="currentTeam.name === match.home_team_name">
+      <div
+        class="next-match-team"
+        v-if="currentTeam.name === match.home_team_name"
+      >
         <img
           :src="match.away_logo"
           alt="match-team-logo"
-          class="image next-match-competition-logo"
+          class="image next-match-competition-logo mx-auto"
         />
         <p
           class="match-name not-displayed-when-with-mobile-display has-text-weight-bold"
@@ -37,11 +40,14 @@
           {{ match.away_team_name }}
         </p>
       </div>
-      <div v-else>
+      <div
+        class="next-match-team"
+        v-else
+      >
         <img
           :src="match.home_logo"
           alt="match-team-logo"
-          class="image next-match-competition-logo"
+          class="image next-match-competition-logo mx-auto"
         />
         <p
           class="match-name not-displayed-when-with-mobile-display has-text-weight-bold"
