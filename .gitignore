@@ -42,3 +42,4 @@ yarn-debug.log*
 /config/credentials.yml.enc.bak
 /config/master.key.bak
 
+/dist
