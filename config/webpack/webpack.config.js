@@ -3,7 +3,7 @@ const webpack = require("webpack")
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   devtool: "source-map",
   module: {
     rules: [
@@ -14,16 +14,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: ['babel-loader']
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
+        test: /\.(scss|css)$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
@@ -40,7 +35,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       __VUE_OPTIONS_API__: true,
-      __VUE_PROD_DEVTOOLS__: false
+      __VUE_PROD_DEVTOOLS__: false,
     })
   ],
   resolve: {
