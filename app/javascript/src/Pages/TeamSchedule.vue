@@ -6,16 +6,10 @@
       >
         リーグ戦情報
       </h2>
-      <div v-if="!favoriteMatches.length && isSeasonOff">
-        <p class="has-text-centered has-text-weight-bold mb-4">
-          シーズンオフ中です
-        </p>
-        <img class="mx-auto" src="/season-off.svg" alt="season-off" />
-      </div>
-      <MatchListLoader v-else-if="!favoriteMatches.length" />
+      <MatchListLoader v-if="!favoriteMatches.length" />
       <div v-else>
         <p class="has-text-centered has-text-weight-bold mb-4">
-          優勝・欧州カップ戦出場権・残留争いを楽しもう
+          優勝・欧州カップ戦出場権争いを楽しもう!!
         </p>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>
