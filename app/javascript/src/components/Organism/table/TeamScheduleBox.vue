@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import TeamMatches from './TeamMatches'
-import StandingData from './StandingData'
+import TeamMatches from './TeamMatches.vue'
+import StandingData from './StandingData.vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 

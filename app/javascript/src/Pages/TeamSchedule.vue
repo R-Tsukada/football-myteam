@@ -53,7 +53,7 @@
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import TeamScheduleBox from '../components/Organism/table/TeamScheduleBox.vue'
-import MatchListLoader from '../components/atoms/loader/MatchListLoader'
+import MatchListLoader from '../components/atoms/loader/MatchListLoader.vue'
 
 export default {
   components: {

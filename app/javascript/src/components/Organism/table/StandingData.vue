@@ -73,8 +73,8 @@
 </template>
 
 <script>
-import DifferenceInPoints from '../../atoms/DifferenceInPoints'
-import FavoriteTeamTag from '../../atoms/FavoriteTeamTag'
+import DifferenceInPoints from '../../atoms/DifferenceInPoints.vue'
+import FavoriteTeamTag from '../../atoms/FavoriteTeamTag.vue'
 import { useStore } from 'vuex'
 import { reactive, onMounted, computed } from 'vue'
 import axios from 'axios'

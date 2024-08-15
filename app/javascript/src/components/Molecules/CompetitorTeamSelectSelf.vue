@@ -32,7 +32,7 @@ import CompetitorTeamList from '../Organism/CompetitorTeamList.vue'
 import CompetitorTeamCount from '../atoms/modal/CompetitorTeamCount.vue'
 import TeamListLoader from '../atoms/loader/TeamListLoader.vue'
 import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
-import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton'
+import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton.vue'
 
 export default {
   components: {

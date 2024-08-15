@@ -21,6 +21,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@rails/activestorage": "^7.1.1",
     "@rails/ujs": "^7.1.1",
+    "@vitejs/plugin-vue": "^5.1.2",
     "@vue/compiler-sfc": "^3.3.4",
     "@vue/test-utils": "^2.4.1",
     "axios": "^1.5.1",
