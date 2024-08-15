@@ -282,8 +282,15 @@ input.how-to-team-select:hover {
   }
 }
 
+.next-match-team {
+  width: 7.5rem;
+  @include mobile {
+    width: 3rem;
+  }
+}
+
 .match-name {
-  width: 1rem;
+  width: 7.5rem;
 }
 
 /* 試合詳細 */
