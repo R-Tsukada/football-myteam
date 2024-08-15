@@ -40,10 +40,7 @@
           {{ match.away_team_name }}
         </p>
       </div>
-      <div
-        class="next-match-team"
-        v-else
-      >
+      <div class="next-match-team" v-else>
         <img
           :src="match.home_logo"
           alt="match-team-logo"
