@@ -32,6 +32,7 @@ console.log(
 import Rails from '@rails/ujs'
 import '../src/head.js'
 import '../src/flash_message.js'
+import './application.scss'
 import * as ActiveStorage from '@rails/activestorage'
 import { createApp } from 'vue'
 import App from '../src/App.vue'
@@ -40,6 +41,7 @@ import { store } from '../src/store/store.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+
 
 library.add(faUserSecret)
 
