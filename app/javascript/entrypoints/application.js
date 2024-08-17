@@ -9,7 +9,7 @@ import { router } from '../src/router/router.js'
 import { store } from '../src/store/store.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons/faUserSecret'
 
 library.add(faUserSecret)
 
