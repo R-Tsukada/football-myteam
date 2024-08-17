@@ -12,6 +12,7 @@ RUN bundle install
 
 COPY package.json /football-myteam/package.json
 COPY yarn.lock  /football-myteam/yarn.lock
+RUN rm -rf node_modules
 RUN yarn install --check-files
 
 COPY entrypoint.sh /usr/bin/

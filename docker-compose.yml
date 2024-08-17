@@ -6,32 +6,41 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
-  web: &app
+
+  web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0' && bin/vite build --clear --mode=development"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
+      RAILS_ENV: development
+      VITE_RUBY_HOST: vite  # Viteサービスの名前を指定
       SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
     volumes:
       - .:/football-myteam
+      - /football-myteam/node_modules
     ports:
       - '3000:3000'
     depends_on:
       - db
-      - chrome
+      - vite
     tty: true
     stdin_open: true
+
+  vite:
+    build: .
+    command: bash -c "yarn install && vite dev"
+    environment:
+      DEBUG: "vite:*"
+      RAILS_ENV: development
+      VITE_RUBY_HOST: 0.0.0.0
+    volumes:
+      - .:/football-myteam
+    ports:
+      - '3036:3036'
+
   chrome:
     image: selenium/standalone-chrome-debug:latest
     shm_size: 256m
     ports:
       - '4444:4444'
       - '5900:5900'
-  vite:
-    build: .
-    command: bash -c "npm install && vite --mode development"
-    environment:
-      VITE_RUBY_HOST: 0.0.0.0
-    volumes:
-      - .:/football-myteam
-    ports:
-      - '3036:3036'
+

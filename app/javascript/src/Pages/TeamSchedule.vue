@@ -9,7 +9,7 @@
       <MatchListLoader v-if="!favoriteMatches.length" />
       <div v-else>
         <p class="has-text-centered has-text-weight-bold mb-4">
-          優勝・欧州カップ戦出場権争いを楽しもう!!
+          優勝・欧州カップ戦出場権争いを楽しもう
         </p>
         <div class="mb-3 has-text-right">
           <p>更新日:{{ updateDate(favoriteMatches[0].created_at) }}</p>

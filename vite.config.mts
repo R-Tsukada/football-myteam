@@ -1,21 +1,25 @@
-import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
-import VuePlugin from '@vitejs/plugin-vue'
-import FullReload from 'vite-plugin-full-reload'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import RubyPlugin from 'vite-plugin-ruby';
+import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
   plugins: [
     RubyPlugin(),
-    VuePlugin(),
-    FullReload(['config/routes.rb', 'app/views/**/*', 'app/javascript/**/*.vue'], { delay: 100 }),
+    vue(),
+    FullReload(['config/routes.rb', 'app/views/**/*', 'app/javascript/**/*.vue', 'app/javascript/entrypoints/application.scss'], { delay: 100 }),
   ],
+  server: {
+    host: '0.0.0.0',
+    port: 3036,
+    watch: {
+      usePolling: true,  // Docker環境でのファイルシステム問題を回避
+    },
+  },
   build: {
-    outDir: 'public/vite/assets', // 出力ディレクトリの指定
-    emptyOutDir: true, // ビルド時に出力ディレクトリを空にする
+    outDir: 'public/vite/assets',
+    emptyOutDir: true,
     rollupOptions: {
-      input: {
-        'javascript/application': 'app/javascript/entrypoints/application.scss'
-      },
       output: {
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
@@ -23,4 +27,4 @@ export default defineConfig({
       },
     },
   },
-})
+});
