@@ -76,11 +76,11 @@
 import axios from 'axios'
 import { reactive, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
-import MatchScheduleList from '../components/Molecules/list/MatchScheduleList'
-import MatchResultList from '../components/Molecules/list/MatchResultList'
-import MatchScheduleShowLoader from '../components/atoms/loader/MatchScheduleShowLoader'
-import FavoriteTeamTag from '../components/atoms/FavoriteTeamTag'
-import BackToPageButton from '../components/atoms/Button/BackToPageButton'
+import MatchScheduleList from '../components/Molecules/list/MatchScheduleList.vue'
+import MatchResultList from '../components/Molecules/list/MatchResultList.vue'
+import MatchScheduleShowLoader from '../components/atoms/loader/MatchScheduleShowLoader.vue'
+import FavoriteTeamTag from '../components/atoms/FavoriteTeamTag.vue'
+import BackToPageButton from '../components/atoms/Button/BackToPageButton.vue'
 
 export default {
   components: {

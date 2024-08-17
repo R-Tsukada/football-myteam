@@ -23,7 +23,7 @@
 </template>
 <script>
 import CompetitorTeamCount from '../atoms/modal/CompetitorTeamCount.vue'
-import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton'
+import CompetitorSelectButton from '../Molecules/BooleanButton/CompetitorSelectButton.vue'
 import BackToPageButton from '../atoms/Button/BackToPageButton.vue'
 import SelectedCompetitorTeamList from '../Organism/SelectedCompetitorTeamList.vue'
 import { defineComponent } from 'vue'

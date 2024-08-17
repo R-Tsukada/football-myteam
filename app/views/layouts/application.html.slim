@@ -6,8 +6,10 @@ html
     = display_meta_tags default_meta_tags
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
+    - if Rails.env.development?
+      = vite_client_tag
+    = vite_stylesheet_tag 'application.scss'
+    = vite_javascript_tag 'application'
     = favicon_link_tag 'favicon.png'
     - if Rails.env.production?
       = render 'google_analytics'
