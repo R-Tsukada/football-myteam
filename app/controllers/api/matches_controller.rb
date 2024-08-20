@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class API::MatchesController < ApplicationController
-  before_action :set_show_page, only: [:show]
+  before_action :set_team, only: [:show]
 
   def index
     matches = Match.all.order(:date).where(home_team_name: team_names).or(Match.where(away_team_name: team_names))
@@ -9,7 +9,7 @@ class API::MatchesController < ApplicationController
   end
 
   def show
-    @match_show = Match.all.where(team_id: @team_id).order(:date)
+    @match = Match.all.order(:date).where(home_team_name: set_team.name).or(Match.where(away_team_name: set_team.name))
   end
 
   private
@@ -19,8 +19,8 @@ class API::MatchesController < ApplicationController
     teams.map(&:name)
   end
 
-  def set_show_page
-    @team_id = Team.find(params[:id])
+  def set_team
+    Team.find(params[:id])
   end
 
   def selected_team_ids
