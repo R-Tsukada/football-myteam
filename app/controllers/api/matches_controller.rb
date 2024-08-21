@@ -9,7 +9,8 @@ class API::MatchesController < ApplicationController
   end
 
   def show
-    @match = Match.all.order(:date).where(home_team_name: set_team.name).or(Match.where(away_team_name: set_team.name))
+    team = set_team
+    @match = Match.all.order(:date).where(home_team_name: team.name).or(Match.where(away_team_name: team.name))
   end
 
   private
