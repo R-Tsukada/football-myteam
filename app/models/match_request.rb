@@ -41,10 +41,6 @@ class MatchRequest
     match.away_logo = api['teams']['away']['logo']
     match.home_score = api['goals']['home']
     match.away_score = api['goals']['away']
-    team = Team.find_by(api_id: api['teams']['home']['id'])
-    match.team_id = team.id
-    match.team_name = match.home_team_name
-    match.team_logo = match.home_logo
     match.save
   end
 end

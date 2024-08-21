@@ -15,13 +15,6 @@ RSpec.describe Match, type: :model do
     expect(match.errors[:date]).to include('を入力してください')
   end
 
-  it 'is valid without a team_id' do
-    match = FactoryBot.build(:match, team_id: nil)
-
-    match.valid?
-    expect(match.errors[:team_id]).to include('を入力してください')
-  end
-
   it 'is valid without a season' do
     match = FactoryBot.build(:match, season: nil)
 
@@ -41,20 +34,6 @@ RSpec.describe Match, type: :model do
 
     match.valid?
     expect(match.errors[:competition_logo]).to include('を入力してください')
-  end
-
-  it 'is valid without a team_name' do
-    match = FactoryBot.build(:match, team_name: nil)
-
-    match.valid?
-    expect(match.errors[:team_name]).to include('を入力してください')
-  end
-
-  it 'is valid without a team_logo' do
-    match = FactoryBot.build(:match, team_logo: nil)
-
-    match.valid?
-    expect(match.errors[:team_logo]).to include('を入力してください')
   end
 
   it 'is valid without a home_and_away' do
