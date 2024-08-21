@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_04_082513) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_21_002925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,19 +47,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_04_082513) do
     t.date "date", null: false
     t.string "competition_name", null: false
     t.string "competition_logo", null: false
-    t.string "team_name", null: false
-    t.string "team_logo", null: false
     t.string "home_score"
     t.string "away_score"
     t.string "home_and_away", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "home_team_name"
-    t.string "away_team_name"
-    t.string "home_logo"
-    t.string "away_logo"
-    t.bigint "team_id"
-    t.index ["team_id"], name: "index_matches_on_team_id"
+    t.string "home_team_name", null: false
+    t.string "away_team_name", null: false
+    t.string "home_logo", null: false
+    t.string "away_logo", null: false
   end
 
   create_table "standings", force: :cascade do |t|
@@ -110,7 +106,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_04_082513) do
   add_foreign_key "competitors", "users"
   add_foreign_key "favorites", "teams"
   add_foreign_key "favorites", "users"
-  add_foreign_key "matches", "teams"
   add_foreign_key "standings", "teams"
   add_foreign_key "teams", "leagues"
 end
