@@ -14,6 +14,8 @@ COPY package.json /football-myteam/package.json
 COPY yarn.lock  /football-myteam/yarn.lock
 RUN rm -rf node_modules
 RUN yarn install --check-files
+RUN yarn playwright install-deps && \
+    yarn playwright install
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

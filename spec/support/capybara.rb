@@ -2,9 +2,10 @@
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
-    driven_by :rack_test
+    driven_by :playwright
   end
-  config.before(:each, type: :system, js: true) do
-    driven_by :selenium_chrome_headless
+
+  config.before(:each, :head, type: :system) do
+    driven_by(:playwright, options: { headless: false })
   end
 end
