@@ -11,9 +11,7 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
-      RAILS_ENV: development
-      VITE_RUBY_HOST: vite  # Viteサービスの名前を指定
-      SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
+      VITE_RUBY_HOST: vite
     volumes:
       - .:/football-myteam
       - /football-myteam/node_modules
@@ -30,17 +28,9 @@ services:
     command: bash -c "yarn install && vite dev"
     environment:
       DEBUG: "vite:*"
-      RAILS_ENV: development
       VITE_RUBY_HOST: 0.0.0.0
     volumes:
       - .:/football-myteam
     ports:
       - '3036:3036'
-
-  chrome:
-    image: selenium/standalone-chrome-debug:latest
-    shm_size: 256m
-    ports:
-      - '4444:4444'
-      - '5900:5900'
 
