@@ -65,8 +65,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'playwright-ruby-client'
   gem 'capybara-playwright-driver'
+  gem 'playwright-ruby-client'
 end
 
 gem 'html2slim'
