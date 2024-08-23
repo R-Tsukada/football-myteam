@@ -12,6 +12,8 @@ RSpec.describe 'NotFoundPage', type: :system, js: true do
     fill_in 'パスワード（確認用）', with: '123456'
     click_button 'Sign up'
 
+    sleep 3.0
+
     visit '/rails'
     expect(page).to have_content "404\nお探しのページが見つかりませんでした"
   end
