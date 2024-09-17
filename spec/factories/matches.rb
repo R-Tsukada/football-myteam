@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :match do
     id { 1 }
+    fixture_id { 1 }
     date { 'Wed, 12 Jan 2022' }
     season { 2021 }
     competition_name { 'UEFA Champions League' }

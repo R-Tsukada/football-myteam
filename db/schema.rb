@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_21_002925) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_17_221121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_21_002925) do
     t.string "away_team_name", null: false
     t.string "home_logo", null: false
     t.string "away_logo", null: false
+    t.integer "fixture_id"
   end
 
   create_table "standings", force: :cascade do |t|
