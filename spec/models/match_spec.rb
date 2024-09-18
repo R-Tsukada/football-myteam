@@ -8,6 +8,13 @@ RSpec.describe Match, type: :model do
     expect(match).to be_valid
   end
 
+  it 'is valid without a fixture_id' do
+    match = FactoryBot.build(:match, fixture_id: nil)
+
+    match.valid?
+    expect(match.errors[:fixture_id]).to include('を入力してください')
+  end
+
   it 'is valid without a date' do
     match = FactoryBot.build(:match, date: nil)
 

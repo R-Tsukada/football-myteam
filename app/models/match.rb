@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Match < ApplicationRecord
+  validates :fixture_id, presence: true
   validates :season, presence: true
   validates :date, presence: true
   validates :competition_name, presence: true

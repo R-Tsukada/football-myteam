@@ -30,6 +30,7 @@ class MatchRequest
 
   def data_save(api)
     match = Match.new
+    match.fixture_id = api['fixture']['id']
     match.season = api['league']['season']
     match.date = api['fixture']['date']
     match.home_and_away = api['fixture']['venue']['name']
